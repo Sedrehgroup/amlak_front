@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -13,8 +14,18 @@ export default function PhoneNumForm() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    dispatch(userLoginStepAccess("PhoneNumber_Step"));
+  const onSubmit = ({ phoneNumber }) => {
+    console.log("phoneNumber", phoneNumber);
+    try {
+      axios
+        .post("http://api.rent.sedrehgroup.ir/users/otp_register/", {
+          phone_number: `+98${phoneNumber}`,
+        })
+        .then((data) => console.log("axios /users/otp_register", data))
+        .catch((e) => console.log("error in axios /users/otp_register", e));
+    } catch (error) {
+      dispatch(userLoginStepAccess("PhoneNumber_Step"));
+    }
   };
   return (
     <div className="bg-primary-50">
