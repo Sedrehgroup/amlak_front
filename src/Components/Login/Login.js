@@ -1,6 +1,6 @@
 import React from "react";
 import FormAuth from "./Elements/FormAuth";
-import Number from "./Elements/Number";
+import PhoneNumForm from "./Elements/PhoneNumForm";
 
 export default function Login() {
   return (
@@ -8,11 +8,10 @@ export default function Login() {
       {/* /@mohamad
 جایی که شماره وارد میشه
 */}
-      <Number />
+      {/* <PhoneNumForm /> */}
 
-      {/* صفحه بعدی
+      {/* صفحه بعدی */}
       <FormAuth />
-       */}
     </div>
   );
 }
