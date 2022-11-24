@@ -157,3 +157,6 @@ body {
   border-left: 1px solid #fdba74;
   border-right: 1px solid #fdba74;
 }
+.react-code-input input {
+  font-family: Vazir !important;
+}
