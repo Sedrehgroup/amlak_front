@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactCodeInput from "react-code-input";
+import { useDispatch } from "react-redux";
 import Logo from "../../../assets/Images/Dashboard/logo.svg";
+import { userLoginStepAccess } from "../../../redux/reducers/login";
 
 export default function PhoneSmsForm() {
-  const [isPinCodeValid, setIsPinCodeValid] = useState(true);
+  const [isPinCodeValid, setIsPinCodeValid] = useState(false);
   const [pinCode, setPinCode] = useState("");
   const [btnIsPressed, setBtnIsPressed] = useState(false);
 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (isPinCodeValid) dispatch(userLoginStepAccess("PhoneSms_Step"));
+  }, [isPinCodeValid]);
   const checkPinCode = () => {
     const isPinCodeValid = pinCode === "12345";
 

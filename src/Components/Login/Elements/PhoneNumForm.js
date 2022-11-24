@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import Logo from "../../../assets/Images/Dashboard/logo.svg";
+import { userLoginStepAccess } from "../../../redux/reducers/login";
 
 export default function PhoneNumForm() {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -10,7 +13,9 @@ export default function PhoneNumForm() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log("errors", errors);
+  const onSubmit = (data) => {
+    dispatch(userLoginStepAccess("PhoneNumber_Step"));
+  };
   return (
     <div className="bg-primary-50">
       <div className="twentyvh flex justify-end">
