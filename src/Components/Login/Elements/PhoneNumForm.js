@@ -3,7 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import Logo from "../../../assets/Images/Dashboard/logo.svg";
-import { userLoginStepAccess } from "../../../redux/reducers/login";
+import {
+  setSmsCodeHandler,
+  userLoginStepAccess,
+} from "../../../redux/reducers/login";
 
 export default function PhoneNumForm() {
   const dispatch = useDispatch();
@@ -21,11 +24,13 @@ export default function PhoneNumForm() {
         .post("http://api.rent.sedrehgroup.ir/users/otp_register/", {
           phone_number: `+98${phoneNumber}`,
         })
-        .then((data) => console.log("axios /users/otp_register", data))
+        .then((data) => {
+          console.log("axios /users/otp_register", data);
+          dispatch(setSmsCodeHandler(data.data));
+          dispatch(userLoginStepAccess("PhoneNumber_Step"));
+        })
         .catch((e) => console.log("error in axios /users/otp_register", e));
-    } catch (error) {
-      dispatch(userLoginStepAccess("PhoneNumber_Step"));
-    }
+    } catch (error) {}
   };
   return (
     <div className="bg-primary-50">

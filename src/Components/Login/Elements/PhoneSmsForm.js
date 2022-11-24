@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ReactCodeInput from "react-code-input";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Logo from "../../../assets/Images/Dashboard/logo.svg";
 import { userLoginStepAccess } from "../../../redux/reducers/login";
 
 export default function PhoneSmsForm() {
+  const smsCode = useSelector((state) => state.login.smsCode);
+
   const [isPinCodeValid, setIsPinCodeValid] = useState(false);
   const [pinCode, setPinCode] = useState("");
   const [btnIsPressed, setBtnIsPressed] = useState(false);
@@ -14,7 +16,7 @@ export default function PhoneSmsForm() {
     if (isPinCodeValid) dispatch(userLoginStepAccess("PhoneSms_Step"));
   }, [isPinCodeValid]);
   const checkPinCode = () => {
-    const isPinCodeValid = pinCode === "12345";
+    const isPinCodeValid = pinCode == smsCode;
 
     setBtnIsPressed(true);
     setIsPinCodeValid(isPinCodeValid);
@@ -48,7 +50,7 @@ export default function PhoneSmsForm() {
                   id="pinCode"
                   type="text"
                   isValid={isPinCodeValid}
-                  fields={5}
+                  fields={4}
                   onChange={handlePinChange}
                   value={pinCode}
                 />
@@ -59,43 +61,9 @@ export default function PhoneSmsForm() {
               >
                 دریافت کد ورود
               </button>
-              <label>Correct pin code: {12345}</label>
-              <label>{isPinCodeValid && btnIsPressed && "Valid"}</label>
-              <label>{!isPinCodeValid && btnIsPressed && "Not valid"}</label>
-              {/* <form onSubmit={handleSubmit(onSubmit)} className="relative">
-              <label className="absolute bg-primary-50 top-[-10px] left-2 px-1 text-sm ">
-                شماره موبایل
-              </label>
-              <input
-                className="w-full py-4 px-4 rounded-sm border-12 border-solid border-primary-600"
-                // value={phoneNumber}
-                aria-invalid={errors.firstName ? "true" : "false"}
-                {...register("phoneNumber", {
-                  required: "وارد کردن شماره الزامی می باشد",
-                  maxLength: 11,
-                  valueAsNumber: true,
-                  onChange: () => {
-                    console.log("watch('phoneNumber')", watch("phoneNumber"));
-                  },
-                })}
-                placeholder="09123456789"
-                dir="ltr"
-              />
-              {errors.phoneNumber && (
-                <>
-                  <span className="text-primary-900">
-                    {errors.phoneNumber?.message}
-                  </span>
-                </>
-              )}
 
-              <button
-                className="bg-primary-800 text-white w-52 h-12 rounded-lg mt-10 flex justify-center items-center m-auto"
-                type="submit"
-              >
-                دریافت کد ورود
-              </button>
-            </form> */}
+              <label>{isPinCodeValid && btnIsPressed && "Valid"}</label>
+              <center>{!isPinCodeValid && btnIsPressed && "Not valid"}</center>
             </div>
           </div>
         </div>
