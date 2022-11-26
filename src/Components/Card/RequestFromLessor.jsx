@@ -1,8 +1,10 @@
 import React from "react";
 
+// کارت طراحی شده برای درخواست ها و اجاره ها
+
 const RequestFromLessor = (props) => {
     return (
-        <div className="p-10 border border-warmGray-400 m-20 rounded-lg">
+        <div className="p-10 border border-warmGray-400 bg-warmGray-100 my-8 mx-12 rounded-lg">
             <div className="flex flex-col gap-y-10">
                 <div className="flex justify-between pb-4 border-b-2 border-b-warmGray-800">
                     <p className="font-semibold text-xl">{props.AdTitle}</p>
@@ -13,8 +15,9 @@ const RequestFromLessor = (props) => {
                 <div className="flex justify-between gap-x-12">
                     <img
                         src={props.imgPath}
-                        className="object-cover rounded-lg"
+                        className="rounded-lg "
                         alt="img"
+                        style={{ width: "400px", height: "240px" }}
                     />
                     <div className="flex flex-col gap-y-6 justify-between w-full">
                         <div className="flex justify-between">
@@ -48,10 +51,10 @@ const RequestFromLessor = (props) => {
                         </p>
                         <hr className=" text-warmGray-400" />
                         <div className=" flex gap-x-4">
-                            <button className="border-2 border-main-600 text-main-600 rounded-lg font-bold px-4 h-10">
+                            <button className="border-2 border-main-600 text-main-600 rounded-lg font-bold px-6 h-10">
                                 مشاهده آگهی
                             </button>
-                            <button className="border-2 border-main-600 text-main-600 rounded-lg font-bold px-4 h-10">
+                            <button className="border-2 border-main-600 text-main-600 rounded-lg font-bold px-6 h-10">
                                 {props.SecondButtonText}
                             </button>
                             <button
@@ -61,7 +64,7 @@ const RequestFromLessor = (props) => {
                                     background:
                                         "linear-gradient(115deg, rgba(255,115,29,1) 0%, rgba(255,171,119,1) 100%)",
                                 }}
-                                className="text-warmGray-50 rounded-lg font-bold px-4 h-10"
+                                className="text-warmGray-50 rounded-lg font-bold px-6 h-10"
                             >
                                 {props.MainButtonText}
                             </button>

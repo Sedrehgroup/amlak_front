@@ -9,8 +9,10 @@ import imgFrame from "./assets/Images/Dashboard/Frame.png";
 function App() {
     const [isLogged] = useLoggedUser();
     return (
-        <div>
-            <RequestFromLessor
+        <div className="bg-warmGray-200">
+            <Dashboard />
+
+            {/* <RequestFromLessor
                 imgPath={imgFrame}
                 AdTitle="مسکونی 248 متر"
                 TitleOfChatButton="گفتگو با مستأجر"
@@ -22,7 +24,7 @@ function App() {
                 requestState="درخواست اجاره"
                 SecondButtonText="اطلاعات تماس مستأجر"
                 MainButtonText="مشاهده درخواست"
-            ></RequestFromLessor>
+            ></RequestFromLessor> */}
 
             {/* <Router>
                 <Routes>

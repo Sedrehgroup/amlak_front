@@ -28,9 +28,6 @@ module.exports = {
                 800: "#292524",
                 900: "#1C1917",
             },
-            gradient: {
-                100: "linear-gradient(90.83deg, #FF731D 0.01%, #FFAB77 100.01%)",
-            },
             primary: {
                 50: "#FCFAF8",
                 100: "#F9F5F2",
