@@ -6,8 +6,10 @@ const slice = createSlice({
     loginSteps: {
       PhoneNumber_Step: false,
       PhoneSms_Step: false,
+      Register_Step: false,
     },
     smsCode: 0,
+    phoneNumber: 0,
   },
   reducers: {
     userLoginStepAccess: (state, action) => {
@@ -19,12 +21,19 @@ const slice = createSlice({
     setSmsCodeHandler: (state, action) => {
       state.smsCode = action.payload;
     },
+    setPhoneNumberHandler: (state, action) => {
+      state.phoneNumber = action.payload;
+    },
   },
 });
 export default slice.reducer;
 
 //Actions
-export const { userLoginStepAccess, userLoginStepDenied, setSmsCodeHandler } =
-  slice.actions;
+export const {
+  userLoginStepAccess,
+  userLoginStepDenied,
+  setSmsCodeHandler,
+  setPhoneNumberHandler,
+} = slice.actions;
 
 //functions

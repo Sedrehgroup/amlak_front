@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import FormAuth from "./Elements/FormAuth";
+import Dashboard from "../Dashboard/Dashboard";
 import PhoneNumForm from "./Elements/PhoneNumForm";
 import PhoneSmsForm from "./Elements/PhoneSmsForm";
+import RegisterForm from "./Elements/RegisterForm";
 
 export default function Login() {
   const loginSteps = useSelector((state) => state.login.loginSteps);
@@ -13,15 +14,14 @@ export default function Login() {
 
   return (
     <div>
-      {/* /@mohamad
-جایی که شماره وارد میشه
-*/}
-      {loginSteps["PhoneSms_Step"] ? (
-        <FormAuth />
+      {loginSteps["Register_Step"] ? (
+        <Dashboard /> //if user is in database he goes to Dashboard
+      ) : loginSteps["PhoneSms_Step"] ? (
+        <RegisterForm /> //if user is not in database it should register
       ) : loginSteps["PhoneNumber_Step"] ? (
-        <PhoneSmsForm />
+        <PhoneSmsForm /> //recieve sms code from user and check if it is true
       ) : (
-        <PhoneNumForm />
+        <PhoneNumForm /> //recieve phone number from user
       )}
     </div>
   );

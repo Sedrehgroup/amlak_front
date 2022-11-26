@@ -1,9 +1,10 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import axios from "axios";
+import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import Logo from "../../../assets/Images/Dashboard/logo.svg";
 import {
+  setPhoneNumberHandler,
   setSmsCodeHandler,
   userLoginStepAccess,
 } from "../../../redux/reducers/login";
@@ -19,14 +20,16 @@ export default function PhoneNumForm() {
 
   const onSubmit = ({ phoneNumber }) => {
     console.log("phoneNumber", phoneNumber);
+    const Api_Url = process.env.REACT_APP_API_URL;
     try {
       axios
-        .post("http://api.rent.sedrehgroup.ir/users/otp_register/", {
+        .post(`${Api_Url}/users/otp_register/`, {
           phone_number: `+98${phoneNumber}`,
         })
         .then((data) => {
           console.log("axios /users/otp_register", data);
           dispatch(setSmsCodeHandler(data.data));
+          dispatch(setPhoneNumberHandler(phoneNumber));
           dispatch(userLoginStepAccess("PhoneNumber_Step"));
         })
         .catch((e) => console.log("error in axios /users/otp_register", e));
@@ -50,8 +53,8 @@ export default function PhoneNumForm() {
               </label>
               <input
                 className="w-full py-4 px-4 rounded-sm border-12 border-solid border-primary-600"
-                // value={phoneNumber}
                 aria-invalid={errors.firstName ? "true" : "false"}
+                autoFocus
                 {...register("phoneNumber", {
                   required: "وارد کردن شماره الزامی می باشد",
                   maxLength: 11,
