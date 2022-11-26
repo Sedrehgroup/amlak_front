@@ -44,6 +44,7 @@ export default function PhoneSmsForm() {
           dispatch(userLoginStepAccess("Register_Step"));
           window.localStorage.setItem("ACC_TOKEN", data.access);
           window.localStorage.setItem("REF_TOKEN", data.refresh);
+          window.localStorage.setItem("user_logged", "true");
           console.log("axios /users/token data.data:", data);
         })
         .catch((e) => console.log("error in axios /users/otp_register", e));

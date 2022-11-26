@@ -4,8 +4,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import Logo from "../../../assets/Images/Dashboard/logo.svg";
 import { userLoginStepAccess } from "../../../redux/reducers/login";
-import { getAccessTokenHandler } from "../../../utils/Api";
-// import { checkUserIsInDatabase } from "../../../utils/Api";
+// import { userLoginStepAccess } from "../../../redux/reducers/login";
 
 export default function RegisterForm() {
   const phoneNumber = useSelector((state) => state.login.phoneNumber);
@@ -49,6 +48,7 @@ export default function RegisterForm() {
           dispatch(userLoginStepAccess("Register_Step"));
           window.localStorage.setItem("ACC_TOKEN", data.access);
           window.localStorage.setItem("REF_TOKEN", data.refresh);
+          window.localStorage.setItem("user_logged", "true");
           console.log("axios /users/token data.data:", data);
         })
         .catch((e) => console.log("error in axios /users/otp_register", e));
