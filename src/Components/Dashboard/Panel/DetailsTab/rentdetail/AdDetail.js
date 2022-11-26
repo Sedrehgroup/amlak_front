@@ -119,7 +119,7 @@ export default function AdDetail() {
           <p className="mb-1 mt-1">آدرس</p>
           <img src={Frame} alt="" className="h-48 w-full rounded-lg mb-14" />
           <div className="flex justify-center gap-8">
-            <button className=" text-sub-500 border-12 border-solid border-sub-500 rounded px-6 py-1 rounded-lg">
+            <button className=" text-sub-500 border-12 border-solid border-sub-500 rounded px-6 py-1 ">
               گفتگو
             </button>
             <button className="bg-primary-800 text-white px-12 rounded-lg">
