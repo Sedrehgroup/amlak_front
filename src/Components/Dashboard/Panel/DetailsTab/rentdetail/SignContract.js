@@ -25,7 +25,7 @@ export default function SignContract() {
   return (
     <div className="flex justify-center">
       <div className="form1 seventyfivevh">
-        <strong className="flex justify-center items-start text-4xl">
+        <strong className="flex justify-center items-start text-4xl mb-4">
           امضای قرارداد{" "}
         </strong>
         <div className="h-700">
@@ -210,22 +210,28 @@ export default function SignContract() {
               </div>
             </div>
           </div>
-          <div className="bg-white w-3/4 h-1/5 p-4 mx-auto rounded-lg mt-2">
-            <input type="checkbox" onChange={handleChange} />
+          <div className="bg-white w-3/4  p-4 mx-auto rounded-lg mt-2 mb-4">
+            <input
+              type="checkbox"
+              onChange={handleChange}
+              className="m-2 w-4 h-4 cursor-pointer"
+            />
             <label>
               <strong>
                 اینجانب با آگاهی کامل، موافقت خود را با شرایط مذکور اعلام می کنم
               </strong>
             </label>
-            <div>وضعیت امضای مؤجر : </div>
-            <div>
-              <div className="float-right">وضعیت امضای مستأجر :</div>
-              <div className="float-left flex gap-4">
-                <button className="p-2 gap-2 w-28 h-10 border-12 border-solid border-primary-600 rounded">
-                  <p className="text-primary-600">انصراف</p>
+            <div className="flex flex-row justify-between align-center mt-2">
+              <div>
+                <p>وضعیت امضای مؤجر : </p>
+                <p>وضعیت امضای مستأجر :</p>
+              </div>
+              <div className=" flex gap-4">
+                <button className="p-2 gap-2 w-28 border-12 border-solid border-primary-600 rounded">
+                  <p className="text-main-400">انصراف</p>
                 </button>
                 <button
-                  className="bg-primary-500 w-48 disabled:bg-gray disabled:cursor-not-allowed"
+                  className="bg-main-500 w-48 disabled:bg-gray disabled:cursor-not-allowed"
                   disabled={isDisabled()}
                 >
                   <p className="text-white">تایید و امضا</p>

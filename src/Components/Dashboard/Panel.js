@@ -26,6 +26,8 @@ import RequestFromTenantPage from "./Panel/DetailsTab/rentdetail/RequestFromTena
 import RentedOnes from "./Panel/DetailsTab/rentdetail/RentedOnes";
 import RentedAds from "./Panel/DetailsTab/rentdetail/RentedAds";
 import MyProperties from "./Panel/Tabs/MyProperties";
+import MyAdds from "./Panel/DetailsTab/rentdetail/MyProperyCard";
+import SignContract from "./Panel/DetailsTab/rentdetail/SignContract";
 
 export default function Panel() {
   return (
@@ -98,8 +100,7 @@ export default function Panel() {
               <div>
                 <div className="absolute top-0 right-full eightyfivevw">
                   <TabPanel>
-                    <p>پیشخوان</p>
-                    <img src={Counter} alt="" />
+                    <MyProperties />
                   </TabPanel>
                   <TabPanel>
                     {/* <Link to="/UserFormDetail"> */}
@@ -107,15 +108,15 @@ export default function Panel() {
                     {/* </Link> */}
                   </TabPanel>
                   <TabPanel>
+                    {/* <SignContract />
+                     */}
                     <p>گفتگو</p>
-                    <img src={AddTab} alt="" />
                   </TabPanel>
                   <TabPanel>
                     <SubmitAdDetail />
                   </TabPanel>
                   <TabPanel>
                     <MyProperties />
-                    <p>آگهی های من</p>
                     <img src={Request} alt="" />
                   </TabPanel>
                   <TabPanel>

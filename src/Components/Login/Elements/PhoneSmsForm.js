@@ -86,7 +86,7 @@ export default function PhoneSmsForm() {
                 />
               </center>
               <button
-                className="bg-primary-800 text-white w-52 h-12 rounded-lg mt-10 flex justify-center items-center m-auto"
+                className="bg-main-500 text-white w-52 h-12 rounded-lg mt-10 flex justify-center items-center m-auto"
                 onClick={checkPinCode}
               >
                 ثبت کد
