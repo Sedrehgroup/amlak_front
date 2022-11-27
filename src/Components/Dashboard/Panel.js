@@ -34,110 +34,108 @@ export default function Panel() {
     <div className="flex justify-start items-center">
       <div className="absolute right-0 bg-warmGray-100 rounded-tl-lg rounded-bl-lg">
         <Tabs forceRenderTabPanel defaultIndex={1}>
-          <TabPanel>
-            <Tabs
-              forceRenderTabPanel
-              dir="rtl"
-              className="flex flex-col items-end"
-            >
-              <TabList className="flex flex-col gap-y-4 pr-6 py-5">
-                <Tab className="">
-                  <Counter />
-                </Tab>
-                <hr className="text-warmGray-400" />
-                {/* <Link to="/user"> */}
-                <Tab className="">
-                  <User />
-                </Tab>
-                <hr className="text-warmGray-400" />
+          <Tabs
+            forceRenderTabPanel
+            dir="rtl"
+            className="flex flex-col items-end"
+          >
+            <TabList className="flex flex-col gap-y-4 pr-6 py-5">
+              <Tab className="">
+                <Counter />
+              </Tab>
+              <hr className="text-warmGray-400" />
+              {/* <Link to="/user"> */}
+              <Tab className="">
+                <User />
+              </Tab>
+              <hr className="text-warmGray-400" />
 
-                {/* </Link> */}
+              {/* </Link> */}
 
-                {/* <Tab> */}
-                {/* <Link to="/User"> */}
-                {/* <User /> */}
-                {/* </Link> */}
-                {/* </Tab> */}
-                <Tab className="">
-                  <Messages />
-                </Tab>
-                <hr className="text-warmGray-400" />
+              {/* <Tab> */}
+              {/* <Link to="/User"> */}
+              {/* <User /> */}
+              {/* </Link> */}
+              {/* </Tab> */}
+              <Tab className="">
+                <Messages />
+              </Tab>
+              <hr className="text-warmGray-400" />
 
-                {/* <div className="flex flex-col gap-y-2"> */}
-                <p className="font-bold text-xl ">موجر</p>
-                <Tab className="">
-                  <AddTab />
-                </Tab>
-                <Tab className="">
-                  <MyElement />
-                </Tab>
-                <Tab className="">
-                  <Requests />
-                </Tab>
-                <Tab className="">
-                  <Rents />
-                </Tab>
-                {/* </div> */}
-                <hr className="text-warmGray-400" />
+              {/* <div className="flex flex-col gap-y-2"> */}
+              <p className="font-bold text-xl ">موجر</p>
+              <Tab className="">
+                <AddTab />
+              </Tab>
+              <Tab className="">
+                <MyElement />
+              </Tab>
+              <Tab className="">
+                <Requests />
+              </Tab>
+              <Tab className="">
+                <Rents />
+              </Tab>
+              {/* </div> */}
+              <hr className="text-warmGray-400" />
 
-                {/* <div className="flex flex-col gap-y-2"> */}
-                <p className="font-bold text-xl ">مستاجر</p>
-                <Tab className="">
-                  <RentElement />
-                </Tab>
-                <Tab className="">
-                  <RenterRequest />
-                </Tab>
-                <Tab className="">
-                  <Rented />
-                </Tab>
-                {/* </div> */}
-              </TabList>
-              <span className="bg-main-200 text-sm w-fit p-1 rounded-bl-lg rounded-tr-lg mt-10">
-                19 آبان 1401
-              </span>
+              {/* <div className="flex flex-col gap-y-2"> */}
+              <p className="font-bold text-xl ">مستاجر</p>
+              <Tab className="">
+                <RentElement />
+              </Tab>
+              <Tab className="">
+                <RenterRequest />
+              </Tab>
+              <Tab className="">
+                <Rented />
+              </Tab>
+              {/* </div> */}
+            </TabList>
+            <span className="bg-main-200 text-sm w-fit p-1 rounded-bl-lg rounded-tr-lg mt-10">
+              19 آبان 1401
+            </span>
 
-              <div>
-                <div className="absolute top-0 right-full eightyfivevw">
-                  <TabPanel>
-                    <MyProperties />
-                  </TabPanel>
-                  <TabPanel>
-                    {/* <Link to="/UserFormDetail"> */}
-                    <UserFormDetail />
-                    {/* </Link> */}
-                  </TabPanel>
-                  <TabPanel>
-                    {/* <SignContract />
-                     */}
-                    <p>گفتگو</p>
-                  </TabPanel>
-                  <TabPanel>
-                    <SubmitAdDetail />
-                  </TabPanel>
-                  <TabPanel>
-                    <MyProperties />
-                    <img src={Request} alt="" />
-                  </TabPanel>
-                  <TabPanel>
-                    <RequestFromLessorPage />
-                  </TabPanel>
-                  <TabPanel>
-                    <RentedOnes />
-                  </TabPanel>
-                  <TabPanel>
-                    <RentDetail />
-                  </TabPanel>
-                  <TabPanel>
-                    <RequestFromTenantPage />
-                  </TabPanel>
-                  <TabPanel>
-                    <RentedAds />
-                  </TabPanel>
-                </div>
+            <div>
+              <div className="absolute top-0 right-full eightyfivevw">
+                <TabPanel>
+                  <MyProperties />
+                </TabPanel>
+                <TabPanel>
+                  {/* <Link to="/UserFormDetail"> */}
+                  <UserFormDetail />
+                  {/* </Link> */}
+                </TabPanel>
+                <TabPanel>
+                  {/* <SignContract />
+                   */}
+                  <p>گفتگو</p>
+                </TabPanel>
+                <TabPanel>
+                  <SubmitAdDetail />
+                </TabPanel>
+                <TabPanel>
+                  <MyProperties />
+                  {/* <img src={Request} alt="" /> */}
+                </TabPanel>
+                <TabPanel>
+                  <RequestFromLessorPage />
+                </TabPanel>
+                <TabPanel>
+                  <RentedOnes />
+                </TabPanel>
+                <TabPanel>
+                  <RentDetail />
+                </TabPanel>
+                <TabPanel>
+                  <RequestFromTenantPage />
+                </TabPanel>
+                <TabPanel>
+                  <RentedAds />
+                </TabPanel>
               </div>
-            </Tabs>
-          </TabPanel>
+            </div>
+          </Tabs>
         </Tabs>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import useToken from "../../../../customHooks/useToken";
 // import useToken from "../../../../../customHooks/useToken";
@@ -12,6 +12,28 @@ export default function UserFormDetail() {
     formState: { errors },
   } = useForm();
   const [token] = useToken();
+  useEffect(() => {
+    const Api_Url = process.env.REACT_APP_API_URL;
+
+    try {
+      axios
+        .get(
+          `${Api_Url}/api/user_information/`,
+
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then(({ data }) => {
+          console.log("axios /api/user_information data.data:", data);
+        })
+        .catch((e) => console.log("error in axios /api/user_information", e));
+    } catch (error) {
+      console.log("error", error);
+    }
+  }, [token]);
   const onSubmit = (data) => {
     console.log("form data", data);
     console.log("watch('title')", watch("title"));

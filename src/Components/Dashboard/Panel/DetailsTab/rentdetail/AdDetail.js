@@ -179,7 +179,13 @@ export default function AdDetail({ data }) {
             </div>
             <div className="bg-white w-2/5 ml-10 mr-10 rounded-lg p-4">
               <h2>توضیحات</h2>
-              <p>
+              <div>
+                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+                استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
+                در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
+                نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
+                کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان
+                جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را
                 {data2?.description}
                 <button className="bg-primary-500">
                   <div className="text-primary-900">بیشتر</div>
@@ -189,7 +195,7 @@ export default function AdDetail({ data }) {
                     color: "#FDBA74",
                   }}
                 />
-              </p>
+              </div>
               <div>
                 <p>امکانات</p>
                 <div className="w-20 h-20 bg-primary-50 p-2 mb-2">
@@ -205,21 +211,29 @@ export default function AdDetail({ data }) {
                 }}
               />
               <p className="mb-1 mt-1">{data2?.address}</p>
-              <img
-                src={Frame}
-                alt=""
-                className="h-48 w-full rounded-lg mb-14"
-              />
-              <div className="flex justify-center gap-8">
-                <button className=" text-sub-500 border-12 border-solid border-sub-500 rounded px-6 py-1 ">
-                  گفتگو
-                </button>
-                <button
-                  className="bg-main-500 text-white px-12 rounded-lg"
-                  onClick={showSignContactHandler}
-                >
-                  ثبت درخواست
-                </button>
+
+              <div className="flex flex-col justify-between h-[40%] ">
+                <div className="p-4">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d30795.380700658057!2d51.372130333374294!3d35.77622000762392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1669539829911!5m2!1sen!2s"
+                    width="100%"
+                    height="200"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+                <div className="flex justify-center gap-8">
+                  <button className=" text-sub-500 border-12 border-solid border-sub-500 rounded px-6 py-1 ">
+                    گفتگو
+                  </button>
+                  <button
+                    className="bg-main-500 text-white px-12 rounded-lg"
+                    onClick={showSignContactHandler}
+                  >
+                    ثبت درخواست
+                  </button>
+                </div>
               </div>
             </div>
           </div>

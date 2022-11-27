@@ -33,34 +33,19 @@ export default function SliderAdDetail() {
         className="mySwiper2"
       >
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+          <img src="https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg?auto=compress&cs=tinysrgb&w=600" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+          <img src="https://images.pexels.com/photos/2121121/pexels-photo-2121121.jpeg?auto=compress&cs=tinysrgb&w=600" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+          <img src="https://images.pexels.com/photos/2635038/pexels-photo-2635038.jpeg?auto=compress&cs=tinysrgb&w=600" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+          <img src="https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg?auto=compress&cs=tinysrgb&w=600" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+          <img src="https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&w=600" />
         </SwiperSlide>
       </Swiper>
       <Swiper
@@ -73,34 +58,20 @@ export default function SliderAdDetail() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+          <img src="https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg?auto=compress&cs=tinysrgb&w=600" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+          <img src="https://images.pexels.com/photos/2121121/pexels-photo-2121121.jpeg?auto=compress&cs=tinysrgb&w=600" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+          <img src="https://images.pexels.com/photos/2635038/pexels-photo-2635038.jpeg?auto=compress&cs=tinysrgb&w=600" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+          <img src="https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg?auto=compress&cs=tinysrgb&w=600" />
         </SwiperSlide>
+
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+          <img src="https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&w=600" />
         </SwiperSlide>
       </Swiper>
     </>
