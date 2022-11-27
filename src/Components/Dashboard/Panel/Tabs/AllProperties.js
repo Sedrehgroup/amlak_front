@@ -37,7 +37,7 @@ const AllProperties = () => {
   };
   return (
     <>
-      <div className="flex flex-row flex-wrap">
+      <div className="flex flex-row flex-wrap pr-6">
         {!!!!MyPropertiesList &&
           !showDetail &&
           MyPropertiesList.map((val, index) => (
