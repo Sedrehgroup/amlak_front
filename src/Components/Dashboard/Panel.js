@@ -28,6 +28,7 @@ import RentedAds from "./Panel/DetailsTab/rentdetail/RentedAds";
 import MyProperties from "./Panel/Tabs/MyProperties";
 import MyAdds from "./Panel/DetailsTab/rentdetail/MyProperyCard";
 import SignContract from "./Panel/DetailsTab/rentdetail/SignContract";
+import AllProperties from "./Panel/Tabs/AllProperties";
 
 export default function Panel() {
   return (
@@ -99,7 +100,7 @@ export default function Panel() {
             <div>
               <div className="absolute top-0 right-full eightyfivevw">
                 <TabPanel>
-                  <MyProperties />
+                  <AllProperties />
                 </TabPanel>
                 <TabPanel>
                   {/* <Link to="/UserFormDetail"> */}

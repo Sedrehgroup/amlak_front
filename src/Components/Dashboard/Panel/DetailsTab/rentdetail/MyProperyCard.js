@@ -9,7 +9,7 @@ export default function MyProperyCard(props) {
 
   return (
     <>
-      <div className="bg-white mx-8 flex justify-center flex-col rounded-lg w-1/3">
+      <div className="bg-white mx-8 flex justify-center flex-col rounded-lg w-1/3 mb-4">
         <strong className="mx-auto pt-6">{title}</strong>
         <div className="flex bg-white">
           <div className="w-2/3 rounded-lg p-6">
