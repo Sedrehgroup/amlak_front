@@ -89,7 +89,7 @@ export default function PhoneSmsForm() {
                 className="bg-primary-800 text-white w-52 h-12 rounded-lg mt-10 flex justify-center items-center m-auto"
                 onClick={checkPinCode}
               >
-                دریافت کد ورود
+                ثبت کد
               </button>
 
               <label>{isPinCodeValid && btnIsPressed && "Valid"}</label>

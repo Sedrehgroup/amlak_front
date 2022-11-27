@@ -7,12 +7,12 @@ import RequestFromLessor from "./Components/Card/RequestFromLessor";
 import imgFrame from "./assets/Images/Dashboard/Frame.png";
 
 function App() {
-    const [isLogged] = useLoggedUser();
-    return (
-        <div className="bg-warmGray-200">
-            <Dashboard />
+  const [isLogged] = useLoggedUser();
+  return (
+    <div className="bg-warmGray-200">
+      {/* <Dashboard /> */}
 
-            {/* <RequestFromLessor
+      {/* <RequestFromLessor
                 imgPath={imgFrame}
                 AdTitle="مسکونی 248 متر"
                 TitleOfChatButton="گفتگو با مستأجر"
@@ -26,19 +26,16 @@ function App() {
                 MainButtonText="مشاهده درخواست"
             ></RequestFromLessor> */}
 
-            {/* <Router>
-                <Routes>
-                    <Route
-                        path="/"
-                        element={isLogged ? <Dashboard /> : <Login />}
-                    />
-                </Routes>
-                <Routes>
-                    <Route path="/login" element={<Login />} />
-                </Routes>
-            </Router> */}
-        </div>
-    );
+      <Router>
+        <Routes>
+          <Route path="/" element={isLogged ? <Dashboard /> : <Login />} />
+        </Routes>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
+    </div>
+  );
 }
 
 export default App;

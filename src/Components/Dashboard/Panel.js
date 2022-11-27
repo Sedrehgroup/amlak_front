@@ -25,6 +25,7 @@ import RequestFromLessorPage from "./Panel/DetailsTab/rentdetail/RequestFromLess
 import RequestFromTenantPage from "./Panel/DetailsTab/rentdetail/RequestFromTenantPage";
 import RentedOnes from "./Panel/DetailsTab/rentdetail/RentedOnes";
 import RentedAds from "./Panel/DetailsTab/rentdetail/RentedAds";
+import MyProperties from "./Panel/Tabs/MyProperties";
 
 export default function Panel() {
   return (
@@ -113,6 +114,7 @@ export default function Panel() {
                     <SubmitAdDetail />
                   </TabPanel>
                   <TabPanel>
+                    <MyProperties />
                     <p>آگهی های من</p>
                     <img src={Request} alt="" />
                   </TabPanel>
