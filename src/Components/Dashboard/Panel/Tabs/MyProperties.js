@@ -7,9 +7,6 @@ import MyProperyCard from "../DetailsTab/rentdetail/MyProperyCard";
 const MyProperties = () => {
   const [token] = useToken();
   const [MyPropertiesList, setMyProperties] = useState([]);
-  useEffect(() => {
-    console.log("token", token);
-  }, [token]);
 
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
@@ -29,6 +26,7 @@ const MyProperties = () => {
       console.log("error", error);
     }
   }, [token]);
+
   const [showDetail, setShowDetail] = useState(false);
   const [adData, setAdData] = useState([]);
   const handler = (data) => {

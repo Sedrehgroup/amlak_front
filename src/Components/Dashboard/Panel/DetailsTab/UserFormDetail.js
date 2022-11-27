@@ -11,6 +11,7 @@ export default function UserFormDetail() {
     watch,
     formState: { errors },
   } = useForm();
+  const [userData, setUserData] = useState({});
   const [token] = useToken();
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
@@ -18,7 +19,7 @@ export default function UserFormDetail() {
     try {
       axios
         .get(
-          `${Api_Url}/api/user_information/`,
+          `${Api_Url}/users/user_information/`,
 
           {
             headers: {
@@ -27,9 +28,10 @@ export default function UserFormDetail() {
           }
         )
         .then(({ data }) => {
-          console.log("axios /api/user_information data.data:", data);
+          console.log("axios /users/user_information data.data:", data);
+          setUserData(data);
         })
-        .catch((e) => console.log("error in axios /api/user_information", e));
+        .catch((e) => console.log("error in axios /users/user_information", e));
     } catch (error) {
       console.log("error", error);
     }
@@ -156,6 +158,7 @@ export default function UserFormDetail() {
               className="w-full h-12 px-1  py-2"
               placeholder="علی"
               type="text"
+              value={userData?.first_name}
               required
               {...register("name", {
                 required: "وارد کردن این فیلد الزامی می باشد",
@@ -172,6 +175,7 @@ export default function UserFormDetail() {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 // valueAsNumber: true,
               })}
+              value={userData?.last_name}
               placeholder="محمدی"
               type="text"
               required
@@ -187,6 +191,7 @@ export default function UserFormDetail() {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 valueAsNumber: true,
               })}
+              value={userData?.national_code}
               placeholder="0012223334"
               type="text"
               required
