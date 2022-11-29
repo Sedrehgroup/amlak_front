@@ -29,8 +29,10 @@ import MyProperties from "./Panel/Tabs/MyProperties";
 import MyAdds from "./Panel/DetailsTab/rentdetail/MyProperyCard";
 import SignContract from "./Panel/DetailsTab/rentdetail/SignContract";
 import AllProperties from "./Panel/Tabs/AllProperties";
+import useTimeDateFa from "../../utils/useTimeDateFa";
 
 export default function Panel() {
+  const [date] = useTimeDateFa();
   return (
     <div className="flex justify-start items-center">
       <div className="absolute right-0 bg-warmGray-100 rounded-tl-lg rounded-bl-lg">
@@ -83,7 +85,9 @@ export default function Panel() {
               {/* </div> */}
             </TabList>
             <span className="bg-main-200 text-sm w-fit p-1 rounded-bl-lg rounded-tr-lg mt-10">
-              19 آبان 1401
+              {date.day}
+              {date.month}
+              {date.year}
             </span>
 
             <div>

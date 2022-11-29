@@ -1,11 +1,15 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import useToken from "../../../../../customHooks/useToken";
 import { updateMyPropertyListHandler } from "../../../../../redux/reducers/userProperty";
 import { useDispatch } from "react-redux";
+import { iranCitiesList } from "../../../../../utils/iranCitiesList";
+import { arrayOfYears } from "../../../../../utils/yearsList";
 
 export default function SubmitAdDetail() {
+  const [selectedProvince, setSelectedProvince] = useState("تهران");
+  const [selectedState, setSelectedState] = useState("تهران");
   const dispatch = useDispatch();
   const {
     register,
@@ -14,6 +18,7 @@ export default function SubmitAdDetail() {
     formState: { errors },
   } = useForm();
   const [token] = useToken();
+
   const onSubmit = (data) => {
     console.log("form data", data);
     console.log("watch('title')", watch("title"));
@@ -66,8 +71,7 @@ export default function SubmitAdDetail() {
       county: state,
       city: city,
       neighbourhood: district,
-      // convertible: convertible,
-      convertible: true,
+      convertible: convertible,
       construction_year: +year_of_construction,
       bedrooms: +number_of_room,
       // above is require
@@ -190,89 +194,142 @@ export default function SubmitAdDetail() {
             <label className="absolute bg-primary-50 bottom-9 right-2">
               سال ساخت{" "}
             </label>
-            <input
-              className="w-full h-12 px-1  py-2"
+            <select
+              dir="ltr"
+              className="w-full h-12 px-4"
               {...register("year_of_construction", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 valueAsNumber: true,
               })}
               placeholder="1401"
-              type="text"
               required
-            />
+            >
+              {arrayOfYears(50).map((val, index) => (
+                <option key={index} value={val}>
+                  {val}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               نوع ملک{" "}
             </label>
-            <input
-              className="w-full h-12 px-1  py-2"
+            <select
+              dir="ltr"
+              className="w-full h-12 px-4"
               {...register("type_of_property", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 valueAsNumber: true,
               })}
               placeholder="مسکونی"
-              type="text"
               required
-            />
+            >
+              {["مسکونی", "تجاری", "غیره"].map((val, index) => (
+                <option key={index} value={index}>
+                  {val}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               کاربری ملک{" "}
             </label>
-            <input
-              className="w-full h-12 px-1  py-2"
+            <select
+              dir="ltr"
+              className="w-full h-12 px-4"
               {...register("use_of_property", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 valueAsNumber: true,
               })}
               placeholder="مسکونی"
-              type="text"
               required
-            />
+            >
+              {["مسکونی", "زراعی", "ویلایی", "غیره"].map((val, index) => (
+                <option key={index} value={index}>
+                  {val}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               استان{" "}
             </label>
-            <input
-              className="w-full h-12 px-1  py-2"
+            <select
+              dir="ltr"
+              className="w-full h-12 px-4"
               {...register("province", {
                 required: "وارد کردن این فیلد الزامی می باشد",
+                onChange: (e) => {
+                  setSelectedProvince(e.target.value);
+                },
               })}
+              defaultValue="تهران"
               placeholder="تهران"
-              type="text"
               required
-            />
+            >
+              {[
+                ...new Set(iranCitiesList.map((element) => element.province)),
+              ].map((val, index) => (
+                <option key={index} value={val}>
+                  {val}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               شهرستان{" "}
             </label>
-            <input
-              className="w-full h-12 px-1  py-2"
+            <select
+              dir="ltr"
+              className="w-full h-12 px-4"
               {...register("state", {
                 required: "وارد کردن این فیلد الزامی می باشد",
+                onChange: (e) => {
+                  setSelectedState(e.target.value);
+                },
               })}
+              defaultValue="تهران"
               placeholder="تهران"
-              type="text"
               required
-            />
+            >
+              {iranCitiesList
+                .filter((element) => element.province == selectedProvince)
+                .map((val, index) => (
+                  <option key={index} value={val.city}>
+                    {val.city}
+                  </option>
+                ))}
+            </select>
           </div>
 
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               شهر{" "}
             </label>
-            <input
-              className="w-full h-12 px-1  py-2"
+            <select
+              dir="ltr"
+              className="w-full h-12 px-4"
               {...register("city", {
                 required: "وارد کردن این فیلد الزامی می باشد",
+                value: selectedState,
               })}
+              value={selectedState}
+              defaultValue="تهران"
               placeholder="تهران"
-              type="text"
               required
-            />
+            >
+              {iranCitiesList
+                .filter((element) => element.province == selectedProvince)
+                .map((val, index) => (
+                  <option key={index} value={val.city}>
+                    {val.city}
+                  </option>
+                ))}
+            </select>
           </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
@@ -292,15 +349,21 @@ export default function SubmitAdDetail() {
             <label className="absolute bg-primary-50 bottom-9 right-2">
               قابل تبدیل{" "}
             </label>
-            <input
-              className="w-full h-12 px-1  py-2"
+            <select
+              dir="ltr"
+              className="w-full h-12 px-4"
               {...register("convertible", {
                 required: "وارد کردن این فیلد الزامی می باشد",
               })}
               placeholder="بله"
-              type="text"
               required
-            />
+            >
+              {[true, false].map((val, index) => (
+                <option key={index} value={val}>
+                  {val ? "بله" : "خیر"}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
