@@ -35,6 +35,7 @@ const AllProperties = () => {
     setShowDetail(true);
     setAdData(data);
   };
+
   return (
     <>
       <div className="flex flex-row flex-wrap pr-6">
