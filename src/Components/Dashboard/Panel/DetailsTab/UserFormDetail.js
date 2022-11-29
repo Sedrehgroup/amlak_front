@@ -18,15 +18,11 @@ export default function UserFormDetail() {
 
     try {
       axios
-        .get(
-          `${Api_Url}/users/user_information/`,
-
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
+        .get(`${Api_Url}/users/user_information/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
         .then(({ data }) => {
           console.log("axios /users/user_information data.data:", data);
           setUserData(data);

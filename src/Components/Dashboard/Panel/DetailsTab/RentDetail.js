@@ -11,8 +11,8 @@ export default function RentDetail() {
       <div className="flex gap-8">
         <RentElementDetail />
       </div> */}
-
-      <AdDetail />
+      پیشخوان
+      {/* <AdDetail /> */}
     </div>
   );
 }

@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import SliderAdDetail from "./addetail/SliderAdDetail";
 
+import axios from "axios";
+
 import Frame from "../../../../../assets/Images/Dashboard/Frame.png";
 import Driving from "../../../../../assets/Images/Dashboard/Details/Driving.svg";
 import Elevator from "../../../../../assets/Images/Dashboard/Details/Elevator.svg";
 import Security from "../../../../../assets/Images/Dashboard/Details/Security.svg";
-import SignContract from "./SignContract";
+import RequestFromTenantPage from "./RequestFromTenantPage";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+import { useStore } from "react-redux";
+import useToken from "../../../../../customHooks/useToken";
 
 export default function AdDetail({ data }) {
   const [data2, setData2] = useState({});
@@ -86,14 +92,51 @@ export default function AdDetail({ data }) {
       });
     }
   }, [data]);
-  const [showSignContact, setShowSignContact] = useState(false);
-  const showSignContactHandler = () => {
-    setShowSignContact(true);
+  const [showMyRequest, setShowMyRequest] = useState(false);
+  const showMyRequestHandler = () => {
+    setShowMyRequest(true);
   };
+
+  const num = String(data2.id);
+  // console.log(typeof String(num));
+  console.log(num);
+
+  // const [numSetter, setNumSetter] = useStore();
+  // setNumSetter(numSetter);
+  // console.log(numSetter);
+  const [token] = useToken();
+
+  const onSubmit = () => {
+    const Api_Url = process.env.REACT_APP_API_URL;
+    try {
+      axios
+        .post(
+          `${Api_Url}/api/requests/`,
+          {
+            status: 0,
+            request_property: num,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then((data) => {
+          console.log(data);
+          // dispatch(userLoginStepAccess("Register_Step"));
+          // getAccessTokenHandler(phoneNumber);
+        })
+        .catch((e) => console.log("error in axios /users/create_user", e));
+    } catch (error) {}
+  };
+
+  // console.log(typeof ++data2.id);
+
   return (
     <>
-      {showSignContact ? (
-        <SignContract />
+      {showMyRequest ? (
+        <RequestFromTenantPage />
       ) : (
         <div className="">
           <strong className="flex justify-center text-4xl mb-8">
@@ -228,9 +271,53 @@ export default function AdDetail({ data }) {
                   </button>
                   <button
                     className="bg-main-500 text-white px-12 rounded-lg"
-                    onClick={showSignContactHandler}
+                    onClick={showMyRequestHandler}
                   >
-                    ثبت درخواست
+                    {/* component */}
+                    <Popup
+                      trigger={
+                        <button className="button"> ثبت درخواست </button>
+                      }
+                      modal
+                      nested
+                    >
+                      {(close) => (
+                        <div className="modal">
+                          <button className="close" onClick={close}>
+                            &times;
+                          </button>
+                          <div className="header"> تایید اجاره آگهی </div>
+                          <div className="content">
+                            <p className="text-base">توضیحات تکمیلی</p>
+                            <input
+                              type="text"
+                              className="bg-warmGray-400 w-full h-14 rounded-lg mt-4"
+                            />
+                          </div>
+                          <div className="actions flex justify-center gap-3">
+                            <button
+                              className="button bg-warmGray-500 text-white w-12 rounded-lg text-base"
+                              onClick={() => {
+                                console.log("modal closed ");
+                                close();
+                              }}
+                            >
+                              بستن{" "}
+                            </button>
+                            <button
+                              className="button bg-main-500 text-white w-12 rounded-lg text-base"
+                              onClick={() => {
+                                // showMyRequestHandler();
+                                onSubmit();
+                                close();
+                              }}
+                            >
+                              تایید{" "}
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </Popup>
                   </button>
                 </div>
               </div>
@@ -238,7 +325,6 @@ export default function AdDetail({ data }) {
           </div>
         </div>
       )}
-      ;
     </>
   );
 }

@@ -2,8 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import useToken from "../../../../../customHooks/useToken";
+import { updateMyPropertyListHandler } from "../../../../../redux/reducers/userProperty";
+import { useDispatch } from "react-redux";
 
 export default function SubmitAdDetail() {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -52,56 +55,54 @@ export default function SubmitAdDetail() {
     units_per_floor,
   }) => {
     const Api_Url = process.env.REACT_APP_API_URL;
+    const formData = {
+      title: title,
+      mortgage_amount: +mortgage_price,
+      rent_amount: +rent_price,
+      type: +type_of_property,
+      use: +use_of_property,
+      area: +metric,
+      province: province,
+      county: state,
+      city: city,
+      neighbourhood: district,
+      // convertible: convertible,
+      convertible: true,
+      construction_year: +year_of_construction,
+      bedrooms: +number_of_room,
+      // above is require
+      // down in optional
+      // special_situation,
+      // description,
+      // zip,
+      // Sub_registration_plate,
+      // Sub_registration_plate_from,
+      // Sub_registration_plate_to,
+      // Original_registration_plate,
+      // Original_registration_plate_from,
+      // Original_registration_plate_to,
+      // registration_section,
+      // registration_area,
+      // Skeleton_type,
+      // phone_status,
+      // phone_lines,
+      // address,
+      // building_side,
+      // unit_side,
+      // unit_floor,
+      // floors_number,
+      // units_per_floor,
+    };
     try {
       axios
-        .post(
-          `${Api_Url}/api/my_properties/`,
-          {
-            title: title,
-            mortgage_amount: +mortgage_price,
-            rent_amount: +rent_price,
-            type: +type_of_property,
-            use: +use_of_property,
-            area: +metric,
-            province: province,
-            county: state,
-            city: city,
-            neighbourhood: district,
-            // convertible: convertible,
-            convertible: true,
-            construction_year: +year_of_construction,
-            bedrooms: +number_of_room,
-            // above is require
-            // down in optional
-            // special_situation,
-            // description,
-            // zip,
-            // Sub_registration_plate,
-            // Sub_registration_plate_from,
-            // Sub_registration_plate_to,
-            // Original_registration_plate,
-            // Original_registration_plate_from,
-            // Original_registration_plate_to,
-            // registration_section,
-            // registration_area,
-            // Skeleton_type,
-            // phone_status,
-            // phone_lines,
-            // address,
-            // building_side,
-            // unit_side,
-            // unit_floor,
-            // floors_number,
-            // units_per_floor,
+        .post(`${Api_Url}/api/my_properties/`, formData, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
+        })
         .then(({ data }) => {
           console.log("axios /api/my_properties data.data:", data);
+          dispatch(updateMyPropertyListHandler([formData]));
         })
         .catch((e) => console.log("error in axios /users/otp_register", e));
     } catch (error) {
@@ -595,7 +596,7 @@ export default function SubmitAdDetail() {
               </div>
             </div>
           </details>
-          <button className="bg-main-500 w-full h-10 mt-6 text-white mb-6">
+          <button className="bg-main-500 w-full h-10 mt-6 text-white mb-6 cursor-pointer">
             <input type="submit" value="ثبت آگهی" />
           </button>
         </form>

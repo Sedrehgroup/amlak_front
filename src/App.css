@@ -162,3 +162,12 @@ body {
 .react-code-input input {
   font-family: Vazir !important;
 }
+
+.popup-content {
+  width: 40%;
+  border-radius: 8px;
+}
+
+div#popup-64 {
+  display: none;
+}

@@ -45,25 +45,14 @@ export default function Panel() {
                 <Counter />
               </Tab>
               <hr className="text-warmGray-400" />
-              {/* <Link to="/user"> */}
               <Tab className="">
                 <User />
               </Tab>
               <hr className="text-warmGray-400" />
-
-              {/* </Link> */}
-
-              {/* <Tab> */}
-              {/* <Link to="/User"> */}
-              {/* <User /> */}
-              {/* </Link> */}
-              {/* </Tab> */}
               <Tab className="">
                 <Messages />
               </Tab>
               <hr className="text-warmGray-400" />
-
-              {/* <div className="flex flex-col gap-y-2"> */}
               <p className="font-bold text-xl ">موجر</p>
               <Tab className="">
                 <AddTab />
@@ -100,7 +89,7 @@ export default function Panel() {
             <div>
               <div className="absolute top-0 right-full eightyfivevw">
                 <TabPanel>
-                  <AllProperties />
+                  <RentDetail />{" "}
                 </TabPanel>
                 <TabPanel>
                   {/* <Link to="/UserFormDetail"> */}
@@ -108,16 +97,15 @@ export default function Panel() {
                   {/* </Link> */}
                 </TabPanel>
                 <TabPanel>
-                  {/* <SignContract />
-                   */}
-                  <p>گفتگو</p>
+                  <SignContract />
+
+                  {/* <p>گفتگو</p> */}
                 </TabPanel>
                 <TabPanel>
                   <SubmitAdDetail />
                 </TabPanel>
                 <TabPanel>
                   <MyProperties />
-                  {/* <img src={Request} alt="" /> */}
                 </TabPanel>
                 <TabPanel>
                   <RequestFromLessorPage />
@@ -126,7 +114,7 @@ export default function Panel() {
                   <RentedOnes />
                 </TabPanel>
                 <TabPanel>
-                  <RentDetail />
+                  <AllProperties />
                 </TabPanel>
                 <TabPanel>
                   <RequestFromTenantPage />
