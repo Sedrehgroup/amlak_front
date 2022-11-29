@@ -7,7 +7,6 @@ export default function RenterDetailsPopup() {
   const detailsFromUser = useSelector(
     (state) => state.loginMainProperty.detailsFromUser
   );
-  console.log(detailsFromUser);
 
   return (
     <Popup

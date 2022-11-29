@@ -93,7 +93,8 @@ export default function Panel() {
             <div>
               <div className="absolute top-0 right-full eightyfivevw">
                 <TabPanel>
-                  <RentDetail />{" "}
+                  {/* <RentDetail />{" "} */}
+                  <AllProperties />
                 </TabPanel>
                 <TabPanel>
                   {/* <Link to="/UserFormDetail"> */}
