@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import useToken from "../../../../customHooks/useToken";
+import { iranCitiesList } from "../../../../utils/iranCitiesList";
 // import useToken from "../../../../../customHooks/useToken";
 
 export default function UserFormDetail() {
@@ -12,6 +13,10 @@ export default function UserFormDetail() {
     formState: { errors },
   } = useForm();
   const [userData, setUserData] = useState({});
+  const [selectedProvince, setSelectedProvince] = useState("تهران");
+  const [selectedProvince2, setSelectedProvince2] = useState("تهران");
+  const [selectedState2, setSelectedState2] = useState("تهران");
+
   const [token] = useToken();
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
@@ -35,85 +40,54 @@ export default function UserFormDetail() {
   const onSubmit = (data) => {
     console.log("form data", data);
     console.log("watch('title')", watch("title"));
-    createProperty(data);
+    createUserInfo(data);
   };
-  const createProperty = ({
-    city,
-    convertible,
-    metric,
-    mortgage_price,
-    number_of_room,
-    rent_price,
+  const createUserInfo = ({
+    email,
+    father_name,
+    certificate_number,
+    birth_day,
+    sex,
+    latin_first_name,
+    latin_last_name,
+    certificate_country,
+    certificate_province,
+    certificate_county,
+    certificate_type,
+    marriage,
+    education,
     province,
-    district,
-    use_of_property,
-    type_of_property,
-    state,
-    title,
-    year_of_construction,
-    special_situation,
-    description,
-    zip,
-    Sub_registration_plate,
-    Sub_registration_plate_from,
-    Sub_registration_plate_to,
-    Original_registration_plate,
-    Original_registration_plate_from,
-    Original_registration_plate_to,
-    registration_section,
-    registration_area,
-    Skeleton_type,
-    phone_status,
-    phone_lines,
+    county,
+    city,
     address,
-    building_side,
-    unit_side,
-    unit_floor,
-    floors_number,
-    units_per_floor,
+    postal_code,
+    personal_phone_number,
   }) => {
     const Api_Url = process.env.REACT_APP_API_URL;
     try {
       axios
         .post(
-          `${Api_Url}/api/my_properties/`,
+          `${Api_Url}/users/create_additional_user/`,
           {
-            title: title,
-            mortgage_amount: +mortgage_price,
-            rent_amount: +rent_price,
-            type: +type_of_property,
-            use: +use_of_property,
-            area: +metric,
-            province: province,
-            county: state,
-            city: city,
-            neighbourhood: district,
-            // convertible: convertible,
-            convertible: true,
-            construction_year: +year_of_construction,
-            bedrooms: +number_of_room,
-            // above is require
-            // down in optional
-            special_situation,
-            description,
-            zip,
-            Sub_registration_plate,
-            Sub_registration_plate_from,
-            Sub_registration_plate_to,
-            Original_registration_plate,
-            Original_registration_plate_from,
-            Original_registration_plate_to,
-            registration_section,
-            registration_area,
-            Skeleton_type,
-            phone_status,
-            phone_lines,
+            email,
+            father_name,
+            certificate_number,
+            birth_day,
+            sex,
+            latin_first_name,
+            latin_last_name,
+            certificate_country,
+            certificate_province,
+            certificate_county,
+            certificate_type,
+            marriage,
+            education,
+            province,
+            county,
+            city,
             address,
-            building_side,
-            unit_side,
-            unit_floor,
-            floors_number,
-            units_per_floor,
+            postal_code,
+            personal_phone_number,
           },
           {
             headers: {
@@ -122,9 +96,11 @@ export default function UserFormDetail() {
           }
         )
         .then(({ data }) => {
-          console.log("axios /api/my_properties data.data:", data);
+          console.log("axios /users/create_additional_user data.data:", data);
         })
-        .catch((e) => console.log("error in axios /users/otp_register", e));
+        .catch((e) =>
+          console.log("error in axios /users/create_additional_user/", e)
+        );
     } catch (error) {
       console.log("error", error);
     }
@@ -155,10 +131,7 @@ export default function UserFormDetail() {
               placeholder="علی"
               type="text"
               value={userData?.first_name}
-              required
-              {...register("name", {
-                required: "وارد کردن این فیلد الزامی می باشد",
-              })}
+              {...register("name")}
             />
           </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
@@ -167,14 +140,10 @@ export default function UserFormDetail() {
             </label>
             <input
               className="w-full h-12 px-1  py-2"
-              {...register("lastname", {
-                required: "وارد کردن این فیلد الزامی می باشد",
-                // valueAsNumber: true,
-              })}
+              {...register("lastname")}
               value={userData?.last_name}
               placeholder="محمدی"
               type="text"
-              required
             />
           </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
@@ -183,14 +152,21 @@ export default function UserFormDetail() {
             </label>
             <input
               className="w-full h-12 px-1  py-2"
-              {...register("national_code", {
-                required: "وارد کردن این فیلد الزامی می باشد",
-                valueAsNumber: true,
-              })}
+              {...register("national_code")}
               value={userData?.national_code}
               placeholder="0012223334"
               type="text"
-              required
+            />
+          </div>
+          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+            <label className="absolute bg-primary-50 bottom-9 right-2">
+              ایمیل
+            </label>
+            <input
+              className="w-full h-12 px-1  py-2"
+              {...register("email")}
+              placeholder="fake@gmail.com"
+              type="email"
             />
           </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
@@ -199,13 +175,51 @@ export default function UserFormDetail() {
             </label>
             <input
               className="w-full h-12 px-1  py-2"
-              {...register("metric", {
-                required: "وارد کردن این فیلد الزامی می باشد",
-                // valueAsNumber: true,
-              })}
+              {...register("father_name")}
               placeholder="رضا"
               type="text"
-              required
+            />
+          </div>
+          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+            <label className="absolute bg-primary-50 bottom-9 right-2">
+              جنسیت
+            </label>
+            <select
+              dir="ltr"
+              className="w-full h-12 px-4"
+              {...register("sex")}
+              placeholder="مرد"
+            >
+              {[
+                { lb: "مرد", value: true },
+                { lb: "زن", value: false },
+              ].map((val, index) => (
+                <option key={index} value={val.value}>
+                  {val.lb}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+            <label className="absolute bg-primary-50 bottom-9 right-2">
+              نام لاتین
+            </label>
+            <input
+              className="w-full h-12 px-1  py-2"
+              {...register("latin_first_name")}
+              placeholder="ALI"
+              type="text"
+            />
+          </div>
+          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+            <label className="absolute bg-primary-50 bottom-9 right-2">
+              نام خانوادگی لاتین
+            </label>
+            <input
+              className="w-full h-12 px-1  py-2"
+              {...register("latin_last_name")}
+              placeholder="AHMADI"
+              type="text"
             />
           </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
@@ -214,101 +228,197 @@ export default function UserFormDetail() {
             </label>
             <input
               className="w-full h-12 px-1  py-2"
-              {...register("birth_date", {
-                required: "وارد کردن این فیلد الزامی می باشد",
-                // valueAsNumber: true,
-              })}
-              placeholder="06/08/1378"
+              {...register("birth_day")}
+              placeholder="1378/08/06"
               type="text"
-              required
             />
           </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
-              محل صدور
+              شماره شناسنامه
             </label>
             <input
               className="w-full h-12 px-1  py-2"
-              {...register("place_of_issue", {
-                required: "وارد کردن این فیلد الزامی می باشد",
-                valueAsNumber: true,
-              })}
-              placeholder="تهران"
+              {...register("certificate_number")}
+              placeholder="00122233334"
               type="text"
-              required
             />
           </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
-              سریال شناسنامه
+              کشور محل صدور
             </label>
             <input
               className="w-full h-12 px-1  py-2"
-              {...register("serial_id", {
-                required: "وارد کردن این فیلد الزامی می باشد",
-                valueAsNumber: true,
-              })}
-              placeholder="د123456/12"
+              {...register("certificate_country")}
+              placeholder="ایران"
+              defaultValue="ایران"
               type="text"
-              required
             />
           </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
-              پیش شماره
+              استان محل صدور
             </label>
-            <input
-              className="w-full h-12 px-1  py-2"
-              {...register("aria_code", {
-                required: "وارد کردن این فیلد الزامی می باشد",
-              })}
-              placeholder="021"
-              type="text"
-              required
-            />
-          </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              تلفن
-            </label>
-            <input
-              className="w-full h-12 px-1  py-2"
-              {...register("phone_number", {
-                required: "وارد کردن این فیلد الزامی می باشد",
-              })}
-              placeholder="44112233"
-              type="text"
-              required
-            />
-          </div>
 
+            <select
+              dir="ltr"
+              className="w-full h-12 px-4"
+              {...register("certificate_province", {
+                onChange: (e) => {
+                  setSelectedProvince(e.target.value);
+                },
+              })}
+              defaultValue="تهران"
+              placeholder="تهران"
+            >
+              {[
+                ...new Set(iranCitiesList.map((element) => element.province)),
+              ].map((val, index) => (
+                <option key={index} value={val}>
+                  {val}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
-              استان
+              شهر محل صدور
+            </label>
+            <select
+              dir="ltr"
+              className="w-full h-12 px-4"
+              {...register("certificate_county")}
+              defaultValue="تهران"
+              placeholder="تهران"
+            >
+              {iranCitiesList
+                .filter((element) => element.province == selectedProvince)
+                .map((val, index) => (
+                  <option key={index} value={val.city}>
+                    {val.city}
+                  </option>
+                ))}
+            </select>
+          </div>
+          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+            <label className="absolute bg-primary-50 bottom-9 right-2">
+              نوع شناسنامه
+            </label>
+            <select
+              dir="ltr"
+              className="w-full h-12 px-4"
+              {...register("certificate_type")}
+              placeholder="اصل"
+            >
+              {["اصل", "المثنی", "غیره"].map((val, index) => (
+                <option key={index} value={val}>
+                  {val}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+            <label className="absolute bg-primary-50 bottom-9 right-2">
+              وضعیت تاهل
+            </label>
+            <select
+              dir="ltr"
+              className="w-full h-12 px-4"
+              {...register("marriage")}
+              placeholder="متاهل"
+            >
+              {[
+                { lb: "متاهل", value: true },
+                { lb: "مجرد", value: false },
+              ].map((val, index) => (
+                <option key={index} value={val.value}>
+                  {val.lb}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+            <label className="absolute bg-primary-50 bottom-9 right-2">
+              تحصیلات
             </label>
             <input
               className="w-full h-12 px-1  py-2"
-              {...register("province", {
-                required: "وارد کردن این فیلد الزامی می باشد",
-              })}
-              placeholder="تهران"
+              {...register("education")}
+              placeholder="لیسانس"
               type="text"
-              required
             />
           </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
-              شهر{" "}
+              استان محل سکونت
             </label>
-            <input
-              className="w-full h-12 px-1  py-2"
-              {...register("city", {
-                required: "وارد کردن این فیلد الزامی می باشد",
+            <select
+              dir="ltr"
+              className="w-full h-12 px-4"
+              {...register("province", {
+                onChange: (e) => {
+                  setSelectedProvince2(e.target.value);
+                },
               })}
+              defaultValue="تهران"
               placeholder="تهران"
-              type="text"
-              required
-            />
+            >
+              {[
+                ...new Set(iranCitiesList.map((element) => element.province)),
+              ].map((val, index) => (
+                <option key={index} value={val}>
+                  {val}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+            <label className="absolute bg-primary-50 bottom-9 right-2">
+              شهرستان محل سکونت
+            </label>
+            <select
+              dir="ltr"
+              className="w-full h-12 px-4"
+              {...register("county", {
+                onChange: (e) => {
+                  setSelectedState2(e.target.value);
+                },
+              })}
+              defaultValue="تهران"
+              placeholder="تهران"
+            >
+              {iranCitiesList
+                .filter((element) => element.province == selectedProvince2)
+                .map((val, index) => (
+                  <option key={index} value={val.city}>
+                    {val.city}
+                  </option>
+                ))}
+            </select>
+          </div>
+          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+            <label className="absolute bg-primary-50 bottom-9 right-2">
+              شهر محل سکونت
+            </label>
+            <select
+              dir="ltr"
+              className="w-full h-12 px-4"
+              {...register("city", {
+                value: selectedState2,
+              })}
+              value={selectedState2}
+              defaultValue="تهران"
+              placeholder="تهران"
+            >
+              {iranCitiesList
+                .filter((element) => element.province == selectedProvince2)
+                .map((val, index) => (
+                  <option key={index} value={val.city}>
+                    {val.city}
+                  </option>
+                ))}
+            </select>
           </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
@@ -316,23 +426,30 @@ export default function UserFormDetail() {
             </label>
             <input
               className="w-full h-12 px-1  py-2"
-              {...register("zip", {
-                required: "وارد کردن این فیلد الزامی می باشد",
-              })}
-              placeholder="1122334456"
+              {...register("postal_code")}
+              placeholder="11223344"
               type="text"
-              required
             />
           </div>
+          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+            <label className="absolute bg-primary-50 bottom-9 right-2">
+              شماره منزل
+            </label>
+            <input
+              className="w-full h-12 px-1  py-2"
+              {...register("personal_phone_number")}
+              placeholder="02133667799"
+              type="text"
+            />
+          </div>
+
           <div className="relative w-full mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-20 right-2">
               نشانی محل اقامت
             </label>
             <input
               className="w-full h-24 px-1"
-              {...register("address", {
-                // required: "وارد کردن این فیلد الزامی می باشد",
-              })}
+              {...register("address")}
               placeholder="بلوار کشاورز - تقاطع قدس"
               type="text"
             />
