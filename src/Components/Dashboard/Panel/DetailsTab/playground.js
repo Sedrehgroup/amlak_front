@@ -2,7 +2,7 @@ const data = {
   email: "poopjpo@gmail.com",
   father_name: "Hassan",
   certificate_number: "22326420",
-  birth_day: "2022-01-01",
+  birth_day: "2022-01-02",
   sex: true,
   latin_first_name: "ALIREZA",
   latin_last_name: "Dinvarzadeh",
