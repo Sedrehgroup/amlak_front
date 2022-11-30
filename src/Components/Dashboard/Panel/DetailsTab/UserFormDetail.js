@@ -461,8 +461,11 @@ export default function UserFormDetail() {
             />
           </div>
 
-          <button className="bg-main-500 w-full h-10 mt-6 text-white mb-6">
-            <input type="submit" value="ثبت تغییرات" />
+          <button
+            type="submit"
+            className="bg-main-500 w-full h-10 mt-6 text-white mb-6 cursor-pointer"
+          >
+            ثبت تغییرات
           </button>
         </form>
       </div>
