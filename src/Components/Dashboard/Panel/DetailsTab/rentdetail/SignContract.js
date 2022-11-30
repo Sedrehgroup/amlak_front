@@ -48,10 +48,6 @@ export default function SignContract() {
         )
         .then((_data) => {
           dispatch(signContractHandler(false));
-<<<<<<< HEAD
-=======
-
->>>>>>> d6c27d298f2719159b73820a9af80d53ab825fa5
           dispatch(updateListHandler());
           console.log("axios del /api/modify_requests data:", _data);
         })
