@@ -1,8 +1,17 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import useToken from "../../../../../customHooks/useToken";
+import {
+  signContractHandler,
+  updateListHandler,
+} from "../../../../../redux/reducers/userProperty";
 
 export default function SignContract() {
   const [boxes, setBoxes] = useState([]);
-
+  const [token] = useToken();
+  const dispatch = useDispatch();
+  const reqId = useSelector((state) => state.userProperty.requestId);
   function handleChange(e) {
     const {
       parentNode: { children },
@@ -21,7 +30,35 @@ export default function SignContract() {
     const len = boxes.filter((box) => box).length;
     return len === 0 || len > 1;
   }
+  const redirectToRequests = () => {
+    const Api_Url = process.env.REACT_APP_API_URL;
+    console.log("modify_requests reqid", reqId);
+    try {
+      axios
+        .patch(
+          `${Api_Url}/api/modify_requests/${45}/`,
+          {
+            status: 1,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then((_data) => {
+          dispatch(signContractHandler(false));
 
+          dispatch(updateListHandler());
+          console.log("axios del /api/modify_requests data:", _data);
+        })
+        .catch((e) =>
+          console.log("error in del /api/modify_requests data:", e)
+        );
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   return (
     <div className="flex justify-center">
       <div className="form1 seventyfivevh">
@@ -233,6 +270,7 @@ export default function SignContract() {
                 <button
                   className="bg-main-500 w-48 disabled:bg-gray disabled:cursor-not-allowed"
                   disabled={isDisabled()}
+                  onClick={redirectToRequests}
                 >
                   <p className="text-white">تایید و امضا</p>
                 </button>

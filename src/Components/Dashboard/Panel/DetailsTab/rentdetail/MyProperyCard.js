@@ -7,6 +7,7 @@ export default function MyProperyCard(props) {
   const { title, mortgage_amount, rent_amount, area } = props.data;
   const showHandler = props.showHandler;
   const deleteHandler = props.deleteHandler;
+  const isShown = props.isShown;
 
   return (
     <>
@@ -44,15 +45,19 @@ export default function MyProperyCard(props) {
           }}
         />
         <div className="flex justify-end gap-4 mb-4 px-7">
-          <button
-            onClick={() => deleteHandler(props.data)}
-            className="w-24 h-10 text-dark_red border-12 border-dark_red border-solid rounded-lg"
-          >
-            حذف آگهی
-          </button>
-          <button className="w-24 h-10 bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg">
-            ویرایش آگهی
-          </button>
+          {isShown && (
+            <>
+              <button
+                onClick={() => deleteHandler(props.data)}
+                className="w-24 h-10 text-dark_red border-12 border-dark_red border-solid rounded-lg"
+              >
+                حذف آگهی
+              </button>
+              <button className="w-24 h-10 bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg">
+                ویرایش آگهی
+              </button>
+            </>
+          )}
           <button
             onClick={() => showHandler(props.data)}
             className="w-24 h-10 bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg"

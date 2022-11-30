@@ -30,9 +30,14 @@ import MyAdds from "./Panel/DetailsTab/rentdetail/MyProperyCard";
 import SignContract from "./Panel/DetailsTab/rentdetail/SignContract";
 import AllProperties from "./Panel/Tabs/AllProperties";
 import useTimeDateFa from "../../utils/useTimeDateFa";
+import { useSelector } from "react-redux";
 
 export default function Panel() {
   const [date] = useTimeDateFa();
+  const showSignContract = useSelector(
+    (state) => state.userProperty.showSignContract
+  );
+
   return (
     <div className="flex justify-start items-center">
       <div className="absolute right-0 bg-warmGray-100 rounded-tl-lg rounded-bl-lg">
@@ -101,11 +106,7 @@ export default function Panel() {
                   <UserFormDetail />
                   {/* </Link> */}
                 </TabPanel>
-                <TabPanel>
-                  <SignContract />
-
-                  {/* <p>گفتگو</p> */}
-                </TabPanel>
+                <TabPanel>{/* <p>گفتگو</p> */}</TabPanel>
                 <TabPanel>
                   <SubmitAdDetail />
                 </TabPanel>
@@ -113,10 +114,15 @@ export default function Panel() {
                   <MyProperties />
                 </TabPanel>
                 <TabPanel>
-                  <RequestFromLessorPage />
+                  {showSignContract ? (
+                    <SignContract />
+                  ) : (
+                    <RequestFromLessorPage />
+                  )}
                 </TabPanel>
                 <TabPanel>
-                  <RentedOnes />
+                  {/* <RentedOnes /> */}
+                  اجاره داده شده
                 </TabPanel>
                 <TabPanel>
                   <AllProperties />
@@ -125,7 +131,8 @@ export default function Panel() {
                   <RequestFromTenantPage />
                 </TabPanel>
                 <TabPanel>
-                  <RentedAds />
+                  {/* <RentedAds /> */}
+                  اجاره شده
                 </TabPanel>
               </div>
             </div>

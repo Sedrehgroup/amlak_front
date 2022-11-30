@@ -10,11 +10,13 @@ import Security from "../../../../../assets/Images/Dashboard/Details/Security.sv
 import RequestFromTenantPage from "./RequestFromTenantPage";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-import { useStore } from "react-redux";
+import { useDispatch, useStore } from "react-redux";
 import useToken from "../../../../../customHooks/useToken";
+import { updateListHandler } from "../../../../../redux/reducers/userProperty";
 
 export default function AdDetail({ data }) {
   const [data2, setData2] = useState({});
+  const dispatch = useDispatch();
   useEffect(() => {
     console.log("data in adDetail ", data);
     if (!!!!data) {
@@ -93,9 +95,6 @@ export default function AdDetail({ data }) {
     }
   }, [data]);
   const [showMyRequest, setShowMyRequest] = useState(false);
-  const showMyRequestHandler = () => {
-    setShowMyRequest(true);
-  };
 
   const num = String(data2.id);
   // console.log(typeof String(num));
@@ -124,6 +123,7 @@ export default function AdDetail({ data }) {
         )
         .then((data) => {
           console.log(data);
+          dispatch(updateListHandler());
           // dispatch(userLoginStepAccess("Register_Step"));
           // getAccessTokenHandler(phoneNumber);
         })
@@ -269,56 +269,54 @@ export default function AdDetail({ data }) {
                   <button className=" text-sub-500 border-12 border-solid border-sub-500 rounded px-6 py-1 ">
                     گفتگو
                   </button>
-                  <button
-                    className="bg-main-500 text-white px-12 rounded-lg"
-                    onClick={showMyRequestHandler}
+
+                  <Popup
+                    trigger={
+                      <button className="button bg-main-500 text-white px-12 rounded-lg">
+                        {" "}
+                        ثبت درخواست{" "}
+                      </button>
+                    }
+                    modal
+                    nested
                   >
-                    {/* component */}
-                    <Popup
-                      trigger={
-                        <button className="button"> ثبت درخواست </button>
-                      }
-                      modal
-                      nested
-                    >
-                      {(close) => (
-                        <div className="modal">
-                          <button className="close" onClick={close}>
-                            &times;
-                          </button>
-                          <div className="header"> تایید اجاره آگهی </div>
-                          <div className="content">
-                            <p className="text-base">توضیحات تکمیلی</p>
-                            <input
-                              type="text"
-                              className="bg-warmGray-400 w-full h-14 rounded-lg mt-4"
-                            />
-                          </div>
-                          <div className="actions flex justify-center gap-3">
-                            <button
-                              className="button bg-warmGray-500 text-white w-12 rounded-lg text-base"
-                              onClick={() => {
-                                console.log("modal closed ");
-                                close();
-                              }}
-                            >
-                              بستن{" "}
-                            </button>
-                            <button
-                              className="button bg-main-500 text-white w-12 rounded-lg text-base"
-                              onClick={() => {
-                                // showMyRequestHandler();
-                                onSubmit();
-                                close();
-                              }}
-                            >
-                              تایید{" "}
-                            </button>
-                          </div>
+                    {(close) => (
+                      <div className="modal">
+                        <button className="close" onClick={close}>
+                          &times;
+                        </button>
+                        <div className="header"> تایید اجاره آگهی </div>
+                        <div className="content">
+                          <p className="text-base">توضیحات تکمیلی</p>
+                          <input
+                            type="text"
+                            className="bg-warmGray-400 w-full h-14 rounded-lg mt-4"
+                          />
                         </div>
-                      )}
-                    </Popup>
-                  </button>
+                        <div className="actions flex justify-center gap-3">
+                          <button
+                            className="button bg-warmGray-500 text-white w-12 rounded-lg text-base"
+                            onClick={() => {
+                              console.log("modal closed ");
+                              close();
+                            }}
+                          >
+                            بستن{" "}
+                          </button>
+                          <button
+                            className="button bg-main-500 text-white w-12 rounded-lg text-base"
+                            onClick={() => {
+                              // showMyRequestHandler();
+                              onSubmit();
+                              close();
+                            }}
+                          >
+                            تایید{" "}
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </Popup>
                 </div>
               </div>
             </div>

@@ -149,15 +149,15 @@ body {
 .react-tabs__tab-list {
   border-bottom: 0px solid !important;
 }
+
+.line {
+  color: #fdba74;
+}
 .m_toast {
   font-family: Vazir !important;
   font-weight: 300;
   color: #001524 !important;
 }
-.line {
-  color: #fdba74;
-}
-
 .ideal-border {
   border-left: 1px solid #fdba74;
   border-right: 1px solid #fdba74;

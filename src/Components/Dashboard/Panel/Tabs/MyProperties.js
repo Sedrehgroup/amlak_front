@@ -7,17 +7,14 @@ import {
   updateListHandler,
   updateMyPropertyListHandler,
 } from "../../../../redux/reducers/userProperty";
-import { userLoginStepDenied } from "./../../../../redux/reducers/login";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import useLoggedUser from "../../../../customHooks/useLoggedUser";
 
 const MyProperties = () => {
   const update = useSelector((state) => state.userProperty.update);
   const dispatch = useDispatch();
   const [token] = useToken();
   const [MyPropertiesList, setMyProperties] = useState([]);
-  const [isLogged, setIsUserLogged] = useLoggedUser();
 
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
@@ -33,17 +30,7 @@ const MyProperties = () => {
           dispatch(updateMyPropertyListHandler(data));
           setMyProperties(data);
         })
-        .catch((e) => {
-          console.log("error in axios /api/my_properties", e);
-          if (e.response.status == 401) {
-            // dispatch(userLoginStepDenied("PhoneNumber_Step"));
-            // dispatch(userLoginStepDenied("PhoneSms_Step"));
-            // dispatch(userLoginStepDenied("Register_Step"));
-
-            // window.localStorage.removeItem("user_logged");
-            console.log("eeeeeeeeeeeeeee");
-          }
-        });
+        .catch((e) => console.log("error in axios /users/otp_register", e));
     } catch (error) {
       console.log("error", error);
     }
@@ -67,12 +54,12 @@ const MyProperties = () => {
         })
         .then((_data) => {
           dispatch(updateListHandler());
-          console.log("axios del /api/modify_properties data:", _data);
           toast.success("با موفقیت حذف شد", {
             position: "top-center",
             rtl: true,
             className: "m_toast",
           });
+          console.log("axios del /api/modify_properties data:", _data);
         })
         .catch((e) =>
           console.log("error in del /api/modify_properties data:", e)
@@ -92,6 +79,7 @@ const MyProperties = () => {
               key={index}
               showHandler={handler}
               deleteHandler={delHandler}
+              isShown={true}
             />
           ))}
         {MyPropertiesList.length == 0 && (

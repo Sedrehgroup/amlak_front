@@ -1,10 +1,20 @@
 import React from "react";
 import RenterDetailsPopup from "./RenterDetailsPopup";
 import "reactjs-popup/dist/index.css";
+import { useDispatch } from "react-redux";
+import {
+  signContractData,
+  signContractHandler,
+} from "./../../redux/reducers/userProperty";
 // import SignContract from "../Dashboard/Panel/DetailsTab/rentdetail/SignContract";
 // کارت طراحی شده برای درخواست ها و اجاره ها
 
 const RequestFromLessor = (props) => {
+  const dispatch = useDispatch();
+  const signContactShow = () => {
+    dispatch(signContractHandler(true));
+    dispatch(signContractData(props.mojer_reqid));
+  };
   return (
     <div className="p-10 border border-warmGray-400 bg-warmGray-100 my-8 mx-12 rounded-lg">
       <div className="flex flex-col gap-y-10">
@@ -45,7 +55,16 @@ const RequestFromLessor = (props) => {
               <span
                 className={`font-bold ${props.stateTextColor} ${props.stateBgColor} rounded p-2`}
               >
-                {props.requestState}
+                {props.mojer_status == 0
+                  ? "درخواست اجاره"
+                  : props.mojer_status == 1
+                  ? "تایید توسط شما"
+                  : null}
+                {props.mostajer_status == 0
+                  ? "درحال انتظار توسط موجر "
+                  : props.mostajer_status == 1
+                  ? "تایید توسط موجر"
+                  : null}
               </span>
             </p>
             <hr className=" text-warmGray-400" />
@@ -55,7 +74,7 @@ const RequestFromLessor = (props) => {
               </button>
               <button className="border-2 border-main-600 text-main-600 rounded-lg font-bold px-6 h-10">
                 {/* {props.SecondButtonText} */}
-                <RenterDetailsPopup />
+                {/* <RenterDetailsPopup /> */}
               </button>
               <button
                 style={{
@@ -68,12 +87,14 @@ const RequestFromLessor = (props) => {
               >
                 {props.MainButtonText}
               </button>
-              <button
-                className="border-2 border-main-600 text-main-600 rounded-lg font-bold px-6 h-10"
-                // onClick={() =>   <SignContract />}
-              >
-                امضای قرارداد{" "}
-              </button>
+              {props.emzaStatus && (
+                <button
+                  className="border-2 border-main-600 text-main-600 rounded-lg font-bold px-6 h-10"
+                  onClick={signContactShow}
+                >
+                  امضای قرارداد{" "}
+                </button>
+              )}
             </div>
           </div>
         </div>

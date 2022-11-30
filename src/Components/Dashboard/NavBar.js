@@ -5,12 +5,12 @@ import loc from "../../assets/Images/Dashboard/loc.svg";
 import AllProperties from "./Panel/Tabs/AllProperties";
 
 export default function NavBar() {
-  //   const [isAllRent, setisAllRent] = useState(false);
+  const [isAllAdds, setisAllAdds] = useState(false);
 
-  //   const isAllRentHandler = function () {
-  //     setisAllRent(!isAllRent);
-  //   };
-  //   console.log(isAllRent);
+  const isAllAddsHandler = function () {
+    setisAllAdds(!isAllAdds);
+  };
+  console.log(isAllAdds);
 
   return (
     <div className="w-full bg-white flex justify-between items-center">
@@ -33,7 +33,7 @@ export default function NavBar() {
         <button className="text-main-500 m-6 font-medium">پشتیبانی</button>
         <button
           className="bg-main-500 rounded-lg font-bold"
-          //   onClick={isAllRentHandler}
+          onClick={isAllAddsHandler}
         >
           <p className="text-main-50 w-32 h-10 flex justify-center items-center text-base ">
             آگهی های اجاره
