@@ -8,7 +8,10 @@ import {
   updateMyPropertyListHandler,
 } from "../../../../redux/reducers/userProperty";
 import { useDispatch, useSelector } from "react-redux";
+<<<<<<< HEAD
+=======
 import { toast } from "react-toastify";
+>>>>>>> d6c27d298f2719159b73820a9af80d53ab825fa5
 
 const MyProperties = () => {
   const update = useSelector((state) => state.userProperty.update);
@@ -54,11 +57,14 @@ const MyProperties = () => {
         })
         .then((_data) => {
           dispatch(updateListHandler());
+<<<<<<< HEAD
+=======
           toast.success("با موفقیت حذف شد", {
             position: "top-center",
             rtl: true,
             className: "m_toast",
           });
+>>>>>>> d6c27d298f2719159b73820a9af80d53ab825fa5
           console.log("axios del /api/modify_properties data:", _data);
         })
         .catch((e) =>
