@@ -3,13 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import useToken from "../../../../customHooks/useToken";
 import { iranCitiesList } from "../../../../utils/iranCitiesList";
-<<<<<<< HEAD
-import { Calendar, DatePicker } from "react-persian-datepicker";
-// import useToken from "../../../../../customHooks/useToken";
-=======
 // import useToken from "../../../../../customHooks/useToken";
 import { toast } from "react-toastify";
->>>>>>> d6c27d298f2719159b73820a9af80d53ab825fa5
 
 export default function UserFormDetail() {
   const {
