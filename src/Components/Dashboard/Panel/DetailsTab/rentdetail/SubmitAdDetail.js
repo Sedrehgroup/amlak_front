@@ -9,6 +9,7 @@ import {
 import { useDispatch } from "react-redux";
 import { iranCitiesList } from "../../../../../utils/iranCitiesList";
 import { arrayOfYears } from "../../../../../utils/yearsList";
+import { toast } from "react-toastify";
 
 export default function SubmitAdDetail() {
   const [selectedProvince, setSelectedProvince] = useState("تهران");
@@ -109,6 +110,11 @@ export default function SubmitAdDetail() {
         })
         .then(({ data }) => {
           console.log("axios /api/my_properties data.data:", data);
+          toast.success("آگهی با موفقیت ثبت شد", {
+            position: "top-center",
+            rtl: true,
+            className: "m_toast",
+          });
           dispatch(updateListHandler());
           dispatch(updateMyPropertyListHandler([formData]));
         })
