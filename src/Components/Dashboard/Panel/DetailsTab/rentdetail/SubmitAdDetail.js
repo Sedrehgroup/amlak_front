@@ -675,9 +675,11 @@ export default function SubmitAdDetail() {
               </div>
             </div>
           </details>
-          <button className="bg-main-500 w-full h-10 mt-6 text-white mb-6 cursor-pointer">
-            <input type="submit" value="ثبت آگهی" />
-          </button>
+          <input
+            type="submit"
+            value="ثبت آگهی"
+            className="bg-main-500 w-full h-10 mt-6 text-white mb-6 cursor-pointer"
+          />
         </form>
       </div>
     </div>
