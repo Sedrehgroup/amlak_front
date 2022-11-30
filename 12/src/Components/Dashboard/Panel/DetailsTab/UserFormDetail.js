@@ -1,15 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import useToken from "../../../../customHooks/useToken";
 import { iranCitiesList } from "../../../../utils/iranCitiesList";
-<<<<<<< HEAD
-import { Calendar, DatePicker } from "react-persian-datepicker";
 // import useToken from "../../../../../customHooks/useToken";
-=======
-// import useToken from "../../../../../customHooks/useToken";
-import { toast } from "react-toastify";
->>>>>>> d6c27d298f2719159b73820a9af80d53ab825fa5
 
 export default function UserFormDetail() {
   const {
@@ -233,16 +228,11 @@ export default function UserFormDetail() {
               تاریخ تولد
             </label>
             <input
-              className="w-full h-12 px-1  py-2 normal-example"
+              className="w-full h-12 px-1  py-2"
               {...register("birth_day")}
               placeholder="1378/08/06"
-              type="date"
-              // class=""
+              type="text"
             />
-
-            {/* <input type="text" ><input/> */}
-
-            {/* <DatePicker /> */}
           </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">

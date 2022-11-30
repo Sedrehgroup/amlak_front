@@ -9,10 +9,7 @@ import {
 import { useDispatch } from "react-redux";
 import { iranCitiesList } from "../../../../../utils/iranCitiesList";
 import { arrayOfYears } from "../../../../../utils/yearsList";
-<<<<<<< HEAD
-=======
 import { toast } from "react-toastify";
->>>>>>> d6c27d298f2719159b73820a9af80d53ab825fa5
 
 export default function SubmitAdDetail() {
   const [selectedProvince, setSelectedProvince] = useState("تهران");
@@ -113,14 +110,11 @@ export default function SubmitAdDetail() {
         })
         .then(({ data }) => {
           console.log("axios /api/my_properties data.data:", data);
-<<<<<<< HEAD
-=======
           toast.success("آگهی با موفقیت ثبت شد", {
             position: "top-center",
             rtl: true,
             className: "m_toast",
           });
->>>>>>> d6c27d298f2719159b73820a9af80d53ab825fa5
           dispatch(updateListHandler());
           dispatch(updateMyPropertyListHandler([formData]));
         })
@@ -675,9 +669,12 @@ export default function SubmitAdDetail() {
               </div>
             </div>
           </details>
-          <button className="bg-main-500 w-full h-10 mt-6 text-white mb-6 cursor-pointer">
-            <input type="submit" value="ثبت آگهی" />
-          </button>
+
+          <input
+            className="bg-main-500 w-full h-10 mt-6 text-white mb-6 cursor-pointer"
+            type="submit"
+            value="ثبت آگهی"
+          />
         </form>
       </div>
     </div>
