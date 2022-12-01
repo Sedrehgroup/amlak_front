@@ -7,7 +7,7 @@ import Frame from "../../../../../assets/Images/Dashboard/Frame.png";
 import Driving from "../../../../../assets/Images/Dashboard/Details/Driving.svg";
 import Elevator from "../../../../../assets/Images/Dashboard/Details/Elevator.svg";
 import Security from "../../../../../assets/Images/Dashboard/Details/Security.svg";
-import RequestFromTenantPage from "./RequestFromTenantPage";
+import RequestsFromMe from "./RequestsFromMe";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useDispatch, useStore } from "react-redux";
@@ -136,7 +136,7 @@ export default function AdDetail({ data }) {
   return (
     <>
       {showMyRequest ? (
-        <RequestFromTenantPage />
+        <RequestsFromMe />
       ) : (
         <div className="">
           <strong className="flex justify-center text-4xl mb-8">

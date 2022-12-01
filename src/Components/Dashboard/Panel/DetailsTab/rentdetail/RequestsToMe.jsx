@@ -22,7 +22,7 @@ import useToken from "../../../../../customHooks/useToken";
       ></RequestFromLessor> */
 }
 
-const RequestFromLessorPage = () => {
+const RequestsToMe = () => {
   const [lessorData, setLessorData] = useState();
   console.log(lessorData);
 
@@ -79,4 +79,4 @@ const RequestFromLessorPage = () => {
   );
 };
 
-export default RequestFromLessorPage;
+export default RequestsToMe;

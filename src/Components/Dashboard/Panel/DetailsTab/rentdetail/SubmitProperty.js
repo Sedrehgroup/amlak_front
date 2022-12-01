@@ -12,7 +12,7 @@ import { arrayOfYears } from "../../../../../utils/yearsList";
 
 import { toast } from "react-toastify";
 
-export default function SubmitAdDetail() {
+export default function SubmitProperty() {
   const [selectedProvince, setSelectedProvince] = useState("تهران");
   const [selectedState, setSelectedState] = useState("تهران");
   const dispatch = useDispatch();

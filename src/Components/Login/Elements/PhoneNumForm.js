@@ -21,7 +21,13 @@ export default function PhoneNumForm() {
   const onSubmit = ({ phoneNumber }) => {
     console.log("phoneNumber", phoneNumber);
     if (phoneNumber == 9123123123) {
+      // موجر
       dispatch(setSmsCodeHandler("0000"));
+      dispatch(setPhoneNumberHandler(phoneNumber));
+      dispatch(userLoginStepAccess("PhoneNumber_Step"));
+    } else if (phoneNumber == 9123123124) {
+      // مستاجر
+      dispatch(setSmsCodeHandler("0001"));
       dispatch(setPhoneNumberHandler(phoneNumber));
       dispatch(userLoginStepAccess("PhoneNumber_Step"));
     } else {

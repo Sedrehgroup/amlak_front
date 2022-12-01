@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 // درخواست ها - صفحه مستأجر
 
-const RequestFromTenantPage = () => {
+const RequestsFromMe = () => {
   const [showMyRequest, setShowMyRequest] = useState(false);
   const showMyRequestHandler = () => {
     setShowMyRequest(true);
@@ -66,4 +66,4 @@ const RequestFromTenantPage = () => {
   );
 };
 
-export default RequestFromTenantPage;
+export default RequestsFromMe;
