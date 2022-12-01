@@ -29,7 +29,7 @@ import MyProperties from "./Panel/Tabs/MyProperties";
 import MyAdds from "./Panel/DetailsTab/rentdetail/MyProperyCard";
 import SignContract from "./Panel/DetailsTab/rentdetail/SignContract";
 import AllProperties from "./Panel/Tabs/AllProperties";
-import useTimeDateFa from "../../utils/useTimeDateFa";
+import useTimeDateFa from "../../customHooks/useTimeDateFa";
 import { useSelector } from "react-redux";
 
 export default function Panel() {

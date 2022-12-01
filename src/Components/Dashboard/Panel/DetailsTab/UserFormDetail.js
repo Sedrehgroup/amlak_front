@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import useToken from "../../../../customHooks/useToken";
 import { iranCitiesList } from "../../../../utils/iranCitiesList";
-// import useToken from "../../../../../customHooks/useToken";
-import { toast } from "react-toastify";
 
 export default function UserFormDetail() {
   const {
@@ -227,17 +225,19 @@ export default function UserFormDetail() {
             <label className="absolute bg-primary-50 bottom-9 right-2">
               تاریخ تولد
             </label>
+
             <input
+              dir="rtl"
               className="w-full h-12 px-1  py-2 normal-example"
-              {...register("birth_day")}
+              {...register("birth_day", {
+                valueAsDate: true,
+                onChange: (e) => {
+                  console.log("date", e.target.value);
+                },
+              })}
               placeholder="1378/08/06"
               type="date"
-              // class=""
             />
-
-            {/* <input type="text" ><input/> */}
-
-            {/* <DatePicker /> */}
           </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">

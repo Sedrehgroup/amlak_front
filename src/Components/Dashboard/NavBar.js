@@ -1,15 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import user from "../../assets/Images/Dashboard/user-nav.svg";
 import loc from "../../assets/Images/Dashboard/loc.svg";
 import logo from "../../assets/Images/Dashboard/logo.svg";
+import axios from "axios";
+import useToken from "../../customHooks/useToken";
 
 export default function NavBar() {
   const [isAllAdds, setisAllAdds] = useState(false);
+  const [userData, setUserData] = useState({});
 
   const isAllAddsHandler = function () {
     setisAllAdds(!isAllAdds);
   };
-  console.log(isAllAdds);
+  const [token] = useToken();
+  useEffect(() => {
+    const Api_Url = process.env.REACT_APP_API_URL;
+
+    try {
+      axios
+        .get(`${Api_Url}/users/user_information/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(({ data }) => {
+          console.log("axios /users/user_information data.data:", data);
+          setUserData(data);
+        })
+        .catch((e) => console.log("error in axios /users/user_information", e));
+    } catch (error) {
+      console.log("error", error);
+    }
+  }, [token]);
 
   return (
     <div className="w-full bg-white flex justify-between items-center">
@@ -18,10 +40,11 @@ export default function NavBar() {
           <p className="mr-3">تهران</p>
           <img src={loc} alt="" />
         </button>
-        <button className="p-2 border border-main-300  rounded gap-2 w-32 h-10 border-12 border-solid flex items-center">
+        <button className="p-2 border border-main-300  rounded gap-2  h-10 border-12 border-solid flex items-center">
           <img src={user} alt="" />
           <p className="flex-none flex justify-center items-center ">
-            علی محمدی
+            <span className="px-1">{userData?.last_name}</span>
+            <span>{userData?.first_name}</span>
           </p>
         </button>
       </div>
