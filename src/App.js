@@ -5,11 +5,8 @@ import Login from "./Components/Login/Login";
 import useLoggedUser from "./customHooks/useLoggedUser";
 import RequestFromLessor from "./Components/Card/RequestFromLessor";
 import imgFrame from "./assets/Images/Dashboard/Frame.png";
-<<<<<<< HEAD
-=======
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
->>>>>>> d6c27d298f2719159b73820a9af80d53ab825fa5
 
 function App() {
   const [isLogged] = useLoggedUser();
@@ -39,10 +36,7 @@ function App() {
           <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
-<<<<<<< HEAD
-=======
       <ToastContainer />
->>>>>>> d6c27d298f2719159b73820a9af80d53ab825fa5
     </div>
   );
 }

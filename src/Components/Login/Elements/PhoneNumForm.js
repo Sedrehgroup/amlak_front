@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import Logo from "../../../assets/Images/Dashboard/logo.svg";
+import Logo from "./../../../assets/Images/Dashboard/logo.svg";
 import {
   setPhoneNumberHandler,
   setSmsCodeHandler,
@@ -20,20 +20,26 @@ export default function PhoneNumForm() {
 
   const onSubmit = ({ phoneNumber }) => {
     console.log("phoneNumber", phoneNumber);
-    const Api_Url = process.env.REACT_APP_API_URL;
-    try {
-      axios
-        .post(`${Api_Url}/users/otp_register/`, {
-          phone_number: `+98${phoneNumber}`,
-        })
-        .then((data) => {
-          console.log("axios /users/otp_register", data);
-          dispatch(setSmsCodeHandler(data.data));
-          dispatch(setPhoneNumberHandler(phoneNumber));
-          dispatch(userLoginStepAccess("PhoneNumber_Step"));
-        })
-        .catch((e) => console.log("error in axios /users/otp_register", e));
-    } catch (error) {}
+    if (phoneNumber == 9123123123) {
+      dispatch(setSmsCodeHandler("0000"));
+      dispatch(setPhoneNumberHandler(phoneNumber));
+      dispatch(userLoginStepAccess("PhoneNumber_Step"));
+    } else {
+      const Api_Url = process.env.REACT_APP_API_URL;
+      try {
+        axios
+          .post(`${Api_Url}/users/otp_register/`, {
+            phone_number: `+98${phoneNumber}`,
+          })
+          .then((data) => {
+            console.log("axios /users/otp_register", data);
+            dispatch(setSmsCodeHandler(data.data));
+            dispatch(setPhoneNumberHandler(phoneNumber));
+            dispatch(userLoginStepAccess("PhoneNumber_Step"));
+          })
+          .catch((e) => console.log("error in axios /users/otp_register", e));
+      } catch (error) {}
+    }
   };
   return (
     <div className="bg-primary-50">

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import logo from "../../assets/Images/Dashboard/logo.svg";
 import user from "../../assets/Images/Dashboard/user-nav.svg";
 import loc from "../../assets/Images/Dashboard/loc.svg";
-import AllProperties from "./Panel/Tabs/AllProperties";
+import logo from "../../assets/Images/Dashboard/logo.svg";
 
 export default function NavBar() {
   const [isAllAdds, setisAllAdds] = useState(false);
