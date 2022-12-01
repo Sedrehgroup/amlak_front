@@ -157,6 +157,11 @@ body {
   border-left: 1px solid #fdba74;
   border-right: 1px solid #fdba74;
 }
+.m_grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
 
 .react-code-input input {
   font-family: Vazir !important;

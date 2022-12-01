@@ -38,11 +38,13 @@ const AllProperties = () => {
 
   return (
     <>
-      <div className="flex flex-row flex-wrap pr-6">
+      <div className="m_grid-container pr-6">
         {!!!!MyPropertiesList &&
           !showDetail &&
           MyPropertiesList.map((val, index) => (
-            <MyProperyCard data={val} key={index} showHandler={handler} />
+            <div key={index}>
+              <MyProperyCard data={val} showHandler={handler} />
+            </div>
           ))}
       </div>
       {showDetail && <AdDetail data={adData} />}

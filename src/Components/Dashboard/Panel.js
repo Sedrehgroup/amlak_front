@@ -156,7 +156,12 @@ export default function Panel() {
                 </span>
 
                 <div>
-                  <div className="absolute top-0 right-full eightyfivevw">
+                  <div
+                    className="absolute top-0 right-full"
+                    style={{
+                      width: "calc(100vw - 243px)",
+                    }}
+                  >
                     {TabContents.map((val, index) => (
                       <TabPanel key={index}>
                         <Routes>

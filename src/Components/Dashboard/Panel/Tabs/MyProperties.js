@@ -70,17 +70,19 @@ const MyProperties = () => {
   };
   return (
     <>
-      <div className="flex flex-row flex-wrap pr-6">
+      <div className=" pr-6 ">
         {!!!!MyPropertiesList &&
           !showDetail &&
           MyPropertiesList.map((val, index) => (
-            <MyProperyCard
-              data={val}
-              key={index}
-              showHandler={handler}
-              deleteHandler={delHandler}
-              isShown={true}
-            />
+            <div key={index}>
+              <MyProperyCard
+                data={val}
+                key={index}
+                showHandler={handler}
+                deleteHandler={delHandler}
+                isShown={true}
+              />
+            </div>
           ))}
         {MyPropertiesList.length == 0 && (
           <div className="m-auto text-xl bg-warmGray-300">
