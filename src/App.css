@@ -8,6 +8,7 @@ body {
   margin: 0;
   line-height: inherit;
   font-family: Vazir;
+  overflow: hidden;
 }
 
 .App-logo {
@@ -174,4 +175,21 @@ body {
 
 div#popup-64 {
   display: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffab77;
+  border-radius: 10px;
+  cursor: pointer !important;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ff731d;
 }

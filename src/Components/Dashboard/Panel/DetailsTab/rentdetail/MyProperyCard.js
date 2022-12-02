@@ -16,12 +16,7 @@ export default function MyProperyCard(props) {
           <strong className="mx-auto pt-6">{title}</strong>
           <div className="flex bg-white">
             <div className="rounded-lg ">
-              <img
-                src={frame}
-                alt=""
-                className="rounded p-3"
-                // style={{ width: "100%", maxWidth: "400px", height: "auto" }}
-              />
+              <img src={frame} alt="" className="rounded p-3" />
             </div>
             <div className="w-2/3 px-4 rounded-lg">
               <p className="mb-4">قیمت رهن : {mortgage_amount} تومان </p>

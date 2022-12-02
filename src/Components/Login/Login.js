@@ -8,10 +8,6 @@ import RegisterForm from "./Elements/RegisterForm";
 export default function Login() {
   const loginSteps = useSelector((state) => state.login.loginSteps);
 
-  useEffect(() => {
-    console.log("loginSteps", loginSteps);
-  }, [loginSteps]);
-
   return (
     <div>
       {loginSteps["Register_Step"] ? (

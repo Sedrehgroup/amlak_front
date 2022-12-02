@@ -3,7 +3,8 @@ import RequestFromLessor from "../../../../Card/RequestFromLessor";
 import imgFrame from "../../../../../assets/Images/Dashboard/Frame.png";
 import axios from "axios";
 import useToken from "../../../../../customHooks/useToken";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserIsLoggedHandler } from "../../../../../redux/reducers/login";
 
 // درخواست ها - صفحه مستأجر
 
@@ -17,7 +18,7 @@ const RequestsFromMe = () => {
   const update = useSelector((state) => state.userProperty.update);
 
   const [token] = useToken();
-
+  const dispatch = useDispatch();
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
 
@@ -32,7 +33,14 @@ const RequestsFromMe = () => {
           console.log("axios /users/user_information data.data:", data);
           setTenantData(data);
         })
-        .catch((e) => console.log("error in axios /users/user_information", e));
+        .catch((e) => {
+          console.log("error in axios /users/user_information", e);
+
+          if (e.response.status == 401) {
+            //dispatch(setUserIsLoggedHandler(false));
+            window.localStorage.setItem("user_logged", "false");
+          }
+        });
     } catch (error) {
       console.log("error", error);
     }

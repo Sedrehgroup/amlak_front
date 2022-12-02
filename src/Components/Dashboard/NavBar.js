@@ -4,32 +4,45 @@ import loc from "../../assets/Images/Dashboard/loc.svg";
 import logo from "../../assets/Images/Dashboard/logo.svg";
 import axios from "axios";
 import useToken from "../../customHooks/useToken";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setUserIsLoggedHandler } from "../../redux/reducers/login";
 
 export default function NavBar() {
   const [isAllAdds, setisAllAdds] = useState(false);
   const [userData, setUserData] = useState({});
+  const dispatch = useDispatch();
+  const [token] = useToken();
 
   const isAllAddsHandler = function () {
     setisAllAdds(!isAllAdds);
   };
-  const [token] = useToken();
+
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
 
-    try {
-      axios
-        .get(`${Api_Url}/users/user_information/`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then(({ data }) => {
-          console.log("axios /users/user_information data.data:", data);
-          setUserData(data);
-        })
-        .catch((e) => console.log("error in axios /users/user_information", e));
-    } catch (error) {
-      console.log("error", error);
+    if (!!!!token) {
+      try {
+        axios
+          .get(`${Api_Url}/account/user_information/`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(({ data }) => {
+            console.log("axios /account/user_information data.data:", data);
+            setUserData(data);
+          })
+          .catch((e) => {
+            console.log("error in axios /account/user_information", e);
+            if (e.response.status == 401) {
+              // //dispatch(setUserIsLoggedHandler(false));
+              // window.localStorage.setItem("user_logged", "false");
+            }
+          });
+      } catch (error) {
+        console.log("error", error);
+      }
     }
   }, [token]);
 

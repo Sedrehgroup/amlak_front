@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import useToken from "../../../../customHooks/useToken";
+import { setUserIsLoggedHandler } from "../../../../redux/reducers/login";
 import { iranCitiesList } from "../../../../utils/iranCitiesList";
 
 export default function UserFormDetail() {
@@ -15,30 +17,35 @@ export default function UserFormDetail() {
   const [selectedProvince, setSelectedProvince] = useState("تهران");
   const [selectedProvince2, setSelectedProvince2] = useState("تهران");
   const [selectedState2, setSelectedState2] = useState("تهران");
-
+  const dispatch = useDispatch();
   const [token] = useToken();
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
 
     try {
       axios
-        .get(`${Api_Url}/users/user_information/`, {
+        .get(`${Api_Url}/account/user_information/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
         .then(({ data }) => {
-          console.log("axios /users/user_information data.data:", data);
+          console.log("axios /account/user_information data.data:", data);
           setUserData(data);
         })
-        .catch((e) => console.log("error in axios /users/user_information", e));
+        .catch((e) => {
+          console.log("error in axios /account/user_information", e);
+          if (e.response.status == 401) {
+            // //dispatch(setUserIsLoggedHandler(false));
+            window.localStorage.setItem("user_logged", "false");
+          }
+        });
     } catch (error) {
       console.log("error", error);
     }
   }, [token]);
   const onSubmit = (data) => {
     console.log("form data", data);
-    console.log("watch('title')", watch("title"));
     createUserInfo(data);
   };
   const createUserInfo = ({
@@ -66,7 +73,7 @@ export default function UserFormDetail() {
     try {
       axios
         .post(
-          `${Api_Url}/users/create_additional_user/`,
+          `${Api_Url}/account/create_additional_user/`,
           {
             email,
             father_name,
@@ -95,11 +102,15 @@ export default function UserFormDetail() {
           }
         )
         .then(({ data }) => {
-          console.log("axios /users/create_additional_user data.data:", data);
+          console.log("axios /account/create_additional_user data.data:", data);
         })
-        .catch((e) =>
-          console.log("error in axios /users/create_additional_user/", e)
-        );
+        .catch((e) => {
+          console.log("error in axios /account/create_additional_user/", e);
+          if (e.response.status == 401) {
+            // //dispatch(setUserIsLoggedHandler(false));
+            window.localStorage.setItem("user_logged", "false");
+          }
+        });
     } catch (error) {
       console.log("error", error);
     }

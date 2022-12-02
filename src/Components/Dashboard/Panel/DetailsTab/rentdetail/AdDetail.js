@@ -13,6 +13,7 @@ import "reactjs-popup/dist/index.css";
 import { useDispatch, useStore } from "react-redux";
 import useToken from "../../../../../customHooks/useToken";
 import { updateListHandler } from "../../../../../redux/reducers/userProperty";
+import { setUserIsLoggedHandler } from "../../../../../redux/reducers/login";
 
 export default function AdDetail({ data }) {
   const [data2, setData2] = useState({});
@@ -127,7 +128,13 @@ export default function AdDetail({ data }) {
           // dispatch(userLoginStepAccess("Register_Step"));
           // getAccessTokenHandler(phoneNumber);
         })
-        .catch((e) => console.log("error in axios /users/create_user", e));
+        .catch((e) => {
+          console.log("error in axios /users/create_user", e);
+          if (e.response.status == 401) {
+            //dispatch(setUserIsLoggedHandler(false));
+            window.localStorage.setItem("user_logged", "false");
+          }
+        });
     } catch (error) {}
   };
 

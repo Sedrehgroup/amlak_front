@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useToken from "../../../../../customHooks/useToken";
+import { setUserIsLoggedHandler } from "../../../../../redux/reducers/login";
 import {
   signContractHandler,
   updateListHandler,
@@ -51,9 +52,13 @@ export default function SignContract() {
           dispatch(updateListHandler());
           console.log("axios del /api/modify_requests data:", _data);
         })
-        .catch((e) =>
-          console.log("error in del /api/modify_requests data:", e)
-        );
+        .catch((e) => {
+          console.log("error in del /api/modify_requests data:", e);
+          if (e.response.status == 401) {
+            //dispatch(setUserIsLoggedHandler(false));
+            window.localStorage.setItem("user_logged", "false");
+          }
+        });
     } catch (error) {
       console.log("error", error);
     }

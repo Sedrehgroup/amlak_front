@@ -11,6 +11,7 @@ import { iranCitiesList } from "../../../../../utils/iranCitiesList";
 import { arrayOfYears } from "../../../../../utils/yearsList";
 
 import { toast } from "react-toastify";
+import { setUserIsLoggedHandler } from "../../../../../redux/reducers/login";
 
 export default function SubmitProperty() {
   const [selectedProvince, setSelectedProvince] = useState("تهران");
@@ -121,7 +122,13 @@ export default function SubmitProperty() {
           dispatch(updateListHandler());
           dispatch(updateMyPropertyListHandler([formData]));
         })
-        .catch((e) => console.log("error in axios /users/otp_register", e));
+        .catch((e) => {
+          console.log("error in axios /users/otp_register", e);
+          if (e.response.status == 401) {
+            //dispatch(setUserIsLoggedHandler(false));
+            window.localStorage.setItem("user_logged", "false");
+          }
+        });
     } catch (error) {
       console.log("error", error);
     }

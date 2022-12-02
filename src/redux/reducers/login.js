@@ -10,6 +10,7 @@ const slice = createSlice({
     },
     smsCode: 0,
     phoneNumber: 0,
+    isUserLogged: true,
   },
   reducers: {
     userLoginStepAccess: (state, action) => {
@@ -24,6 +25,9 @@ const slice = createSlice({
     setPhoneNumberHandler: (state, action) => {
       state.phoneNumber = action.payload;
     },
+    setUserIsLoggedHandler: (state, action) => {
+      state.isUserLogged = action.payload;
+    },
   },
 });
 export default slice.reducer;
@@ -34,6 +38,7 @@ export const {
   userLoginStepDenied,
   setSmsCodeHandler,
   setPhoneNumberHandler,
+  setUserIsLoggedHandler,
 } = slice.actions;
 
 //functions

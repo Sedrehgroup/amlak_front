@@ -3,6 +3,8 @@ import RequestFromLessor from "../../../../Card/RequestFromLessor";
 import imgFrame from "../../../../../assets/Images/Dashboard/Frame.png";
 import axios from "axios";
 import useToken from "../../../../../customHooks/useToken";
+import { setUserIsLoggedHandler } from "../../../../../redux/reducers/login";
+import { useDispatch } from "react-redux";
 
 // درخواست ها - صفحه مؤجر
 
@@ -25,26 +27,34 @@ import useToken from "../../../../../customHooks/useToken";
 const RequestsToMe = () => {
   const [lessorData, setLessorData] = useState();
   console.log(lessorData);
-
+  const dispatch = useDispatch();
   const [token] = useToken();
 
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
 
-    try {
-      axios
-        .get(`${Api_Url}/api/requests_to_me/`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then(({ data }) => {
-          console.log("axios /requests_to_me data.data:", data);
-          setLessorData(data);
-        })
-        .catch((e) => console.log("error in axios /users/user_information", e));
-    } catch (error) {
-      console.log("error", error);
+    if (!!!!token) {
+      try {
+        axios
+          .get(`${Api_Url}/api/requests_to_me/`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(({ data }) => {
+            console.log("axios /requests_to_me data.data:", data);
+            setLessorData(data);
+          })
+          .catch((e) => {
+            console.log("error in axios /users/user_information", e);
+            if (e.response.status == 401) {
+              //dispatch(setUserIsLoggedHandler(false));
+              window.localStorage.setItem("user_logged", "false");
+            }
+          });
+      } catch (error) {
+        console.log("error", error);
+      }
     }
   }, [token]);
 
