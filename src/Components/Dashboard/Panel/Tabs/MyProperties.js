@@ -9,40 +9,51 @@ import {
 } from "../../../../redux/reducers/userProperty";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import Spinner from "react-spinkit";
 
 const MyProperties = () => {
   const update = useSelector((state) => state.userProperty.update);
+  const [MyPropertiesList, setMyProperties] = useState([]);
+  const [showDetail, setShowDetail] = useState(false);
+  const [adData, setAdData] = useState([]);
+  const [showLoading, setShowLoading] = useState(false);
   const dispatch = useDispatch();
   const [token] = useToken();
-  const [MyPropertiesList, setMyProperties] = useState([]);
 
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
-    try {
-      axios
-        .get(`${Api_Url}/api/my_properties/`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then(({ data }) => {
-          console.log("axios get /api/my_properties data.data:", data);
-          dispatch(updateMyPropertyListHandler(data));
-          setMyProperties(data);
-        })
-        .catch((e) => console.log("error in axios /users/otp_register", e));
-    } catch (error) {
-      console.log("error", error);
+    if (token.length > 0) {
+      setShowLoading(true);
+      try {
+        axios
+          .get(`${Api_Url}/api/property/properties_list/`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(({ data }) => {
+            console.log(
+              "axios get /api/property/properties_list/ data.data:",
+              data
+            );
+            dispatch(updateMyPropertyListHandler(data));
+            setMyProperties(data);
+            setShowLoading(false);
+          })
+          .catch((e) => {
+            console.log("error in axios /api/property/properties_list/", e);
+            setShowLoading(false);
+          });
+      } catch (error) {
+        console.log("error", error);
+      }
     }
   }, [token, update]);
 
-  const [showDetail, setShowDetail] = useState(false);
-  const [adData, setAdData] = useState([]);
   const handler = (data) => {
     setShowDetail(true);
     setAdData(data);
   };
-  console.log(MyPropertiesList);
   const delHandler = (data) => {
     const Api_Url = process.env.REACT_APP_API_URL;
     try {
@@ -70,26 +81,32 @@ const MyProperties = () => {
   };
   return (
     <>
-      <div className=" pr-6 ">
-        {!!!!MyPropertiesList &&
-          !showDetail &&
-          MyPropertiesList.map((val, index) => (
-            <div key={index}>
-              <MyProperyCard
-                data={val}
-                key={index}
-                showHandler={handler}
-                deleteHandler={delHandler}
-                isShown={true}
-              />
+      {!showLoading ? (
+        <div className=" pr-6 ">
+          {!!!!MyPropertiesList &&
+            !showDetail &&
+            MyPropertiesList.map((val, index) => (
+              <div key={index}>
+                <MyProperyCard
+                  data={val}
+                  key={index}
+                  showHandler={handler}
+                  deleteHandler={delHandler}
+                  isShown={true}
+                />
+              </div>
+            ))}
+          {MyPropertiesList.length == 0 && (
+            <div className="m-auto text-xl bg-warmGray-300">
+              شما آگهی ثبت نکرده اید!
             </div>
-          ))}
-        {MyPropertiesList.length == 0 && (
-          <div className="m-auto text-xl bg-warmGray-300">
-            شما آگهی ثبت نکرده اید!
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      ) : (
+        <div className="flex justify-center items-center eightyvh">
+          <Spinner name="folding-cube" color="#FF731D" fadeIn="none" />
+        </div>
+      )}
       {showDetail && <AdDetail data={adData} />}
     </>
   );

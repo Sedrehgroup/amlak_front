@@ -132,7 +132,7 @@ export default function AdDetail({ data }) {
           console.log("error in axios /users/create_user", e);
           if (e.response.status == 401) {
             //dispatch(setUserIsLoggedHandler(false));
-            window.localStorage.setItem("user_logged", "false");
+            // window.localStorage.setItem("user_logged", "false");
           }
         });
     } catch (error) {}

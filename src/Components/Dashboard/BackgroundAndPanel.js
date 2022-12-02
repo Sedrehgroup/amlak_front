@@ -15,6 +15,7 @@ export default function BackgroundAndPanel() {
           maxHeight: "calc(100vh - 72px)",
           overflowY: "auto",
         }}
+        className="pt-4"
       >
         <Main />
       </div>

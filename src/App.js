@@ -7,33 +7,68 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserIsLoggedHandler } from "./redux/reducers/login";
 import { useEffect } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+// import { Redirect, Route, Switch, useHistory } from "react-router-dom";
+import useToken from "./customHooks/useToken";
+import axios from "axios";
+// import ProtectedRoute from "./Components/Routs/ProtectedRoute";
 
 function App() {
   const isUserLogged = useSelector((state) => state.login.isUserLogged);
-  const dispatch = useDispatch();
-  const history = useHistory();
-  // check if user is logged before or not when page refresh
+  const [token, setUpdate] = useToken();
   useEffect(() => {
-    console.log("redux isUserLogged", isUserLogged);
+    console.log("isUserLogged redux", isUserLogged);
+    // if(!isUserLogged)
+  }, [isUserLogged]);
+  useEffect(() => {
+    const Api_Url = process.env.REACT_APP_API_URL;
     return () => {
-      const isLogged = window.localStorage.getItem("user_logged");
-      console.log("window.localStorage", isLogged);
-      if (!!!!isLogged & (isLogged == "true")) {
-        console.log("dooooooooooone");
-        dispatch(setUserIsLoggedHandler(true));
-      }
+      setInterval(() => {
+        if (!!!!token) {
+          try {
+            axios
+              .post(
+                `${Api_Url}/account/token/refresh/`,
+                {
+                  refresh: window.localStorage.getItem("REF_TOKEN"),
+                },
+                {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                }
+              )
+              .then(({ data }) => {
+                console.log(
+                  "axios get account/token/refresh/ data.data:",
+                  data
+                );
+                window.localStorage.setItem("ACC_TOKEN", data.access);
+                setUpdate(Math.random());
+              })
+              .catch((e) => {
+                console.log("error in axios account/token/refresh/", e);
+              });
+          } catch (error) {
+            console.log("error", error);
+          }
+        }
+      }, 10000);
     };
   }, []);
-  useEffect(() => {
-    if (isUserLogged) {
-      history.push("/");
-    }
-    console.log("isUserLogged", isUserLogged);
-  }, [isUserLogged]);
+
   return (
     <div className="bg-warmGray-200">
       {isUserLogged ? <Dashboard /> : <Login />}
+      {/* <Switch> */}
+      {/* <Route exact path="/" component={isUserLogged && Dashboard} /> */}
+      {/* <Route exact path="/" component={Login} /> */}
+      {/* <Route component={!isUserLogged ? Login : Dashboard} /> */}
+      {/* </Switch> */}
+      {/* <Switch>
+        <Route exact path="/" component={Login} />
+        <ProtectedRoute exact path="/app" component={Dashboard} />
+        <Route path="*" component={() => "404 Page Not Found"} />
+      </Switch> */}
       <ToastContainer />
     </div>
   );

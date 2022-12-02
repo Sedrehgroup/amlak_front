@@ -13,7 +13,11 @@ export default function UserFormDetail() {
     watch,
     formState: { errors },
   } = useForm();
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState({
+    first_name: "",
+    last_name: "",
+    national_code: "",
+  });
   const [selectedProvince, setSelectedProvince] = useState("تهران");
   const [selectedProvince2, setSelectedProvince2] = useState("تهران");
   const [selectedState2, setSelectedState2] = useState("تهران");
@@ -22,26 +26,28 @@ export default function UserFormDetail() {
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
 
-    try {
-      axios
-        .get(`${Api_Url}/account/user_information/`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then(({ data }) => {
-          console.log("axios /account/user_information data.data:", data);
-          setUserData(data);
-        })
-        .catch((e) => {
-          console.log("error in axios /account/user_information", e);
-          if (e.response.status == 401) {
-            // //dispatch(setUserIsLoggedHandler(false));
-            window.localStorage.setItem("user_logged", "false");
-          }
-        });
-    } catch (error) {
-      console.log("error", error);
+    if (!!!!token) {
+      try {
+        axios
+          .get(`${Api_Url}/account/user_information/`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(({ data }) => {
+            console.log("axios /account/user_information data.data:", data);
+            setUserData(data);
+          })
+          .catch((e) => {
+            console.log("error in axios /account/user_information", e);
+            if (e.response.status == 401) {
+              // //dispatch(setUserIsLoggedHandler(false));
+              // window.localStorage.setItem("user_logged", "false");
+            }
+          });
+      } catch (error) {
+        console.log("error", error);
+      }
     }
   }, [token]);
   const onSubmit = (data) => {
@@ -108,7 +114,7 @@ export default function UserFormDetail() {
           console.log("error in axios /account/create_additional_user/", e);
           if (e.response.status == 401) {
             // //dispatch(setUserIsLoggedHandler(false));
-            window.localStorage.setItem("user_logged", "false");
+            // window.localStorage.setItem("user_logged", "false");
           }
         });
     } catch (error) {
@@ -195,6 +201,7 @@ export default function UserFormDetail() {
               جنسیت
             </label>
             <select
+              defaultValue={true}
               dir="ltr"
               className="w-full h-12 px-4"
               {...register("sex")}
@@ -323,6 +330,7 @@ export default function UserFormDetail() {
               نوع شناسنامه
             </label>
             <select
+              defaultValue="اصل"
               dir="ltr"
               className="w-full h-12 px-4"
               {...register("certificate_type")}
@@ -340,6 +348,7 @@ export default function UserFormDetail() {
               وضعیت تاهل
             </label>
             <select
+              defaultValue={true}
               dir="ltr"
               className="w-full h-12 px-4"
               {...register("marriage")}
@@ -425,7 +434,6 @@ export default function UserFormDetail() {
                 value: selectedState2,
               })}
               value={selectedState2}
-              defaultValue="تهران"
               placeholder="تهران"
             >
               {iranCitiesList

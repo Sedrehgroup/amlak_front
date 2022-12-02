@@ -38,7 +38,7 @@ const RequestsFromMe = () => {
 
           if (e.response.status == 401) {
             //dispatch(setUserIsLoggedHandler(false));
-            window.localStorage.setItem("user_logged", "false");
+            // window.localStorage.setItem("user_logged", "false");
           }
         });
     } catch (error) {

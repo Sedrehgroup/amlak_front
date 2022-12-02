@@ -56,7 +56,7 @@ export default function SignContract() {
           console.log("error in del /api/modify_requests data:", e);
           if (e.response.status == 401) {
             //dispatch(setUserIsLoggedHandler(false));
-            window.localStorage.setItem("user_logged", "false");
+            // window.localStorage.setItem("user_logged", "false");
           }
         });
     } catch (error) {

@@ -26,7 +26,7 @@ import { useDispatch } from "react-redux";
 
 const RequestsToMe = () => {
   const [lessorData, setLessorData] = useState();
-  console.log(lessorData);
+
   const dispatch = useDispatch();
   const [token] = useToken();
 
@@ -49,7 +49,7 @@ const RequestsToMe = () => {
             console.log("error in axios /users/user_information", e);
             if (e.response.status == 401) {
               //dispatch(setUserIsLoggedHandler(false));
-              window.localStorage.setItem("user_logged", "false");
+              // window.localStorage.setItem("user_logged", "false");
             }
           });
       } catch (error) {

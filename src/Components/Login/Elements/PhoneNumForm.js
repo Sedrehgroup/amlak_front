@@ -57,9 +57,9 @@ export default function PhoneNumForm() {
             console.log("error in axios /users/otp_register", e);
             if (e.response.status == 401) {
               //dispatch(setUserIsLoggedHandler(false));
-              window.localStorage.setItem("user_logged", "false");
-              window.localStorage.removeItem("ACC_TOKEN");
-              window.localStorage.removeItem("REF_TOKEN");
+              // window.localStorage.setItem("user_logged", "false");
+              // window.localStorage.removeItem("ACC_TOKEN");
+              // window.localStorage.removeItem("REF_TOKEN");
               setShowLoading(false);
             }
           });

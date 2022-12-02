@@ -7,17 +7,27 @@ import useToken from "../../customHooks/useToken";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { setUserIsLoggedHandler } from "../../redux/reducers/login";
+import { useHistory, useLocation } from "react-router-dom";
 
 export default function NavBar() {
   const [isAllAdds, setisAllAdds] = useState(false);
   const [userData, setUserData] = useState({});
   const dispatch = useDispatch();
   const [token] = useToken();
-
+  const history = useHistory();
+  const location = useLocation();
   const isAllAddsHandler = function () {
     setisAllAdds(!isAllAdds);
   };
-
+  const logOutHandler = () => {
+    window.localStorage.removeItem("ACC_TOKEN");
+    window.localStorage.removeItem("REF_TOKEN");
+    window.localStorage.setItem("user_logged", "false");
+    dispatch(setUserIsLoggedHandler(false));
+    // history.push("/login");
+    // location.reload();
+    history.go(0);
+  };
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
 
@@ -49,8 +59,13 @@ export default function NavBar() {
   return (
     <div className="w-full bg-white flex justify-between items-center">
       <div className="mr-7 flex gap-4">
+        <button
+          className="text-sm text-main-500 font-bold"
+          onClick={logOutHandler}
+        >
+          خروج
+        </button>
         <button className="sm:hidden flex bg-primary-500 rounded justify-center items-center p-2">
-          <p className="mr-3">تهران</p>
           <img src={loc} alt="" />
         </button>
         <button className="p-2 border border-main-300  rounded gap-2  h-10 border-12 border-solid flex items-center">

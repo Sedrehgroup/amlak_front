@@ -9,15 +9,17 @@ import {
   setUserIsLoggedHandler,
   userLoginStepAccess,
 } from "../../../redux/reducers/login";
+import { useHistory } from "react-router-dom";
 // import { userLoginStepAccess } from "../../../redux/reducers/login";
 
 export default function RegisterForm() {
   const phoneNumber = useSelector((state) => state.login.phoneNumber);
-  const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [familyName, setFamilyName] = useState("");
   const [nationalCode, setNationalCode] = useState("");
   const [showLoading, setShowLoading] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const {
     register,
@@ -41,8 +43,7 @@ export default function RegisterForm() {
           console.log("axios /users/create_user", data);
           dispatch(userLoginStepAccess("Register_Step"));
           setShowLoading(false);
-
-          dispatch(userLoginStepAccess("Register_Step"));
+          history.push("/");
           window.localStorage.setItem("ACC_TOKEN", data.access);
           window.localStorage.setItem("REF_TOKEN", data.refresh);
           window.localStorage.setItem("user_logged", "true");
@@ -53,8 +54,8 @@ export default function RegisterForm() {
           setShowLoading(false);
 
           if (e.response.status == 401) {
-            //dispatch(setUserIsLoggedHandler(false));
-            window.localStorage.setItem("user_logged", "false");
+            // dispatch(setUserIsLoggedHandler(false));
+            // window.localStorage.setItem("user_logged", "false");
           }
         });
     } catch (error) {}

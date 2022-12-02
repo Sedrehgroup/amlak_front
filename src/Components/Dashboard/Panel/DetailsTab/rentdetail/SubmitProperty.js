@@ -126,7 +126,7 @@ export default function SubmitProperty() {
           console.log("error in axios /users/otp_register", e);
           if (e.response.status == 401) {
             //dispatch(setUserIsLoggedHandler(false));
-            window.localStorage.setItem("user_logged", "false");
+            // window.localStorage.setItem("user_logged", "false");
           }
         });
     } catch (error) {
@@ -223,6 +223,7 @@ export default function SubmitProperty() {
               })}
               placeholder="1401"
               required
+              defaultValue={1400}
             >
               {arrayOfYears(50).map((val, index) => (
                 <option key={index} value={val}>
@@ -244,6 +245,7 @@ export default function SubmitProperty() {
               })}
               placeholder="مسکونی"
               required
+              defaultValue={0}
             >
               {["مسکونی", "تجاری", "غیره"].map((val, index) => (
                 <option key={index} value={index}>
@@ -265,6 +267,7 @@ export default function SubmitProperty() {
               })}
               placeholder="مسکونی"
               required
+              defaultValue={0}
             >
               {["مسکونی", "زراعی", "ویلایی", "غیره"].map((val, index) => (
                 <option key={index} value={index}>
@@ -335,10 +338,8 @@ export default function SubmitProperty() {
               className="w-full h-12 px-4"
               {...register("city", {
                 required: "وارد کردن این فیلد الزامی می باشد",
-                value: selectedState,
               })}
               value={selectedState}
-              defaultValue="تهران"
               placeholder="تهران"
               required
             >
@@ -377,6 +378,7 @@ export default function SubmitProperty() {
               })}
               placeholder="بله"
               required
+              defaultValue={true}
             >
               {[true, false].map((val, index) => (
                 <option key={index} value={val}>

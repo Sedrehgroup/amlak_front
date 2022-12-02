@@ -3,30 +3,40 @@ import React, { useEffect, useState } from "react";
 import useToken from "../../../../customHooks/useToken";
 import AdDetail from "../DetailsTab/rentdetail/AdDetail";
 import MyProperyCard from "../DetailsTab/rentdetail/MyProperyCard";
+import Spinner from "react-spinkit";
 
 const AllProperties = () => {
   const [token] = useToken();
   const [MyPropertiesList, setMyProperties] = useState([]);
-  useEffect(() => {
-    console.log("token", token);
-  }, [token]);
+  const [showLoading, setShowLoading] = useState(false);
 
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
-    try {
-      axios
-        .get(`${Api_Url}/api/properties_list/`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then(({ data }) => {
-          setMyProperties(data);
-          console.log("axios get /api/my_properties data.data:", data);
-        })
-        .catch((e) => console.log("error in axios /users/otp_register", e));
-    } catch (error) {
-      console.log("error", error);
+    if (token.length > 0) {
+      setShowLoading(true);
+      try {
+        axios
+          .get(`${Api_Url}/api/property/properties_list/`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(({ data }) => {
+            setMyProperties(data);
+            setShowLoading(false);
+
+            console.log(
+              "axios get /api/property/properties_list data.data:",
+              data
+            );
+          })
+          .catch((e) => {
+            console.log("error in axios /api/property/properties_list", e);
+            setShowLoading(false);
+          });
+      } catch (error) {
+        console.log("error", error);
+      }
     }
   }, [token]);
   const [showDetail, setShowDetail] = useState(false);
@@ -38,15 +48,27 @@ const AllProperties = () => {
 
   return (
     <>
-      <div className="m_grid-container pr-6">
-        {!!!!MyPropertiesList &&
-          !showDetail &&
-          MyPropertiesList.map((val, index) => (
-            <div key={index}>
-              <MyProperyCard data={val} showHandler={handler} />
+      {!showLoading ? (
+        <div className="m_grid-container pr-6">
+          {!!!!MyPropertiesList &&
+            !showDetail &&
+            MyPropertiesList.map((val, index) => (
+              <div key={index}>
+                <MyProperyCard data={val} showHandler={handler} />
+              </div>
+            ))}
+          {MyPropertiesList.length == 0 && (
+            <div className="m-auto text-xl bg-warmGray-300">
+              آگهی ثبت شده ای وجود ندارد!
             </div>
-          ))}
-      </div>
+          )}
+        </div>
+      ) : (
+        <div className="flex justify-center items-center eightyvh">
+          <Spinner name="folding-cube" color="#FF731D" fadeIn="none" />
+        </div>
+      )}
+
       {showDetail && <AdDetail data={adData} />}
     </>
   );

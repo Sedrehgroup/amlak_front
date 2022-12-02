@@ -21,9 +21,7 @@ export default function Panel() {
     (state) => state.userProperty.showSignContract
   );
   const location = useLocation();
-  useEffect(() => {
-    console.log("location", location.pathname);
-  }, [location]);
+
   return (
     <>
       <div className="bg-warmGray-100 rounded-tl-lg rounded-bl-lg">

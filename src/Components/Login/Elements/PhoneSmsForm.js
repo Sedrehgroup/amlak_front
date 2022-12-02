@@ -9,6 +9,7 @@ import {
 } from "../../../redux/reducers/login";
 import Spinner from "react-spinkit";
 import { getAccessTokenHandler } from "../../../utils/Api";
+import { useHistory } from "react-router-dom";
 
 export default function PhoneSmsForm() {
   const smsCode = useSelector((state) => state.login.smsCode);
@@ -20,6 +21,7 @@ export default function PhoneSmsForm() {
   const [btnIsPressed, setBtnIsPressed] = useState(false);
 
   const dispatch = useDispatch();
+  const history = useHistory();
   useEffect(() => {
     if (isPinCodeValid) {
       checkUserIsInDatabase();
@@ -53,6 +55,7 @@ export default function PhoneSmsForm() {
 
           dispatch(userLoginStepAccess("PhoneSms_Step"));
           dispatch(userLoginStepAccess("Register_Step"));
+          history.push("/");
           window.localStorage.setItem("ACC_TOKEN", data.access);
           window.localStorage.setItem("REF_TOKEN", data.refresh);
           window.localStorage.setItem("user_logged", "true");
