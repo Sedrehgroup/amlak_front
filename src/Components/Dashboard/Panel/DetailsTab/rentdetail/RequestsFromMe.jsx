@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import RequestFromLessor from "../../../../Card/RequestFromLessor";
 import imgFrame from "../../../../../assets/Images/Dashboard/Frame.png";
 import axios from "axios";
 import useToken from "../../../../../customHooks/useToken";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserIsLoggedHandler } from "../../../../../redux/reducers/login";
+import MyRequestCard from "../../../../Card/MyRequestCard";
 
 // درخواست ها - صفحه مستأجر
 
@@ -24,17 +24,17 @@ const RequestsFromMe = () => {
 
     try {
       axios
-        .get(`${Api_Url}/api/requests/`, {
+        .get(`${Api_Url}/api/request/my_requests/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
         .then(({ data }) => {
-          console.log("axios /users/user_information data.data:", data);
+          console.log("axios /api/request/my_requests data.data:", data);
           setTenantData(data);
         })
         .catch((e) => {
-          console.log("error in axios /users/user_information", e);
+          console.log("error in axios /api/request/my_requests", e);
 
           if (e.response.status == 401) {
             //dispatch(setUserIsLoggedHandler(false));
@@ -47,21 +47,14 @@ const RequestsFromMe = () => {
   }, [token, update]);
 
   return (
-    <div className="flex flex-col overflow-y-scroll bg-warmGray-200 ">
+    <div className=" bg-warmGray-200 ">
       {!!!!tenantData &&
         tenantData.map((value, index) => (
           <div key={index}>
-            <RequestFromLessor
-              AdTitle={`${tenantData[index].request_property.title}`}
+            <MyRequestCard
               TitleOfChatButton="گفتگو با موجر"
-              meterage={`${tenantData[index].request_property.area} متر`}
-              mortgagePrice={`${tenantData[index].request_property.mortgage_amount} تومان`}
-              rentalPrice={`${tenantData[index].request_property.rent_amount} تومان`}
               imgPath={imgFrame}
-              requestState="-"
-              // SecondButtonText="اطلاعات تماس مستأجر"
-              MainButtonText="مشاهده درخواست"
-              mostajer_status={tenantData[index].status}
+              data={value}
             />
           </div>
         ))}

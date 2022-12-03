@@ -56,18 +56,18 @@ export default function MyProperyCard(props) {
               <>
                 <button
                   onClick={() => deleteHandler(props.data)}
-                  className="w-24 h-10 text-dark_red border-12 border-dark_red border-solid rounded-lg"
+                  className="text-sm w-24 h-10 text-dark_red border-12 border-dark_red border-solid rounded-lg"
                 >
                   حذف آگهی
                 </button>
-                <button className="w-24 h-10 bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg">
+                <button className="text-sm w-24 h-10 bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg">
                   ویرایش آگهی
                 </button>
               </>
             )}
             <button
               onClick={() => showHandler(props.data)}
-              className="w-24 h-10 bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg"
+              className="text-sm w-24 h-10 bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg"
             >
               مشاهده آگهی
             </button>

@@ -14,14 +14,17 @@ import { useDispatch, useStore } from "react-redux";
 import useToken from "../../../../../customHooks/useToken";
 import { updateListHandler } from "../../../../../redux/reducers/userProperty";
 import { setUserIsLoggedHandler } from "../../../../../redux/reducers/login";
+import { useHistory } from "react-router-dom";
 
 export default function AdDetail({ data }) {
   const [data2, setData2] = useState({});
   const dispatch = useDispatch();
+  const history = useHistory();
   useEffect(() => {
     console.log("data in adDetail ", data);
     if (!!!!data) {
       const {
+        owner,
         id,
         title,
         mortgage_amount,
@@ -58,6 +61,7 @@ export default function AdDetail({ data }) {
         units_per_floor,
       } = data;
       setData2({
+        owner,
         id,
         title,
         mortgage_amount,
@@ -96,10 +100,9 @@ export default function AdDetail({ data }) {
     }
   }, [data]);
   const [showMyRequest, setShowMyRequest] = useState(false);
+  const [description, setDescription] = useState("");
 
-  const num = String(data2.id);
   // console.log(typeof String(num));
-  console.log(num);
 
   // const [numSetter, setNumSetter] = useStore();
   // setNumSetter(numSetter);
@@ -111,10 +114,11 @@ export default function AdDetail({ data }) {
     try {
       axios
         .post(
-          `${Api_Url}/api/requests/`,
+          `${Api_Url}/api/request/my_requests/`,
           {
-            status: 0,
-            request_property: num,
+            status: 1,
+            request_property: +data2?.id,
+            tenant_description: description || null,
           },
           {
             headers: {
@@ -122,17 +126,14 @@ export default function AdDetail({ data }) {
             },
           }
         )
-        .then((data) => {
-          console.log(data);
-          dispatch(updateListHandler());
-          // dispatch(userLoginStepAccess("Register_Step"));
-          // getAccessTokenHandler(phoneNumber);
+        .then(({ data }) => {
+          console.log("api/request/my_requests data.data:", data);
+          // dispatch(updateListHandler());
+          history.push("/requestsFromMe");
         })
         .catch((e) => {
           console.log("error in axios /users/create_user", e);
           if (e.response.status == 401) {
-            //dispatch(setUserIsLoggedHandler(false));
-            // window.localStorage.setItem("user_logged", "false");
           }
         });
     } catch (error) {}
@@ -145,7 +146,7 @@ export default function AdDetail({ data }) {
       {showMyRequest ? (
         <RequestsFromMe />
       ) : (
-        <div className="">
+        <div className="mt-4 mb-4">
           <strong className="flex justify-center text-4xl mb-8">
             {data2?.title}
           </strong>
@@ -174,7 +175,10 @@ export default function AdDetail({ data }) {
                       marginBottom: "16px",
                     }}
                   />
-                  <p className="mb-4">مؤجر : رضا نیازی</p>
+                  <p className="mb-4">
+                    مؤجر :<span>{data2?.owner?.first_name}</span>{" "}
+                    <span>{data2?.owner?.last_name}</span>
+                  </p>
                   <hr
                     style={{
                       color: "#D6D3D1",
@@ -273,15 +277,14 @@ export default function AdDetail({ data }) {
                   ></iframe>
                 </div>
                 <div className="flex justify-center gap-8">
-                  <button className=" text-sub-500 border-12 border-solid border-sub-500 rounded px-6 py-1 ">
+                  <button className="text-sm text-sub-500 border-12 border-solid border-sub-500 rounded px-6 py-1 ">
                     گفتگو
                   </button>
 
                   <Popup
                     trigger={
-                      <button className="button bg-main-500 text-white px-12 rounded-lg">
-                        {" "}
-                        ثبت درخواست{" "}
+                      <button className=" bg-main-500 text-white py-1 px-6 rounded-lg text-sm">
+                        ثبت درخواست
                       </button>
                     }
                     modal
@@ -297,12 +300,14 @@ export default function AdDetail({ data }) {
                           <p className="text-base">توضیحات تکمیلی</p>
                           <input
                             type="text"
-                            className="bg-warmGray-400 w-full h-14 rounded-lg mt-4"
+                            className="bg-warmGray-100 w-full h-14 rounded-lg mt-4 p-4"
+                            onChange={(e) => setDescription(e.target.value)}
+                            value={description}
                           />
                         </div>
                         <div className="actions flex justify-center gap-3">
                           <button
-                            className="button bg-warmGray-500 text-white w-12 rounded-lg text-base"
+                            className="button bg-warmGray-100 text-warmGray-500 py-1 rounded-lg text-base px-4"
                             onClick={() => {
                               console.log("modal closed ");
                               close();
@@ -311,7 +316,7 @@ export default function AdDetail({ data }) {
                             بستن{" "}
                           </button>
                           <button
-                            className="button bg-main-500 text-white w-12 rounded-lg text-base"
+                            className="button bg-main-500 text-white py-1 rounded-lg text-base px-4"
                             onClick={() => {
                               // showMyRequestHandler();
                               onSubmit();

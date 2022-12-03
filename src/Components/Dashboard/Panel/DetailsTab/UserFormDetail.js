@@ -456,7 +456,9 @@ export default function UserFormDetail() {
               {iranCitiesList
                 .filter(
                   (element) =>
-                    element.province == userAdditionalData.certificate_province
+                    element.province ==
+                      userAdditionalData.certificate_province ||
+                    element.province == selectedProvince
                 )
                 .map((val, index) => (
                   <option
