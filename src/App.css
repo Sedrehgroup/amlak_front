@@ -9,6 +9,7 @@ body {
   line-height: inherit;
   font-family: Vazir;
   overflow: hidden;
+  scroll-behavior: smooth;
 }
 
 .App-logo {
@@ -154,10 +155,12 @@ body {
 .line {
   color: #fdba74;
 }
+
 .ideal-border {
   border-left: 1px solid #fdba74;
   border-right: 1px solid #fdba74;
 }
+
 .m_grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -179,17 +182,19 @@ div#popup-64 {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #ffab77;
-  border-radius: 10px;
+  opacity: 0.1;
+  border-radius: 2px;
   cursor: pointer !important;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #ff731d;
+
 }

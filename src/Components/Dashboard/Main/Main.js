@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import ChatPage from "../../Chat/ChatPage";
 import RequestsFromMe from "../Panel/DetailsTab/rentdetail/RequestsFromMe";
 import RequestsToMe from "../Panel/DetailsTab/rentdetail/RequestsToMe";
 import SubmitProperty from "../Panel/DetailsTab/rentdetail/SubmitProperty";
@@ -21,7 +22,9 @@ const Main = () => {
           <UserFormDetail />
         </Route>
         <Route path="/chat">
-          <center>صفحه چت</center>
+          <center>
+            <ChatPage />
+          </center>
         </Route>
         <Route path="/submitProperty">
           <SubmitProperty />

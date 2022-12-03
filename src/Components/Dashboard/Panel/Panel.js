@@ -12,6 +12,7 @@ import {
   UserInfo_img,
 } from "./panelImages";
 
+
 import useTimeDateFa from "../../../customHooks/useTimeDateFa";
 import { useSelector } from "react-redux";
 
@@ -24,7 +25,7 @@ export default function Panel() {
 
   return (
     <>
-      <div className="bg-warmGray-100 rounded-tl-lg rounded-bl-lg">
+      <div className="bg-warmGray-100 rounded-tl-lg rounded-bl-lg flex flex-col gap-y-4 pt-2 pr-4">
         <Link to="/dashboard">
           <div
             className={`flex flex-row gap-2 ${
@@ -57,7 +58,7 @@ export default function Panel() {
           </div>
         </Link>
         <div>
-          <p>موجر</p>
+          <p className="font-bold text-lg">موجر</p>
         </div>
         <Link to="/submitProperty">
           <div
@@ -100,7 +101,7 @@ export default function Panel() {
           </div>
         </Link>
         <div>
-          <p>مستاجر</p>
+          <p className="font-bold text-lg">مستاجر</p>
         </div>
         <Link to="/allProperties">
           <div
@@ -132,9 +133,9 @@ export default function Panel() {
             <span className="text-sm">اجاره شده ها</span>
           </div>
         </Link>
-        <span className="bg-main-200 text-sm w-fit p-1 rounded-bl-lg rounded-tr-lg mt-10">
-          {date.day}
-          {date.month}
+        <span className="bg-main-200 text-sm w-fit p-1 rounded-bl-lg rounded-tr-lg mt-10 self-end">
+          {date.day}&nbsp;&nbsp;
+          {date.month}&nbsp;&nbsp;
           {date.year}
         </span>
       </div>
