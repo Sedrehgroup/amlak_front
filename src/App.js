@@ -52,7 +52,7 @@ function App() {
             console.log("error", error);
           }
         }
-      }, 10000);
+      }, 120000);
     };
   }, []);
 

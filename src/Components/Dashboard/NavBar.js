@@ -46,8 +46,8 @@ export default function NavBar() {
           .catch((e) => {
             console.log("error in axios /account/user_information", e);
             if (e.response.status == 401) {
-              // //dispatch(setUserIsLoggedHandler(false));
-              // window.localStorage.setItem("user_logged", "false");
+              dispatch(setUserIsLoggedHandler(false));
+              window.localStorage.setItem("user_logged", "false");
             }
           });
       } catch (error) {
