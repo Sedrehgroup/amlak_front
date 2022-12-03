@@ -55,10 +55,8 @@ const RequestsToMe = () => {
             />
           </div>
         ))}
-      {!lessorData && (
-        <div className="m-auto text-xl bg-warmGray-300">
-          شمادرخواستی ندارید!
-        </div>
+      {lessorData?.lenght == 0 && (
+        <div className="m-auto text-xl text-center">شما درخواستی ندارید!</div>
       )}
     </div>
   );

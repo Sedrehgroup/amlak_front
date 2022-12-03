@@ -58,9 +58,9 @@ const RequestsFromMe = () => {
             />
           </div>
         ))}
-      {!tenantData && (
-        <div className="m-auto text-xl bg-warmGray-300">
-          شمادرخواستی ثبت نکرده اید!
+      {tenantData?.length == 0 && (
+        <div className="m-auto text-xl text-center ">
+          شما درخواستی ثبت نکرده اید!
         </div>
       )}{" "}
     </div>

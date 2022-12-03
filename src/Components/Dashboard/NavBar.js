@@ -24,7 +24,7 @@ export default function NavBar() {
     window.localStorage.removeItem("REF_TOKEN");
     window.localStorage.setItem("user_logged", "false");
     dispatch(setUserIsLoggedHandler(false));
-    // history.push("/login");
+    history.push("/login");
     // location.reload();
     history.go(0);
   };
