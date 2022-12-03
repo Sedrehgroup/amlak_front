@@ -433,6 +433,7 @@ export default function UserFormDetail() {
                 <option
                   key={index}
                   value={val}
+                  disabled={val != "تهران"}
                   selected={
                     userAdditionalData.certificate_province == val && "selected"
                   }
@@ -461,6 +462,7 @@ export default function UserFormDetail() {
                   <option
                     key={index}
                     value={val.city}
+                    disabled={val.city != "تهران"}
                     selected={
                       userAdditionalData.certificate_county == val.city &&
                       "selected"
@@ -550,6 +552,7 @@ export default function UserFormDetail() {
                 ...new Set(iranCitiesList.map((element) => element.province)),
               ].map((val, index) => (
                 <option
+                  disabled={val != "تهران"}
                   key={index}
                   value={val}
                   selected={userAdditionalData.province == val && "selected"}
@@ -581,6 +584,7 @@ export default function UserFormDetail() {
                 )
                 .map((val, index) => (
                   <option
+                    disabled={val.city != "تهران"}
                     key={index}
                     value={val.city}
                     selected={
@@ -612,7 +616,11 @@ export default function UserFormDetail() {
                     element.province == selectedProvince2
                 )
                 .map((val, index) => (
-                  <option key={index} value={val.city}>
+                  <option
+                    key={index}
+                    value={val.city}
+                    disabled={val.city != "تهران"}
+                  >
                     {val.city}
                   </option>
                 ))}
