@@ -111,7 +111,7 @@ export default function AdDetail({ data }) {
     try {
       axios
         .post(
-          `${Api_Url}/api/requests/`,
+          `${Api_Url}/api/request/my_requests/`,
           {
             status: 0,
             request_property: num,

@@ -24,7 +24,7 @@ const RequestsFromMe = () => {
 
     try {
       axios
-        .get(`${Api_Url}/api/requests/`, {
+        .get(`${Api_Url}/api/request/my_requests/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -36,7 +36,7 @@ const RequestsToMe = () => {
     if (!!!!token) {
       try {
         axios
-          .get(`${Api_Url}/api/requests_to_me/`, {
+          .get(`${Api_Url}/api/request/requests_to_me/`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
