@@ -12,10 +12,12 @@ import { arrayOfYears } from "../../../../../utils/yearsList";
 
 import { toast } from "react-toastify";
 import { setUserIsLoggedHandler } from "../../../../../redux/reducers/login";
+import { useHistory } from "react-router-dom";
 
 export default function SubmitProperty() {
   const [selectedProvince, setSelectedProvince] = useState("تهران");
   const [selectedState, setSelectedState] = useState("تهران");
+  const history = useHistory();
   const dispatch = useDispatch();
   const {
     register,
@@ -105,14 +107,14 @@ export default function SubmitProperty() {
     };
     try {
       axios
-        .post(`${Api_Url}/api/my_properties/`, formData, {
+        .post(`${Api_Url}/api/property/my_properties/`, formData, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
         .then(({ data }) => {
-          console.log("axios /api/my_properties data.data:", data);
-
+          console.log("axios /api/property/my_properties data.data:", data);
+          history.push("/myProperties");
           toast.success("آگهی با موفقیت ثبت شد", {
             position: "top-center",
             rtl: true,
@@ -123,7 +125,7 @@ export default function SubmitProperty() {
           dispatch(updateMyPropertyListHandler([formData]));
         })
         .catch((e) => {
-          console.log("error in axios /users/otp_register", e);
+          console.log("error in axios /api/property/my_properties", e);
           if (e.response.status == 401) {
             //dispatch(setUserIsLoggedHandler(false));
             // window.localStorage.setItem("user_logged", "false");

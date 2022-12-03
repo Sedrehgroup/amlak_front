@@ -26,14 +26,14 @@ const MyProperties = () => {
       setShowLoading(true);
       try {
         axios
-          .get(`${Api_Url}/api/property/properties_list/`, {
+          .get(`${Api_Url}/api/property/my_properties/`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           })
           .then(({ data }) => {
             console.log(
-              "axios get /api/property/properties_list/ data.data:",
+              "axios get /api/property/my_properties/ data.data:",
               data
             );
             dispatch(updateMyPropertyListHandler(data));
@@ -41,7 +41,7 @@ const MyProperties = () => {
             setShowLoading(false);
           })
           .catch((e) => {
-            console.log("error in axios /api/property/properties_list/", e);
+            console.log("error in axios /api/property/my_properties/", e);
             setShowLoading(false);
           });
       } catch (error) {
@@ -58,7 +58,7 @@ const MyProperties = () => {
     const Api_Url = process.env.REACT_APP_API_URL;
     try {
       axios
-        .delete(`${Api_Url}/api/modify_properties/${data.id}/`, {
+        .delete(`${Api_Url}/api/property/modify_properties/${data.id}/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -70,10 +70,10 @@ const MyProperties = () => {
             rtl: true,
             className: "m_toast",
           });
-          console.log("axios del /api/modify_properties data:", _data);
+          console.log("axios del /api/property/modify_properties data:", _data);
         })
         .catch((e) =>
-          console.log("error in del /api/modify_properties data:", e)
+          console.log("error in del /api/property/modify_properties data:", e)
         );
     } catch (error) {
       console.log("error", error);
@@ -82,7 +82,7 @@ const MyProperties = () => {
   return (
     <>
       {!showLoading ? (
-        <div className=" pr-6 ">
+        <div className="m_grid-container  pr-6 ">
           {!!!!MyPropertiesList &&
             !showDetail &&
             MyPropertiesList.map((val, index) => (
