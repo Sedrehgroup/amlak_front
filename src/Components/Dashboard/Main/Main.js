@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import ChatPage from "../../Chat/ChatPage";
 import RequestsFromMe from "../Panel/DetailsTab/rentdetail/RequestsFromMe";
 import RequestsToMe from "../Panel/DetailsTab/rentdetail/RequestsToMe";
+import SignContract from "../Panel/DetailsTab/rentdetail/SignContract";
 import SubmitProperty from "../Panel/DetailsTab/rentdetail/SubmitProperty";
 import UserFormDetail from "../Panel/DetailsTab/UserFormDetail";
 import AllProperties from "../Panel/Tabs/AllProperties";
@@ -45,7 +46,7 @@ const Main = () => {
           <RequestsFromMe />
         </Route>
         <Route path="/accepptedForMe">
-          <center>AccepptedForMe</center>
+          <SignContract />
         </Route>
       </Switch>
     </>

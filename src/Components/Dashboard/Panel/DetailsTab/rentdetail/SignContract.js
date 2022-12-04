@@ -278,6 +278,7 @@ export default function SignContract() {
                 >
                   <p className="text-white">تایید و امضا</p>
                 </button>
+                <button onClick={() => window.print()}>PRINT</button>
               </div>
             </div>
           </div>
