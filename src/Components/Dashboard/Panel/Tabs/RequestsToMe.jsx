@@ -9,11 +9,14 @@ import imgFrame from "./../../../../assets/Images/Dashboard/Frame.png";
 import { setUserIsLoggedHandler } from "../../../../redux/reducers/login";
 import ToMeRequestCard from "../../../Card/ToMeRequestCard";
 import RequestDetails from "../AddOns/RequestDetails";
+import { updateListHandler } from "../../../../redux/reducers/userProperty";
+import { toast } from "react-toastify";
 
 // درخواست ها - صفحه مؤجر
 
 const RequestsToMe = () => {
   const [lessorData, setLessorData] = useState();
+  const [update, setUpdate] = useState(0);
   const [showLoading, setShowLoading] = useState(false);
   const { path, url } = useRouteMatch();
 
@@ -21,9 +24,8 @@ const RequestsToMe = () => {
   const [token] = useToken();
   const [adData, setAdData] = useState({});
 
+  const Api_Url = process.env.REACT_APP_API_URL;
   useEffect(() => {
-    const Api_Url = process.env.REACT_APP_API_URL;
-
     if (!!!!token) {
       try {
         setShowLoading(true);
@@ -51,7 +53,91 @@ const RequestsToMe = () => {
         console.log("error", error);
       }
     }
-  }, [token]);
+  }, [token, update]);
+  const submitPropertyHandler = (id) => {
+    if (!!!!token) {
+      try {
+        setShowLoading(true);
+        axios
+          .patch(
+            `${Api_Url}/api/request/modify_requests_to_me/${id}/`,
+            {
+              status: 2,
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
+          .then(({ data }) => {
+            console.log(
+              "axios /api/request/modify_requests_to_me data.data:",
+              data
+            );
+            dispatch(updateListHandler(Math.random())); //update tenant requests list
+            setUpdate(Math.random()); //update landloard requests list
+            setShowLoading(false);
+            toast.success("درخواست آگهی توسط شما تایید شد", {
+              position: "top-center",
+              rtl: true,
+              className: "m_toast",
+            });
+          })
+          .catch((e) => {
+            console.log("error in axios /api/request/modify_requests_to_me", e);
+            setShowLoading(false);
+
+            if (e.response.status == 401) {
+            }
+          });
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
+  };
+  const rejectPropertyHandler = (id) => {
+    if (!!!!token) {
+      try {
+        setShowLoading(true);
+        axios
+          .patch(
+            `${Api_Url}/api/request/modify_requests_to_me/${id}/`,
+            {
+              status: 0,
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
+          .then(({ data }) => {
+            console.log(
+              "axios /api/request/modify_requests_to_me data.data:",
+              data
+            );
+            dispatch(updateListHandler(Math.random())); //update tenant requests list
+            setUpdate(Math.random()); //update landloard requests list
+            setShowLoading(false);
+            toast.success("درخواست آگهی توسط شما رد شد", {
+              position: "top-center",
+              rtl: true,
+              className: "m_toast",
+            });
+          })
+          .catch((e) => {
+            console.log("error in axios /api/request/modify_requests_to_me", e);
+            setShowLoading(false);
+
+            if (e.response.status == 401) {
+            }
+          });
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
+  };
   const getPropertyData = (data) => {
     setAdData(data);
   };
@@ -70,6 +156,12 @@ const RequestsToMe = () => {
                     data={value}
                     passPropertyData={() =>
                       getPropertyData(value?.request_property)
+                    }
+                    submitPropertyHandler={() =>
+                      submitPropertyHandler(value?.id)
+                    }
+                    rejectPropertyHandler={() =>
+                      rejectPropertyHandler(value?.id)
                     }
                   />
                 </div>

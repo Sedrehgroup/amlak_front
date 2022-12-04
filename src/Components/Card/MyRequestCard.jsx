@@ -7,8 +7,7 @@ import {
   signContractHandler,
 } from "./../../redux/reducers/userProperty";
 import { Link, useRouteMatch } from "react-router-dom";
-// import ContractSubmit from "../Dashboard/Panel/DetailsTab/rentdetail/ContractSubmit";
-// کارت طراحی شده برای درخواست ها و اجاره ها
+// کارت درخواست من به عنوان مستاجر
 
 const MyRequestCard = ({
   data,

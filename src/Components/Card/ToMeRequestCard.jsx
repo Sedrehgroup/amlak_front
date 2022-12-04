@@ -7,14 +7,16 @@ import {
   signContractHandler,
 } from "./../../redux/reducers/userProperty";
 import { Link, useRouteMatch } from "react-router-dom";
-// import ContractSubmit from "../Dashboard/Panel/DetailsTab/rentdetail/ContractSubmit";
-// کارت طراحی شده برای درخواست ها و اجاره ها
+import Popup from "reactjs-popup";
+// کارت درخواست وارده به من به عنوان موجر
 
 const ToMeRequestCard = ({
   data,
   TitleOfChatButton,
   imgPath,
   passPropertyData,
+  submitPropertyHandler,
+  rejectPropertyHandler,
 }) => {
   const {
     id,
@@ -108,12 +110,94 @@ const ToMeRequestCard = ({
                 </button>
               ) : status == 1 ? (
                 <>
-                  <button className="border-12 border-main-600 text-main-600 rounded-lg font-bold px-6 py-2">
-                    اطلاعات تماس مستاجر
-                  </button>
-                  <button className="border-2 bg-main-600 text-white rounded-lg font-bold px-6 py-2">
-                    مشاهده درخواست
-                  </button>
+                  <Popup
+                    trigger={
+                      <button className="border-12 border-main-600 text-main-600 rounded-lg font-bold px-6 py-2">
+                        اطلاعات تماس مستاجر
+                      </button>
+                    }
+                    modal
+                    nested
+                  >
+                    {(close) => (
+                      <div className="modal">
+                        <button className="close" onClick={close}>
+                          &times;
+                        </button>
+                        <div className="header"> اطلاعات درخواست دهنده</div>
+                        <div className="content">
+                          <p className="text-base">توضیحات مستاجر:</p>
+                          <p className="text-xs pt-4 text-warmGray-400">
+                            {tenant_description ||
+                              "خانواده بنده دارای دو کودک می باشد. "}
+                          </p>
+                        </div>
+                        <div className="actions flex justify-center gap-3">
+                          <button
+                            className="button bg-warmGray-100 text-warmGray-500 py-1 rounded-lg text-base px-4"
+                            onClick={() => {
+                              close();
+                            }}
+                          >
+                            بستن{" "}
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </Popup>
+                  <Popup
+                    trigger={
+                      <button className="border-2 bg-main-600 text-white rounded-lg font-bold px-6 py-2">
+                        مشاهده درخواست
+                      </button>
+                    }
+                    modal
+                    nested
+                  >
+                    {(close) => (
+                      <div className="modal">
+                        <button className="close" onClick={close}>
+                          &times;
+                        </button>
+                        <div className="header"> مشاهده درخواست</div>
+                        <div className="content">
+                          <p className="text-base">توضیحات مستاجر:</p>
+                          <p className="text-xs pt-4 text-warmGray-400">
+                            {tenant_description ||
+                              "خانواده بنده دارای دو کودک می باشد. "}
+                          </p>
+                        </div>
+                        <div className="actions flex justify-center gap-3">
+                          <button
+                            className="button bg-warmGray-100 text-warmGray-500 py-1 rounded-lg text-base px-4"
+                            onClick={() => {
+                              close();
+                            }}
+                          >
+                            بستن{" "}
+                          </button>
+                          <button
+                            className="button bg-main-500 text-white py-1 rounded-lg text-base px-4"
+                            onClick={() => {
+                              submitPropertyHandler();
+                              close();
+                            }}
+                          >
+                            تایید درخواست
+                          </button>
+                          <button
+                            className="button bg-[hsl(0,74%,60%)] text-white py-1 rounded-lg text-base px-4"
+                            onClick={() => {
+                              rejectPropertyHandler();
+                              close();
+                            }}
+                          >
+                            رد درخواست
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </Popup>
                 </>
               ) : status == 2 ? (
                 <button className="border-2 bg-main-600 text-white rounded-lg font-bold px-6 py-2">
