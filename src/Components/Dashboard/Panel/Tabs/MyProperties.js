@@ -1,15 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import Spinner from "react-spinkit";
 import useToken from "../../../../customHooks/useToken";
-import AdDetail from "../DetailsTab/rentdetail/AdDetail";
-import MyProperyCard from "../DetailsTab/rentdetail/MyProperyCard";
+
+import PropertyDetails from "./../AddOns/PropertyDetails";
+import MyProperyCard from "./../AddOns/MyProperyCard";
 import {
   updateListHandler,
   updateMyPropertyListHandler,
 } from "../../../../redux/reducers/userProperty";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import Spinner from "react-spinkit";
 
 const MyProperties = () => {
   const update = useSelector((state) => state.userProperty.update);
@@ -107,7 +108,7 @@ const MyProperties = () => {
           <Spinner name="folding-cube" color="#FF731D" fadeIn="none" />
         </div>
       )}
-      {showDetail && <AdDetail data={adData} />}
+      {showDetail && <PropertyDetails data={adData} />}
     </>
   );
 };

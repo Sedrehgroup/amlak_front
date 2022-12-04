@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-import frame from "./../../../../../assets/Images/Dashboard/Frame.png";
-import AdDetail from "./AdDetail";
+import frame from "./../../../../assets/Images/Dashboard/Frame.png";
 
 export default function MyProperyCard(props) {
   const { title, mortgage_amount, rent_amount, area } = props.data;

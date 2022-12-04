@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import Dashboard from "../Dashboard/Dashboard";
+import Main from "./../Dashboard/Main";
 import PhoneNumForm from "./Elements/PhoneNumForm";
 import PhoneSmsForm from "./Elements/PhoneSmsForm";
 import RegisterForm from "./Elements/RegisterForm";
@@ -11,7 +11,7 @@ export default function Login() {
   return (
     <div>
       {loginSteps["Register_Step"] ? (
-        <Dashboard /> //if user is in database he goes to Dashboard
+        <Main /> //if user is in database he goes to Main
       ) : loginSteps["PhoneSms_Step"] ? (
         <RegisterForm /> //if user is not in database it should register
       ) : loginSteps["PhoneNumber_Step"] ? (

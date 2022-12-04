@@ -8,12 +8,12 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-import "./SliderAdDetail.css";
+import "./PropertyDetailsSlider.css";
 
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper";
 
-export default function SliderAdDetail() {
+export default function PropertyDetailsSlider() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   // ={{swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null}}
 

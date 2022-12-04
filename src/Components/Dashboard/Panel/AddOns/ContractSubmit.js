@@ -1,14 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import useToken from "../../../../../customHooks/useToken";
-import { setUserIsLoggedHandler } from "../../../../../redux/reducers/login";
+import useToken from "../../../../customHooks/useToken";
+import { setUserIsLoggedHandler } from "../../../../redux/reducers/login";
 import {
   signContractHandler,
   updateListHandler,
-} from "../../../../../redux/reducers/userProperty";
+} from "../../../../redux/reducers/userProperty";
 
-export default function SignContract() {
+export default function ContractSubmit() {
   const [boxes, setBoxes] = useState([]);
   const [token] = useToken();
   const dispatch = useDispatch();

@@ -1,25 +1,29 @@
 import React, { useEffect, useState } from "react";
-import SliderAdDetail from "./addetail/SliderAdDetail";
-
-import axios from "axios";
-
-import Frame from "../../../../../assets/Images/Dashboard/Frame.png";
-import Driving from "../../../../../assets/Images/Dashboard/Details/Driving.svg";
-import Elevator from "../../../../../assets/Images/Dashboard/Details/Elevator.svg";
-import Security from "../../../../../assets/Images/Dashboard/Details/Security.svg";
-import RequestsFromMe from "./RequestsFromMe";
-import Popup from "reactjs-popup";
-import "reactjs-popup/dist/index.css";
 import { useDispatch, useStore } from "react-redux";
-import useToken from "../../../../../customHooks/useToken";
-import { updateListHandler } from "../../../../../redux/reducers/userProperty";
-import { setUserIsLoggedHandler } from "../../../../../redux/reducers/login";
 import { useHistory } from "react-router-dom";
 
-export default function AdDetail({ data }) {
+import PropertyDetailsSlider from "./PropertyDetailsSlider";
+
+import axios from "axios";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+
+import RequestsFromMe from "./../Tabs/RequestsFromMe";
+
+import Frame from "./../../../../assets/Images/Dashboard/Frame.png";
+import Driving from "./../../../../assets/Images/Dashboard/Details/Driving.svg";
+import Elevator from "./../../../../assets/Images/Dashboard/Details/Elevator.svg";
+import Security from "./../../../../assets/Images/Dashboard/Details/Security.svg";
+
+import { updateListHandler } from "../../../../redux/reducers/userProperty";
+import { setUserIsLoggedHandler } from "../../../../redux/reducers/login";
+import useToken from "../../../../customHooks/useToken";
+
+export default function PropertyDetails({ data }) {
   const [data2, setData2] = useState({});
   const dispatch = useDispatch();
   const history = useHistory();
+  const [token] = useToken;
   useEffect(() => {
     console.log("data in adDetail ", data);
     if (!!!!data) {
@@ -107,7 +111,6 @@ export default function AdDetail({ data }) {
   // const [numSetter, setNumSetter] = useStore();
   // setNumSetter(numSetter);
   // console.log(numSetter);
-  const [token] = useToken();
 
   const onSubmit = () => {
     const Api_Url = process.env.REACT_APP_API_URL;
@@ -154,7 +157,7 @@ export default function AdDetail({ data }) {
             <div className="bg-white w-3/5 ml-10 mr-10  flex justify-center flex-col rounded-lg">
               <div className="flex bg-white">
                 <div className="w-2/3 rounded-lg p-6">
-                  <SliderAdDetail />
+                  <PropertyDetailsSlider />
                 </div>
                 <div className="w-1/3 m-6 rounded-lg">
                   <p className="mb-4">

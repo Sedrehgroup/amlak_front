@@ -6,7 +6,7 @@ import {
   signContractData,
   signContractHandler,
 } from "./../../redux/reducers/userProperty";
-// import SignContract from "../Dashboard/Panel/DetailsTab/rentdetail/SignContract";
+// import ContractSubmit from "../Dashboard/Panel/DetailsTab/rentdetail/ContractSubmit";
 // کارت طراحی شده برای درخواست ها و اجاره ها
 
 const ToMeRequestCard = ({ data, TitleOfChatButton, imgPath }) => {

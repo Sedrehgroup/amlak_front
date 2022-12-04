@@ -1,17 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import useToken from "../../../../../customHooks/useToken";
+import useToken from "../../../../customHooks/useToken";
 import {
   updateListHandler,
   updateMyPropertyListHandler,
-} from "../../../../../redux/reducers/userProperty";
+} from "../../../../redux/reducers/userProperty";
 import { useDispatch } from "react-redux";
-import { iranCitiesList } from "../../../../../utils/iranCitiesList";
-import { arrayOfYears } from "../../../../../utils/yearsList";
+import { iranCitiesList } from "../../../../utils/iranCitiesList";
+import { arrayOfYears } from "../../../../utils/yearsList";
 
 import { toast } from "react-toastify";
-import { setUserIsLoggedHandler } from "../../../../../redux/reducers/login";
+import { setUserIsLoggedHandler } from "../../../../redux/reducers/login";
 import { useHistory } from "react-router-dom";
 
 export default function SubmitProperty() {

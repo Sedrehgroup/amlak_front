@@ -1,5 +1,5 @@
 import "./App.css";
-import Dashboard from "./Components/Dashboard/Dashboard";
+import Main from "./Components/Dashboard/Main";
 import Login from "./Components/Login/Login";
 
 import { ToastContainer } from "react-toastify";
@@ -58,15 +58,15 @@ function App() {
 
   return (
     <div className="bg-warmGray-200">
-      {isUserLogged ? <Dashboard /> : <Login />}
+      {isUserLogged ? <Main /> : <Login />}
       {/* <Switch> */}
-      {/* <Route exact path="/" component={isUserLogged && Dashboard} /> */}
+      {/* <Route exact path="/" component={isUserLogged && Main} /> */}
       {/* <Route exact path="/" component={Login} /> */}
-      {/* <Route component={!isUserLogged ? Login : Dashboard} /> */}
+      {/* <Route component={!isUserLogged ? Login : Main} /> */}
       {/* </Switch> */}
       {/* <Switch>
         <Route exact path="/" component={Login} />
-        <ProtectedRoute exact path="/app" component={Dashboard} />
+        <ProtectedRoute exact path="/app" component={Main} />
         <Route path="*" component={() => "404 Page Not Found"} />
       </Switch> */}
       <ToastContainer />

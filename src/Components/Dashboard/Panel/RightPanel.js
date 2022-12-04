@@ -10,13 +10,12 @@ import {
   Properties_img,
   Requests_img,
   UserInfo_img,
-} from "./panelImages";
-
+} from "./AddOns/panelImages";
 
 import useTimeDateFa from "../../../customHooks/useTimeDateFa";
 import { useSelector } from "react-redux";
 
-export default function Panel() {
+export default function RightPanel() {
   const [date] = useTimeDateFa();
   const showSignContract = useSelector(
     (state) => state.userProperty.showSignContract

@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import useToken from "../../../../customHooks/useToken";
-import AdDetail from "../DetailsTab/rentdetail/AdDetail";
-import MyProperyCard from "../DetailsTab/rentdetail/MyProperyCard";
 import Spinner from "react-spinkit";
+import useToken from "./../../../../customHooks/useToken";
+
+import PropertyDetails from "./../AddOns/PropertyDetails";
+import MyProperyCard from "./../AddOns/MyProperyCard";
 
 const AllProperties = () => {
   const [token] = useToken();
@@ -69,7 +70,7 @@ const AllProperties = () => {
         </div>
       )}
 
-      {showDetail && <AdDetail data={adData} />}
+      {showDetail && <PropertyDetails data={adData} />}
     </>
   );
 };
