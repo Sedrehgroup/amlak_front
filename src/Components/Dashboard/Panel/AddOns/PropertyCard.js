@@ -7,7 +7,7 @@ export default function PropertyCard(props) {
   const { title, mortgage_amount, rent_amount, area, id } = props.data;
   const showHandler = props.showHandler;
   const deleteHandler = props.deleteHandler;
-  const isShown = props.isShown;
+
   let { path, url } = useRouteMatch();
 
   return (
@@ -52,24 +52,22 @@ export default function PropertyCard(props) {
               marginBottom: "16px",
             }}
           />
-          <div className="flex justify-end gap-4 mb-4 px-7">
-            {isShown && (
-              <>
-                <button
-                  onClick={() => deleteHandler(props.data)}
-                  className="text-sm w-24 h-10 text-dark_red border-12 border-dark_red border-solid rounded-lg"
-                >
-                  حذف آگهی
-                </button>
-                <button className="text-sm w-24 h-10 bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg">
-                  ویرایش آگهی
-                </button>
-              </>
-            )}
+          <div className="flex flex-row justify-center flex-wrap gap-4 mb-4 px-1">
+            <>
+              <button
+                onClick={() => deleteHandler(props.data)}
+                className="text-sm px-3 py-2 whitespace-nowrap text-dark_red border-12 border-dark_red border-solid rounded-lg"
+              >
+                حذف آگهی
+              </button>
+              <button className="text-sm px-3 py-2 whitespace-nowrap bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg">
+                ویرایش آگهی
+              </button>
+            </>
             <Link
               to={`${url}/${id}`}
               onClick={() => showHandler(props.data)}
-              className="text-sm px-4 py-2 bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg"
+              className="text-sm px-3 py-2 bg-main-500 whitespace-nowrap text-white border-12 border-primary-500 border-solid rounded-lg"
             >
               مشاهده آگهی
             </Link>

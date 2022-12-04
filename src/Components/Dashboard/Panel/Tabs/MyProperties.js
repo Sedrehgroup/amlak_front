@@ -93,7 +93,6 @@ const MyProperties = () => {
                   key={index}
                   showHandler={handler}
                   deleteHandler={delHandler}
-                  isShown={true}
                 />
               </div>
             ))}

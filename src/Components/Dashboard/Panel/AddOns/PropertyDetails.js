@@ -297,7 +297,7 @@ export default function PropertyDetails({ data }) {
                         <p className="text-base">توضیحات تکمیلی</p>
                         <input
                           type="text"
-                          className="bg-warmGray-100 w-full h-14 rounded-lg mt-4 p-4"
+                          className="bg-warmGray-100 w-full h-14 rounded-lg mt-4 p-4 border-12 border-solid border-warmGray-500"
                           onChange={(e) => setDescription(e.target.value)}
                           value={description}
                         />

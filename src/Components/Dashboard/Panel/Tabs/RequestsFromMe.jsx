@@ -24,31 +24,33 @@ const RequestsFromMe = () => {
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
 
-    try {
-      setShowLoading(true);
-      axios
-        .get(`${Api_Url}/api/request/my_requests/`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then(({ data }) => {
-          console.log("axios /api/request/my_requests data.data:", data);
-          setTenantData(data);
-          setShowLoading(false);
-        })
-        .catch((e) => {
-          setShowLoading(false);
+    if (!!!!token) {
+      try {
+        setShowLoading(true);
+        axios
+          .get(`${Api_Url}/api/request/my_requests/`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(({ data }) => {
+            console.log("axios /api/request/my_requests data.data:", data);
+            setTenantData(data);
+            setShowLoading(false);
+          })
+          .catch((e) => {
+            setShowLoading(false);
 
-          console.log("error in axios /api/request/my_requests", e);
+            console.log("error in axios /api/request/my_requests", e);
 
-          if (e.response.status == 401) {
-            //dispatch(setUserIsLoggedHandler(false));
-            // window.localStorage.setItem("user_logged", "false");
-          }
-        });
-    } catch (error) {
-      console.log("error", error);
+            if (e.response.status == 401) {
+              //dispatch(setUserIsLoggedHandler(false));
+              // window.localStorage.setItem("user_logged", "false");
+            }
+          });
+      } catch (error) {
+        console.log("error", error);
+      }
     }
   }, [token, update]);
   const getPropertyData = (data) => {
