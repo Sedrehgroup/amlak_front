@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { Link, useRouteMatch } from "react-router-dom";
 
 import frame from "./../../../../assets/Images/Dashboard/Frame.png";
 
-export default function MyProperyCard(props) {
-  const { title, mortgage_amount, rent_amount, area } = props.data;
+export default function PropertyCard(props) {
+  const { title, mortgage_amount, rent_amount, area, id } = props.data;
   const showHandler = props.showHandler;
   const deleteHandler = props.deleteHandler;
   const isShown = props.isShown;
+  let { path, url } = useRouteMatch();
 
   return (
     <>
@@ -64,12 +66,13 @@ export default function MyProperyCard(props) {
                 </button>
               </>
             )}
-            <button
+            <Link
+              to={`${url}/${id}`}
               onClick={() => showHandler(props.data)}
-              className="text-sm w-24 h-10 bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg"
+              className="text-sm px-4 py-2 bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg"
             >
               مشاهده آگهی
-            </button>
+            </Link>
           </div>
         </div>
       </div>

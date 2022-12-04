@@ -6,7 +6,7 @@ import Spinner from "react-spinkit";
 import useToken from "../../../../customHooks/useToken";
 
 import PropertyDetails from "./../AddOns/PropertyDetails";
-import MyProperyCard from "./../AddOns/MyProperyCard";
+import PropertyCard from "./../AddOns/PropertyCard";
 import {
   updateListHandler,
   updateMyPropertyListHandler,
@@ -88,7 +88,7 @@ const MyProperties = () => {
             !showDetail &&
             MyPropertiesList.map((val, index) => (
               <div key={index}>
-                <MyProperyCard
+                <PropertyCard
                   data={val}
                   key={index}
                   showHandler={handler}

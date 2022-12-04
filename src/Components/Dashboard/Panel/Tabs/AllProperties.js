@@ -4,13 +4,16 @@ import Spinner from "react-spinkit";
 import useToken from "./../../../../customHooks/useToken";
 
 import PropertyDetails from "./../AddOns/PropertyDetails";
-import MyProperyCard from "./../AddOns/MyProperyCard";
+import PropertyCard from "./../AddOns/PropertyCard";
+import { Route, Switch, useRouteMatch } from "react-router-dom";
 
 const AllProperties = () => {
   const [token] = useToken();
   const [MyPropertiesList, setMyProperties] = useState([]);
-  const [showLoading, setShowLoading] = useState(false);
+  const [adData, setAdData] = useState([]);
 
+  const [showLoading, setShowLoading] = useState(false);
+  let { path, url } = useRouteMatch();
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
     if (token.length > 0) {
@@ -40,37 +43,38 @@ const AllProperties = () => {
       }
     }
   }, [token]);
-  const [showDetail, setShowDetail] = useState(false);
-  const [adData, setAdData] = useState([]);
   const handler = (data) => {
-    setShowDetail(true);
     setAdData(data);
   };
 
   return (
     <>
-      {!showLoading ? (
-        <div className="m_grid-container pr-6">
-          {!!!!MyPropertiesList &&
-            !showDetail &&
-            MyPropertiesList.map((val, index) => (
-              <div key={index}>
-                <MyProperyCard data={val} showHandler={handler} />
-              </div>
-            ))}
-          {MyPropertiesList.length == 0 && (
-            <div className="m-auto text-xl bg-warmGray-300">
-              آگهی ثبت شده ای وجود ندارد!
+      <Switch>
+        <Route exact path={path}>
+          {!showLoading ? (
+            <div className="m_grid-container pr-6">
+              {!!!!MyPropertiesList &&
+                MyPropertiesList.map((val, index) => (
+                  <div key={index}>
+                    <PropertyCard data={val} showHandler={handler} />
+                  </div>
+                ))}
+              {MyPropertiesList.length == 0 && (
+                <div className="m-auto text-xl bg-warmGray-300">
+                  آگهی ثبت شده ای وجود ندارد!
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="flex justify-center items-center eightyvh">
+              <Spinner name="folding-cube" color="#FF731D" fadeIn="none" />
             </div>
           )}
-        </div>
-      ) : (
-        <div className="flex justify-center items-center eightyvh">
-          <Spinner name="folding-cube" color="#FF731D" fadeIn="none" />
-        </div>
-      )}
-
-      {showDetail && <PropertyDetails data={adData} />}
+        </Route>
+        <Route path={`${path}/:cardId`}>
+          <PropertyDetails data={adData} />
+        </Route>
+      </Switch>
     </>
   );
 };
