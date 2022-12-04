@@ -1,7 +1,11 @@
 import React from "react";
-
-const Counter = () => {
-  return <div>Dashboard</div>;
-};
-
-export default Counter;
+import CounterSlide from "./../AddOns/CounterSlide";
+import ImageContainerCounter from "./../AddOns/ImageContainerCounter";
+export default function Counter() {
+  return (
+    <>
+      <CounterSlide />
+      <ImageContainerCounter />
+    </>
+  );
+}

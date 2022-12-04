@@ -7,17 +7,18 @@ import SubmitProperty from "./Panel/Tabs/SubmitProperty";
 import UserFormDetail from "./Panel/Tabs/UserFormDetail";
 import AllProperties from "./Panel/Tabs/AllProperties";
 import MyProperties from "./Panel/Tabs/MyProperties";
+import Counter from "./Panel/Tabs/Counter";
 const Dashboard = () => {
   return (
     <>
       <Switch>
         <Route exact path="/">
-          <AllProperties />
-          {/* <Counter/> */}
+          {/* <AllProperties /> */}
+          <Counter />
         </Route>
         <Route path="/dashboard">
-          <AllProperties />
-          {/* <Counter/> */}
+          {/* <AllProperties /> */}
+          <Counter />
         </Route>
         <Route path="/userinfo">
           <UserFormDetail />
