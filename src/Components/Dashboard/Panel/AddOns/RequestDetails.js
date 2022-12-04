@@ -3,8 +3,6 @@ import { useHistory } from "react-router-dom";
 
 import PropertyDetailsSlider from "./PropertyDetailsSlider";
 
-import axios from "axios";
-import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 
 import Frame from "./../../../../assets/Images/Dashboard/Frame.png";
@@ -13,9 +11,8 @@ import Elevator from "./../../../../assets/Images/Dashboard/Details/Elevator.svg
 import Security from "./../../../../assets/Images/Dashboard/Details/Security.svg";
 
 import useToken from "../../../../customHooks/useToken";
-import { toast } from "react-toastify";
 
-export default function PropertyDetails({ data }) {
+export default function RequestDetails({ data }) {
   const [data2, setData2] = useState({});
   const [description, setDescription] = useState("");
 
@@ -100,45 +97,6 @@ export default function PropertyDetails({ data }) {
       });
     }
   }, [data]);
-
-  const onSubmit = () => {
-    const Api_Url = process.env.REACT_APP_API_URL;
-    try {
-      axios
-        .post(
-          `${Api_Url}/api/request/my_requests/`,
-          {
-            status: 1, //create request with status 1
-            request_property: +data2?.id,
-            tenant_description: description || null,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
-        .then(({ data }) => {
-          console.log("api/request/my_requests data.data:", data);
-          toast.success("درخواست شما با موفقیت ثبت شد", {
-            position: "top-center",
-            rtl: true,
-            className: "m_toast",
-          });
-          history.push("/requestsFromMe");
-        })
-        .catch((e) => {
-          console.log("error in axios /users/create_user", e);
-          if (e.response.status == 403) {
-            toast.error("شما مجاز به ثبت درخواست آگهی خود نیستید!", {
-              position: "top-center",
-              rtl: true,
-              className: "m_toast",
-            });
-          }
-        });
-    } catch (error) {}
-  };
 
   return (
     <>
@@ -277,53 +235,6 @@ export default function PropertyDetails({ data }) {
                 <button className="text-sm text-sub-500 border-12 border-solid border-sub-500 rounded px-6 py-1 ">
                   گفتگو
                 </button>
-
-                <Popup
-                  trigger={
-                    <button className=" bg-main-500 text-white py-1 px-6 rounded-lg text-sm">
-                      ثبت درخواست
-                    </button>
-                  }
-                  modal
-                  nested
-                >
-                  {(close) => (
-                    <div className="modal">
-                      <button className="close" onClick={close}>
-                        &times;
-                      </button>
-                      <div className="header"> تایید اجاره آگهی </div>
-                      <div className="content">
-                        <p className="text-base">توضیحات تکمیلی</p>
-                        <input
-                          type="text"
-                          className="bg-warmGray-100 w-full h-14 rounded-lg mt-4 p-4"
-                          onChange={(e) => setDescription(e.target.value)}
-                          value={description}
-                        />
-                      </div>
-                      <div className="actions flex justify-center gap-3">
-                        <button
-                          className="button bg-warmGray-100 text-warmGray-500 py-1 rounded-lg text-base px-4"
-                          onClick={() => {
-                            close();
-                          }}
-                        >
-                          بستن{" "}
-                        </button>
-                        <button
-                          className="button bg-main-500 text-white py-1 rounded-lg text-base px-4"
-                          onClick={() => {
-                            onSubmit();
-                            close();
-                          }}
-                        >
-                          تایید{" "}
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </Popup>
               </div>
             </div>
           </div>

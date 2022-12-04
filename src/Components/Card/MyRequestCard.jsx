@@ -6,10 +6,16 @@ import {
   signContractData,
   signContractHandler,
 } from "./../../redux/reducers/userProperty";
+import { Link, useRouteMatch } from "react-router-dom";
 // import ContractSubmit from "../Dashboard/Panel/DetailsTab/rentdetail/ContractSubmit";
 // کارت طراحی شده برای درخواست ها و اجاره ها
 
-const MyRequestCard = ({ data, TitleOfChatButton, imgPath }) => {
+const MyRequestCard = ({
+  data,
+  TitleOfChatButton,
+  imgPath,
+  passPropertyData,
+}) => {
   const {
     id,
     request_property,
@@ -17,6 +23,7 @@ const MyRequestCard = ({ data, TitleOfChatButton, imgPath }) => {
     tenant_description,
     landlord_description,
   } = data;
+  let { path, url } = useRouteMatch();
 
   const dispatch = useDispatch();
   // const signContactShow = () => {
@@ -56,7 +63,7 @@ const MyRequestCard = ({ data, TitleOfChatButton, imgPath }) => {
               <p className="font-light">
                 متراژ:{" "}
                 <span className="font-medium text-lg">
-                  {request_property.area}متر
+                  {request_property?.area}متر
                 </span>
                 {/* <span className="font-medium text-lg">{`${props.meterage}`}</span> */}
               </p>
@@ -88,9 +95,13 @@ const MyRequestCard = ({ data, TitleOfChatButton, imgPath }) => {
             </p>
             <hr className=" text-warmGray-400" />
             <div className=" flex gap-x-4">
-              <button className="border-12 border-main-600 text-main-600 rounded-lg font-bold px-6 py-2">
+              <Link
+                to={`${url}/${request_property?.id}`}
+                onClick={passPropertyData}
+                className="border-12 border-main-600 text-main-600 rounded-lg font-bold px-6 py-2"
+              >
                 مشاهده آگهی
-              </button>
+              </Link>
               {status == 0 ? null : status == 1 ? null : status == 2 ? (
                 <button className="border-2 bg-main-600 text-white rounded-lg font-bold px-6 py-2">
                   امضای قرارداد
