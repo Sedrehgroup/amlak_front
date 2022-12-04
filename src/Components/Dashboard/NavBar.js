@@ -68,9 +68,12 @@ export default function NavBar() {
         <button className="sm:hidden flex bg-primary-500 rounded justify-center items-center p-2">
           <img src={loc} alt="" />
         </button>
-        <button className="p-2 border border-main-300  rounded gap-2  h-10 border-12 border-solid flex items-center">
+        <button
+          className="p-2 border border-main-300  rounded gap-2  h-10 border-12 border-solid flex items-center"
+          dir="ltr"
+        >
           <img src={user} alt="" />
-          <p className="flex-none flex justify-center items-center ">
+          <p className="flex-none flex justify-center items-center">
             <span>{userData?.first_name}</span>
             <span className="px-1">{userData?.last_name}</span>
           </p>

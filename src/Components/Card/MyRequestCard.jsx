@@ -19,10 +19,10 @@ const MyRequestCard = ({ data, TitleOfChatButton, imgPath }) => {
   } = data;
 
   const dispatch = useDispatch();
-  //   const signContactShow = () => {
-  //     dispatch(signContractHandler(true));
-  //     dispatch(signContractData(props.mojer_reqid));
-  //   };
+  // const signContactShow = () => {
+  //   dispatch(signContractHandler(true));
+  //   dispatch(signContractData(props.mojer_reqid));
+  // };
   return (
     <div className="p-10 border border-warmGray-400 bg-warmGray-100 my-8 mx-12 rounded-lg">
       <div className="flex flex-col gap-y-10">
@@ -100,7 +100,6 @@ const MyRequestCard = ({ data, TitleOfChatButton, imgPath }) => {
                   نمایش اجاره نامه
                 </button>
               ) : null}
-
               {/* onClick={signContactShow} */}
             </div>
           </div>

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import {
   Dashboard_img,
@@ -13,7 +14,6 @@ import {
 } from "./AddOns/panelImages";
 
 import useTimeDateFa from "../../../customHooks/useTimeDateFa";
-import { useSelector } from "react-redux";
 
 export default function RightPanel() {
   const [date] = useTimeDateFa();
