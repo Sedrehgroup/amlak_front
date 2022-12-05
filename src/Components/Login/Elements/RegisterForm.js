@@ -27,9 +27,9 @@ export default function RegisterForm() {
     watch,
     formState: { errors },
   } = useForm();
+  const Api_Url = process.env.REACT_APP_API_URL;
   const onSubmit = ({ firstName, lastName, nationalCode }) => {
     setShowLoading(true);
-    const Api_Url = process.env.REACT_APP_API_URL;
     try {
       axios
         .post(`${Api_Url}/account/create_user/`, {
@@ -48,6 +48,7 @@ export default function RegisterForm() {
           window.localStorage.setItem("REF_TOKEN", data.refresh);
           window.localStorage.setItem("user_logged", "true");
           dispatch(setUserIsLoggedHandler(true));
+          createUserAdditionalInfo(data.access);
         })
         .catch((e) => {
           console.log("error in axios /users/create_user", e);
@@ -60,7 +61,37 @@ export default function RegisterForm() {
         });
     } catch (error) {}
   };
-
+  const createUserAdditionalInfo = (token) => {
+    if (!!!!token) {
+      try {
+        axios
+          .post(
+            `${Api_Url}/account/create_additional_user/`,
+            {},
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
+          .then((data) => {
+            console.log(
+              "axios /account/create_additional_user data.data:",
+              data
+            );
+          })
+          .catch((e) => {
+            console.log("error in axios /account/create_additional_user", e);
+            if (e.response.status == 401) {
+              // //dispatch(setUserIsLoggedHandler(false));
+              // window.localStorage.setItem("user_logged", "false");
+            }
+          });
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
+  };
   return (
     <div className="bg-primary-50">
       <div className="twentyvh flex justify-end">

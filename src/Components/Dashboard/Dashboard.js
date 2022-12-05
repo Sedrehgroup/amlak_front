@@ -8,6 +8,7 @@ import UserFormDetail from "./Panel/Tabs/UserFormDetail";
 import AllProperties from "./Panel/Tabs/AllProperties";
 import MyProperties from "./Panel/Tabs/MyProperties";
 import Counter from "./Panel/Tabs/Counter";
+import Contracts from "./Panel/Tabs/Contracts";
 const Dashboard = () => {
   return (
     <>
@@ -27,6 +28,9 @@ const Dashboard = () => {
           <center>
             <ChatPage />
           </center>
+        </Route>
+        <Route path="/contracts">
+          <Contracts />
         </Route>
         <Route path="/submitProperty">
           <SubmitProperty />

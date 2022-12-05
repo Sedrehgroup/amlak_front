@@ -56,6 +56,16 @@ export default function RightPanel() {
             <span className="text-sm">گفتگو</span>
           </div>
         </Link>
+        <Link to="/contracts">
+          <div
+            className={`flex flex-row gap-2 ${
+              location.pathname == "/contracts" && "bg-white"
+            }`}
+          >
+            <img src={Properties_img} alt="" width={20} />
+            <span className="text-sm">قرارداد ها</span>
+          </div>
+        </Link>
         <div>
           <p className="font-bold text-lg">موجر</p>
         </div>
