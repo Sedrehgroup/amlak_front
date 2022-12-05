@@ -26,7 +26,7 @@ const AllProperties = () => {
             },
           })
           .then(({ data }) => {
-            setMyProperties(data);
+            setMyProperties(data?.results);
             setShowLoading(false);
 
             console.log(
@@ -56,7 +56,7 @@ const AllProperties = () => {
               {!!!!MyPropertiesList &&
                 MyPropertiesList.map((val, index) => (
                   <div key={index}>
-                    <PropertyCard data={val} showHandler={handler} />
+                    <PropertyCard data={val} showHandler={handler} notForMe />
                   </div>
                 ))}
               {MyPropertiesList.length == 0 && (

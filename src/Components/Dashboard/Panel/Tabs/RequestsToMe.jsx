@@ -54,7 +54,8 @@ const RequestsToMe = () => {
       }
     }
   }, [token, update]);
-  const submitPropertyHandler = (id) => {
+  const changeStatusHandler = (id, status) => {
+    // id = request id
     if (!!!!token) {
       try {
         setShowLoading(true);
@@ -62,7 +63,7 @@ const RequestsToMe = () => {
           .patch(
             `${Api_Url}/api/request/modify_requests_to_me/${id}/`,
             {
-              status: 2,
+              status,
             },
             {
               headers: {
@@ -138,6 +139,44 @@ const RequestsToMe = () => {
       }
     }
   };
+  const submitContractHandler = (data, id) => {
+    console.log("request id", id, "data", data);
+    if (!!!!token) {
+      try {
+        setShowLoading(true);
+        axios
+          .post(`${Api_Url}/api/contract/list_create_contract/`, data, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(({ data }) => {
+            console.log(
+              "axios /api/contract/list_create_contract data.data:",
+              data
+            );
+            changeStatusHandler(id, 3);
+            dispatch(updateListHandler(Math.random())); //update tenant requests list
+            setUpdate(Math.random()); //update landloard requests list
+            setShowLoading(false);
+            toast.success("قرارداد ثبت شد", {
+              position: "top-center",
+              rtl: true,
+              className: "m_toast",
+            });
+          })
+          .catch((e) => {
+            console.log("error in axios /api/contract/list_create_contract", e);
+            setShowLoading(false);
+
+            if (e.response.status == 401) {
+            }
+          });
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
+  };
   const getPropertyData = (data) => {
     setAdData(data);
   };
@@ -158,10 +197,13 @@ const RequestsToMe = () => {
                       getPropertyData(value?.request_property)
                     }
                     submitPropertyHandler={() =>
-                      submitPropertyHandler(value?.id)
+                      changeStatusHandler(value?.id, 2)
                     }
                     rejectPropertyHandler={() =>
                       rejectPropertyHandler(value?.id)
+                    }
+                    submitContractHandler={(data) =>
+                      submitContractHandler(data, value?.id)
                     }
                   />
                 </div>

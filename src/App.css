@@ -147,6 +147,9 @@ body {
 .inputC2 {
   width: calc((33.33333% - 12px) / 2);
 }
+.inputC3 {
+  width: calc(50% - 8px);
+}
 
 .react-tabs__tab-list {
   border-bottom: 0px solid !important;

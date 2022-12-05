@@ -52,22 +52,28 @@ export default function PropertyCard(props) {
               marginBottom: "16px",
             }}
           />
-          <div className="flex flex-row justify-center flex-wrap gap-4 mb-4 px-1">
-            <>
-              <button
-                onClick={() => deleteHandler(props.data)}
-                className="text-sm px-3 py-2 whitespace-nowrap text-dark_red border-12 border-dark_red border-solid rounded-lg"
-              >
-                حذف آگهی
-              </button>
-              <button className="text-sm px-3 py-2 whitespace-nowrap bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg">
-                ویرایش آگهی
-              </button>
-            </>
+          <div
+            className={`flex flex-row flex-wrap gap-4 mb-4  ${
+              props.notForMe ? "justify-end px-3" : "justify-center px-1"
+            }`}
+          >
+            {!props.notForMe && (
+              <>
+                <button
+                  onClick={() => deleteHandler(props.data)}
+                  className="text-sm px-3 py-2 whitespace-nowrap text-dark_red border-12 border-dark_red border-solid rounded-lg"
+                >
+                  حذف آگهی
+                </button>
+                <button className="text-sm px-3 py-2 whitespace-nowrap bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg">
+                  ویرایش آگهی
+                </button>
+              </>
+            )}
             <Link
               to={`${url}/${id}`}
               onClick={() => showHandler(props.data)}
-              className="text-sm px-3 py-2 bg-main-500 whitespace-nowrap text-white border-12 border-primary-500 border-solid rounded-lg"
+              className="text-sm px-3 py-2 bg-main-500  whitespace-nowrap text-white border-12 border-primary-500 border-solid rounded-lg"
             >
               مشاهده آگهی
             </Link>

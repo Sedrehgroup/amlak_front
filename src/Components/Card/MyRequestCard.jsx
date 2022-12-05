@@ -68,29 +68,59 @@ const MyRequestCard = ({
               </p>
             </div>
             <hr className=" text-warmGray-400" />
-            <p className="font-light">
+            <p className="font-light flex flex-row gap-4">
               وضعیت :&nbsp;&nbsp;
-              <span
-                className={`font-bold ${
-                  status == 0
-                    ? "text-[#EF4444] bg-[#FEE2E2]"
+              {status != 4 || status != 5 ? (
+                <span
+                  className={`font-bold ${
+                    status == 0
+                      ? "text-[#EF4444] bg-[#FEE2E2]"
+                      : status == 1 || status == 3
+                      ? "text-[#F97316] bg-[#FFEDD5]"
+                      : status == 2 || status == 6
+                      ? "text-[#22C55E] bg-[#DCFCE7]"
+                      : null
+                  }  rounded p-2`}
+                >
+                  {status == 0
+                    ? "عدم تأیید درخواست شما توسط مؤجر"
                     : status == 1
-                    ? "text-[#F97316] bg-[#FFEDD5]"
-                    : status == 2 || status == 3
-                    ? "text-[#22C55E] bg-[#DCFCE7]"
-                    : null
-                }  rounded p-2`}
-              >
-                {status == 0
-                  ? "عدم تأیید درخواست شما توسط مؤجر"
-                  : status == 1
-                  ? "در حال انتظار تأیید توسط مؤجر "
-                  : status == 2
-                  ? "تایید درخواست شما توسط مؤجر"
-                  : status == 3
-                  ? "امضای قرارداد توسط موجر"
-                  : null}
-              </span>
+                    ? "در حال انتظار تأیید توسط مؤجر "
+                    : status == 2
+                    ? "تایید درخواست شما توسط مؤجر"
+                    : status == 3
+                    ? "منتظر امضای قرارداد توسط شما"
+                    : status == 6
+                    ? "تکمیل قرارداد اجاره"
+                    : null}
+                </span>
+              ) : status == 4 ? (
+                <>
+                  <span
+                    className={`font-bold text-[#22C55E] bg-[#DCFCE7] rounded p-2`}
+                  >
+                    امضای قرارداد توسط شما
+                  </span>
+                  <span
+                    className={`font-bold text-[#F97316] bg-[#FFEDD5] rounded p-2`}
+                  >
+                    منتظر امضای قرارداد توسط موجر
+                  </span>
+                </>
+              ) : status == 5 ? (
+                <>
+                  <span
+                    className={`font-bold text-[#22C55E] bg-[#DCFCE7] rounded p-2`}
+                  >
+                    امضای قرارداد توسط موجر
+                  </span>
+                  <span
+                    className={`font-bold text-[#F97316] bg-[#FFEDD5] rounded p-2`}
+                  >
+                    منتظر امضای قرارداد توسط شما
+                  </span>
+                </>
+              ) : null}
             </p>
             <hr className=" text-warmGray-400" />
             <div className=" flex gap-x-4">
@@ -103,9 +133,13 @@ const MyRequestCard = ({
               </Link>
               {status == 0 ? null : status == 1 ? null : status == 2 ? (
                 <button className="border-2 bg-main-600 text-white rounded-lg font-bold px-6 py-2">
+                  جزئیات درخواست
+                </button>
+              ) : status == 3 || status == 5 ? (
+                <button className="border-2 bg-main-600 text-white rounded-lg font-bold px-6 py-2">
                   امضای قرارداد
                 </button>
-              ) : status == 3 ? (
+              ) : status == 4 || status == 6 ? (
                 <button className="border-2 bg-main-600 text-white rounded-lg font-bold px-6 py-2">
                   نمایش اجاره نامه
                 </button>
