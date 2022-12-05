@@ -9,8 +9,37 @@ export default function SignContract({ data }) {
   const [token] = useToken();
   const dispatch = useDispatch();
   const reqId = useSelector((state) => state.userProperty.requestId);
+  const Api_Url = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     console.log("data of sign contract", data);
+    if (!!!!data) {
+      try {
+        axios
+          .get(
+            `${Api_Url}/api/property/modify_properties/${data?.contract_property}/`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
+          .then(({ data }) => {
+            console.log(
+              "axios /api/property/modify_properties data.data:",
+              data
+            );
+            // setUserData(data);
+          })
+          .catch((e) => {
+            console.log("error in axios /api/property/modify_properties", e);
+            if (e.response.status == 401) {
+            }
+          });
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
   }, [data]);
   function handleChange(e) {
     const {
@@ -79,35 +108,59 @@ export default function SignContract({ data }) {
             <p>قرارداد اجاره حاضر بین</p>
             <div>
               <span>
-                <strong>علی محمدی</strong>
+                <strong>
+                  {data?.contract_landlord_information?.first_name}{" "}
+                  {data?.contract_landlord_information?.last_name}
+                </strong>
               </span>{" "}
               فرزند :{" "}
               <span>
-                <strong>احمد</strong>
+                <strong>
+                  {data?.contract_landlord_additional_information
+                    ?.father_name || "نامشخص"}
+                </strong>
               </span>{" "}
               به شماره شناسنامه :{" "}
               <span>
-                <strong>۰۰۲۱۲۳۴۵۶۷۸</strong>
+                <strong>
+                  {data?.contract_landlord_additional_information
+                    ?.certificate_number || "نامشخص"}
+                </strong>
               </span>{" "}
               صادره از :{" "}
               <span>
-                <strong>تهران</strong>
+                <strong>
+                  {data?.contract_landlord_additional_information
+                    ?.certificate_province || "نامشخص"}
+                </strong>
               </span>{" "}
               به کدملی :{" "}
               <span>
-                <strong>۰۰۲۱۲۳۴۵۶۷۸</strong>
+                <strong>
+                  {data?.contract_landlord_information?.national_code ||
+                    "نامشخص"}
+                </strong>
               </span>{" "}
               متولد:{" "}
               <span>
-                <strong>تهران</strong>
+                <strong>
+                  {data?.contract_landlord_additional_information
+                    ?.certificate_county || "نامشخص"}
+                </strong>
               </span>{" "}
               ساکن :{" "}
               <span>
-                <strong>تهران، انقلاب، کوچه شماره ۱</strong>
+                <strong>
+                  {data?.contract_landlord_additional_information?.address ||
+                    "نامشخص"}
+                </strong>
               </span>{" "}
               تلفن :{" "}
               <span>
-                <strong>۰۹۱۲۴۶۵۸۷۵۴</strong>
+                <strong>
+                  {data?.contract_landlord_additional_information
+                    ?.personal_phone_number || "نامشخص"}
+                </strong>
               </span>{" "}
               به عنوان{" "}
               <span>
@@ -118,35 +171,58 @@ export default function SignContract({ data }) {
             <div>
               و{" "}
               <span>
-                <strong>رضا نیازی</strong>
+                <strong>
+                  {data?.contract_tenant_information?.first_name}{" "}
+                  {data?.contract_tenant_information?.last_name}
+                </strong>
               </span>{" "}
               فرزند :{" "}
               <span>
-                <strong>جعفر</strong>
+                <strong>
+                  {data?.contract_tenant_additional_information?.father_name ||
+                    "نامشخص"}
+                </strong>
               </span>{" "}
               به شماره شناسنامه :{" "}
               <span>
-                <strong>۰۰۸۱۲۳۴۵۶۷۸</strong>
+                <strong>
+                  {data?.contract_tenant_additional_information
+                    ?.certificate_number || "نامشخص"}
+                </strong>
               </span>{" "}
               صادره از :{" "}
               <span>
-                <strong>تبریز</strong>
+                <strong>
+                  {data?.contract_tenant_additional_information
+                    ?.certificate_province || "نامشخص"}
+                </strong>
               </span>{" "}
               به کدملی :{" "}
               <span>
-                <strong>۰۰۸۱۲۳۴۵۶۷۸</strong>
+                <strong>
+                  {data?.contract_tenant_information?.national_code || "نامشخص"}
+                </strong>
               </span>{" "}
-              متولد :{" "}
+              متولد:{" "}
               <span>
-                <strong>تبریز</strong>
+                <strong>
+                  {data?.contract_tenant_additional_information
+                    ?.certificate_county || "نامشخص"}
+                </strong>
               </span>{" "}
               ساکن :{" "}
               <span>
-                <strong>تهران، شهرک اکباتان، ساختمان 176</strong>
+                <strong>
+                  {data?.contract_tenant_additional_information?.address ||
+                    "نامشخص"}
+                </strong>
               </span>{" "}
               تلفن :{" "}
               <span>
-                <strong>۰۹۱۲۹۰۸۷۶۵۴</strong>
+                <strong>
+                  {data?.contract_tenant_additional_information
+                    ?.personal_phone_number || "نامشخص"}
+                </strong>
               </span>{" "}
               به عنوان{" "}
               <span>
@@ -161,7 +237,7 @@ export default function SignContract({ data }) {
               <div>
                 عبارت است از تملیک منافع{" "}
                 <span>
-                  <strong>۶</strong>
+                  <strong>{data?.dong}</strong>
                 </span>{" "}
                 دانگ یک دستگاه{" "}
                 <span>

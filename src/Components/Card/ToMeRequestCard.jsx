@@ -161,11 +161,11 @@ const ToMeRequestCard = ({
                 />
               ) : status == 3 || status == 4 ? (
                 <Link
-                  to={`${url}/signContract`}
+                  to={`/contracts`}
                   // onClick={signContractHandler}
                   className="border-12 bg-main-600 text-white rounded-lg font-bold px-6 py-2"
                 >
-                  امضای قرارداد
+                  صفحه قرارداد ها
                 </Link>
               ) : status == 5 || status == 6 ? (
                 <button className="border-2 bg-main-600 text-white rounded-lg font-bold px-6 py-2">
