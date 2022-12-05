@@ -12,6 +12,7 @@ import RequestDetails from "../AddOns/RequestDetails";
 import { updateListHandler } from "../../../../redux/reducers/userProperty";
 import { toast } from "react-toastify";
 import ContractCard from "../AddOns/ContractCard";
+import SignContract from "../AddOns/SignContract";
 
 // صفحه قراردادها
 
@@ -23,7 +24,7 @@ const Contracts = () => {
 
   const dispatch = useDispatch();
   const [token] = useToken();
-  const [adData, setAdData] = useState({});
+  const [signData, setSignData] = useState({});
 
   const Api_Url = process.env.REACT_APP_API_URL;
   useEffect(() => {
@@ -181,6 +182,11 @@ const Contracts = () => {
   //   const getPropertyData = (data) => {
   //     setAdData(data);
   //   };
+
+  const passDataToSignContract = (data) => {
+    setSignData(data);
+  };
+
   return (
     <Switch>
       <Route exact path={path}>
@@ -189,7 +195,11 @@ const Contracts = () => {
             {!!!!contractsList &&
               contractsList.map((value, index) => (
                 <div key={index}>
-                  <ContractCard />
+                  <ContractCard
+                    data={value}
+                    imgPath={imgFrame}
+                    passDataToSignContract={() => passDataToSignContract(value)}
+                  />
                   {/* <ToMeRequestCard
                     TitleOfChatButton="گفتگو با مستاجر"
                     imgPath={imgFrame}
@@ -221,8 +231,8 @@ const Contracts = () => {
           </div>
         )}
       </Route>
-      <Route path={`${path}/:cardId`}>
-        {/* <RequestDetails data={adData} /> */}
+      <Route path={`${path}/:signContract`}>
+        <SignContract data={signData} />
       </Route>
     </Switch>
   );
