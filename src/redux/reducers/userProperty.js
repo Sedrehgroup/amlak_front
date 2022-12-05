@@ -5,7 +5,6 @@ const slice = createSlice({
   initialState: {
     myProperty: [],
     update: 0,
-    showSignContract: false,
     requestId: 0,
   },
   reducers: {
@@ -14,9 +13,6 @@ const slice = createSlice({
     },
     updateListHandler: (state, _) => {
       state.update = Math.random();
-    },
-    signContractHandler: (state, action) => {
-      state.showSignContract = action.payload;
     },
     signContractData: (state, action) => {
       state.requestId = action.payload;

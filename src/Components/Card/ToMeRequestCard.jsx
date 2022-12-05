@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-import RenterDetailsPopup from "./RenterDetailsPopup";
 import "reactjs-popup/dist/index.css";
 import { useDispatch } from "react-redux";
-import {
-  signContractData,
-  signContractHandler,
-} from "./../../redux/reducers/userProperty";
+
 import { Link, useRouteMatch } from "react-router-dom";
 import Popup from "reactjs-popup";
 import { useForm } from "react-hook-form";
@@ -24,6 +20,7 @@ const ToMeRequestCard = ({
   submitPropertyHandler,
   rejectPropertyHandler,
   submitContractHandler,
+  signContractHandler,
 }) => {
   const {
     tenant,
@@ -146,7 +143,9 @@ const ToMeRequestCard = ({
                 <RequestInfoBtn />
               ) : status == 1 ? (
                 <>
-                  <TenantContactInfoBtn {...tenant_description} />
+                  <TenantContactInfoBtn
+                    tenant_description={tenant_description}
+                  />
                   <SeeRequestBtn
                     tenant_description={tenant_description}
                     submitPropertyHandler={submitPropertyHandler}
@@ -161,9 +160,13 @@ const ToMeRequestCard = ({
                   tenant_description={tenant_description}
                 />
               ) : status == 3 || status == 4 ? (
-                <button className="border-2 bg-main-600 text-white rounded-lg font-bold px-6 py-2">
+                <Link
+                  to={`${url}/signContract`}
+                  // onClick={signContractHandler}
+                  className="border-12 bg-main-600 text-white rounded-lg font-bold px-6 py-2"
+                >
                   امضای قرارداد
-                </button>
+                </Link>
               ) : status == 5 || status == 6 ? (
                 <button className="border-2 bg-main-600 text-white rounded-lg font-bold px-6 py-2">
                   نمایش اجاره نامه
