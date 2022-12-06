@@ -14,12 +14,12 @@ const Dashboard = () => {
     <>
       <Switch>
         <Route exact path="/">
-          {/* <AllProperties /> */}
-          <Counter />
+          <AllProperties />
+          {/* <Counter /> */}
         </Route>
         <Route path="/dashboard">
-          {/* <AllProperties /> */}
-          <Counter />
+          <AllProperties />
+          {/* <Counter /> */}
         </Route>
         <Route path="/userinfo">
           <UserFormDetail />

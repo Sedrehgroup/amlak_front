@@ -268,3 +268,41 @@ div#popup-64 {
 .eightyfivepercent {
   width: 85% !important;
 }
+/* printing */
+@media print {
+  body {
+    width: 118%;
+    text-align: right;
+    direction: rtl;
+  }
+  .w-\[200px\].pt-10 {
+    display: none;
+  }
+  button.text-sm.text-main-500.font-bold {
+    display: none !important;
+  }
+  img.flex.justify-center.items-center {
+    display: none !important;
+  }
+  button.text-main-500.m-6.font-medium {
+    display: none !important;
+  }
+  button.bg-main-500.rounded-lg.font-bold {
+    display: none !important;
+  }
+  button.sm\:hidden.flex.bg-primary-500.rounded.justify-center.items-center.p-2 {
+    display: none !important;
+  }
+  img {
+    display: none;
+  }
+  button.p-2.border.border-main-300.rounded.gap-2.h-10.border-12.border-solid.flex.items-center {
+    display: none;
+  }
+  p.flex-none.flex.justify-center.items-center {
+    display: none;
+  }
+  button.p-2.border.border-main-300.rounded.gap-2.h-10.border-12.border-solid.flex.items-center {
+    visibility: hidden;
+  }
+}

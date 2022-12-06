@@ -173,7 +173,7 @@ export default function SignContract({ data }) {
   //     }
   //   };
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center" id="cn">
       <div className="form1 seventyfivevh">
         <strong className="flex justify-center items-start text-4xl mb-4">
           امضای قرارداد{" "}
@@ -479,7 +479,10 @@ export default function SignContract({ data }) {
               (user_id != propertyData?.owner?.owner_id &&
                 data?.tenant_signature) ? (
                 <div className=" flex gap-4">
-                  <button className="bg-main-500 w-48 text-white disabled:bg-gray disabled:cursor-not-allowed">
+                  <button
+                    onClick={() => window.print()}
+                    className="bg-main-500 w-48 text-white disabled:bg-gray disabled:cursor-not-allowed"
+                  >
                     چاپ قرارداد
                   </button>
                 </div>
