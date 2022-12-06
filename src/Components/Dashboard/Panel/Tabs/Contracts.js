@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import Spinner from "react-spinkit";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
@@ -21,6 +21,7 @@ const Contracts = () => {
   const [update, setUpdate] = useState(0);
   const [showLoading, setShowLoading] = useState(false);
   const { path, url } = useRouteMatch();
+  const _update = useSelector((state) => state.user.update);
 
   const dispatch = useDispatch();
   const [token] = useToken();
@@ -55,7 +56,7 @@ const Contracts = () => {
         console.log("error", error);
       }
     }
-  }, [token, update]);
+  }, [token, update, _update]);
   //   const changeStatusHandler = (id, status) => {
   //     // id = request id
   //     if (!!!!token) {

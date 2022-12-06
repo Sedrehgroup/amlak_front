@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const slice = createSlice({
-  name: "login",
+  name: "user",
   initialState: {
     email: "mwwadzsefewfwefe@gmail.com",
     father_name: "Hassan",
@@ -22,16 +22,25 @@ const slice = createSlice({
     address: "string too long",
     postal_code: "2233445511",
     personal_phone_number: "02298747455",
+    user_id: 0,
+    updata: 0,
   },
+
   reducers: {
     fn: (state, action) => {
       state.loginSteps[action.payload] = true;
+    },
+    setUserIdHandler: (state, action) => {
+      state.user_id = action.payload;
+    },
+    updateHandler: (state, action) => {
+      state.updatee = action.payload;
     },
   },
 });
 export default slice.reducer;
 
 //Actions
-export const { fn } = slice.actions;
+export const { fn, setUserIdHandler, updateHandler } = slice.actions;
 
 //functions

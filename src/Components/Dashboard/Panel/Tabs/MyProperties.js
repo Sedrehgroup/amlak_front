@@ -37,8 +37,8 @@ const MyProperties = () => {
               "axios get /api/property/my_properties/ data.data:",
               data
             );
-            dispatch(updateMyPropertyListHandler(data));
-            setMyProperties(data);
+            dispatch(updateMyPropertyListHandler(data.results));
+            setMyProperties(data.results);
             setShowLoading(false);
           })
           .catch((e) => {

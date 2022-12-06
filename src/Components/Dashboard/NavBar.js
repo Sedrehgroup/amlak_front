@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { setUserIsLoggedHandler } from "../../redux/reducers/login";
 import { useHistory, useLocation } from "react-router-dom";
+import { setUserIdHandler } from "../../redux/reducers/user";
 
 export default function NavBar() {
   const [isAllAdds, setisAllAdds] = useState(false);
@@ -42,6 +43,7 @@ export default function NavBar() {
           .then(({ data }) => {
             console.log("axios /account/user_information data.data:", data);
             setUserData(data);
+            dispatch(setUserIdHandler(data?.id));
           })
           .catch((e) => {
             console.log("error in axios /account/user_information", e);

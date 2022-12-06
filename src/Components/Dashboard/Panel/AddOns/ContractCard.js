@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "reactjs-popup/dist/index.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Link, useRouteMatch } from "react-router-dom";
 import Popup from "reactjs-popup";
@@ -32,7 +32,24 @@ const ContractCard = ({
   //     landlord_description,
   //   } = data;
   let { path, url } = useRouteMatch();
-
+  const user_id = useSelector((state) => state.user.user_id);
+  const [role, setRole] = useState(""); //T: tenant L: landloard
+  useEffect(() => {
+    console.log("user_id", user_id);
+    console.log(
+      "data?.contract_landlord_information?.id",
+      data?.contract_landlord_information?.id
+    );
+    console.log(
+      "data?.contract_tenant_information?.id",
+      data?.contract_tenant_information?.id
+    );
+    if (user_id == data?.contract_landlord_information?.id) {
+      setRole("L");
+    } else if (user_id == data?.contract_tenant_information?.id) {
+      setRole("T");
+    }
+  }, [user_id, data]);
   const dispatch = useDispatch();
   //   const signContactShow = () => {
   //     dispatch(signContractHandler(true));
@@ -106,12 +123,14 @@ const ContractCard = ({
                 >
                   تکمیل قرارداد اجاره
                 </span>
-              ) : data?.landlord_signature && !data?.tenant_signature ? (
+              ) : data?.landlord_signature &&
+                !data?.tenant_signature &&
+                role == "L" ? (
                 <>
                   <span
                     className={`font-bold text-[#22C55E] bg-[#DCFCE7] rounded p-2`}
                   >
-                    امضای قرارداد توسط موجر
+                    امضای قرارداد توسط شما
                   </span>
                   <span
                     className={`font-bold text-[#F97316] bg-[#FFEDD5] rounded p-2`}
@@ -119,7 +138,9 @@ const ContractCard = ({
                     منتظر امضای قرارداد توسط مستاجر
                   </span>
                 </>
-              ) : !data?.landlord_signature && data?.tenant_signature ? (
+              ) : !data?.landlord_signature &&
+                data?.tenant_signature &&
+                role == "L" ? (
                 <>
                   <span
                     className={`font-bold text-[#22C55E] bg-[#DCFCE7] rounded p-2`}
@@ -129,7 +150,37 @@ const ContractCard = ({
                   <span
                     className={`font-bold text-[#F97316] bg-[#FFEDD5] rounded p-2`}
                   >
+                    منتظر امضای قرارداد توسط شما
+                  </span>
+                </>
+              ) : !data?.landlord_signature &&
+                data?.tenant_signature &&
+                role == "T" ? (
+                <>
+                  <span
+                    className={`font-bold text-[#22C55E] bg-[#DCFCE7] rounded p-2`}
+                  >
+                    امضای قرارداد توسط شما
+                  </span>
+                  <span
+                    className={`font-bold text-[#F97316] bg-[#FFEDD5] rounded p-2`}
+                  >
                     منتظر امضای قرارداد توسط موجر
+                  </span>
+                </>
+              ) : data?.landlord_signature &&
+                !data?.tenant_signature &&
+                role == "T" ? (
+                <>
+                  <span
+                    className={`font-bold text-[#22C55E] bg-[#DCFCE7] rounded p-2`}
+                  >
+                    امضای قرارداد توسط موجر
+                  </span>
+                  <span
+                    className={`font-bold text-[#F97316] bg-[#FFEDD5] rounded p-2`}
+                  >
+                    منتظر امضای قرارداد توسط شما
                   </span>
                 </>
               ) : !data?.landlord_signature && !data?.tenant_signature ? (
@@ -142,14 +193,71 @@ const ContractCard = ({
             </p>
             <hr className=" text-warmGray-400" />
             <div className=" flex gap-x-4">
-              <Link
-                to={`${url}/signContract`}
-                onClick={passDataToSignContract}
-                className="border-12 bg-main-600 text-white rounded-lg font-bold px-6 py-2"
-              >
-                امضای قرارداد
-              </Link>
-
+              {data?.landlord_signature && data?.tenant_signature ? (
+                <Link
+                  to={`${url}/signContract`}
+                  onClick={passDataToSignContract}
+                  className="border-12 bg-main-600 text-white rounded-lg font-bold px-6 py-2"
+                >
+                  مشاهده قرارداد
+                </Link>
+              ) : data?.landlord_signature &&
+                !data?.tenant_signature &&
+                role == "L" ? (
+                <>
+                  <Link
+                    to={`${url}/signContract`}
+                    onClick={passDataToSignContract}
+                    className="border-12 bg-main-600 text-white rounded-lg font-bold px-6 py-2"
+                  >
+                    مشاهده قرارداد
+                  </Link>
+                </>
+              ) : !data?.landlord_signature &&
+                data?.tenant_signature &&
+                role == "L" ? (
+                <>
+                  <Link
+                    to={`${url}/signContract`}
+                    onClick={passDataToSignContract}
+                    className="border-12 bg-main-600 text-white rounded-lg font-bold px-6 py-2"
+                  >
+                    امضا قرارداد
+                  </Link>
+                </>
+              ) : !data?.landlord_signature &&
+                data?.tenant_signature &&
+                role == "T" ? (
+                <>
+                  <Link
+                    to={`${url}/signContract`}
+                    onClick={passDataToSignContract}
+                    className="border-12 bg-main-600 text-white rounded-lg font-bold px-6 py-2"
+                  >
+                    مشاهده قرارداد
+                  </Link>
+                </>
+              ) : data?.landlord_signature &&
+                !data?.tenant_signature &&
+                role == "T" ? (
+                <>
+                  <Link
+                    to={`${url}/signContract`}
+                    onClick={passDataToSignContract}
+                    className="border-12 bg-main-600 text-white rounded-lg font-bold px-6 py-2"
+                  >
+                    امضا قرارداد
+                  </Link>
+                </>
+              ) : !data?.landlord_signature && !data?.tenant_signature ? (
+                <Link
+                  to={`${url}/signContract`}
+                  onClick={passDataToSignContract}
+                  className="border-12 bg-main-600 text-white rounded-lg font-bold px-6 py-2"
+                >
+                  امضا قرارداد
+                </Link>
+              ) : null}
               {/* onClick={signContactShow} */}
             </div>
           </div>

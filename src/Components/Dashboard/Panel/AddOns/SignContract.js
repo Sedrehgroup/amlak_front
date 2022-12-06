@@ -1,19 +1,68 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useRef } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import useToken from "../../../../customHooks/useToken";
+import { updateHandler } from "../../../../redux/reducers/user";
+import { calcTimeOfContract } from "../../../../utils/calcTimeOfContract";
 
 export default function SignContract({ data }) {
-  const [boxes, setBoxes] = useState([]);
+  const [disable, setDisable] = useState(true);
+  const [propertyData, setPropertyData] = useState({
+    id: 26,
+    owner: {
+      owner_id: 1,
+      first_name: "علی",
+      last_name: "حسینی",
+    },
+    title: "عنوان آگهی",
+    mortgage_amount: 122,
+    rent_amount: 12,
+    type: 1,
+    use: 0,
+    special_situation: "زلزله خیز",
+    area: 13,
+    province: "تهران",
+    county: "تهران",
+    city: "تهران",
+    neighbourhood: "نامشخص",
+    convertible: true,
+    construction_year: 1388,
+    bedrooms: 4,
+    description: "این ملک در برای فروش نیز می باشد",
+    created_date: "2022-12-05T15:13:58.180590Z",
+    zip: 1234453,
+    Sub_registration_plate: 2,
+    Sub_registration_plate_from: 1,
+    Sub_registration_plate_to: 2,
+    Original_registration_plate: 1,
+    Original_registration_plate_from: 2,
+    Original_registration_plate_to: 3,
+    registration_section: "تهران",
+    registration_area: "تهران",
+    Skeleton_type: "آجری",
+    phone_status: "فعال",
+    phone_lines: 2,
+    address: "افسریه 15 متری دوم پلاک 14",
+    building_side: "شمالی",
+    unit_side: 1,
+    unit_floor: 2,
+    floors_number: 3,
+    units_per_floor: 2,
+  });
+  const checkbox = useRef();
   const [token] = useToken();
+  const history = useHistory();
   const dispatch = useDispatch();
-  const reqId = useSelector((state) => state.userProperty.requestId);
+  const user_id = useSelector((state) => state.user.user_id);
   const Api_Url = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     console.log("data of sign contract", data);
-    if (!!!!data) {
+    if (!!!!data && token) {
       try {
         axios
           .get(
@@ -29,7 +78,7 @@ export default function SignContract({ data }) {
               "axios /api/property/modify_properties data.data:",
               data
             );
-            // setUserData(data);
+            setPropertyData(data);
           })
           .catch((e) => {
             console.log("error in axios /api/property/modify_properties", e);
@@ -40,20 +89,52 @@ export default function SignContract({ data }) {
         console.log("error", error);
       }
     }
-  }, [data]);
-  function handleChange(e) {
-    const {
-      parentNode: { children },
-    } = e.target;
-
-    const index = [...children].indexOf(e.target);
-
-    const newState = [...boxes];
-
-    newState[index] = !newState[index];
-
-    setBoxes(newState);
-  }
+  }, [data, token]);
+  const handleCheckBoxChange = (e) => {
+    setDisable(!checkbox?.current?.checked);
+  };
+  const signContractBtnHandler = () => {
+    const _data =
+      user_id == propertyData?.owner?.owner_id
+        ? {
+            landlord_signature: true,
+          }
+        : {
+            tenant_signature: true,
+          };
+    if (!!!!token) {
+      try {
+        axios
+          .patch(
+            `${Api_Url}/api/contract/modify_contract/${data?.id}/`,
+            _data,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
+          .then(({ data }) => {
+            console.log("axios /api/contract/modify_contract data.data:", data);
+            // setPropertyData(data);
+            history.push("/contracts");
+            dispatch(updateHandler(Math.random()));
+            toast.success("با موفقیت قرارداد توسط شما امضا شد", {
+              position: "top-center",
+              rtl: true,
+              className: "m_toast",
+            });
+          })
+          .catch((e) => {
+            console.log("error in axios /api/contract/modify_contract", e);
+            if (e.response.status == 401) {
+            }
+          });
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
+  };
 
   //   function isDisabled() {
   //     const len = boxes.filter((box) => box).length;
@@ -241,27 +322,28 @@ export default function SignContract({ data }) {
                 </span>{" "}
                 دانگ یک دستگاه{" "}
                 <span>
+                  {/* <strong>{propertyData?.Skeleton_type}</strong> */}
                   <strong>آپارتمان</strong>
                 </span>{" "}
                 واقع در{" "}
                 <span>
-                  <strong>تهران، تجریش، کوچه ۴۶</strong>
+                  <strong>{propertyData?.address}</strong>
                 </span>{" "}
                 پلاک ثبتی شماره{" "}
                 <span>
-                  <strong>۷۳۴۸۹۷۴۴۷۶</strong>
+                  <strong>{propertyData?.Original_registration_plate}</strong>
                 </span>{" "}
-                فرعی از ....... به مساحت{" "}
+                فرعی از {propertyData?.Sub_registration_plate} به مساحت{" "}
                 <span>
-                  <strong>۱۲۰ متر مربع</strong>
+                  <strong>{propertyData?.area} متر مربع</strong>
                 </span>{" "}
                 دارای سند مالکیت به شماره سریال{" "}
                 <span>
-                  <strong>۴۵۶۴۵۶۴۵۶۴</strong>
+                  <strong>{propertyData?.registration_section}</strong>
                 </span>{" "}
                 به نام موجر، مشتمل بر{" "}
                 <span>
-                  <strong>۲ اتاق خواب</strong>
+                  <strong>{propertyData?.bedrooms} اتاق خواب</strong>
                 </span>{" "}
                 با حق استفاده از{" "}
                 <span>
@@ -278,13 +360,24 @@ export default function SignContract({ data }) {
                 <div>
                   مدت اجاره ار تاریخ{" "}
                   <span>
-                    <strong>۱۴۰۱٫۰۸٫۵</strong>
+                    <strong>
+                      {data?.start_date?.slice(0, 4)}/
+                      {data?.start_date?.slice(5, 7)}/
+                      {data?.start_date?.slice(8, 10)}
+                    </strong>
                   </span>{" "}
                   آغاز و در مورخ{" "}
                   <span>
-                    <strong>۱۴۰۲٫۰۸٫۵</strong>
+                    <strong>
+                      {data?.end_date?.slice(0, 4)}/
+                      {data?.end_date?.slice(5, 7)}/
+                      {data?.end_date?.slice(8, 10)}
+                    </strong>
                   </span>{" "}
-                  خاتمه می یابد. (۳۶۵ روز)
+                  خاتمه می یابد. (
+                  {calcTimeOfContract(data?.start_date, data?.end_date).day ||
+                    "نامشخص"}{" "}
+                  روز)
                 </div>
               </div>
               <div className="mt-5">
@@ -292,16 +385,24 @@ export default function SignContract({ data }) {
                   <strong>ماده ۴ - اجاره بها، نحوه پرداخت</strong>
                 </span>
                 <div>
-                  میزان اجاره بها از قرار ماهی ۴٬۵۰۰٬۰۰۰ تومان معادل ۴۵٬۰۰۰٬۰۰۰
-                  ریال و جمعاً برای مدت اجاره مذکور میزان ۵۴٬۰۰۰٬۰۰۰ تومان می
-                  باشد. مبلغ ۲۰۰٬۰۰۰٬۰۰۰ تومان معادل ۲٬۰۰۰٬۰۰۰٬۰۰۰ ریال از طرف
-                  مستأجر به عنوان ودیعه قرض الحسنه به موجر نقداً پرداخت می شود.
+                  میزان اجاره بها از قرار ماهی {propertyData?.rent_amount} تومان
+                  معادل {propertyData.rent_amount * 10}
+                  ریال و جمعاً برای مدت اجاره مذکور میزان{" "}
+                  {propertyData?.rent_amount *
+                    calcTimeOfContract(data?.start_date, data?.end_date)
+                      ?.month || "نامشخص"}{" "}
+                  تومان می باشد. مبلغ {propertyData?.mortgage_amount} تومان
+                  معادل {propertyData?.mortgage_amount * 10} ریال از طرف مستأجر
+                  به عنوان ودیعه قرض الحسنه به موجر نقداً پرداخت می شود.
                 </div>
               </div>
               <div>
                 ماده ۵ - تقسیم مورد اجاره با عنایت به قرارداد اجاره مورخ
-                ۱۴۰۱٫۰۸٫۰۵ ، آپارتمان مورد اجاره به همراه تمامی توابع و ملحقات
-                آن هم اکنون در تحویل و ید مستأجر و تحت تصرف وی می باشد.
+                {data?.contract_date?.slice(0, 4)}/
+                {data?.contract_date?.slice(5, 7)}/
+                {data?.contract_date?.slice(8, 10)} ، آپارتمان مورد اجاره به
+                همراه تمامی توابع و ملحقات آن هم اکنون در تحویل و ید مستأجر و
+                تحت تصرف وی می باشد.
               </div>
               <div>
                 ماده ۶ - شرایط قرارداد 1- مستأجر حق استفاده از مورد اجاره را
@@ -321,39 +422,84 @@ export default function SignContract({ data }) {
                 قانون مدنی و قانون روابط مالک و مستأجر مصوب 1376 خواهد بود.
               </div>
               <div>
-                قرارداد مزبور در ۷ ماده در مورخ ۱۴۰۱٫۰۸٫۰۵ و در حضور شهود به
-                امضای طرفین رسید.
+                قرارداد مزبور در ۷ ماده در مورخ{" "}
+                {data?.contract_date?.slice(0, 4)}/
+                {data?.contract_date?.slice(5, 7)}/
+                {data?.contract_date?.slice(8, 10)} و در حضور شهود به امضای
+                طرفین رسید.
               </div>
             </div>
           </div>
           <div className="bg-white w-3/4  p-4 mx-auto rounded-lg mt-2 mb-4">
-            <input
-              type="checkbox"
-              //   onChange={handleChange}
-              className="m-2 w-4 h-4 cursor-pointer"
-            />
-            <label>
-              <strong>
-                اینجانب با آگاهی کامل، موافقت خود را با شرایط مذکور اعلام می کنم
-              </strong>
-            </label>
+            {(user_id == propertyData?.owner?.owner_id &&
+              data?.landlord_signature) ||
+            (user_id != propertyData?.owner?.owner_id &&
+              data?.tenant_signature) ? null : (user_id ==
+                propertyData?.owner?.owner_id &&
+                !data?.landlord_signature) ||
+              (user_id != propertyData?.owner?.owner_id &&
+                !data?.tenant_signature) ? (
+              <>
+                <input
+                  type="checkbox"
+                  onChange={handleCheckBoxChange}
+                  ref={checkbox}
+                  className="m-2 w-4 h-4 cursor-pointer"
+                />
+                <label>
+                  <strong>
+                    اینجانب با آگاهی کامل، موافقت خود را با شرایط مذکور اعلام می
+                    کنم
+                  </strong>
+                </label>
+              </>
+            ) : null}
+
             <div className="flex flex-row justify-between align-center mt-2">
               <div>
-                <p>وضعیت امضای مؤجر : </p>
-                <p>وضعیت امضای مستأجر :</p>
+                <p>
+                  وضعیت امضای مؤجر :{" "}
+                  {data?.landlord_signature ? (
+                    <span className="text-[#20eb6a]">امضا شده</span>
+                  ) : (
+                    <span className="text-[#eb2e20]">امضا نشده</span>
+                  )}
+                </p>
+                <p>
+                  وضعیت امضای مستأجر :{" "}
+                  {data?.tenant_signature ? (
+                    <span className="text-[#20eb6a]">امضا شده</span>
+                  ) : (
+                    <span className="text-[#eb2e20]">امضا نشده</span>
+                  )}
+                </p>
               </div>
-              <div className=" flex gap-4">
-                <button className="p-2 gap-2 w-28 border-12 border-solid border-primary-600 rounded">
-                  <p className="text-main-400">انصراف</p>
-                </button>
-                <button
-                  className="bg-main-500 w-48 disabled:bg-gray disabled:cursor-not-allowed"
-                  //   disabled={isDisabled()}
-                  //   onClick={redirectToRequests}
-                >
-                  <p className="text-white">تایید و امضا</p>
-                </button>
-              </div>
+              {(user_id == propertyData?.owner?.owner_id &&
+                data?.landlord_signature) ||
+              (user_id != propertyData?.owner?.owner_id &&
+                data?.tenant_signature) ? (
+                <div className=" flex gap-4">
+                  <button className="bg-main-500 w-48 text-white disabled:bg-gray disabled:cursor-not-allowed">
+                    چاپ قرارداد
+                  </button>
+                </div>
+              ) : (user_id == propertyData?.owner?.owner_id &&
+                  !data?.landlord_signature) ||
+                (user_id != propertyData?.owner?.owner_id &&
+                  !data?.tenant_signature) ? (
+                <div className=" flex gap-4">
+                  <button className="p-2 gap-2 text-main-400 w-28 border-12 border-solid border-primary-600 rounded">
+                    انصراف
+                  </button>
+                  <button
+                    className="bg-main-500 w-48 text-white disabled:bg-gray disabled:cursor-not-allowed"
+                    disabled={disable}
+                    onClick={signContractBtnHandler}
+                  >
+                    تایید و امضا
+                  </button>
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
