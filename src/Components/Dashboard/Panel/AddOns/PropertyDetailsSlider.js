@@ -8,7 +8,7 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-import "./PropertyDetailsSlider.css";
+import styles from "./PropertyDetailsSlider.module.css";
 
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper";
@@ -30,7 +30,7 @@ export default function PropertyDetailsSlider() {
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2"
+        className={styles.mySwiper2}
       >
         <SwiperSlide>
           <img src="https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg?auto=compress&cs=tinysrgb&w=600" />

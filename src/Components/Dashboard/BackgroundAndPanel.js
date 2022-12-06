@@ -10,6 +10,7 @@ export default function BackgroundAndPanel() {
       </div>
 
       <div
+        id="m_main_content"
         style={{
           width: "calc(100% - 200px)",
           maxHeight: "calc(100vh - 72px)",

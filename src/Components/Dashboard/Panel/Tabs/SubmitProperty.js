@@ -33,7 +33,7 @@ export default function SubmitProperty() {
     createProperty(data);
   };
   const createProperty = ({
-    city,
+    // city,
     convertible,
     metric,
     mortgage_price,
@@ -77,7 +77,7 @@ export default function SubmitProperty() {
       area: +metric,
       province: province,
       county: state,
-      city: city,
+      city: "شهر",
       neighbourhood: district,
       convertible: convertible,
       construction_year: +year_of_construction,
@@ -331,7 +331,7 @@ export default function SubmitProperty() {
             </select>
           </div>
 
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          {/* <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               شهر{" "}
             </label>
@@ -353,7 +353,7 @@ export default function SubmitProperty() {
                   </option>
                 ))}
             </select>
-          </div>
+          </div> */}
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               محله{" "}
@@ -404,6 +404,7 @@ export default function SubmitProperty() {
               required
             />
           </div>
+          <div className="relative inputC mx-1  mt-6 "></div>
 
           <details className="p-4 rounded-lg m-auto">
             <summary className="font-semibold text-center mt-4 cursor-pointer select-none">

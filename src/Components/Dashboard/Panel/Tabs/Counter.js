@@ -4,8 +4,10 @@ import ImageContainerCounter from "./../AddOns/ImageContainerCounter";
 export default function Counter() {
   return (
     <>
-      <CounterSlide />
-      <ImageContainerCounter />
+      <center>
+        <CounterSlide />
+        <ImageContainerCounter />
+      </center>
     </>
   );
 }

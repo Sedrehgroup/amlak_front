@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import "./CounterSlider.css";
+import styles from "./CounterSlider.module.css";
 
 // import required modules
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
@@ -22,15 +22,15 @@ export default function CounterSlide() {
       mousewheel={true}
       keyboard={true}
       modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-      className="mySwiper2"
+      className={styles.mySwiper2}
     >
       <SwiperSlide>
         <div className="w-full bg-white">
           <div className="bg-white mx-2 flex justify-center flex-col rounded-lg mb-4">
             <p className=""> مسکونی دوبلکس 248 متر در پیروزی</p>
             <div className="flex bg-white w-full">
-              <div className="w-3/5 mt-10 p-10">
-                <div className="border border-warmGray-300  rounded border-12 border-solid flex">
+              <div className="w-3/5 mt-10 p-10 flex flex-col justify-between">
+                <div className="border border-warmGray-300  rounded border-12 border-solid flex ">
                   <div className="w-1/2">
                     <p>قیمت رهن : 620,000,000 تومان</p>
                     <hr

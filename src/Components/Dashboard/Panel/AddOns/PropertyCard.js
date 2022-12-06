@@ -12,7 +12,7 @@ export default function PropertyCard(props) {
 
   return (
     <>
-      <div className="w-full h-auto">
+      <div className="w-full h-auto max-w-[350px]">
         <div className="bg-white mx-2 flex justify-center flex-col rounded-lg mb-4">
           <strong className="mx-auto pt-6">{title}</strong>
           <div className="flex flex-col bg-white">

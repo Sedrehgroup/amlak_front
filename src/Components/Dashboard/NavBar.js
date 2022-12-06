@@ -7,7 +7,7 @@ import useToken from "../../customHooks/useToken";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { setUserIsLoggedHandler } from "../../redux/reducers/login";
-import { useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { setUserIdHandler } from "../../redux/reducers/user";
 
 export default function NavBar() {
@@ -83,14 +83,14 @@ export default function NavBar() {
       <div className="ml-7">
         {" "}
         <button className="text-main-500 m-6 font-medium">پشتیبانی</button>
-        <button
-          className="bg-main-500 rounded-lg font-bold"
-          onClick={isAllAddsHandler}
+        {/* <button className="bg-main-500 rounded-lg font-bold text-main-50 w-32 h-10 text-base">
+        </button> */}
+        <Link
+          to="/allProperties"
+          className="border-12 bg-main-500 text-base text-main-50 rounded-lg font-bold px-6 py-2"
         >
-          <p className="text-main-50 w-32 h-10 flex justify-center items-center text-base ">
-            آگهی های اجاره
-          </p>
-        </button>
+          آگهی های اجاره
+        </Link>
       </div>
     </div>
   );
