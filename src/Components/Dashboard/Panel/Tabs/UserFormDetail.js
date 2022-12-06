@@ -433,7 +433,7 @@ export default function UserFormDetail() {
                 <option
                   key={index}
                   value={val}
-                  disabled={val != "تهران"}
+                  // disabled={val != "تهران"}
                   selected={
                     userAdditionalData.certificate_province == val && "selected"
                   }
@@ -455,16 +455,16 @@ export default function UserFormDetail() {
             >
               {iranCitiesList
                 .filter(
-                  (element) =>
-                    element.province ==
-                      userAdditionalData.certificate_province ||
-                    element.province == selectedProvince
+                  (element) => element.province == selectedProvince
+
+                  // userAdditionalData.certificate_province ||
+                  // element.province ==
                 )
                 .map((val, index) => (
                   <option
                     key={index}
                     value={val.city}
-                    disabled={val.city != "تهران"}
+                    // disabled={val.city != "تهران"}
                     selected={
                       userAdditionalData.certificate_county == val.city &&
                       "selected"
@@ -554,7 +554,7 @@ export default function UserFormDetail() {
                 ...new Set(iranCitiesList.map((element) => element.province)),
               ].map((val, index) => (
                 <option
-                  disabled={val != "تهران"}
+                  // disabled={val != "تهران"}
                   key={index}
                   value={val}
                   selected={userAdditionalData.province == val && "selected"}
@@ -581,12 +581,12 @@ export default function UserFormDetail() {
               {iranCitiesList
                 .filter(
                   (element) =>
-                    element.province == userAdditionalData.province ||
+                    // element.province == userAdditionalData.province ||
                     element.province == selectedProvince2
                 )
                 .map((val, index) => (
                   <option
-                    disabled={val.city != "تهران"}
+                    // disabled={val.city != "تهران"}
                     key={index}
                     value={val.city}
                     selected={
@@ -598,7 +598,7 @@ export default function UserFormDetail() {
                 ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          {/* <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               شهر محل سکونت
             </label>
@@ -627,7 +627,7 @@ export default function UserFormDetail() {
                   </option>
                 ))}
             </select>
-          </div>
+          </div> */}
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               کد پستی
