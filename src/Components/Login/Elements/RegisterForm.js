@@ -151,9 +151,9 @@ export default function RegisterForm() {
                     aria-invalid={errors.nationalCode ? "true" : "false"}
                     {...register("nationalCode", {
                       required: "وارد کردن کد ملی الزامی می باشد",
-                      valueAsNumber: true,
                     })}
                     onChange={(e) => setNationalCode(e.target.value)}
+                    type="text"
                     placeholder="0012223334"
                     dir="ltr"
                   />

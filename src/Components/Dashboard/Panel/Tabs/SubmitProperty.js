@@ -413,14 +413,14 @@ export default function SubmitProperty() {
             <div className="flex flex-row justify-between flex-wrap">
               <div className="relative w-full mt-6 border-12 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-20 right-2">
-                  توضیحات آگهی{" "}
+                  نشانی ملک{" "}
                 </label>
                 <input
                   className="w-full h-24 px-1"
-                  {...register("descriptions", {
+                  {...register("address", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                   })}
-                  placeholder="این خانه سند دارد."
+                  placeholder="بلوار کشاورز تقاطق قدس"
                   type="text"
                 />
               </div>
@@ -604,19 +604,7 @@ export default function SubmitProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
-                  نشانی ملک{" "}
-                </label>
-                <input
-                  className="w-full h-12 px-1  py-2"
-                  {...register("address", {
-                    // required: "وارد کردن این فیلد الزامی می باشد",
-                  })}
-                  placeholder="بلوار کشاورز تقاطق قدس"
-                  type="text"
-                />
-              </div>
+
               <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   سمت ساختمان{" "}
@@ -679,6 +667,19 @@ export default function SubmitProperty() {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                   })}
                   placeholder="2"
+                  type="text"
+                />
+              </div>
+              <div className="relative w-full mt-6 border-12 border-solid border-main-200">
+                <label className="absolute bg-primary-50 bottom-20 right-2">
+                  توضیحات آگهی{" "}
+                </label>
+                <input
+                  className="w-full h-24 px-1"
+                  {...register("descriptions", {
+                    // required: "وارد کردن این فیلد الزامی می باشد",
+                  })}
+                  placeholder="این خانه سند دارد."
                   type="text"
                 />
               </div>
