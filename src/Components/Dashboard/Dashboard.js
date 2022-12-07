@@ -9,6 +9,7 @@ import AllProperties from "./Panel/Tabs/AllProperties";
 import MyProperties from "./Panel/Tabs/MyProperties";
 import Counter from "./Panel/Tabs/Counter";
 import Contracts from "./Panel/Tabs/Contracts";
+import SignContract from "./Panel/AddOns/SignContract";
 const Dashboard = () => {
   return (
     <>
@@ -43,6 +44,7 @@ const Dashboard = () => {
         </Route>
         <Route path="/accepptedFromMe">
           <center>اجاره داده شده ها</center>
+          {/* <SignContract /> */}
           {/* <AccepptedFromMe/> */}
         </Route>
         <Route path="/allProperties">

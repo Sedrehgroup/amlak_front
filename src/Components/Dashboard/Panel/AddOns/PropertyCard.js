@@ -4,7 +4,7 @@ import { Link, useRouteMatch } from "react-router-dom";
 import frame from "./../../../../assets/Images/Dashboard/Frame.png";
 
 export default function PropertyCard(props) {
-  const { title, mortgage_amount, rent_amount, area, id } = props.data;
+  const { title, mortgage_amount, rent_amount, area, id, county } = props.data;
   const showHandler = props.showHandler;
   const deleteHandler = props.deleteHandler;
 
@@ -13,72 +13,97 @@ export default function PropertyCard(props) {
   return (
     <>
       <div className="w-full h-auto max-w-[350px]">
-        <div className="bg-white mx-2 flex justify-center flex-col rounded-lg mb-4">
-          <strong className="mx-auto pt-6">{title}</strong>
-          <div className="flex flex-col bg-white">
-            <div className=" p-10">
+        <Link
+          to={`${url}/${id}`}
+          onClick={() => showHandler(props.data)}
+          className="bg-white mx-1 flex justify-center flex-col rounded-lg mb-4"
+        >
+          <div className="flex flex-col bg-white rounded-lg">
+            <>
               <img
                 src={frame}
                 alt=""
-                className="rounded-lg"
+                className="rounded-t-lg"
                 style={{
-                  height: "150px",
+                  height: "320px",
                   width: "100%",
                   objectFit: "cover",
                 }}
               />
-            </div>
-            <div className="w-full px-4 rounded-lg">
+            </>
+            <strong className="mx-auto mb-3 mt-3">{title}</strong>
+            <hr
+              style={{
+                color: "rgba(255, 171, 119, 1)",
+                marginBottom: "16px",
+              }}
+            />
+            <div className="w-full px-4 rounded-lg flex flex-col text-center">
               <p className="mb-4">قیمت رهن : {mortgage_amount} تومان </p>
-              <hr
+              {/* <hr
                 style={{
-                  color: "#D6D3D1",
+                  color: "rgba(255, 171, 119, 1)",
                   marginBottom: "16px",
                 }}
-              />
+              /> */}
               <p className="mb-4">قیمت اجاره : {rent_amount} تومان </p>
-              <hr
+              {/* <hr
                 style={{
-                  color: "#D6D3D1",
+                  color: "rgba(255, 171, 119, 1)",
                   marginBottom: "16px",
                 }}
-              />
+              /> */}
               <p className="mb-4">متراژ : {area} متر</p>
+              {/* <hr
+                style={{
+                  color: "rgba(255, 171, 119, 1)",
+                  marginBottom: "16px",
+                }}
+              /> */}
+              <p className="mb-4">شهرستان : {county} </p>
             </div>
           </div>
-          <hr
-            style={{
-              color: "black",
-              marginBottom: "16px",
-            }}
-          />
           <div
-            className={`flex flex-row flex-wrap gap-4 mb-4  ${
+            className={`flex flex-row flex-wrap gap-4   ${
               props.notForMe ? "justify-end px-3" : "justify-center px-1"
             }`}
           >
             {!props.notForMe && (
-              <>
+              <div className="w-full">
+                {/* <hr
+                  style={{
+                    color: "rgba(255, 171, 119, 1)",
+                    marginBottom: "16px",
+                    width: "70%",
+                  }}
+                /> */}
                 <button
                   onClick={() => deleteHandler(props.data)}
-                  className="text-sm px-3 py-2 whitespace-nowrap text-dark_red border-12 border-dark_red border-solid rounded-lg"
+                  className="text-sm px-3 py-2 whitespace-nowrap text-darkRed border-12 border-darkRed border-solid rounded-lg w-1/3"
                 >
                   حذف آگهی
                 </button>
-                <button className="text-sm px-3 py-2 whitespace-nowrap bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg">
+                <button className="text-sm px-3 py-2 whitespace-nowrap bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg w-1/3">
                   ویرایش آگهی
                 </button>
-              </>
+                <Link
+                  to={`${url}/${id}`}
+                  onClick={() => showHandler(props.data)}
+                  className="text-sm px-3 py-2 bg-main-500  whitespace-nowrap text-white border-12 border-primary-500 border-solid rounded-lg w-1/3"
+                >
+                  مشاهده آگهی
+                </Link>
+              </div>
             )}
-            <Link
+            {/* <Link
               to={`${url}/${id}`}
               onClick={() => showHandler(props.data)}
               className="text-sm px-3 py-2 bg-main-500  whitespace-nowrap text-white border-12 border-primary-500 border-solid rounded-lg"
             >
               مشاهده آگهی
-            </Link>
+            </Link> */}
           </div>
-        </div>
+        </Link>
       </div>
     </>
   );
