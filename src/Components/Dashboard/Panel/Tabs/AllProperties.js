@@ -199,7 +199,7 @@ const AllProperties = () => {
                 </select>
               </div>
             </div>
-            <div className="mx-8 bg-warmGray-100 h-[1px]"></div>
+            {/* <div className="mx-8 bg-warmGray-100 h-[1px]"></div> */}
             {!showLoading ? (
               <div>
                 {MyPropertiesList.length > 0 ? (

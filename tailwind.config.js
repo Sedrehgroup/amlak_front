@@ -52,6 +52,7 @@ module.exports = {
       black: "#000000",
       white: "#FFFFFF",
       gray: "#D6D3D1",
+      darkRed: "#ad1818",
     },
     borderWidth: {
       12: "0.5px",
