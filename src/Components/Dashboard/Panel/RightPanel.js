@@ -24,12 +24,12 @@ export default function RightPanel() {
 
   return (
     <>
-      <div className="bg-warmGray-100 rounded-tl-lg rounded-bl-lg flex flex-col gap-y-4 pt-2 pr-4">
+      <div className="bg-warmGray-100 rounded-tl-lg rounded-bl-lg flex flex-col gap-y-4 pt-2 pr-4 boxshadow">
         <Link to="/dashboard">
           <div
-            className={`flex flex-row gap-2 ${
+            className={`flex flex-row gap-2 p-1 ${
               (location.pathname == "/" || location.pathname == "/dashboard") &&
-              "bg-white"
+              "bg-main-100"
             }`}
           >
             <img src={Dashboard_img} alt="" width={20} />
@@ -38,8 +38,8 @@ export default function RightPanel() {
         </Link>
         <Link to="/userinfo">
           <div
-            className={`flex flex-row gap-2 ${
-              location.pathname == "/userinfo" && "bg-white"
+            className={`flex flex-row gap-2 p-1 ${
+              location.pathname == "/userinfo" && "bg-main-100"
             }`}
           >
             <img src={UserInfo_img} alt="" width={20} />
@@ -48,8 +48,8 @@ export default function RightPanel() {
         </Link>
         <Link to="/chat">
           <div
-            className={`flex flex-row gap-2 ${
-              location.pathname == "/chat" && "bg-white"
+            className={`flex flex-row gap-2 p-1 ${
+              location.pathname == "/chat" && "bg-main-100"
             }`}
           >
             <img src={Chat_img} alt="" width={20} />
@@ -58,8 +58,8 @@ export default function RightPanel() {
         </Link>
         <Link to="/contracts">
           <div
-            className={`flex flex-row gap-2 ${
-              location.pathname == "/contracts" && "bg-white"
+            className={`flex flex-row gap-2 p-1 ${
+              location.pathname == "/contracts" && "bg-main-100"
             }`}
           >
             <img src={Properties_img} alt="" width={20} />
@@ -71,8 +71,8 @@ export default function RightPanel() {
         </div>
         <Link to="/submitProperty">
           <div
-            className={`flex flex-row gap-2 ${
-              location.pathname == "/submitProperty" && "bg-white"
+            className={`flex flex-row gap-2 p-1 ${
+              location.pathname == "/submitProperty" && "bg-main-100"
             }`}
           >
             <img src={AddProperty_img} alt="" width={20} />
@@ -81,8 +81,8 @@ export default function RightPanel() {
         </Link>
         <Link to="/myProperties">
           <div
-            className={`flex flex-row gap-2 ${
-              location.pathname == "/myProperties" && "bg-white"
+            className={`flex flex-row gap-2 p-1 ${
+              location.pathname == "/myProperties" && "bg-main-100"
             }`}
           >
             <img src={Properties_img} alt="" width={20} />
@@ -91,8 +91,8 @@ export default function RightPanel() {
         </Link>
         <Link to="/requestsToMe">
           <div
-            className={`flex flex-row gap-2 ${
-              location.pathname == "/requestsToMe" && "bg-white"
+            className={`flex flex-row gap-2 p-1 ${
+              location.pathname == "/requestsToMe" && "bg-main-100"
             }`}
           >
             <img src={Requests_img} alt="" width={20} />
@@ -101,8 +101,8 @@ export default function RightPanel() {
         </Link>
         <Link to="/accepptedFromMe">
           <div
-            className={`flex flex-row gap-2 ${
-              location.pathname == "/accepptedFromMe" && "bg-white"
+            className={`flex flex-row gap-2 p-1 ${
+              location.pathname == "/accepptedFromMe" && "bg-main-100"
             }`}
           >
             <img src={Accepted_img} alt="" width={20} />
@@ -114,8 +114,8 @@ export default function RightPanel() {
         </div>
         <Link to="/allProperties">
           <div
-            className={`flex flex-row gap-2 ${
-              location.pathname == "/allProperties" && "bg-white"
+            className={`flex flex-row gap-2 p-1 ${
+              location.pathname == "/allProperties" && "bg-main-100"
             }`}
           >
             <img src={Properties_img} alt="" width={20} />
@@ -124,8 +124,8 @@ export default function RightPanel() {
         </Link>
         <Link to="/requestsFromMe">
           <div
-            className={`flex flex-row gap-2 ${
-              location.pathname == "/requestsFromMe" && "bg-white"
+            className={`flex flex-row gap-2 p-1 ${
+              location.pathname == "/requestsFromMe" && "bg-main-100"
             }`}
           >
             <img src={Requests_img} alt="" width={20} />
@@ -134,8 +134,8 @@ export default function RightPanel() {
         </Link>
         <Link to="/accepptedForMe">
           <div
-            className={`flex flex-row gap-2 ${
-              location.pathname == "/accepptedForMe" && "bg-white"
+            className={`flex flex-row gap-2 p-1 ${
+              location.pathname == "/accepptedForMe" && "bg-main-100"
             }`}
           >
             <img src={Accepted_img} alt="" width={20} />

@@ -61,12 +61,12 @@ export default function NavBar() {
   return (
     <div className="w-full bg-white flex justify-between items-center">
       <div className="mr-7 flex gap-4">
-        <button
+        {/* <button
           className="text-sm text-main-500 font-bold"
           onClick={logOutHandler}
         >
           خروج
-        </button>
+        </button> */}
         <button className="sm:hidden flex bg-primary-500 rounded justify-center items-center p-2">
           <img src={loc} alt="" />
         </button>
@@ -77,12 +77,19 @@ export default function NavBar() {
             <span className="px-1">{userData?.last_name}</span>
           </p>
         </button>
+        <button
+          className="text-sm text-main-500 font-bold"
+          onClick={logOutHandler}
+        >
+          خروج
+        </button>
       </div>
 
-      <img src={logo} alt="logo" className="flex justify-center items-center" />
-      <div className="ml-7">
+      {/* <img src={logo} alt="logo" className=" fixed" /> */}
+      <img src={logo} alt="logo" className="fixed left-1/2 logofromtop" />
+      <div className="ml-7 m-6">
         {" "}
-        <button className="text-main-500 m-6 font-medium">پشتیبانی</button>
+        {/* <button className="text-main-500 m-6 font-medium">پشتیبانی</button> */}
         {/* <button className="bg-main-500 rounded-lg font-bold text-main-50 w-32 h-10 text-base">
         </button> */}
         <Link

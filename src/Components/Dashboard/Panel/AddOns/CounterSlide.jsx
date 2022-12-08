@@ -24,6 +24,10 @@ export default function CounterSlide() {
       keyboard={true}
       modules={[Navigation, Pagination, Mousewheel, Keyboard]}
       className={styles.mySwiper2}
+      style={{
+        "--swiper-navigation-color": "#ff731d",
+        "--swiper-pagination-color": "#ff731d",
+      }}
     >
       <SwiperSlide className="rounded-lg">
         {/* <div className="w-full bg-white">
