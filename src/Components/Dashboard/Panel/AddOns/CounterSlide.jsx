@@ -12,6 +12,7 @@ import styles from "./CounterSlider.module.css";
 
 // import required modules
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
+import CounterComponent from "./Template/CounterComponent";
 
 export default function CounterSlide() {
   return (
@@ -24,8 +25,8 @@ export default function CounterSlide() {
       modules={[Navigation, Pagination, Mousewheel, Keyboard]}
       className={styles.mySwiper2}
     >
-      <SwiperSlide>
-        <div className="w-full bg-white">
+      <SwiperSlide className="rounded-lg">
+        {/* <div className="w-full bg-white">
           <div className="bg-white mx-2 flex justify-center flex-col rounded-lg mb-4">
             <p className=""> مسکونی دوبلکس 248 متر در پیروزی</p>
             <div className="flex bg-white w-full">
@@ -103,7 +104,15 @@ export default function CounterSlide() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
+        <CounterComponent
+          Title="مسکونی دوبلکس 248 متر در پیروزی"
+          btnText="امضای قرارداد"
+          MortgagePrice="620,000,000 تومان"
+          RentalPrice="4,500,000 تومان"
+          YearOfConstruction="1399"
+          Meterage="248 متر"
+        />
       </SwiperSlide>
       <SwiperSlide>
         <div className="w-full bg-white">
