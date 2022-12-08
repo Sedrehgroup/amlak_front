@@ -10,7 +10,7 @@ const ChatTitle = (props) => {
           : "flex flex-col items-start gap-y-4 px-6 py-1 border-r-[4px] border-sub-500 hover:bg-sub-100/20 hover:-translate-x-2 duration-300"
       }
     >
-      <div className="flex  flex-col items-start gap-y-1">
+      <div className="flex flex-col items-start gap-y-1">
         <p className=" font-semibold text-right">{props.AdName}</p>
         <p className=" font-medium text-sm">{props.UserName}</p>
       </div>
