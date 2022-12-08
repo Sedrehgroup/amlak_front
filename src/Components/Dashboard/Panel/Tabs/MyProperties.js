@@ -8,6 +8,7 @@ import useToken from "../../../../customHooks/useToken";
 import PropertyDetails from "./../AddOns/PropertyDetails";
 import PropertyCard from "./../AddOns/PropertyCard";
 import {
+  selectedPropertyDataHandler,
   updateListHandler,
   updateMyPropertyListHandler,
 } from "../../../../redux/reducers/userProperty";
@@ -16,6 +17,7 @@ import { Route, Switch, useRouteMatch } from "react-router-dom";
 
 const MyProperties = () => {
   const update = useSelector((state) => state.userProperty.update);
+
   const [MyPropertiesList, setMyProperties] = useState([]);
 
   const [adData, setAdData] = useState([]);
@@ -172,7 +174,8 @@ const MyProperties = () => {
     }
   };
   const handler = (data) => {
-    setAdData(data);
+    // setAdData(data);
+    dispatch(selectedPropertyDataHandler(data));
   };
   return (
     <>
@@ -279,9 +282,9 @@ const MyProperties = () => {
             )}
           </div>
         </Route>
-        <Route path={`${path}/:cardId`}>
+        {/* <Route path={`allProperties/:cardId`}>
           <PropertyDetails data={adData} />
-        </Route>
+        </Route> */}
       </Switch>
     </>
   );

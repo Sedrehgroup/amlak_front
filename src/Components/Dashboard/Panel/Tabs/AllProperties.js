@@ -7,8 +7,12 @@ import PropertyDetails from "./../AddOns/PropertyDetails";
 import PropertyCard from "./../AddOns/PropertyCard";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import { iranCitiesList } from "../../../../utils/iranCitiesList";
+import { selectedPropertyDataHandler } from "../../../../redux/reducers/userProperty";
+import { useDispatch, useSelector } from "react-redux";
 
 const AllProperties = () => {
+  const dispatch = useDispatch();
+
   const [token] = useToken();
   const [MyPropertiesList, setMyProperties] = useState([]);
   const [adData, setAdData] = useState([]);
@@ -20,6 +24,10 @@ const AllProperties = () => {
 
   const [showLoading, setShowLoading] = useState(false);
   let { path, url } = useRouteMatch();
+  const selectedProperty = useSelector(
+    (state) => state.userProperty.selectedProperty
+  );
+
   useEffect(() => {
     if (province == "") setCity("");
   }, [province]);
@@ -143,7 +151,8 @@ const AllProperties = () => {
     }
   }, [token]);
   const handler = (data) => {
-    setAdData(data);
+    // setAdData(data);
+    dispatch(selectedPropertyDataHandler(data));
   };
 
   return (
@@ -251,7 +260,7 @@ const AllProperties = () => {
           </div>
         </Route>
         <Route path={`${path}/:cardId`}>
-          <PropertyDetails data={adData} />
+          <PropertyDetails data={selectedProperty} />
         </Route>
       </Switch>
     </>

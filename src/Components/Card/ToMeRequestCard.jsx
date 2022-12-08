@@ -133,7 +133,7 @@ const ToMeRequestCard = ({
             <hr className=" text-warmGray-400" />
             <div className=" flex gap-x-4">
               <Link
-                to={`${url}/${request_property?.id}`}
+                to={`/allProperties/${request_property?.id}`}
                 onClick={passPropertyData}
                 className="border-12 border-main-600 text-main-600 rounded-lg font-bold px-6 py-2"
               >

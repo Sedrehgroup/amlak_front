@@ -9,7 +9,10 @@ import imgFrame from "./../../../../assets/Images/Dashboard/Frame.png";
 import { setUserIsLoggedHandler } from "../../../../redux/reducers/login";
 import ToMeRequestCard from "../../../Card/ToMeRequestCard";
 import RequestDetails from "../AddOns/RequestDetails";
-import { updateListHandler } from "../../../../redux/reducers/userProperty";
+import {
+  selectedPropertyDataHandler,
+  updateListHandler,
+} from "../../../../redux/reducers/userProperty";
 import { toast } from "react-toastify";
 
 // درخواست ها - صفحه مؤجر
@@ -178,7 +181,8 @@ const RequestsToMe = () => {
     }
   };
   const getPropertyData = (data) => {
-    setAdData(data);
+    // setAdData(data);
+    dispatch(selectedPropertyDataHandler(data));
   };
   return (
     <Switch>
@@ -221,9 +225,9 @@ const RequestsToMe = () => {
           </div>
         )}
       </Route>
-      <Route path={`${path}/:cardId`}>
+      {/* <Route path={`${path}/:cardId`}>
         <RequestDetails data={adData} />
-      </Route>
+      </Route> */}
     </Switch>
   );
 };

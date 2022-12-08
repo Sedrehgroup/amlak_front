@@ -12,9 +12,9 @@ export default function PropertyCard(props) {
 
   return (
     <>
-      <div className="w-full h-auto max-w-[350px]">
+      <div className=" h-auto max-w-[350px]">
         <Link
-          to={`${url}/${id}`}
+          to={`/allProperties/${id}`}
           onClick={() => showHandler(props.data)}
           className="bg-white mx-1 flex justify-center flex-col rounded-lg mb-4"
         >
@@ -86,13 +86,13 @@ export default function PropertyCard(props) {
                 <button className="text-sm px-3 py-2 whitespace-nowrap bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg w-1/3">
                   ویرایش آگهی
                 </button>
-                <Link
+                {/* <Link
                   to={`${url}/${id}`}
                   onClick={() => showHandler(props.data)}
                   className="text-sm px-3 py-2 bg-main-500  whitespace-nowrap text-white border-12 border-primary-500 border-solid rounded-lg w-1/3"
                 >
                   مشاهده آگهی
-                </Link>
+                </Link> */}
               </div>
             )}
             {/* <Link

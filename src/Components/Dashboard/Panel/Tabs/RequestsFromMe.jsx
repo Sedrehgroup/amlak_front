@@ -8,6 +8,7 @@ import { setUserIsLoggedHandler } from "../../../../redux/reducers/login";
 import MyRequestCard from "../../../Card/MyRequestCard";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import RequestDetails from "../AddOns/RequestDetails";
+import { selectedPropertyDataHandler } from "../../../../redux/reducers/userProperty";
 
 // درخواست ها - صفحه مستأجر
 
@@ -54,7 +55,8 @@ const RequestsFromMe = () => {
     }
   }, [token, update]);
   const getPropertyData = (data) => {
-    setAdData(data);
+    // setAdData(data);
+    dispatch(selectedPropertyDataHandler(data));
   };
   return (
     <Switch>
@@ -86,9 +88,9 @@ const RequestsFromMe = () => {
           </div>
         )}
       </Route>
-      <Route path={`${path}/:cardId`}>
+      {/* <Route path={`${path}/:cardId`}>
         <RequestDetails data={adData} />
-      </Route>
+      </Route> */}
     </Switch>
   );
 };
