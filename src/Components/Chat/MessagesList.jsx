@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import messages3 from "../../assets/Images/Dashboard/messages-3.svg";
 import send from "../../assets/Images/Dashboard/send.svg";
 import Message from "./Message";
@@ -6,16 +6,43 @@ import Message from "./Message";
 const MessagesList = (props) => {
   const [isActiveChat, setIsActiveChat] = useState(false);
 
-  // const SendMessage = () => {
-  //   let am = document.getElementById("AllMessages");
-  //   let m = (
-  //     <Message
-  //       MessageText="سلام. من این درخواست ها را از شما دارم"
-  //       date="11:02"
-  //     />
-  //   );
-  //   // am.appendChild(m);
-  // };
+  // function OpeningChatPage() {
+  //   setIsActiveChat(false);
+  // }
+
+  const [ml, setml] = useState([
+    <Message
+      MessageText="سلام. من این درخواست ها را از شما دارم"
+      date={currentTime()}
+    />,
+    <Message MessageText="درخواست شماره 1" date={currentTime()} />,
+    <Message MessageText="درخواست شماره 2" date={currentTime()} />,
+    <Message MessageText="درخواست شماره 3" date={currentTime()} />,
+    <Message
+      MessageText="سلام. من با درخواست های شما موافقت می کنم. ولی یک نکته مهمی که باید عرض کنم این است که من این خانه را فقط به یک خانواده 4 نفری اجاره میدهم و نه بیشتر"
+      date={currentTime()}
+      Messenger="Audience"
+    />,
+  ]);
+
+  const [message, setMessage] = useState("");
+
+  const handleChange = (event) => {
+    setMessage(event.target.value);
+    // setMessage("");
+
+    console.log("value is:", event.target.value);
+  };
+
+  function currentTime() {
+    let date = new Date();
+    let hh = date.getHours();
+    let mm = date.getMinutes();
+
+    let time = hh + ":" + mm;
+
+    return time;
+  }
 
   return isActiveChat ? (
     <div className="flex h-full justify-center items-center">
@@ -25,15 +52,8 @@ const MessagesList = (props) => {
       </div>
     </div>
   ) : (
-    <div className="w-full h-full relative flex flex-col justify-between ">
-      <div
-        className=" w-full flex justify-between  py-4 px-3 border-b-[2px] border-warmGray-400"
-        // style={{
-        //   boxShadow: "0px 5px 5px 0px rgba(0,0,0,0.2)",
-        //   webkitBoxShadow: "0px 5px 5px 0px rgba(0,0,0,0.2)",
-        //   mozBoxShadow: "0px 5px 5px 0px rgba(0,0,0,0.2)",
-        // }}
-      >
+    <div className="w-full h-full relative flex flex-col justify-between">
+      <div className=" w-full flex justify-between  py-4 px-3 border-b-[2px] border-warmGray-400 ">
         <div className="flex flex-col gap-y-1 items-start">
           <p className=" font-semibold text-sm">{props.AdName}</p>
           <p className=" font-medium text-xs">{props.UserName}</p>
@@ -42,75 +62,36 @@ const MessagesList = (props) => {
           مشاهده آگهی
         </button>{" "}
       </div>
-      <div
-        className="flex flex-col gap-y-3 overflow-auto mb-6 mx-6"
-        id="AllMessages"
-      >
-        <Message
-          MessageText="سلام.  سلام. سلام. سلام. سلام. سلام. سلام. سلام. سلام. سلام. سلام.من این درخواست ها را از شما دارم"
-          date="11:02"
-        />
-        <Message
-          MessageText="سلام. من این درخواست ها را از شما دارم"
-          date="11:02"
-        />
-        <Message
-          MessageText="سلام. من این درخواست ها را از شما دارم"
-          date="11:02"
-        />
-        <Message
-          MessageText="سلام. من این درخواست ها را از شما دارم"
-          date="11:02"
-        />
-        <Message
-          MessageText="سلام. من این درخواست ها را از شما دارم"
-          date="11:02"
-        />
-        <Message
-          MessageText="سلام. من این درخواست ها را از شما دارم"
-          date="11:02"
-        />
-        <Message
-          MessageText="سلام. من این درخواست ها را از شما دارم"
-          date="11:02"
-        />
-        <Message
-          MessageText="سلام. من این درخواست ها را از شما دارم"
-          date="11:02"
-        />
-        <Message
-          MessageText="سلام. من این درخواست ها را از شما دارم"
-          date="11:02"
-        />
-        <Message
-          MessageText="سلام. من این درخواست ها را از شما دارم"
-          date="11:02"
-        />
-        <Message
-          MessageText="سلام. من این درخواست ها را از شما دارم"
-          date="11:02"
-        />
-        <Message
-          MessageText="سلام. من این درخواست ها را از شما دارم"
-          date="11:02"
-        />
-        <Message
-          MessageText="سلام. من این درخواست ها را از شما دارم"
-          date="11:02"
-        />
-        <Message
-          MessageText="سلام. من این درخواست ها را از شما دارم"
-          date="11:02"
-        />
+      <div className="overflow-auto flex flex-col-reverse justify-between h-full ">
+        <div className="flex flex-col gap-y-3 mb-4 mx-6 pt-4 justify-end">
+          {ml}
+        </div>
       </div>
       <div className=" rounded-lg p-2 bg-warmGray-200 flex gap-x-3 mb-3 mx-6">
-        <button>
+        <button
+          onClick={() => {
+            if (message === "") {
+              setMessage("");
+            } else {
+              const newml = ml.concat(
+                <Message MessageText={message} date={currentTime()} />
+              );
+              setml(newml);
+              setMessage("");
+            }
+          }}
+        >
           <img src={send} alt="" className="hover:text-main-400" />
         </button>
-        <input
-          className="focus:outline-none overflow-y-auto w-full p-1 bg-warmGray-200"
-          type="text"
+        <textarea
+          rows="1"
+          className="focus:outline-none overflow-y-scroll w-full p-1 bg-warmGray-200 resize-none"
           placeholder="پیام خود را بنویسید ..."
+          type="text"
+          id="message"
+          name="message"
+          value={message}
+          onChange={handleChange}
         />
       </div>
     </div>
