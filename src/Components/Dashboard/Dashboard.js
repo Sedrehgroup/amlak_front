@@ -10,6 +10,7 @@ import MyProperties from "./Panel/Tabs/MyProperties";
 import Counter from "./Panel/Tabs/Counter";
 import Contracts from "./Panel/Tabs/Contracts";
 import SignContract from "./Panel/AddOns/SignContract";
+import SubmitContract from "./Panel/AddOns/SubmitContract";
 const Dashboard = () => {
   return (
     <>
@@ -32,6 +33,9 @@ const Dashboard = () => {
         </Route>
         <Route path="/contracts">
           <Contracts />
+        </Route>
+        <Route path="/submitContract">
+          <SubmitContract />
         </Route>
         <Route path="/submitProperty">
           <SubmitProperty />

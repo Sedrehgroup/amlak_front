@@ -7,6 +7,7 @@ const slice = createSlice({
     update: 0,
     requestId: 0,
     selectedProperty: {},
+    selectedRequest: {},
   },
   reducers: {
     updateMyPropertyListHandler: (state, action) => {
@@ -21,6 +22,9 @@ const slice = createSlice({
     selectedPropertyDataHandler: (state, action) => {
       state.selectedProperty = action.payload;
     },
+    reqDataHandler: (state, action) => {
+      state.selectedRequest = action.payload;
+    },
   },
 });
 export default slice.reducer;
@@ -31,4 +35,5 @@ export const {
   signContractHandler,
   signContractData,
   selectedPropertyDataHandler,
+  reqDataHandler,
 } = slice.actions;

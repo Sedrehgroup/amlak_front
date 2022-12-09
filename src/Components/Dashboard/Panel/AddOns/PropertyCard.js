@@ -4,7 +4,7 @@ import { Link, useRouteMatch } from "react-router-dom";
 import frame from "./../../../../assets/Images/Dashboard/Frame.png";
 
 export default function PropertyCard(props) {
-  const { title, mortgage_amount, rent_amount, area, id, county } = props.data;
+  const { title, mortgage_amount, rent_amount, area, id, city } = props.data;
   const showHandler = props.showHandler;
   const deleteHandler = props.deleteHandler;
 
@@ -60,7 +60,7 @@ export default function PropertyCard(props) {
                   marginBottom: "16px",
                 }}
               /> */}
-              <p className="mb-4">شهرستان : {county} </p>
+              <p className="mb-4">شهرستان : {city} </p>
             </div>
           </div>
           <div

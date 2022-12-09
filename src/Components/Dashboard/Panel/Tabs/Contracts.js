@@ -23,7 +23,6 @@ const Contracts = () => {
   const { path, url } = useRouteMatch();
   const _update = useSelector((state) => state.user.update);
 
-  const dispatch = useDispatch();
   const [token] = useToken();
   const [signData, setSignData] = useState({});
 

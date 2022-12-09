@@ -23,7 +23,7 @@ const slice = createSlice({
     postal_code: "2233445511",
     personal_phone_number: "02298747455",
     user_id: 0,
-    updata: 0,
+    update: 0,
   },
 
   reducers: {
@@ -34,7 +34,7 @@ const slice = createSlice({
       state.user_id = action.payload;
     },
     updateHandler: (state, action) => {
-      state.updatee = action.payload;
+      state.update = action.payload;
     },
   },
 });
