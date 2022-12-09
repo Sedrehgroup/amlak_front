@@ -62,7 +62,7 @@ const RequestsFromMe = () => {
     <Switch>
       <Route exact path={path}>
         {!showLoading ? (
-          <div className=" bg-warmGray-200 ">
+          <div>
             {!!!!tenantData &&
               tenantData.map((value, index) => (
                 <div key={index}>

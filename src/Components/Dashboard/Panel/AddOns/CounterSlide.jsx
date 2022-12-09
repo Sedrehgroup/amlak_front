@@ -19,7 +19,8 @@ export default function CounterSlide() {
     <Swiper
       cssMode={true}
       navigation={true}
-      pagination={true}
+      pagination={{ clickable: true }}
+      loop={true}
       mousewheel={true}
       keyboard={true}
       modules={[Navigation, Pagination, Mousewheel, Keyboard]}

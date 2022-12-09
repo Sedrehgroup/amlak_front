@@ -54,9 +54,9 @@ module.exports = {
       gray: "#D6D3D1",
       darkRed: "#ad1818",
     },
-    borderWidth: {
-      12: "0.5px",
-    },
+    // borderWidth: {
+    //   12: "0.5px",
+    // },
 
     extend: {
       width: {

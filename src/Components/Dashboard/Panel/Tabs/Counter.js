@@ -4,7 +4,7 @@ import ImageContainerCounter from "./../AddOns/ImageContainerCounter";
 export default function Counter() {
   return (
     <>
-      <center>
+      <center className="mx-1">
         <CounterSlide />
         <ImageContainerCounter />
       </center>

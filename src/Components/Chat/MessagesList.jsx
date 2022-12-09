@@ -58,7 +58,7 @@ const MessagesList = (props) => {
           <p className=" font-semibold text-sm">{props.AdName}</p>
           <p className=" font-medium text-xs">{props.UserName}</p>
         </div>
-        <button className="border-2  text-main-600 rounded-lg font-bold px-6 text-sm">
+        <button className="  text-main-600 rounded-lg font-bold px-3 text-sm">
           مشاهده آگهی
         </button>{" "}
       </div>

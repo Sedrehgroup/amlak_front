@@ -68,7 +68,7 @@ const MyRequestCard = ({
               </p>
             </div>
             <hr className=" text-warmGray-400" />
-            <p className="font-light flex flex-row gap-4">
+            <p className="font-light flex flex-row items-center gap-4">
               وضعیت :&nbsp;&nbsp;
               {status != 4 || status != 5 ? (
                 <span
@@ -127,7 +127,7 @@ const MyRequestCard = ({
               <Link
                 to={`/allProperties/${request_property?.id}`}
                 onClick={passPropertyData}
-                className="border-12 border-main-600 text-main-600 rounded-lg font-bold px-6 py-2"
+                className="border-2 border-main-600 text-main-600 rounded-lg font-bold px-6 py-2"
               >
                 مشاهده آگهی
               </Link>

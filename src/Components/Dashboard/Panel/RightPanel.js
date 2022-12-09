@@ -24,7 +24,7 @@ export default function RightPanel() {
 
   return (
     <>
-      <div className="bg-warmGray-100 rounded-tl-lg rounded-bl-lg flex flex-col gap-y-4 pt-2 pr-4 boxshadow">
+      <div className="bg-warmGray-100 rounded-tl-lg rounded-bl-lg flex flex-col gap-y-3 pt-3 pr-4 mt-2 boxshadow">
         <Link to="/dashboard">
           <div
             className={`flex flex-row gap-2 p-1 ${
@@ -142,7 +142,7 @@ export default function RightPanel() {
             <span className="text-sm">اجاره شده ها</span>
           </div>
         </Link>
-        <span className="bg-main-200 text-sm w-fit p-1 rounded-bl-lg rounded-tr-lg mt-10 self-end">
+        <span className="bg-main-200 text-sm w-fit p-1 rounded-bl-lg rounded-tr-lg mt-5 self-end">
           {date.day}&nbsp;&nbsp;
           {date.month}&nbsp;&nbsp;
           {date.year}
