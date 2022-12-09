@@ -14,6 +14,7 @@ import { reqDataHandler } from "../../redux/reducers/userProperty";
 // کارت درخواست وارده به من به عنوان موجر
 
 const tenantDefaultDesc = "متن پیشفرض توضیحات مستاجر";
+const landlordDefaultDesc = "متن پیشفرض توضیحات موجر";
 const ToMeRequestCard = ({
   data,
   TitleOfChatButton,
@@ -149,6 +150,7 @@ const ToMeRequestCard = ({
               ) : status == 1 ? (
                 <>
                   <SeeRequestBtn
+                    data={data}
                     tenant_description={tenant_description}
                     submitPropertyHandler={submitPropertyHandler}
                     rejectPropertyHandler={rejectPropertyHandler}
@@ -231,7 +233,9 @@ const TenantContactInfoBtn = ({ tenant_description }) => {
   );
 };
 const SeeRequestBtn = ({
+  data,
   tenant_description,
+  landlord_description,
   submitPropertyHandler,
   rejectPropertyHandler,
 }) => {
@@ -252,10 +256,56 @@ const SeeRequestBtn = ({
           </button>
           <div className="header"> مشاهده درخواست</div>
           <div className="content">
-            <p className="text-base">توضیحات مستاجر:</p>
-            <p className="text-xs pt-4 text-warmGray-400">
-              {tenant_description || tenantDefaultDesc}
-            </p>
+            <div>
+              <p className="text-base">عنوان آگهی:</p>
+              <p className="text-xs pt-4 text-warmGray-400">
+                {data?.request_property?.title}
+              </p>
+            </div>
+            <div>
+              <p className="text-base">قیمت رهن:</p>
+              <p className="text-xs pt-4 text-warmGray-400">
+                {data?.request_property?.mortgage_amount}
+              </p>
+            </div>
+            <div>
+              <p className="text-base">قیمت اجاره:</p>
+              <p className="text-xs pt-4 text-warmGray-400">
+                {data?.request_property?.rent_amount}
+              </p>
+            </div>
+            <div>
+              <p className="text-base">متراژ:</p>
+              <p className="text-xs pt-4 text-warmGray-400">
+                {data?.request_property?.area}
+              </p>
+            </div>
+            <div>
+              <p className="text-base">تعداد اتاق:</p>
+              <p className="text-xs pt-4 text-warmGray-400">
+                {data?.request_property?.bedrooms}
+              </p>
+            </div>
+            <div>
+              <p className="text-base">توضیحات موجر:</p>
+              <p className="text-xs pt-4 text-warmGray-400">
+                {landlord_description || landlordDefaultDesc}
+              </p>
+            </div>
+            <div>
+              <p className="text-base">توضیحات مستاجر:</p>
+              <p className="text-xs pt-4 text-warmGray-400">
+                {tenant_description || tenantDefaultDesc}
+              </p>
+            </div>
+            <div>
+              <p className="text-base">مشخصات مستاجر:</p>
+              <p className="text-xs pt-4 text-warmGray-400">
+                <span> {data?.tenant?.first_name}</span>{" "}
+                <span> {data?.tenant?.last_name}</span>
+                <span> {data?.tenant?.phone_number}</span>
+              </p>
+            </div>
           </div>
           <div className="actions flex justify-center gap-3">
             <button
