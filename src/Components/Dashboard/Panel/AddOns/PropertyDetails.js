@@ -285,7 +285,7 @@ export default function PropertyDetails({ data }) {
                     marginBottom: "16px",
                   }}
                 />
-                <p className="mb-4">اتاق : {data2?.bedrooms}</p>
+                <p className="mb-4">تعداد اتاق : {data2?.bedrooms}</p>
                 <hr
                   style={{
                     color: "#D6D3D1",
@@ -296,28 +296,19 @@ export default function PropertyDetails({ data }) {
                   طبقه : {data2?.unit_floor || "2"} از{" "}
                   {data2?.floors_number || "4"}
                 </p>
+                <hr
+                  style={{
+                    color: "#D6D3D1",
+                    marginBottom: "16px",
+                  }}
+                />
+                <p className="mb-4">
+                  توضیحات مالک : {data2?.description || "بدون توضیح"}
+                </p>
               </div>
             </div>
           </div>
-          <div className="bg-white w-2/5 ml-10 mr-10 rounded-lg p-4">
-            <h2>توضیحات</h2>
-            <div>
-              {/* لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-              استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
-              در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
-              نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
-              کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان
-              جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را */}
-              {data2?.description}
-              {/* <button className="bg-primary-500">
-                <div className="text-primary-900">بیشتر</div>
-              </button> */}
-              <hr
-                style={{
-                  color: "#FDBA74",
-                }}
-              />
-            </div>
+          <div className="bg-white flex flex-col justify-between w-2/5 ml-10 mr-10 rounded-lg p-4">
             {/* <div>
               <p>امکانات</p>
               <div className="w-20 h-20 bg-primary-50 p-2 mb-2">
@@ -327,30 +318,163 @@ export default function PropertyDetails({ data }) {
                 </p>
               </div>
             </div> */}
-            <hr
-              style={{
-                color: "#FDBA74",
-              }}
-            />
-            <p className="mb-1 mt-1">{data2?.address}</p>
-
-            <div className="flex flex-col justify-between h-[40%] ">
-              <div className="p-4">
-                {/* <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d30795.380700658057!2d51.372130333374294!3d35.77622000762392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1669539829911!5m2!1sen!2s"
-                  width="100%"
-                  height="200"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe> */}
-                <iframe
-                  width="100%"
-                  height="200"
-                  src={`https://map.ir/lat/35.732560/lng/51.422552/z/17/p/${
-                    data2?.title || "ما اینجاییم"
-                  }`}
-                ></iframe>
+            <div className="flex flex-col gap-1">
+              <div>
+                <span className="font-bold text-[.7rem] text-[#FDBA74]">
+                  آدرس
+                </span>
+                <hr
+                  style={{
+                    color: "#FDBA74",
+                    margin: ".2rem 0 .35rem 0",
+                  }}
+                />
+                <p className="mb-1 mt-1">{data2?.address}</p>
               </div>
+              <div>
+                <span className="font-bold text-[.7rem] text-[#FDBA74]">
+                  قابل تبدیل
+                </span>
+                <hr
+                  style={{
+                    color: "#FDBA74",
+                    margin: ".2rem 0 .35rem 0",
+                  }}
+                />
+                <p className="mb-1 mt-1">
+                  {data2?.convertible ? "بله" : "خیر"}
+                </p>
+              </div>
+              <div>
+                <span className="font-bold text-[.7rem] text-[#FDBA74]">
+                  وضعیت خاص
+                </span>
+                <hr
+                  style={{
+                    color: "#FDBA74",
+                    margin: ".2rem 0 .35rem 0",
+                  }}
+                />
+                <p className="mb-1 mt-1">
+                  {
+                    [
+                      { lb: "معمولی", value: 1 },
+                      { lb: "گسل خیز", value: 0 },
+                      { lb: "بستر رودخانه", value: 2 },
+                      { lb: "غیره", value: 3 },
+                    ].find((v) => v.value == data2?.special_situation).lb
+                  }
+                </p>
+              </div>
+              <div>
+                <span className="font-bold text-[.7rem] text-[#FDBA74]">
+                  نوع اسکلت
+                </span>
+                <hr
+                  style={{
+                    color: "#FDBA74",
+                    margin: ".2rem 0 .35rem 0",
+                  }}
+                />
+                <p className="mb-1 mt-1">
+                  {
+                    [
+                      { lb: "بتنی", value: 0 },
+                      { lb: "آجری", value: 1 },
+                      { lb: "سیمانی", value: 2 },
+                      { lb: "غیره", value: 3 },
+                    ].find((v) => v.value == data2?.Skeleton_type).lb
+                  }
+                </p>
+              </div>
+              <div>
+                <span className="font-bold text-[.7rem] text-[#FDBA74]">
+                  وضعیت تلفن
+                </span>
+                <hr
+                  style={{
+                    color: "#FDBA74",
+                    margin: ".2rem 0 .35rem 0",
+                  }}
+                />
+                <p className="mb-1 mt-1">
+                  {
+                    [
+                      { lb: "بدون خط", value: 0 },
+                      { lb: "آزاد", value: 1 },
+                      { lb: "غیره", value: 2 },
+                    ].find((v) => v.value == data2?.phone_status).lb
+                  }
+                </p>
+              </div>
+              <div>
+                <span className="font-bold text-[.7rem] text-[#FDBA74]">
+                  تعداد خط
+                </span>
+                <hr
+                  style={{
+                    color: "#FDBA74",
+                    margin: ".2rem 0 .35rem 0",
+                  }}
+                />
+                <p className="mb-1 mt-1">
+                  {
+                    [
+                      { lb: "بدون خط", value: 0 },
+                      { lb: "1", value: 1 },
+                      { lb: "2", value: 2 },
+                      { lb: "3", value: 3 },
+                      { lb: "بیشتر", value: 4 },
+                    ].find((v) => v.value == data2?.phone_lines).lb
+                  }
+                </p>
+              </div>
+              <div>
+                <span className="font-bold text-[.7rem] text-[#FDBA74]">
+                  سمت ساختمان
+                </span>
+                <hr
+                  style={{
+                    color: "#FDBA74",
+                    margin: ".2rem 0 .35rem 0",
+                  }}
+                />
+                <p className="mb-1 mt-1">
+                  {
+                    [
+                      { lb: "جنوبی", value: 0 },
+                      { lb: "شمالی", value: 1 },
+                      { lb: "شرقی", value: 2 },
+                      { lb: "غربی", value: 3 },
+                      { lb: "غیره", value: 4 },
+                    ].find((v) => v.value == data2?.building_side).lb
+                  }
+                </p>
+              </div>
+              <div>
+                <span className="font-bold text-[.7rem] text-[#FDBA74]">
+                  تعداد واحد در هر طبقه
+                </span>
+                <hr
+                  style={{
+                    color: "#FDBA74",
+                    margin: ".2rem 0 .35rem 0",
+                  }}
+                />
+                <p className="mb-1 mt-1">
+                  {
+                    [
+                      { lb: "2", value: 0 },
+                      { lb: "1", value: 1 },
+                      { lb: "3", value: 2 },
+                      { lb: "4", value: 3 },
+                      { lb: "غیره", value: 4 },
+                    ].find((v) => v.value == data2?.units_per_floor).lb
+                  }
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-col justify-between  ">
               <div className="flex justify-center gap-8">
                 <button className="text-sm text-sub-500 border-12 border-solid border-sub-500 rounded px-6 py-1 ">
                   گفتگو

@@ -84,26 +84,26 @@ export default function SubmitProperty() {
       bedrooms: +number_of_room,
       // above is require
       // down in optional
-      // special_situation,
-      // description,
-      // zip,
-      // Sub_registration_plate,
-      // Sub_registration_plate_from,
-      // Sub_registration_plate_to,
-      // Original_registration_plate,
-      // Original_registration_plate_from,
-      // Original_registration_plate_to,
-      // registration_section,
-      // registration_area,
-      // Skeleton_type,
-      // phone_status,
-      // phone_lines,
-      // address,
-      // building_side,
-      // unit_side,
-      // unit_floor,
-      // floors_number,
-      // units_per_floor,
+      special_situation: special_situation || 0,
+      description,
+      zip,
+      Sub_registration_plate,
+      Sub_registration_plate_from,
+      Sub_registration_plate_to,
+      Original_registration_plate,
+      Original_registration_plate_from,
+      Original_registration_plate_to,
+      registration_section: registration_section || "Tehran",
+      registration_area: registration_area || "Tehran",
+      Skeleton_type: Skeleton_type || 0,
+      phone_status: phone_status || 0,
+      phone_lines: phone_lines || 0,
+      address: address || "آدرس تعیین نشده است",
+      building_side: building_side || 0,
+      unit_side: unit_side || 0,
+      unit_floor: unit_floor || 0,
+      floors_number: floors_number || 0,
+      units_per_floor: units_per_floor || 0,
     };
     try {
       axios
@@ -429,15 +429,27 @@ export default function SubmitProperty() {
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   وضعیت خاص{" "}
                 </label>
-                <input
-                  className="w-full h-12 px-1  py-2"
-                  {...register("special_situation", {
-                    // required: "وارد کردن این فیلد الزامی می باشد",
-                    // valueAsNumber: true,
-                  })}
-                  placeholder="گسل تهران"
-                  type="text"
-                />
+                <select
+                  dir="ltr"
+                  className="w-full h-12 px-4"
+                  {...register("special_situation", { valueAsNumber: true })}
+                  placeholder="معمولی"
+                >
+                  {[
+                    { lb: "معمولی", value: 1 },
+                    { lb: "گسل خیز", value: 0 },
+                    { lb: "بستر رودخانه", value: 2 },
+                    { lb: "غیره", value: 3 },
+                  ].map((val, index) => (
+                    <option
+                      key={index}
+                      value={val.value}
+                      selected={1 == val.value && "selected"}
+                    >
+                      {val.lb}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
@@ -569,106 +581,241 @@ export default function SubmitProperty() {
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   نوع اسکلت{" "}
                 </label>
-                <input
-                  className="w-full h-12 px-1  py-2"
-                  {...register("Skeleton_type", {
-                    // required: "وارد کردن این فیلد الزامی می باشد",
-                  })}
-                  placeholder="بتنی"
-                  type="text"
-                />
+                <select
+                  dir="ltr"
+                  className="w-full h-12 px-4"
+                  {...register("Skeleton_type", { valueAsNumber: true })}
+                  placeholder="آجری"
+                >
+                  {[
+                    { lb: "بتنی", value: 0 },
+                    { lb: "آجری", value: 1 },
+                    { lb: "سیمانی", value: 2 },
+                    { lb: "غیره", value: 3 },
+                  ].map((val, index) => (
+                    <option
+                      key={index}
+                      value={val.value}
+                      selected={1 == val.value && "selected"}
+                    >
+                      {val.lb}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   وضعیت تلفن{" "}
                 </label>
-                <input
-                  className="w-full h-12 px-1  py-2"
-                  {...register("phone_status", {
-                    // required: "وارد کردن این فیلد الزامی می باشد",
-                  })}
+                <select
+                  dir="ltr"
+                  className="w-full h-12 px-4"
+                  {...register("phone_status", { valueAsNumber: true })}
                   placeholder="آزاد"
-                  type="text"
-                />
+                >
+                  {[
+                    { lb: "بدون خط", value: 0 },
+                    { lb: "آزاد", value: 1 },
+                    { lb: "غیره", value: 2 },
+                  ].map((val, index) => (
+                    <option
+                      key={index}
+                      value={val.value}
+                      selected={1 == val.value && "selected"}
+                    >
+                      {val.lb}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   تعداد خط{" "}
                 </label>
-                <input
-                  className="w-full h-12 px-1  py-2"
+                <select
+                  dir="ltr"
+                  className="w-full h-12 px-4"
                   {...register("phone_lines", {
-                    // required: "وارد کردن این فیلد الزامی می باشد",
+                    valueAsNumber: true,
                   })}
-                  placeholder="2"
-                  type="text"
-                />
+                  placeholder="1"
+                >
+                  {[
+                    { lb: "بدون خط", value: 0 },
+                    { lb: "1", value: 1 },
+                    { lb: "2", value: 2 },
+                    { lb: "3", value: 3 },
+                    { lb: "بیشتر", value: 4 },
+                  ].map((val, index) => (
+                    <option
+                      key={index}
+                      value={val.value}
+                      selected={1 == val.value && "selected"}
+                    >
+                      {val.lb}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   سمت ساختمان{" "}
                 </label>
-                <input
-                  className="w-full h-12 px-1  py-2"
+                <select
+                  dir="ltr"
+                  className="w-full h-12 px-4"
                   {...register("building_side", {
-                    // required: "وارد کردن این فیلد الزامی می باشد",
+                    valueAsNumber: true,
                   })}
                   placeholder="شمالی"
-                  type="text"
-                />
+                >
+                  {[
+                    { lb: "جنوبی", value: 0 },
+                    { lb: "شمالی", value: 1 },
+                    { lb: "شرقی", value: 2 },
+                    { lb: "غربی", value: 3 },
+                    { lb: "غیره", value: 4 },
+                  ].map((val, index) => (
+                    <option
+                      key={index}
+                      value={val.value}
+                      selected={1 == val.value && "selected"}
+                    >
+                      {val.lb}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   سمت واحد{" "}
                 </label>
-                <input
-                  className="w-full h-12 px-1  py-2"
+                <select
+                  dir="ltr"
+                  className="w-full h-12 px-4"
                   {...register("unit_side", {
-                    // required: "وارد کردن این فیلد الزامی می باشد",
+                    valueAsNumber: true,
                   })}
-                  placeholder="شرقی"
-                  type="text"
-                />
+                  placeholder="شمالی"
+                >
+                  {[
+                    { lb: "جنوبی", value: 0 },
+                    { lb: "شمالی", value: 1 },
+                    { lb: "شرقی", value: 2 },
+                    { lb: "غربی", value: 3 },
+                    { lb: "غیره", value: 4 },
+                  ].map((val, index) => (
+                    <option
+                      key={index}
+                      value={val.value}
+                      selected={1 == val.value && "selected"}
+                    >
+                      {val.lb}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   طبقه واحد{" "}
                 </label>
-                <input
-                  className="w-full h-12 px-1  py-2"
+                <select
+                  dir="ltr"
+                  className="w-full h-12 px-4"
                   {...register("unit_floor", {
-                    // required: "وارد کردن این فیلد الزامی می باشد",
+                    valueAsNumber: true,
                   })}
-                  placeholder="بلی"
-                  type="text"
-                />
+                  placeholder="1"
+                >
+                  {[
+                    { lb: "2", value: 0 },
+                    { lb: "1", value: 1 },
+                    { lb: "3", value: 2 },
+                    { lb: "4", value: 3 },
+                    { lb: "غیره", value: 4 },
+                  ].map((val, index) => (
+                    <option
+                      key={index}
+                      value={val.value}
+                      selected={1 == val.value && "selected"}
+                    >
+                      {val.lb}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   تعداد طبقات ساختمان{" "}
                 </label>
-                <input
-                  className="w-full h-12 px-1  py-2"
+                <select
+                  dir="ltr"
+                  className="w-full h-12 px-4"
                   {...register("floors_number", {
-                    // required: "وارد کردن این فیلد الزامی می باشد",
+                    valueAsNumber: true,
                   })}
-                  placeholder="12"
-                  type="text"
-                />
+                  placeholder="3"
+                >
+                  {[
+                    { lb: "1", value: 0 },
+                    { lb: "2", value: 1 },
+                    { lb: "3", value: 2 },
+                    { lb: "4", value: 3 },
+                    { lb: "5", value: 4 },
+                    { lb: "6", value: 5 },
+                    { lb: "7", value: 6 },
+                    { lb: "8", value: 7 },
+                    { lb: "9", value: 8 },
+                    { lb: "10", value: 9 },
+                    { lb: "11", value: 10 },
+                    { lb: "12", value: 11 },
+                    { lb: "13", value: 12 },
+                    { lb: "14", value: 13 },
+                    { lb: "15", value: 14 },
+                    { lb: "16", value: 15 },
+                    { lb: "17", value: 16 },
+                    { lb: "18", value: 17 },
+                    { lb: "بیشتر", value: 18 },
+                  ].map((val, index) => (
+                    <option
+                      key={index}
+                      value={val.value}
+                      selected={2 == val.value && "selected"}
+                    >
+                      {val.lb}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   تعداد واحد در طبقه{" "}
                 </label>
-                <input
-                  className="w-full h-12 px-1  py-2"
+                <select
+                  dir="ltr"
+                  className="w-full h-12 px-4"
                   {...register("units_per_floor", {
-                    // required: "وارد کردن این فیلد الزامی می باشد",
+                    valueAsNumber: true,
                   })}
-                  placeholder="2"
-                  type="text"
-                />
+                  placeholder="1"
+                >
+                  {[
+                    { lb: "2", value: 0 },
+                    { lb: "1", value: 1 },
+                    { lb: "3", value: 2 },
+                    { lb: "4", value: 3 },
+                    { lb: "غیره", value: 4 },
+                  ].map((val, index) => (
+                    <option
+                      key={index}
+                      value={val.value}
+                      selected={1 == val.value && "selected"}
+                    >
+                      {val.lb}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="relative w-full mt-6 border-12 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-20 right-2">

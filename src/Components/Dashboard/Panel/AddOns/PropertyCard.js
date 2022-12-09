@@ -12,13 +12,13 @@ export default function PropertyCard(props) {
 
   return (
     <>
-      <div className=" h-auto max-w-[350px]">
+      <div className="bg-white rounded-lg h-auto max-w-[350px]">
         <Link
           to={`/allProperties/${id}`}
           onClick={() => showHandler(props.data)}
-          className="bg-white mx-1 flex justify-center flex-col rounded-lg mb-4"
+          className=" rounded-lg mb-4"
         >
-          <div className="flex flex-col bg-white rounded-lg">
+          <div className="flex flex-col  rounded-lg">
             <>
               <img
                 src={frame}
@@ -63,47 +63,33 @@ export default function PropertyCard(props) {
               <p className="mb-4">شهرستان : {city} </p>
             </div>
           </div>
-          <div
-            className={`flex flex-row flex-wrap gap-4   ${
-              props.notForMe ? "justify-end px-3" : "justify-center px-1"
-            }`}
-          >
-            {!props.notForMe && (
-              <div className="w-full">
-                {/* <hr
-                  style={{
-                    color: "rgba(255, 171, 119, 1)",
-                    marginBottom: "16px",
-                    width: "70%",
-                  }}
-                /> */}
-                <button
-                  onClick={() => deleteHandler(props.data)}
-                  className="text-sm px-3 py-2 whitespace-nowrap text-darkRed border-12 border-darkRed border-solid rounded-lg w-1/3"
-                >
-                  حذف آگهی
-                </button>
-                <button className="text-sm px-3 py-2 whitespace-nowrap bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg w-1/3">
-                  ویرایش آگهی
-                </button>
-                {/* <Link
-                  to={`${url}/${id}`}
-                  onClick={() => showHandler(props.data)}
-                  className="text-sm px-3 py-2 bg-main-500  whitespace-nowrap text-white border-12 border-primary-500 border-solid rounded-lg w-1/3"
-                >
-                  مشاهده آگهی
-                </Link> */}
-              </div>
-            )}
-            {/* <Link
-              to={`${url}/${id}`}
-              onClick={() => showHandler(props.data)}
-              className="text-sm px-3 py-2 bg-main-500  whitespace-nowrap text-white border-12 border-primary-500 border-solid rounded-lg"
-            >
-              مشاهده آگهی
-            </Link> */}
-          </div>
         </Link>
+        <div
+          className={`flex flex-row flex-wrap gap-4   ${
+            props.notForMe ? "justify-end px-3" : "justify-center px-1"
+          }`}
+        >
+          {!props.notForMe && (
+            <div className="w-full">
+              <button
+                onClick={() => deleteHandler(props.data)}
+                className="text-sm px-3 py-2 whitespace-nowrap text-darkRed border-12 border-darkRed border-solid rounded-lg w-1/3"
+              >
+                حذف آگهی
+              </button>
+              <button className="text-sm px-3 py-2 whitespace-nowrap bg-main-500 text-white border-12 border-primary-500 border-solid rounded-lg w-1/3">
+                ویرایش آگهی
+              </button>
+              <Link
+                to={`/allProperties/${id}`}
+                onClick={() => showHandler(props.data)}
+                className="text-sm px-3 py-2 bg-main-500  whitespace-nowrap text-white border-12 border-primary-500 border-solid rounded-lg w-1/3"
+              >
+                مشاهده آگهی
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
