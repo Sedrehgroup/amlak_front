@@ -33,19 +33,22 @@ export default function PropertyDetailsSlider() {
         className={styles.mySwiper2}
       >
         <SwiperSlide>
-          <img src="https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg?auto=compress&cs=tinysrgb&w=600" />
+          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://images.pexels.com/photos/2121121/pexels-photo-2121121.jpeg?auto=compress&cs=tinysrgb&w=600" />
+          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.1.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://images.pexels.com/photos/2635038/pexels-photo-2635038.jpeg?auto=compress&cs=tinysrgb&w=600" />
+          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.2.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg?auto=compress&cs=tinysrgb&w=600" />
+          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.3.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&w=600" />
+          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.4.jpg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.5.jpg" />
         </SwiperSlide>
       </Swiper>
       <Swiper
@@ -58,20 +61,22 @@ export default function PropertyDetailsSlider() {
         className="mySwiper "
       >
         <SwiperSlide>
-          <img src="https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg?auto=compress&cs=tinysrgb&w=600" />
+          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://images.pexels.com/photos/2121121/pexels-photo-2121121.jpeg?auto=compress&cs=tinysrgb&w=600" />
+          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.1.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://images.pexels.com/photos/2635038/pexels-photo-2635038.jpeg?auto=compress&cs=tinysrgb&w=600" />
+          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.2.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg?auto=compress&cs=tinysrgb&w=600" />
+          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.3.jpg" />
         </SwiperSlide>
-
         <SwiperSlide>
-          <img src="https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&w=600" />
+          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.4.jpg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.5.jpg" />
         </SwiperSlide>
       </Swiper>
     </>
