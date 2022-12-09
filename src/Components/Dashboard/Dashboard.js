@@ -13,6 +13,7 @@ import SignContract from "./Panel/AddOns/SignContract";
 import SubmitContract from "./Panel/AddOns/SubmitContract";
 import AcceptedFromMe from "./Panel/Tabs/AcceptedFromMe";
 import AcceptedForMe from "./Panel/Tabs/AcceptedForMe";
+import EditProperty from "./Panel/AddOns/EditProperty";
 const Dashboard = () => {
   return (
     <>
@@ -60,6 +61,9 @@ const Dashboard = () => {
         </Route>
         <Route path="/AcceptedForMe">
           <AcceptedForMe />
+        </Route>
+        <Route path="/editProperty">
+          <EditProperty />
         </Route>
         <Route path="*">
           <center> صفحه مورد نظر پیدا نشد</center>

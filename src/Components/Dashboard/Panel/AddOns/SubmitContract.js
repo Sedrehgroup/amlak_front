@@ -96,9 +96,7 @@ const SubmitContract = () => {
     setDate1(`${year4}-${month4}-${day4}`);
   }, [day4, month4, year4]);
   // =========================
-  useEffect(() => {
-    console.log("tenant", tenant);
-  }, [tenant]);
+
   const onSubmit = (data) => {
     console.log("form data", {
       contract_landlord: request_property?.owner?.owner_id,

@@ -362,7 +362,7 @@ export default function PropertyDetails({ data }) {
                       { lb: "گسل خیز", value: 0 },
                       { lb: "بستر رودخانه", value: 2 },
                       { lb: "غیره", value: 3 },
-                    ].find((v) => v.value == data2?.special_situation).lb
+                    ].find((v) => v.value == data2?.special_situation)?.lb
                   }
                 </p>
               </div>
@@ -383,7 +383,7 @@ export default function PropertyDetails({ data }) {
                       { lb: "آجری", value: 1 },
                       { lb: "سیمانی", value: 2 },
                       { lb: "غیره", value: 3 },
-                    ].find((v) => v.value == data2?.Skeleton_type).lb
+                    ].find((v) => v.value == data2?.Skeleton_type)?.lb
                   }
                 </p>
               </div>
@@ -403,7 +403,7 @@ export default function PropertyDetails({ data }) {
                       { lb: "بدون خط", value: 0 },
                       { lb: "آزاد", value: 1 },
                       { lb: "غیره", value: 2 },
-                    ].find((v) => v.value == data2?.phone_status).lb
+                    ].find((v) => v.value == data2?.phone_status)?.lb
                   }
                 </p>
               </div>
@@ -425,7 +425,7 @@ export default function PropertyDetails({ data }) {
                       { lb: "2", value: 2 },
                       { lb: "3", value: 3 },
                       { lb: "بیشتر", value: 4 },
-                    ].find((v) => v.value == data2?.phone_lines).lb
+                    ].find((v) => v.value == data2?.phone_lines)?.lb
                   }
                 </p>
               </div>
@@ -447,7 +447,7 @@ export default function PropertyDetails({ data }) {
                       { lb: "شرقی", value: 2 },
                       { lb: "غربی", value: 3 },
                       { lb: "غیره", value: 4 },
-                    ].find((v) => v.value == data2?.building_side).lb
+                    ].find((v) => v.value == data2?.building_side)?.lb
                   }
                 </p>
               </div>
@@ -469,7 +469,7 @@ export default function PropertyDetails({ data }) {
                       { lb: "3", value: 2 },
                       { lb: "4", value: 3 },
                       { lb: "غیره", value: 4 },
-                    ].find((v) => v.value == data2?.units_per_floor).lb
+                    ].find((v) => v.value == data2?.units_per_floor)?.lb
                   }
                 </p>
               </div>
