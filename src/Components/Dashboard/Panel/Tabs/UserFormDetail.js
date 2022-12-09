@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import useToken from "../../../../customHooks/useToken";
 import { setUserIsLoggedHandler } from "../../../../redux/reducers/login";
@@ -23,6 +23,7 @@ export default function UserFormDetail() {
     first_name: "",
     last_name: "",
     national_code: "",
+    phone_number: "",
   });
   const [userAdditionalData, setUserAdditionalData] = useState({
     email: "",
@@ -45,6 +46,7 @@ export default function UserFormDetail() {
     postal_code: "",
     personal_phone_number: "",
   });
+  const phoneNumber = useSelector((state) => state.login.phoneNumber);
 
   const [selectedProvince, setSelectedProvince] = useState("");
   const [selectedProvince2, setSelectedProvince2] = useState("");
@@ -125,6 +127,10 @@ export default function UserFormDetail() {
     updateUserInfo(data);
   };
   const updateUserInfo = ({
+    first_name,
+    last_name,
+    national_code,
+    phone_number,
     email,
     father_name,
     certificate_number,
@@ -199,6 +205,37 @@ export default function UserFormDetail() {
             // window.localStorage.setItem("user_logged", "false");
           }
         });
+
+      axios
+        .patch(
+          `${Api_Url}/account/user_information/`,
+          {
+            first_name: first_name || userData?.first_name,
+            last_name: last_name || userData?.last_name,
+            national_code: national_code || userData?.national_code,
+            phone_number: phone_number || userData?.phone_number,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then(({ data }) => {
+          console.log("axios /account/create_additional_user data.data:", data);
+          toast.success("اطلاعات با موفقیت ثبت شد", {
+            position: "top-center",
+            rtl: true,
+            className: "m_toast",
+          });
+        })
+        .catch((e) => {
+          console.log("error in axios /account/create_additional_user/", e);
+          if (e.response.status == 401) {
+            // //dispatch(setUserIsLoggedHandler(false));
+            // window.localStorage.setItem("user_logged", "false");
+          }
+        });
     } catch (error) {
       console.log("error", error);
     }
@@ -228,8 +265,8 @@ export default function UserFormDetail() {
               className="w-full h-12 px-1  py-2"
               placeholder="علی"
               type="text"
-              value={userData?.first_name}
-              {...register("name")}
+              defaultValue={userData?.first_name}
+              {...register("first_name")}
             />
           </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
@@ -238,8 +275,8 @@ export default function UserFormDetail() {
             </label>
             <input
               className="w-full h-12 px-1  py-2"
-              {...register("lastname")}
-              value={userData?.last_name}
+              {...register("last_name")}
+              defaultValue={userData?.last_name}
               placeholder="محمدی"
               type="text"
             />
@@ -251,7 +288,19 @@ export default function UserFormDetail() {
             <input
               className="w-full h-12 px-1  py-2"
               {...register("national_code")}
-              value={userData?.national_code}
+              defaultValue={userData?.national_code}
+              placeholder="0012223334"
+              type="text"
+            />
+          </div>
+          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+            <label className="absolute bg-primary-50 bottom-9 right-2">
+              شماره همراه
+            </label>
+            <input
+              className="w-full h-12 px-1  py-2"
+              {...register("phone_number")}
+              defaultValue={userData?.phone_number}
               placeholder="0012223334"
               type="text"
             />
