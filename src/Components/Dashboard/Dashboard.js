@@ -57,6 +57,9 @@ const Dashboard = () => {
           <center>آگهی های ثبت شده</center>
           {/* <AccepptedForMe/> */}
         </Route>
+        <Route path="*">
+          <center> صفحه مورد نظر پیدا نشد</center>
+        </Route>
       </Switch>
     </>
   );

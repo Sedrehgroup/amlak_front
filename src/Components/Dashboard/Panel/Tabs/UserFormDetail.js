@@ -33,21 +33,21 @@ export default function UserFormDetail() {
     latin_first_name: "",
     latin_last_name: "",
     certificate_country: "",
-    certificate_province: "تهران",
-    certificate_county: "تهران",
-    certificate_type: "اصل",
+    certificate_province: "",
+    certificate_county: "",
+    certificate_type: "",
     marriage: true,
     education: "",
-    province: "تهران",
-    county: "تهران",
+    province: "",
+    county: "",
     city: "",
     address: "",
     postal_code: "",
     personal_phone_number: "",
   });
 
-  const [selectedProvince, setSelectedProvince] = useState("تهران");
-  const [selectedProvince2, setSelectedProvince2] = useState("تهران");
+  const [selectedProvince, setSelectedProvince] = useState("");
+  const [selectedProvince2, setSelectedProvince2] = useState("");
   const [selectedState2, setSelectedState2] = useState("تهران");
   const [day, setDay] = useState("01");
   const [month, setMonth] = useState("01");
@@ -163,14 +163,14 @@ export default function UserFormDetail() {
             certificate_country:
               certificate_country || userAdditionalData.certificate_country,
             certificate_province:
-              certificate_province || userAdditionalData.certificate_province,
+              selectedProvince || userAdditionalData.certificate_province,
             certificate_county:
               certificate_county || userAdditionalData.certificate_county,
             certificate_type:
               certificate_type || userAdditionalData.certificate_type,
             marriage: marriage || userAdditionalData.marriage,
             education: education || userAdditionalData.education,
-            province: province || userAdditionalData.province,
+            province: selectedProvince2 || userAdditionalData.province,
             county: county || userAdditionalData.county,
             city: city || userAdditionalData.city,
             address: address || userAdditionalData.address,
@@ -434,6 +434,7 @@ export default function UserFormDetail() {
                   key={index}
                   value={val}
                   // disabled={val != "تهران"}
+                  // defaultValue={userAdditionalData.certificate_province}
                   selected={
                     userAdditionalData.certificate_province == val && "selected"
                   }
@@ -445,7 +446,7 @@ export default function UserFormDetail() {
           </div>
           <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
-              شهر محل صدور
+              شهرستان محل صدور
             </label>
             <select
               dir="ltr"
@@ -455,16 +456,18 @@ export default function UserFormDetail() {
             >
               {iranCitiesList
                 .filter(
-                  (element) => element.province == selectedProvince
-
-                  // userAdditionalData.certificate_province ||
-                  // element.province ==
+                  (element) =>
+                    element.province ==
+                    (selectedProvince ||
+                      userAdditionalData.certificate_province)
+                  // element.province == userAdditionalData.certificate_province
                 )
                 .map((val, index) => (
                   <option
                     key={index}
                     value={val.city}
                     // disabled={val.city != "تهران"}
+                    // defaultValue={userAdditionalData.certificate_county}
                     selected={
                       userAdditionalData.certificate_county == val.city &&
                       "selected"
@@ -546,6 +549,7 @@ export default function UserFormDetail() {
               {...register("province", {
                 onChange: (e) => {
                   setSelectedProvince2(e.target.value);
+                  console.log("setSelectedProvince2", e.target.value);
                 },
               })}
               placeholder="تهران"
@@ -581,8 +585,10 @@ export default function UserFormDetail() {
               {iranCitiesList
                 .filter(
                   (element) =>
-                    // element.province == userAdditionalData.province ||
-                    element.province == selectedProvince2
+                    element.province ==
+                    (selectedProvince2 || userAdditionalData.province)
+
+                  // element.province == userAdditionalData.province
                 )
                 .map((val, index) => (
                   <option
