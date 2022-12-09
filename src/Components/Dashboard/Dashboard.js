@@ -11,6 +11,8 @@ import Counter from "./Panel/Tabs/Counter";
 import Contracts from "./Panel/Tabs/Contracts";
 import SignContract from "./Panel/AddOns/SignContract";
 import SubmitContract from "./Panel/AddOns/SubmitContract";
+import AcceptedFromMe from "./Panel/Tabs/AcceptedFromMe";
+import AcceptedForMe from "./Panel/Tabs/AcceptedForMe";
 const Dashboard = () => {
   return (
     <>
@@ -46,10 +48,9 @@ const Dashboard = () => {
         <Route path="/requestsToMe">
           <RequestsToMe />
         </Route>
-        <Route path="/accepptedFromMe">
-          <center>اجاره داده شده ها</center>
-          {/* <SignContract /> */}
-          {/* <AccepptedFromMe/> */}
+        <Route path="/AcceptedFromMe">
+          {/* <center>اجاره داده شده ها</center> */}
+          <AcceptedFromMe />
         </Route>
         <Route path="/allProperties">
           <AllProperties />
@@ -57,9 +58,8 @@ const Dashboard = () => {
         <Route path="/requestsFromMe">
           <RequestsFromMe />
         </Route>
-        <Route path="/accepptedForMe">
-          <center>آگهی های ثبت شده</center>
-          {/* <AccepptedForMe/> */}
+        <Route path="/AcceptedForMe">
+          <AcceptedForMe />
         </Route>
         <Route path="*">
           <center> صفحه مورد نظر پیدا نشد</center>

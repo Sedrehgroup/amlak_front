@@ -99,10 +99,10 @@ export default function RightPanel() {
             <span className="text-sm">درخواست ها</span>
           </div>
         </Link>
-        <Link to="/accepptedFromMe">
+        <Link to="/AcceptedFromMe">
           <div
             className={`flex flex-row gap-2 p-1 ${
-              location.pathname == "/accepptedFromMe" && "bg-main-100"
+              location.pathname == "/AcceptedFromMe" && "bg-main-100"
             }`}
           >
             <img src={Accepted_img} alt="" width={20} />
@@ -132,10 +132,10 @@ export default function RightPanel() {
             <span className="text-sm">درخواست ها</span>
           </div>
         </Link>
-        <Link to="/accepptedForMe">
+        <Link to="/AcceptedForMe">
           <div
             className={`flex flex-row gap-2 p-1 ${
-              location.pathname == "/accepptedForMe" && "bg-main-100"
+              location.pathname == "/AcceptedForMe" && "bg-main-100"
             }`}
           >
             <img src={Accepted_img} alt="" width={20} />

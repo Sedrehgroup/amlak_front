@@ -302,23 +302,23 @@ export default function PropertyDetails({ data }) {
           <div className="bg-white w-2/5 ml-10 mr-10 rounded-lg p-4">
             <h2>توضیحات</h2>
             <div>
-              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+              {/* لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
               استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
               در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
               نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
               کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان
-              جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را
+              جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را */}
               {data2?.description}
-              <button className="bg-primary-500">
+              {/* <button className="bg-primary-500">
                 <div className="text-primary-900">بیشتر</div>
-              </button>
+              </button> */}
               <hr
                 style={{
                   color: "#FDBA74",
                 }}
               />
             </div>
-            <div>
+            {/* <div>
               <p>امکانات</p>
               <div className="w-20 h-20 bg-primary-50 p-2 mb-2">
                 <img src={Driving} alt="" className="mx-auto" />
@@ -326,7 +326,7 @@ export default function PropertyDetails({ data }) {
                   پارکینگ
                 </p>
               </div>
-            </div>
+            </div> */}
             <hr
               style={{
                 color: "#FDBA74",
