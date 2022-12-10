@@ -161,7 +161,7 @@ const AllProperties = () => {
         <Route exact path={path}>
           <div className="flex flex-col gap-4">
             <div className="flex flex-row items-baseline p-2 pr-6">
-              <div className="relative inputC mx-1 mt-6 border-12 border-solid border-white">
+              <div className="relative inputC mx-1 mt-6 border-2 border-solid border-white">
                 <label className="absolute bottom-14 right-0 text-sm text-warmGray-500">
                   استان
                 </label>
@@ -186,7 +186,7 @@ const AllProperties = () => {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1 mt-6 border-12 border-solid border-white">
+              <div className="relative inputC mx-1 mt-6 border-2 border-solid border-white">
                 <label className="absolute  bottom-14 right-0 text-sm text-warmGray-500">
                   شهرستان
                 </label>
@@ -213,7 +213,7 @@ const AllProperties = () => {
               <div>
                 {MyPropertiesList.length > 0 ? (
                   <>
-                    <div className="m_grid-container pr-6">
+                    <div className="m_grid-container gap-x-6 gap-y-12 mx-7">
                       {MyPropertiesList.map((val, index) => (
                         <div key={index}>
                           <PropertyCard

@@ -73,7 +73,7 @@ const AcceptedFromMe = () => {
     <Switch>
       <Route exact path={path}>
         {!showLoading ? (
-          <div className=" bg-warmGray-200 ">
+          <div className="">
             {contractsList.length > 0 &&
               contractsList.map((value, index) => (
                 <div key={index}>
@@ -85,13 +85,13 @@ const AcceptedFromMe = () => {
                 </div>
               ))}
             {contractsList.lenght == 0 && (
-              <div className="m-auto text-xl text-center">
+              <div className="m-auto text-center text-xl">
                 شما قراردادی ندارید!
               </div>
             )}
           </div>
         ) : (
-          <div className="flex justify-center items-center eightyvh">
+          <div className="eightyvh flex items-center justify-center">
             <Spinner name="folding-cube" color="#FF731D" fadeIn="none" />
           </div>
         )}

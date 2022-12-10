@@ -228,7 +228,7 @@ export default function EditProperty() {
             </p>
           </div>
 
-          <div className="relative w-full mx-1  mt-6 border-12 border-solid border-main-200">
+          <div className="relative w-full mx-1  mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               عنوان آگهی{" "}
             </label>
@@ -243,7 +243,7 @@ export default function EditProperty() {
               })}
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               مبلغ رهن
             </label>
@@ -259,7 +259,7 @@ export default function EditProperty() {
               required
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               مبلغ اجاره{" "}
             </label>
@@ -275,7 +275,7 @@ export default function EditProperty() {
               required
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               متراژ{" "}
             </label>
@@ -291,7 +291,7 @@ export default function EditProperty() {
               required
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               سال ساخت{" "}
             </label>
@@ -317,7 +317,7 @@ export default function EditProperty() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               نوع ملک{" "}
             </label>
@@ -343,7 +343,7 @@ export default function EditProperty() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               کاربری ملک{" "}
             </label>
@@ -369,7 +369,7 @@ export default function EditProperty() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               استان{" "}
             </label>
@@ -399,7 +399,7 @@ export default function EditProperty() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               شهرستان{" "}
             </label>
@@ -433,7 +433,7 @@ export default function EditProperty() {
             </select>
           </div>
 
-          {/* <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          {/* <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               شهر{" "}
             </label>
@@ -456,7 +456,7 @@ export default function EditProperty() {
                 ))}
             </select>
           </div> */}
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               محله{" "}
             </label>
@@ -471,7 +471,7 @@ export default function EditProperty() {
               required
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               قابل تبدیل{" "}
             </label>
@@ -496,7 +496,7 @@ export default function EditProperty() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               تعداد اتاق{" "}
             </label>
@@ -519,7 +519,7 @@ export default function EditProperty() {
               اطلاعات تکمیلی(اختیاری){" "}
             </summary>
             <div className="flex flex-row justify-between flex-wrap">
-              <div className="relative w-full mt-6 border-12 border-solid border-main-200">
+              <div className="relative w-full mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-20 right-2">
                   نشانی ملک{" "}
                 </label>
@@ -534,7 +534,7 @@ export default function EditProperty() {
                 />
               </div>
 
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   وضعیت خاص{" "}
                 </label>
@@ -563,7 +563,7 @@ export default function EditProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   کد پستی
                 </label>
@@ -578,7 +578,7 @@ export default function EditProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   پلاک ثبتی فرعی{" "}
                 </label>
@@ -593,7 +593,7 @@ export default function EditProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   پلاک ثبتی فرعی از{" "}
                 </label>
@@ -608,7 +608,7 @@ export default function EditProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   پلاک ثبتی فرعی تا{" "}
                 </label>
@@ -624,7 +624,7 @@ export default function EditProperty() {
                 />
               </div>
 
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   پلاک ثبتی اصلی{" "}
                 </label>
@@ -639,7 +639,7 @@ export default function EditProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   پلاک ثبتی اصلی از{" "}
                 </label>
@@ -654,7 +654,7 @@ export default function EditProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   پلاک ثبتی اصلی تا{" "}
                 </label>
@@ -670,7 +670,7 @@ export default function EditProperty() {
                 />
               </div>
 
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   بخش ثبتی{" "}
                 </label>
@@ -684,7 +684,7 @@ export default function EditProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   حوزه ثبتی{" "}
                 </label>
@@ -698,7 +698,7 @@ export default function EditProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   نوع اسکلت{" "}
                 </label>
@@ -727,7 +727,7 @@ export default function EditProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   وضعیت تلفن{" "}
                 </label>
@@ -755,7 +755,7 @@ export default function EditProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   تعداد خط{" "}
                 </label>
@@ -788,7 +788,7 @@ export default function EditProperty() {
                 </select>
               </div>
 
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   سمت ساختمان{" "}
                 </label>
@@ -820,7 +820,7 @@ export default function EditProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   سمت واحد{" "}
                 </label>
@@ -852,7 +852,7 @@ export default function EditProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   طبقه واحد{" "}
                 </label>
@@ -884,7 +884,7 @@ export default function EditProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   تعداد طبقات ساختمان{" "}
                 </label>
@@ -930,7 +930,7 @@ export default function EditProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   تعداد واحد در طبقه{" "}
                 </label>
@@ -962,7 +962,7 @@ export default function EditProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative w-full mt-6 border-12 border-solid border-main-200">
+              <div className="relative w-full mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-20 right-2">
                   توضیحات آگهی{" "}
                 </label>

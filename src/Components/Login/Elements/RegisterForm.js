@@ -113,7 +113,7 @@ export default function RegisterForm() {
                     نام
                   </label>
                   <input
-                    className="w-full py-4 px-4 rounded-sm border-12 border-solid border-primary-600"
+                    className="w-full py-4 px-4 rounded-sm border-2 border-solid border-primary-600"
                     aria-invalid={errors.firstName ? "true" : "false"}
                     autoFocus
                     {...register("firstName", {
@@ -132,7 +132,7 @@ export default function RegisterForm() {
                     نام خانوادگی
                   </label>
                   <input
-                    className="w-full py-4 px-4 rounded-sm border-12 border-solid border-primary-600"
+                    className="w-full py-4 px-4 rounded-sm border-2 border-solid border-primary-600"
                     aria-invalid={errors.lastName ? "true" : "false"}
                     {...register("lastName", {
                       required: "وارد کردن نام خانوادگی الزامی می باشد",
@@ -147,7 +147,7 @@ export default function RegisterForm() {
                     کد ملی
                   </label>
                   <input
-                    className="w-full py-4 px-4 rounded-sm border-12 border-solid border-primary-600"
+                    className="w-full py-4 px-4 rounded-sm border-2 border-solid border-primary-600"
                     aria-invalid={errors.nationalCode ? "true" : "false"}
                     {...register("nationalCode", {
                       required: "وارد کردن کد ملی الزامی می باشد",

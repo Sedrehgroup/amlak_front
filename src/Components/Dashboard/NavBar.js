@@ -59,8 +59,8 @@ export default function NavBar() {
   }, [token]);
 
   return (
-    <div className="w-full bg-white flex justify-between items-center">
-      <div className="mr-7 flex gap-4">
+    <div className="relative w-full bg-warmGray-50 flex items-center justify-between px-6 py-4 ">
+      <div className="flex gap-4">
         {/* <button
           className="text-sm text-main-500 font-bold"
           onClick={logOutHandler}
@@ -70,7 +70,7 @@ export default function NavBar() {
         <button className="sm:hidden flex bg-primary-500 rounded justify-center items-center p-2">
           <img src={loc} alt="" />
         </button>
-        <button className="p-2 border border-main-300  rounded gap-2  h-10 border-12 border-solid flex items-center">
+        <button className="p-2 border border-main-300  rounded gap-2  h-10  border-solid flex items-center">
           <img src={user} alt="" />
           <p className="flex-none flex justify-center items-center">
             <span>{userData?.first_name}</span>
@@ -84,17 +84,17 @@ export default function NavBar() {
           خروج
         </button>
       </div>
-
-      {/* <img src={logo} alt="logo" className=" fixed" /> */}
-      <img src={logo} alt="logo" className="fixed left-1/2 logofromtop" />
-      <div className="ml-7 m-6">
+      <div className="absolute mx-auto left-[45%]">
+        <img src={logo} alt="logo" className="" />
+      </div>
+      <div className="">
         {" "}
         {/* <button className="text-main-500 m-6 font-medium">پشتیبانی</button> */}
         {/* <button className="bg-main-500 rounded-lg font-bold text-main-50 w-32 h-10 text-base">
         </button> */}
         <Link
           to="/allProperties"
-          className="border-12 bg-main-500 text-base text-main-50 rounded-lg font-bold px-6 py-2"
+          className="text-sm bg-main-500  text-main-50 rounded-lg font-bold px-4 py-2"
         >
           آگهی های اجاره
         </Link>

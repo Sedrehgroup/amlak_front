@@ -59,6 +59,7 @@ function App() {
   return (
     <div className="bg-warmGray-200">
       {isUserLogged ? <Main /> : <Login />}
+      {/* <Main /> */}
       {/* <Switch> */}
       {/* <Route exact path="/" component={isUserLogged && Main} /> */}
       {/* <Route exact path="/" component={Login} /> */}

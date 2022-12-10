@@ -43,6 +43,11 @@ const ToMeRequestCard = ({
   //     dispatch(signContractHandler(true));
   //     dispatch(signContractData(props.mojer_reqid));
   //   };
+
+  const gradient = {
+    background: "linear-gradient(90.83deg, #FF731D 0.01%, #FFAB77 100.01%)",
+  };
+
   return (
     <div className="p-10 border border-warmGray-400 bg-warmGray-100 my-8 mx-12 rounded-lg">
       <div className="flex flex-col gap-y-10">
@@ -141,7 +146,7 @@ const ToMeRequestCard = ({
               <Link
                 to={`/allProperties/${request_property?.id}`}
                 onClick={passPropertyData}
-                className="border-12 border-main-600 text-main-600 rounded-lg font-bold px-6 py-2"
+                className="border-2 border-main-600 text-main-600 rounded-lg font-bold px-6 py-2"
               >
                 مشاهده آگهی
               </Link>
@@ -164,7 +169,8 @@ const ToMeRequestCard = ({
                   <Link
                     to={`/submitContract?reqId=${id}`}
                     onClick={passReqDataForSubmitContractHandler}
-                    className="border-12 bg-main-600 text-white rounded-lg font-bold px-6 py-2"
+                    className="border-2  text-white rounded-lg font-bold px-6 py-2"
+                    style={gradient}
                   >
                     ثبت مشخصات قرارداد
                   </Link>
@@ -173,12 +179,16 @@ const ToMeRequestCard = ({
                 <Link
                   to={`/contracts`}
                   // onClick={signContractHandler}
-                  className="border-12 bg-main-600 text-white rounded-lg font-bold px-6 py-2"
+                  className="border-2  text-white rounded-lg font-bold px-6 py-2"
+                  style={gradient}
                 >
                   صفحه قرارداد ها
                 </Link>
               ) : status == 5 || status == 6 ? (
-                <button className="border-2 bg-main-600 text-white rounded-lg font-bold px-6 py-2">
+                <button
+                  className="border-2  text-white rounded-lg font-bold px-6 py-2"
+                  style={gradient}
+                >
                   نمایش اجاره نامه
                 </button>
               ) : null}
@@ -198,7 +208,7 @@ const TenantContactInfoBtn = ({ tenant_description }) => {
   return (
     <Popup
       trigger={
-        <button className="border-12 border-main-600 text-main-600 rounded-lg font-bold px-6 py-2">
+        <button className="border-2 border-main-600 text-main-600 rounded-lg font-bold px-6 py-2">
           اطلاعات تماس مستاجر
         </button>
       }
@@ -232,6 +242,10 @@ const TenantContactInfoBtn = ({ tenant_description }) => {
     </Popup>
   );
 };
+const gradient = {
+  background: "linear-gradient(90.83deg, #FF731D 0.01%, #FFAB77 100.01%)",
+};
+
 const SeeRequestBtn = ({
   data,
   tenant_description,
@@ -242,7 +256,10 @@ const SeeRequestBtn = ({
   return (
     <Popup
       trigger={
-        <button className="border-2 bg-main-600 text-white rounded-lg font-bold px-6 py-2">
+        <button
+          style={gradient}
+          className=" text-white rounded-lg font-bold px-6 py-2"
+        >
           مشاهده درخواست
         </button>
       }
@@ -345,7 +362,10 @@ const RequestInfoBtn = ({ tenant_description, request_property }) => {
   return (
     <Popup
       trigger={
-        <button className="border-2 bg-main-600 text-white rounded-lg font-bold px-6 py-2">
+        <button
+          style={gradient}
+          className="border-2 text-white rounded-lg font-bold px-6 py-2"
+        >
           جزئیات درخواست
         </button>
       }

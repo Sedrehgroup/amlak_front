@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import Logo from "./../../../assets/Images/Dashboard/logo.svg";
+// import Logo from "./../../../assets/Images/Dashboard/logo.svg";
+import loginLogo from "./../../../assets/Images/Dashboard/loginLogo.svg";
 import Spinner from "react-spinkit";
+// import "../../../App.css";
 
 import {
   setPhoneNumberHandler,
@@ -66,25 +68,49 @@ export default function PhoneNumForm() {
       } catch (error) {}
     }
   };
+
+  const gradient = {
+    background: "linear-gradient(90.83deg, #FF731D 0.01%, #FFAB77 100.01%)",
+  };
+
+  const shadow = {
+    boxShadow:
+      "0px 257px 103px rgba(0, 0, 0, 0.01), 0px 145px 87px rgba(0, 0, 0, 0.05), 0px 64px 64px rgba(0, 0, 0, 0.09), 0px 16px 35px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1)",
+  };
+
   return (
-    <div className="bg-primary-50">
+    <div className="pattern flex flex-col bg-warmGray-100">
       <div className="twentyvh flex justify-end">
-        <img src={Logo} width={325} height={95} alt="" className="mx-auto " />
+        <img
+          src={loginLogo}
+          width={325}
+          height={95}
+          alt=""
+          className="mx-auto "
+        />
       </div>
       {!showLoading ? (
-        <div className="flex flex-col eightyvh">
-          <div className="m-auto ideal-border" dir="rtl">
+        <div className="eightyvh flex flex-col">
+          <div
+            className="m-auto mx-8 flex flex-col gap-y-8 rounded-lg border border-warmGray-300/50 bg-warmGray-50 px-10 py-14 sm:mx-auto"
+            dir="rtl"
+            style={shadow}
+          >
             <p className="mx-8">
-              لطفا برای ورود به سامانه <strong>شماره موبایل</strong> خود را وارد
+              لطفا برای ورود به سامانه{" "}
+              <strong className="font-bold">شماره موبایل</strong> خود را وارد
               کنید :
             </p>
-            <div className="w-52  mx-auto  inputC mt-6">
-              <form onSubmit={handleSubmit(onSubmit)} className="relative">
-                <label className="absolute bg-primary-50 top-[-10px] left-2 px-1 text-sm ">
+            <div className="inputC mx-auto w-52">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="relative flex flex-col gap-y-14"
+              >
+                <label className="absolute top-[-10px] left-2 bg-warmGray-50 px-1 text-sm ">
                   شماره موبایل
                 </label>
                 <input
-                  className="w-full py-4 px-4 rounded-sm border-12 border-solid border-primary-600"
+                  className="w-full rounded border border-main-300 py-4 px-4"
                   aria-invalid={errors.firstName ? "true" : "false"}
                   autoFocus
                   {...register("phoneNumber", {
@@ -109,7 +135,12 @@ export default function PhoneNumForm() {
 
                 <button
                   disabled={phoneNum?.length != 11}
-                  className="bg-main-500 disabled:bg-main-300 text-white w-52 h-12 rounded-lg mt-10 flex justify-center items-center m-auto"
+                  style={
+                    phoneNum?.length != 11
+                      ? { backgroundColor: "#F3EAE4" }
+                      : gradient
+                  }
+                  className={` m-auto flex h-12 w-52 items-center justify-center rounded-lg font-bold text-white disabled:bg-main-300 `}
                   type="submit"
                 >
                   دریافت کد ورود
@@ -119,7 +150,7 @@ export default function PhoneNumForm() {
           </div>
         </div>
       ) : (
-        <div className="flex justify-center items-center eightyvh">
+        <div className="eightyvh flex items-center justify-center">
           <Spinner name="folding-cube" color="#FF731D" fadeIn="none" />
         </div>
       )}

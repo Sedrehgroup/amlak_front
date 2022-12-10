@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ReactCodeInput from "react-code-input";
 import { useDispatch, useSelector } from "react-redux";
-import Logo from "../../../assets/Images/Dashboard/logo.svg";
+import loginLogo from "./../../../assets/Images/Dashboard/loginLogo.svg";
 import {
   setUserIsLoggedHandler,
   userLoginStepAccess,
@@ -79,20 +79,43 @@ export default function PhoneSmsForm() {
     setBtnIsPressed(false);
   };
 
+  const gradient = {
+    background: "linear-gradient(90.83deg, #FF731D 0.01%, #FFAB77 100.01%)",
+  };
+
+  const shadow = {
+    boxShadow:
+      "0px 257px 103px rgba(0, 0, 0, 0.01), 0px 145px 87px rgba(0, 0, 0, 0.05), 0px 64px 64px rgba(0, 0, 0, 0.09), 0px 16px 35px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1)",
+  };
+
   return (
     <>
-      <div className="bg-primary-50">
+      <div className="pattern bg-warmGray-100 flex flex-col">
         <div className="twentyvh flex justify-end">
-          <img src={Logo} width={325} height={95} alt="" className="mx-auto " />
+          <img
+            src={loginLogo}
+            width={325}
+            height={95}
+            alt=""
+            className="mx-auto "
+          />
         </div>
         {!showLoading ? (
           <div className="flex flex-col eightyvh">
-            <div className="m-auto ideal-border" dir="rtl">
-              <p className="mx-8">
-                لطفا برای ورود به سامانه <strong>کد 4 رقمی</strong> پیامک شده را
+            <div
+              className="flex flex-col m-auto bg-warmGray-50 gap-y-10 px-10 py-10 rounded-lg sm:mx-auto mx-8 border border-warmGray-300/50"
+              style={shadow}
+              dir="rtl"
+            >
+              <p className="text-center text-xl font-bold">
+                اعتبارسنجی کد ورود
+              </p>
+              <p className="mx-8 -mb-6">
+                لطفا برای ورود به سامانه{" "}
+                <strong className="font-bold">کد 4 رقمی</strong> پیامک شده را
                 وارد کنید :
               </p>
-              <div className=" mt-6">
+              <div className="">
                 <center>
                   <ReactCodeInput
                     style={{ direction: "ltr" }}
@@ -109,8 +132,9 @@ export default function PhoneSmsForm() {
                 </center>
                 <button
                   disabled={pinCode.length < 4}
-                  className="bg-main-500 disabled:bg-main-300 text-white w-52 h-12 rounded-lg mt-10 flex justify-center items-center m-auto"
+                  className=" font-bold disabled:bg-main-300 text-white w-44 h-12 rounded-lg mt-10 flex justify-center items-center m-auto"
                   onClick={checkPinCode}
+                  style={gradient}
                 >
                   ثبت کد
                 </button>

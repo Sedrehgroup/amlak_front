@@ -29,6 +29,11 @@ const MyRequestCard = ({
   //   dispatch(signContractHandler(true));
   //   dispatch(signContractData(props.mojer_reqid));
   // };
+
+  const gradient = {
+    background: "linear-gradient(90.83deg, #FF731D 0.01%, #FFAB77 100.01%)",
+  };
+
   return (
     <div className="p-10 border border-warmGray-400 bg-warmGray-100 my-8 mx-12 rounded-lg">
       <div className="flex flex-col gap-y-10">
@@ -53,6 +58,7 @@ const MyRequestCard = ({
                   {request_property?.mortgage_amount} تومان
                 </span>
               </p>
+              span
               <p className="font-light">
                 قیمت اجاره:{" "}
                 <span className="font-medium text-lg">
@@ -132,15 +138,24 @@ const MyRequestCard = ({
                 مشاهده آگهی
               </Link>
               {status == 0 ? null : status == 1 ? null : status == 2 ? (
-                <button className="border-2 bg-main-600 text-white rounded-lg font-bold px-6 py-2">
+                <button
+                  style={gradient}
+                  className="border-2 text-white rounded-lg font-bold px-6 py-2"
+                >
                   جزئیات درخواست
                 </button>
               ) : status == 3 || status == 5 ? (
-                <button className="border-2 bg-main-600 text-white rounded-lg font-bold px-6 py-2">
+                <button
+                  style={gradient}
+                  className="border-2 text-white rounded-lg font-bold px-6 py-2"
+                >
                   امضای قرارداد
                 </button>
               ) : status == 4 || status == 6 ? (
-                <button className="border-2 bg-main-600 text-white rounded-lg font-bold px-6 py-2">
+                <button
+                  style={gradient}
+                  className="border-2 text-white rounded-lg font-bold px-6 py-2"
+                >
                   نمایش اجاره نامه
                 </button>
               ) : null}

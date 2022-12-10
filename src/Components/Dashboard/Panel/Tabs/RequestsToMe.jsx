@@ -188,7 +188,7 @@ const RequestsToMe = () => {
     <Switch>
       <Route exact path={path}>
         {!showLoading ? (
-          <div className=" bg-warmGray-200 ">
+          <div className=" ">
             {/* موجر */}
             {!!!!lessorData &&
               lessorData.map((value, index) => (

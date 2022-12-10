@@ -149,7 +149,7 @@ const MyProperties = () => {
               <div>
                 {MyPropertiesList.length > 0 ? (
                   <>
-                    <div className="m_grid-container pr-6">
+                    <div className="m_grid-container pr-7 pt-6">
                       {MyPropertiesList.map((val, index) => (
                         <div key={index}>
                           <PropertyCard

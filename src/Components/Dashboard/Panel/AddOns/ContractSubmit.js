@@ -268,7 +268,7 @@ export default function ContractSubmit() {
                 <p>وضعیت امضای مستأجر :</p>
               </div>
               <div className="flex gap-4">
-                <button className="p-2 gap-2 w-28 border-12 border-solid border-primary-600 rounded">
+                <button className="p-2 gap-2 w-28 border-2 border-solid border-primary-600 rounded">
                   <p className="text-main-400">انصراف</p>
                 </button>
                 <button

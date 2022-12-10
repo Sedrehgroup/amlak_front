@@ -55,11 +55,16 @@ const ContractCard = ({
   //     dispatch(signContractHandler(true));
   //     dispatch(signContractData(props.mojer_reqid));
   //   };
+
+  const gradient = {
+    background: "linear-gradient(90.83deg, #FF731D 0.01%, #FFAB77 100.01%)",
+  };
+
   return (
-    <div className="p-10 border border-warmGray-400 bg-warmGray-100 my-8 mx-12 rounded-lg">
+    <div className="my-8 mx-12 rounded-lg border border-warmGray-400 bg-warmGray-100 p-10">
       <div className="flex flex-col gap-y-10">
-        <div className="flex justify-between pb-4 border-b-2 border-b-warmGray-800">
-          <p className="font-semibold text-xl">قرارداد شماره {data?.id} </p>
+        <div className="flex justify-between border-b-2 border-b-warmGray-800 pb-4">
+          <p className="text-xl font-semibold">قرارداد شماره {data?.id} </p>
           {/* <button className=" bg-sub-500 text-warmGray-50 rounded-lg px-4 py-2">
             {TitleOfChatButton}
           </button> */}
@@ -69,57 +74,55 @@ const ContractCard = ({
             src={imgPath}
             className="rounded-lg "
             alt="img"
-            style={{ width: "400px", height: "240px" }}
+            // style={{ width: "400px", height: "240px" }}
           />
-          <div className="flex flex-col gap-y-6 justify-between w-full">
-            <div className="flex flex-col justify-between">
+          <div className="flex w-full flex-col justify-between  gap-y-3">
+            <div className="flex flex-col  justify-between gap-y-4">
               <p className="font-light">
                 نام و نام خانوادگی موجر:
-                <span className="font-medium text-lg">
+                <span className="text-lg font-medium">
                   {data?.contract_landlord_information?.first_name}{" "}
                   {data?.contract_landlord_information?.last_name}
                 </span>
               </p>
               <p className="font-light">
                 نام و نام خانوادگی مستاجر:
-                <span className="font-medium text-lg">
+                <span className="text-lg font-medium">
                   {data?.contract_tenant_information?.first_name}{" "}
                   {data?.contract_tenant_information?.last_name}
                 </span>
               </p>
-              <div className="flex flex-row gap-4">
-                <p className="font-light">
-                  شروع قرارداد:{" "}
-                  <span className="font-medium text-lg mx-1">
-                    {data?.start_date?.slice(8, 10)}
-                    {
-                      arrayOfMonths.find(
-                        (val) => val.value == data?.start_date?.slice(5, 7)
-                      ).label
-                    }
-                    {data?.start_date?.slice(0, 4)}
-                  </span>
-                </p>
-                <p className="font-light">
-                  پایان قرارداد:{" "}
-                  <span className="font-medium text-lg mx-1">
-                    {data?.end_date?.slice(8, 10)}
-                    {
-                      arrayOfMonths.find(
-                        (val) => val.value == data?.end_date?.slice(5, 7)
-                      ).label
-                    }
-                    {data?.end_date?.slice(0, 4)}
-                  </span>
-                </p>
-              </div>
+              <p className="font-light">
+                شروع قرارداد:{" "}
+                <span className="mx-1 text-lg font-medium">
+                  {data?.start_date?.slice(8, 10)}
+                  {
+                    arrayOfMonths.find(
+                      (val) => val.value == data?.start_date?.slice(5, 7)
+                    ).label
+                  }
+                  {data?.start_date?.slice(0, 4)}
+                </span>
+              </p>
+              <p className="font-light">
+                پایان قرارداد:{" "}
+                <span className="mx-1 text-lg font-medium">
+                  {data?.end_date?.slice(8, 10)}
+                  {
+                    arrayOfMonths.find(
+                      (val) => val.value == data?.end_date?.slice(5, 7)
+                    ).label
+                  }
+                  {data?.end_date?.slice(0, 4)}
+                </span>
+              </p>
             </div>
             <hr className=" text-warmGray-400" />
-            <p className="font-light flex flex-row gap-4">
+            <p className="flex flex-row items-center gap-4 font-light">
               وضعیت :&nbsp;&nbsp;
               {data?.landlord_signature && data?.tenant_signature ? (
                 <span
-                  className={`font-bold text-[#22C55E] bg-[#DCFCE7] rounded p-2`}
+                  className={`rounded bg-[#DCFCE7] p-2 font-bold text-[#22C55E]`}
                 >
                   تکمیل قرارداد اجاره
                 </span>
@@ -128,12 +131,12 @@ const ContractCard = ({
                 role == "L" ? (
                 <>
                   <span
-                    className={`font-bold text-[#22C55E] bg-[#DCFCE7] rounded p-2`}
+                    className={`rounded bg-[#DCFCE7] p-2 font-bold text-[#22C55E]`}
                   >
                     امضای قرارداد توسط شما
                   </span>
                   <span
-                    className={`font-bold text-[#F97316] bg-[#FFEDD5] rounded p-2`}
+                    className={`rounded bg-[#FFEDD5] p-2 font-bold text-[#F97316]`}
                   >
                     منتظر امضای قرارداد توسط مستاجر
                   </span>
@@ -143,12 +146,12 @@ const ContractCard = ({
                 role == "L" ? (
                 <>
                   <span
-                    className={`font-bold text-[#22C55E] bg-[#DCFCE7] rounded p-2`}
+                    className={`rounded bg-[#DCFCE7] p-2 font-bold text-[#22C55E]`}
                   >
                     امضای قرارداد توسط مستأجر
                   </span>
                   <span
-                    className={`font-bold text-[#F97316] bg-[#FFEDD5] rounded p-2`}
+                    className={`rounded bg-[#FFEDD5] p-2 font-bold text-[#F97316]`}
                   >
                     منتظر امضای قرارداد توسط شما
                   </span>
@@ -158,12 +161,12 @@ const ContractCard = ({
                 role == "T" ? (
                 <>
                   <span
-                    className={`font-bold text-[#22C55E] bg-[#DCFCE7] rounded p-2`}
+                    className={`rounded bg-[#DCFCE7] p-2 font-bold text-[#22C55E]`}
                   >
                     امضای قرارداد توسط شما
                   </span>
                   <span
-                    className={`font-bold text-[#F97316] bg-[#FFEDD5] rounded p-2`}
+                    className={`rounded bg-[#FFEDD5] p-2 font-bold text-[#F97316]`}
                   >
                     منتظر امضای قرارداد توسط موجر
                   </span>
@@ -173,19 +176,19 @@ const ContractCard = ({
                 role == "T" ? (
                 <>
                   <span
-                    className={`font-bold text-[#22C55E] bg-[#DCFCE7] rounded p-2`}
+                    className={`rounded bg-[#DCFCE7] p-2 font-bold text-[#22C55E]`}
                   >
                     امضای قرارداد توسط موجر
                   </span>
                   <span
-                    className={`font-bold text-[#F97316] bg-[#FFEDD5] rounded p-2`}
+                    className={`rounded bg-[#FFEDD5] p-2 font-bold text-[#F97316]`}
                   >
                     منتظر امضای قرارداد توسط شما
                   </span>
                 </>
               ) : !data?.landlord_signature && !data?.tenant_signature ? (
                 <span
-                  className={`font-bold text-[#F97316] bg-[#FFEDD5] rounded p-2`}
+                  className={`rounded bg-[#FFEDD5] p-2 font-bold text-[#F97316]`}
                 >
                   منتظر امضای قرارداد توسط شما
                 </span>
@@ -197,7 +200,8 @@ const ContractCard = ({
                 <Link
                   to={`${url}/signContract`}
                   onClick={passDataToSignContract}
-                  className="border-12 bg-main-600 text-white rounded-lg font-bold px-6 py-2"
+                  className="rounded-lg px-6 py-2 font-bold text-white"
+                  style={gradient}
                 >
                   مشاهده قرارداد
                 </Link>
@@ -208,7 +212,7 @@ const ContractCard = ({
                   <Link
                     to={`${url}/signContract`}
                     onClick={passDataToSignContract}
-                    className="border-12 bg-main-600 text-white rounded-lg font-bold px-6 py-2"
+                    className="rounded-lg border-2 bg-main-600 px-6 py-2 font-bold text-white"
                   >
                     مشاهده قرارداد
                   </Link>
@@ -220,7 +224,7 @@ const ContractCard = ({
                   <Link
                     to={`${url}/signContract`}
                     onClick={passDataToSignContract}
-                    className="border-12 bg-main-600 text-white rounded-lg font-bold px-6 py-2"
+                    className="rounded-lg border-2 bg-main-600 px-6 py-2 font-bold text-white"
                   >
                     امضا قرارداد
                   </Link>
@@ -232,7 +236,7 @@ const ContractCard = ({
                   <Link
                     to={`${url}/signContract`}
                     onClick={passDataToSignContract}
-                    className="border-12 bg-main-600 text-white rounded-lg font-bold px-6 py-2"
+                    className="rounded-lg border-2 bg-main-600 px-6 py-2 font-bold text-white"
                   >
                     مشاهده قرارداد
                   </Link>
@@ -244,7 +248,7 @@ const ContractCard = ({
                   <Link
                     to={`${url}/signContract`}
                     onClick={passDataToSignContract}
-                    className="border-12 bg-main-600 text-white rounded-lg font-bold px-6 py-2"
+                    className="rounded-lg border-2 bg-main-600 px-6 py-2 font-bold text-white"
                   >
                     امضا قرارداد
                   </Link>
@@ -253,7 +257,7 @@ const ContractCard = ({
                 <Link
                   to={`${url}/signContract`}
                   onClick={passDataToSignContract}
-                  className="border-12 bg-main-600 text-white rounded-lg font-bold px-6 py-2"
+                  className="rounded-lg border-2 bg-main-600 px-6 py-2 font-bold text-white"
                 >
                   امضا قرارداد
                 </Link>

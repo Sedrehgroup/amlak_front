@@ -4,7 +4,7 @@ import send from "../../assets/Images/Dashboard/send.svg";
 import Message from "./Message";
 
 const MessagesList = (props) => {
-  const [isActiveChat, setIsActiveChat] = useState(false);
+  const [isActiveChat, setIsActiveChat] = useState(true);
 
   // function OpeningChatPage() {
   //   setIsActiveChat(false);

@@ -20,6 +20,7 @@ export default function PropertyDetailsSlider() {
   return (
     <>
       <Swiper
+        className="mb-6 rounded-lg"
         style={{
           "--swiper-navigation-color": "#fff",
           "--swiper-pagination-color": "#fff",
@@ -30,12 +31,12 @@ export default function PropertyDetailsSlider() {
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className={styles.mySwiper2}
+        // className={styles.mySwiper2}
       >
-        <SwiperSlide>
+        <SwiperSlide className="rounded-lg">
           <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.jpg" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="rounded-lg">
           <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.1.jpg" />
         </SwiperSlide>
         <SwiperSlide>
@@ -53,30 +54,48 @@ export default function PropertyDetailsSlider() {
       </Swiper>
       <Swiper
         onSwiper={setThumbsSwiper}
-        spaceBetween={10}
+        spaceBetween={8}
         slidesPerView={4}
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper "
+        className="h-24"
       >
         <SwiperSlide>
-          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.jpg" />
+          <img
+            className="rounded-lg"
+            src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.jpg"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.1.jpg" />
+          <img
+            className="rounded-lg"
+            src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.1.jpg"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.2.jpg" />
+          <img
+            className="rounded-lg"
+            src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.2.jpg"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.3.jpg" />
+          <img
+            className="rounded-lg"
+            src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.3.jpg"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.4.jpg" />
+          <img
+            className="rounded-lg"
+            src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.4.jpg"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.5.jpg" />
+          <img
+            className="rounded-lg"
+            src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.5.jpg"
+          />
         </SwiperSlide>
       </Swiper>
     </>

@@ -225,7 +225,7 @@ const SubmitContract = () => {
                   </p>
                 </div>
 
-                <div className="relative w-full mx-1  mt-6 border-12 border-solid border-main-200">
+                <div className="relative w-full mx-1  mt-6 border-2 border-solid border-main-200">
                   <label className="absolute bg-primary-50 bottom-9 right-2">
                     نام صاحب خانه
                   </label>
@@ -237,7 +237,7 @@ const SubmitContract = () => {
                     {...register("owner_name")}
                   />
                 </div>
-                <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+                <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
                   <label className="absolute bg-primary-50 bottom-9 right-2">
                     نام خانوادگی صاحب خانه
                   </label>
@@ -249,7 +249,7 @@ const SubmitContract = () => {
                     type="text"
                   />
                 </div>
-                <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+                <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
                   <label className="absolute bg-primary-50 bottom-9 right-2">
                     نام مستاجر
                   </label>
@@ -261,7 +261,7 @@ const SubmitContract = () => {
                     {...register("tenant_name")}
                   />
                 </div>
-                <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+                <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
                   <label className="absolute bg-primary-50 bottom-9 right-2">
                     نام خانوادگی مستاجر
                   </label>
@@ -273,7 +273,7 @@ const SubmitContract = () => {
                     type="text"
                   />
                 </div>
-                <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+                <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
                   <label className="absolute bg-primary-50 bottom-9 right-2">
                     شماره سریال
                   </label>
@@ -287,7 +287,7 @@ const SubmitContract = () => {
                     placeholder="123456"
                   />
                 </div>
-                <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+                <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
                   <label className="absolute bg-primary-50 bottom-9 right-2">
                     نوع سریال
                   </label>
@@ -301,7 +301,7 @@ const SubmitContract = () => {
                     placeholder="2"
                   />
                 </div>
-                <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+                <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
                   <label className="absolute bg-primary-50 bottom-9 right-2">
                     وضعیت سند
                   </label>
@@ -315,7 +315,7 @@ const SubmitContract = () => {
                     placeholder="5"
                   />
                 </div>
-                <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+                <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
                   <label className="absolute bg-primary-50 bottom-9 right-2">
                     سهم مشترک
                   </label>
@@ -329,7 +329,7 @@ const SubmitContract = () => {
                     placeholder="5"
                   />
                 </div>
-                <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+                <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                   <label className="absolute bg-primary-50 bottom-9 right-2 ">
                     سهم معامله
                   </label>
@@ -342,7 +342,7 @@ const SubmitContract = () => {
                     placeholder="2"
                   />
                 </div>
-                <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+                <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
                   <label className="absolute bg-primary-50 bottom-9 right-2">
                     تاریخ عقد قرارداد
                   </label>
@@ -402,7 +402,7 @@ const SubmitContract = () => {
                     ))}
                   </select>
                 </div>
-                <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+                <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                   <label className="absolute bg-primary-50 bottom-10 right-2 ">
                     تاریخ ثبت قرارداد
                   </label>
@@ -462,7 +462,7 @@ const SubmitContract = () => {
                     ))}
                   </select>
                 </div>
-                <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+                <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                   <label className="absolute bg-primary-50 bottom-10 right-2 ">
                     تاریخ شروع قرارداد
                   </label>
@@ -522,7 +522,7 @@ const SubmitContract = () => {
                     ))}
                   </select>
                 </div>
-                <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+                <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                   <label className="absolute bg-primary-50 bottom-10 right-2 ">
                     تاریخ پایان قرارداد
                   </label>

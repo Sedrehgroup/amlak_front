@@ -20,7 +20,7 @@ export default function CounterSlide() {
       cssMode={true}
       navigation={true}
       pagination={{ clickable: true }}
-      loop={true}
+      // loop={true}
       mousewheel={true}
       keyboard={true}
       modules={[Navigation, Pagination, Mousewheel, Keyboard]}
@@ -36,7 +36,7 @@ export default function CounterSlide() {
             <p className=""> مسکونی دوبلکس 248 متر در پیروزی</p>
             <div className="flex bg-white w-full">
               <div className="w-3/5 mt-10 p-10 flex flex-col justify-between">
-                <div className="border border-warmGray-300  rounded border-12 border-solid flex ">
+                <div className="border border-warmGray-300  rounded border-2 border-solid flex ">
                   <div className="w-1/2">
                     <p>قیمت رهن : 620,000,000 تومان</p>
                     <hr
@@ -63,7 +63,7 @@ export default function CounterSlide() {
                   </div>
                 </div>
                 <div
-                  className="border border-warmGray-300 rounded border-12 border-solid mt-2"
+                  className="border border-warmGray-300 rounded border-2 border-solid mt-2"
                   dir="ltr"
                 >
                   <div class="rental-manager-progress-bar-container">
@@ -91,7 +91,7 @@ export default function CounterSlide() {
                     </div>
                   </div>
                 </div>
-                <div className="border border-warmGray-300 rounded border-12 border-solid mt-10 flex gap-5">
+                <div className="border border-warmGray-300 rounded border-2 border-solid mt-10 flex gap-5">
                   <p>وضعیت :تایید توسط موجر</p>
                   <p>منتظر امضای قرارداد توسط شما</p>
                 </div>
@@ -99,7 +99,7 @@ export default function CounterSlide() {
               <div className="w-2/5 p-10 my-2">
                 <img src={Frame} alt="" />
                 <div className="w-full flex gap-1 mt-2">
-                  <button className="w-1/2 text-main-600 border border-12 border-main-500 rounded-lg">
+                  <button className="w-1/2 text-main-600 border border-2 border-main-500 rounded-lg">
                     مشاهده آگهی
                   </button>
                   <button className="w-1/2 text-white bg-main-500 rounded-lg">
@@ -125,7 +125,7 @@ export default function CounterSlide() {
             <p className=""> مسکونی دوبلکس 248 متر در پیروزی</p>
             <div className="flex bg-white w-full">
               <div className="w-3/5 mt-10 p-10">
-                <div className="border border-warmGray-300  rounded border-12 border-solid flex">
+                <div className="border border-warmGray-300  rounded border-2 border-solid flex">
                   <div className="w-1/2">
                     <p>قیمت رهن : 620,000,000 تومان</p>
                     <hr
@@ -152,7 +152,7 @@ export default function CounterSlide() {
                   </div>
                 </div>
                 <div
-                  className="border border-warmGray-300 rounded border-12 border-solid mt-2"
+                  className="border border-warmGray-300 rounded border-2 border-solid mt-2"
                   dir="ltr"
                 >
                   <div class="rental-manager-progress-bar-container">
@@ -180,7 +180,7 @@ export default function CounterSlide() {
                     </div>
                   </div>
                 </div>
-                <div className="border border-warmGray-300 rounded border-12 border-solid mt-10 flex gap-5">
+                <div className="border border-warmGray-300 rounded border-2 border-solid mt-10 flex gap-5">
                   <p>وضعیت :تایید توسط موجر</p>
                   <p>منتظر امضای قرارداد توسط شما</p>
                 </div>
@@ -188,7 +188,7 @@ export default function CounterSlide() {
               <div className="w-2/5 p-10 my-2">
                 <img src={Frame} alt="" />
                 <div className="w-full flex gap-1 mt-2">
-                  <button className="w-1/2 text-main-600 border border-12 border-main-500 rounded-lg">
+                  <button className="w-1/2 text-main-600 border border-2 border-main-500 rounded-lg">
                     مشاهده آگهی
                   </button>
                   <button className="w-1/2 text-white bg-main-500 rounded-lg">
@@ -206,7 +206,7 @@ export default function CounterSlide() {
             <p className=""> مسکونی دوبلکس 248 متر در پیروزی</p>
             <div className="flex bg-white w-full">
               <div className="w-3/5 mt-10 p-10">
-                <div className="border border-warmGray-300  rounded border-12 border-solid flex">
+                <div className="border border-warmGray-300  rounded border-2 border-solid flex">
                   <div className="w-1/2">
                     <p>قیمت رهن : 620,000,000 تومان</p>
                     <hr
@@ -233,7 +233,7 @@ export default function CounterSlide() {
                   </div>
                 </div>
                 <div
-                  className="border border-warmGray-300 rounded border-12 border-solid mt-2"
+                  className="border border-warmGray-300 rounded border-2 border-solid mt-2"
                   dir="ltr"
                 >
                   <div class="rental-manager-progress-bar-container">
@@ -261,7 +261,7 @@ export default function CounterSlide() {
                     </div>
                   </div>
                 </div>
-                <div className="border border-warmGray-300 rounded border-12 border-solid mt-10 flex gap-5">
+                <div className="border border-warmGray-300 rounded border-2 border-solid mt-10 flex gap-5">
                   <p>وضعیت :تایید توسط موجر</p>
                   <p>منتظر امضای قرارداد توسط شما</p>
                 </div>
@@ -269,7 +269,7 @@ export default function CounterSlide() {
               <div className="w-2/5 p-10 my-2">
                 <img src={Frame} alt="" />
                 <div className="w-full flex gap-1 mt-2">
-                  <button className="w-1/2 text-main-600 border border-12 border-main-500 rounded-lg">
+                  <button className="w-1/2 text-main-600 border border-2 border-main-500 rounded-lg">
                     مشاهده آگهی
                   </button>
                   <button className="w-1/2 text-white bg-main-500 rounded-lg">

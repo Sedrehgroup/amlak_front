@@ -232,7 +232,7 @@ export default function RequestDetails({ data }) {
                 ></iframe>
               </div>
               <div className="flex justify-center gap-8">
-                <button className="text-sm text-sub-500 border-12 border-solid border-sub-500 rounded px-6 py-1 ">
+                <button className="text-sm text-sub-500 border-2 border-solid border-sub-500 rounded px-6 py-1 ">
                   گفتگو
                 </button>
               </div>

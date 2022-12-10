@@ -10,6 +10,23 @@ import { updateHandler } from "../../../../redux/reducers/user";
 import { calcTimeOfContract } from "../../../../utils/calcTimeOfContract";
 
 export default function SignContract({ data }) {
+  function printDiv() {
+    let divContents = document.getElementById("contractPrint").innerHTML;
+    // divContents.style.direction = "rtl";
+
+    let a = window.open("", "", "height=800, width=1000");
+    // a.document.write("<html>");
+    // a.document.write("<body > <h1>Div contents are <br>");
+    a.document.write(divContents);
+    // a.document.write("</body></html>");
+    a.document.close();
+    a.print();
+  }
+
+  const gradient = {
+    background: "linear-gradient(90.83deg, #FF731D 0.01%, #FFAB77 100.01%)",
+  };
+
   const [disable, setDisable] = useState(true);
   const [propertyData, setPropertyData] = useState({
     id: 26,
@@ -182,6 +199,7 @@ export default function SignContract({ data }) {
           <div
             className="bg-white w-3/4 sixtyheight p-4 mx-auto rounded-lg overflow-auto"
             dir="rtl"
+            id="contractPrint"
           >
             <span>
               <strong> ماده ۱ - طرفین قرارداد</strong>
@@ -480,8 +498,9 @@ export default function SignContract({ data }) {
                 data?.tenant_signature) ? (
                 <div className=" flex gap-4">
                   <button
-                    onClick={() => window.print()}
-                    className="bg-main-500 w-48 text-white disabled:bg-gray disabled:cursor-not-allowed"
+                    onClick={() => printDiv()}
+                    className=" font-bold rounded-lg w-48 text-white disabled:bg-gray disabled:cursor-not-allowed"
+                    style={gradient}
                   >
                     چاپ قرارداد
                   </button>
@@ -491,7 +510,7 @@ export default function SignContract({ data }) {
                 (user_id != propertyData?.owner?.owner_id &&
                   !data?.tenant_signature) ? (
                 <div className=" flex gap-4">
-                  <button className="p-2 gap-2 text-main-400 w-28 border-12 border-solid border-primary-600 rounded">
+                  <button className="p-2 gap-2 text-main-400 w-28 border-2 border-solid border-primary-600 rounded">
                     انصراف
                   </button>
                   <button

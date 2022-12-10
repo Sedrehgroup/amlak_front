@@ -257,7 +257,7 @@ export default function UserFormDetail() {
             </p>
           </div>
 
-          <div className="relative w-full mx-1  mt-6 border-12 border-solid border-main-200">
+          <div className="relative w-full mx-1  mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               نام
             </label>
@@ -269,7 +269,7 @@ export default function UserFormDetail() {
               {...register("first_name")}
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               نام خانوادگی
             </label>
@@ -281,7 +281,7 @@ export default function UserFormDetail() {
               type="text"
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               کد ملی
             </label>
@@ -293,7 +293,7 @@ export default function UserFormDetail() {
               type="text"
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               شماره همراه
             </label>
@@ -305,7 +305,7 @@ export default function UserFormDetail() {
               type="text"
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               ایمیل
             </label>
@@ -317,7 +317,7 @@ export default function UserFormDetail() {
               defaultValue={userAdditionalData.email}
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               نام پدر
             </label>
@@ -329,7 +329,7 @@ export default function UserFormDetail() {
               defaultValue={userAdditionalData.father_name}
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               جنسیت
             </label>
@@ -353,7 +353,7 @@ export default function UserFormDetail() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               نام لاتین
             </label>
@@ -365,7 +365,7 @@ export default function UserFormDetail() {
               defaultValue={userAdditionalData.latin_first_name}
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               نام خانوادگی لاتین
             </label>
@@ -377,7 +377,7 @@ export default function UserFormDetail() {
               type="text"
             />
           </div>
-          <div className="relative inputC mx-1  mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2 ">
               تاریخ تولد
             </label>
@@ -437,7 +437,7 @@ export default function UserFormDetail() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               شماره شناسنامه
             </label>
@@ -449,7 +449,7 @@ export default function UserFormDetail() {
               type="text"
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               کشور محل صدور
             </label>
@@ -461,7 +461,7 @@ export default function UserFormDetail() {
               type="text"
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               استان محل صدور
             </label>
@@ -493,7 +493,7 @@ export default function UserFormDetail() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               شهرستان محل صدور
             </label>
@@ -527,7 +527,7 @@ export default function UserFormDetail() {
                 ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               نوع شناسنامه
             </label>
@@ -550,7 +550,7 @@ export default function UserFormDetail() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               وضعیت تاهل
             </label>
@@ -576,7 +576,7 @@ export default function UserFormDetail() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               تحصیلات
             </label>
@@ -588,7 +588,7 @@ export default function UserFormDetail() {
               defaultValue={userAdditionalData.education}
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               استان محل سکونت
             </label>
@@ -617,7 +617,7 @@ export default function UserFormDetail() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               شهرستان محل سکونت
             </label>
@@ -653,7 +653,7 @@ export default function UserFormDetail() {
                 ))}
             </select>
           </div>
-          {/* <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          {/* <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               شهر محل سکونت
             </label>
@@ -683,7 +683,7 @@ export default function UserFormDetail() {
                 ))}
             </select>
           </div> */}
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               کد پستی
             </label>
@@ -695,7 +695,7 @@ export default function UserFormDetail() {
               defaultValue={userAdditionalData.postal_code}
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-12 border-solid border-main-200">
+          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               شماره منزل
             </label>
@@ -708,7 +708,7 @@ export default function UserFormDetail() {
             />
           </div>
 
-          <div className="relative w-full mt-6 border-12 border-solid border-main-200">
+          <div className="relative w-full mt-6 border-2 border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-20 right-2">
               نشانی محل اقامت
             </label>

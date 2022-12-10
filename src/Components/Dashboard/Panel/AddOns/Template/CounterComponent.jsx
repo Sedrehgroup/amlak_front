@@ -1,8 +1,6 @@
 import React from "react";
 import house from "../../../../../assets/Images/Dashboard/house.jpg";
 
-import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CounterComponent = (props) => {
   const gradient = {
@@ -41,7 +39,7 @@ const CounterComponent = (props) => {
               dir="ltr"
               className="border border-warmGray-300 w-full rounded-lg p-2"
             >
-              <div className="max-w-xl mx-auto my-4  pb-4">
+              <div className="max-w-xl mx-auto my-4 ">
                 <div className="flex pb-3">
                   <div className="flex-1"></div>
                   <div className="flex-1 px-2">
