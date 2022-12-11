@@ -211,74 +211,74 @@ const SubmitContract = () => {
         <>
           <div className="flex justify-center">
             <div className="form1 seventyfivevh mb-4">
-              <strong className="flex justify-center items-start text-4xl mb-8">
+              <strong className="mb-8 mt-8 flex items-start justify-center text-4xl">
                 جزئیات قرارداد
               </strong>
 
               <form
-                className="bg-white w-3/4 p-4 mx-auto rounded-lg flex flex-row flex-wrap"
+                className="mx-auto flex w-3/4 flex-row flex-wrap rounded-lg bg-white p-4"
                 onSubmit={handleSubmit(onSubmit)}
               >
                 <div>
-                  <p className="bg-white  text-center mb-2">
+                  <p className="mb-2  bg-white text-center">
                     برای ثبت قرارداد فیلدهای زیر را تکمیل کنید
                   </p>
                 </div>
 
-                <div className="relative w-full mx-1  mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bg-primary-50 bottom-9 right-2">
+                <div className="relative mx-1 mt-6  w-full border-2 border-solid border-main-200">
+                  <label className="absolute bottom-9 right-2 bg-primary-50">
                     نام صاحب خانه
                   </label>
                   <input
-                    className="w-full h-12 px-1  py-2"
+                    className="h-12 w-full px-1  py-2"
                     placeholder="علی"
                     type="text"
                     value={request_property?.owner?.first_name}
                     {...register("owner_name")}
                   />
                 </div>
-                <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bg-primary-50 bottom-9 right-2">
+                <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+                  <label className="absolute bottom-9 right-2 bg-primary-50">
                     نام خانوادگی صاحب خانه
                   </label>
                   <input
-                    className="w-full h-12 px-1  py-2"
+                    className="h-12 w-full px-1  py-2"
                     {...register("owner_lastname")}
                     value={request_property?.owner?.last_name}
                     placeholder="محمدی"
                     type="text"
                   />
                 </div>
-                <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bg-primary-50 bottom-9 right-2">
+                <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+                  <label className="absolute bottom-9 right-2 bg-primary-50">
                     نام مستاجر
                   </label>
                   <input
-                    className="w-full h-12 px-1  py-2"
+                    className="h-12 w-full px-1  py-2"
                     placeholder="علی"
                     type="text"
                     value={tenant?.first_name}
                     {...register("tenant_name")}
                   />
                 </div>
-                <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bg-primary-50 bottom-9 right-2">
+                <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+                  <label className="absolute bottom-9 right-2 bg-primary-50">
                     نام خانوادگی مستاجر
                   </label>
                   <input
-                    className="w-full h-12 px-1  py-2"
+                    className="h-12 w-full px-1  py-2"
                     {...register("tenant_lastname")}
                     value={tenant?.last_name}
                     placeholder="محمدی"
                     type="text"
                   />
                 </div>
-                <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bg-primary-50 bottom-9 right-2">
+                <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+                  <label className="absolute bottom-9 right-2 bg-primary-50">
                     شماره سریال
                   </label>
                   <input
-                    className="w-full h-12 px-1  py-2"
+                    className="h-12 w-full px-1  py-2"
                     {...register("serial_number", {
                       required: "لطفا این فیلد را تکمیل کنید",
 
@@ -287,12 +287,12 @@ const SubmitContract = () => {
                     placeholder="123456"
                   />
                 </div>
-                <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bg-primary-50 bottom-9 right-2">
+                <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+                  <label className="absolute bottom-9 right-2 bg-primary-50">
                     نوع سریال
                   </label>
                   <input
-                    className="w-full h-12 px-1  py-2"
+                    className="h-12 w-full px-1  py-2"
                     {...register("serial_type", {
                       required: "لطفا این فیلد را تکمیل کنید",
 
@@ -301,12 +301,12 @@ const SubmitContract = () => {
                     placeholder="2"
                   />
                 </div>
-                <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bg-primary-50 bottom-9 right-2">
+                <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+                  <label className="absolute bottom-9 right-2 bg-primary-50">
                     وضعیت سند
                   </label>
                   <input
-                    className="w-full h-12 px-1  py-2"
+                    className="h-12 w-full px-1  py-2"
                     {...register("document_status", {
                       required: "لطفا این فیلد را تکمیل کنید",
 
@@ -315,12 +315,12 @@ const SubmitContract = () => {
                     placeholder="5"
                   />
                 </div>
-                <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bg-primary-50 bottom-9 right-2">
+                <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+                  <label className="absolute bottom-9 right-2 bg-primary-50">
                     سهم مشترک
                   </label>
                   <input
-                    className="w-full h-12 px-1  py-2"
+                    className="h-12 w-full px-1  py-2"
                     {...register("share", {
                       required: "لطفا این فیلد را تکمیل کنید",
 
@@ -329,12 +329,12 @@ const SubmitContract = () => {
                     placeholder="5"
                   />
                 </div>
-                <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bg-primary-50 bottom-9 right-2 ">
+                <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                  <label className="absolute bottom-9 right-2 bg-primary-50 ">
                     سهم معامله
                   </label>
                   <input
-                    className="w-full h-12 px-1  py-2"
+                    className="h-12 w-full px-1  py-2"
                     {...register("dong", {
                       required: "لطفا این فیلد را تکمیل کنید",
                       valueAsNumber: true,
@@ -342,13 +342,13 @@ const SubmitContract = () => {
                     placeholder="2"
                   />
                 </div>
-                <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bg-primary-50 bottom-9 right-2">
+                <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+                  <label className="absolute bottom-9 right-2 bg-primary-50">
                     تاریخ عقد قرارداد
                   </label>
                   <select
                     dir="ltr"
-                    className="w-1/4 h-12 pl-2"
+                    className="h-12 w-1/4 pl-2"
                     onChange={(e) => {
                       setDay1(e.target.value);
                     }}
@@ -366,7 +366,7 @@ const SubmitContract = () => {
                   </select>
                   <select
                     dir="ltr"
-                    className="w-2/5 h-12 pl-3"
+                    className="h-12 w-2/5 pl-3"
                     onChange={(e) => {
                       setMonth1(e.target.value);
                     }}
@@ -385,7 +385,7 @@ const SubmitContract = () => {
 
                   <select
                     dir="ltr"
-                    className="w-[35%] h-12 px-4"
+                    className="h-12 w-[35%] px-4"
                     onChange={(e) => {
                       setYear1(e.target.value);
                     }}
@@ -402,13 +402,13 @@ const SubmitContract = () => {
                     ))}
                   </select>
                 </div>
-                <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bg-primary-50 bottom-10 right-2 ">
+                <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                  <label className="absolute bottom-10 right-2 bg-primary-50 ">
                     تاریخ ثبت قرارداد
                   </label>
                   <select
                     dir="ltr"
-                    className="w-1/4 h-12 pl-2"
+                    className="h-12 w-1/4 pl-2"
                     onChange={(e) => {
                       setDay2(e.target.value);
                     }}
@@ -426,7 +426,7 @@ const SubmitContract = () => {
                   </select>
                   <select
                     dir="ltr"
-                    className="w-2/5 h-12 pl-3"
+                    className="h-12 w-2/5 pl-3"
                     onChange={(e) => {
                       setMonth2(e.target.value);
                     }}
@@ -445,7 +445,7 @@ const SubmitContract = () => {
 
                   <select
                     dir="ltr"
-                    className="w-[35%] h-12 px-4"
+                    className="h-12 w-[35%] px-4"
                     onChange={(e) => {
                       setYear2(e.target.value);
                     }}
@@ -462,13 +462,13 @@ const SubmitContract = () => {
                     ))}
                   </select>
                 </div>
-                <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bg-primary-50 bottom-10 right-2 ">
+                <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                  <label className="absolute bottom-10 right-2 bg-primary-50 ">
                     تاریخ شروع قرارداد
                   </label>
                   <select
                     dir="ltr"
-                    className="w-1/4 h-12 pl-2"
+                    className="h-12 w-1/4 pl-2"
                     onChange={(e) => {
                       setDay3(e.target.value);
                     }}
@@ -486,7 +486,7 @@ const SubmitContract = () => {
                   </select>
                   <select
                     dir="ltr"
-                    className="w-2/5 h-12 pl-3"
+                    className="h-12 w-2/5 pl-3"
                     onChange={(e) => {
                       setMonth3(e.target.value);
                     }}
@@ -505,7 +505,7 @@ const SubmitContract = () => {
 
                   <select
                     dir="ltr"
-                    className="w-[35%] h-12 px-4"
+                    className="h-12 w-[35%] px-4"
                     onChange={(e) => {
                       setYear3(e.target.value);
                     }}
@@ -522,13 +522,13 @@ const SubmitContract = () => {
                     ))}
                   </select>
                 </div>
-                <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bg-primary-50 bottom-10 right-2 ">
+                <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                  <label className="absolute bottom-10 right-2 bg-primary-50 ">
                     تاریخ پایان قرارداد
                   </label>
                   <select
                     dir="ltr"
-                    className="w-1/4 h-12 pl-2"
+                    className="h-12 w-1/4 pl-2"
                     onChange={(e) => {
                       setDay4(e.target.value);
                     }}
@@ -546,7 +546,7 @@ const SubmitContract = () => {
                   </select>
                   <select
                     dir="ltr"
-                    className="w-2/5 h-12 pl-3"
+                    className="h-12 w-2/5 pl-3"
                     onChange={(e) => {
                       setMonth4(e.target.value);
                     }}
@@ -565,7 +565,7 @@ const SubmitContract = () => {
 
                   <select
                     dir="ltr"
-                    className="w-[35%] h-12 px-4"
+                    className="h-12 w-[35%] px-4"
                     onChange={(e) => {
                       setYear4(e.target.value);
                     }}
@@ -585,7 +585,7 @@ const SubmitContract = () => {
 
                 <button
                   type="submit"
-                  className="bg-main-500 w-full h-10 mt-6 text-white mb-4 cursor-pointer"
+                  className="mt-6 mb-4 h-10 w-full cursor-pointer bg-main-500 text-white"
                 >
                   تایید قرارداد
                 </button>
@@ -595,7 +595,7 @@ const SubmitContract = () => {
         </>
       ) : (
         <>
-          <div className="flex justify-center items-center eightyvh">
+          <div className="eightyvh flex items-center justify-center">
             <Spinner name="folding-cube" color="#FF731D" fadeIn="none" />
           </div>
         </>

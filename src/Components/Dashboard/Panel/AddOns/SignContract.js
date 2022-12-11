@@ -192,12 +192,12 @@ export default function SignContract({ data }) {
   return (
     <div className="flex justify-center" id="cn">
       <div className="form1 seventyfivevh">
-        <strong className="flex justify-center items-start text-4xl mb-4">
+        <strong className="mb-4 flex items-start justify-center text-4xl">
           امضای قرارداد{" "}
         </strong>
         <div className="h-700">
           <div
-            className="bg-white w-3/4 sixtyheight p-4 mx-auto rounded-lg overflow-auto"
+            className="sixtyheight mx-auto w-3/4 overflow-auto rounded-lg bg-white p-4"
             dir="rtl"
             id="contractPrint"
           >
@@ -448,7 +448,7 @@ export default function SignContract({ data }) {
               </div>
             </div>
           </div>
-          <div className="bg-white w-3/4  p-4 mx-auto rounded-lg mt-2 mb-4">
+          <div className="mx-auto mt-2  mb-4 w-3/4 rounded-lg bg-white p-4">
             {(user_id == propertyData?.owner?.owner_id &&
               data?.landlord_signature) ||
             (user_id != propertyData?.owner?.owner_id &&
@@ -462,7 +462,7 @@ export default function SignContract({ data }) {
                   type="checkbox"
                   onChange={handleCheckBoxChange}
                   ref={checkbox}
-                  className="m-2 w-4 h-4 cursor-pointer"
+                  className="m-2 h-4 w-4 cursor-pointer"
                 />
                 <label>
                   <strong>
@@ -473,7 +473,7 @@ export default function SignContract({ data }) {
               </>
             ) : null}
 
-            <div className="flex flex-row justify-between align-center mt-2">
+            <div className="align-center mt-2 flex flex-row justify-between">
               <div>
                 <p>
                   وضعیت امضای مؤجر :{" "}
@@ -499,7 +499,7 @@ export default function SignContract({ data }) {
                 <div className=" flex gap-4">
                   <button
                     onClick={() => printDiv()}
-                    className=" font-bold rounded-lg w-48 text-white disabled:bg-gray disabled:cursor-not-allowed"
+                    className=" w-48 rounded-lg font-bold text-white disabled:cursor-not-allowed disabled:bg-gray"
                     style={gradient}
                   >
                     چاپ قرارداد
@@ -510,11 +510,11 @@ export default function SignContract({ data }) {
                 (user_id != propertyData?.owner?.owner_id &&
                   !data?.tenant_signature) ? (
                 <div className=" flex gap-4">
-                  <button className="p-2 gap-2 text-main-400 w-28 border-2 border-solid border-primary-600 rounded">
+                  <button className="w-28 gap-2 rounded border-2 border-solid border-primary-600 p-2 text-main-400">
                     انصراف
                   </button>
                   <button
-                    className="bg-main-500 w-48 text-white disabled:bg-gray disabled:cursor-not-allowed"
+                    className="w-48 bg-main-500 text-white disabled:cursor-not-allowed disabled:bg-gray"
                     disabled={disable}
                     onClick={signContractBtnHandler}
                   >

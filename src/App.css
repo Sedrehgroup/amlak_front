@@ -141,7 +141,19 @@ body {
 }
 
 .inputC {
-  width: calc(33.33333% - 8px);
+  width: calc(25% - 10px);
+}
+
+.inputCthree {
+  width: calc(32% + 1px);
+}
+
+.inputCtwo {
+  width: calc(50% - 10px);
+}
+
+.inputCfull {
+  width: calc(100% - 10px);
 }
 
 .inputC2 {
@@ -250,7 +262,6 @@ div#popup-64 {
   }
 }
 
-
 .rental-manager-progress-bar-container {
   width: 100%;
   height: 80px;
@@ -284,6 +295,7 @@ div#popup-64 {
 }
 
 /* printing */
+
 @media print {
   body {
     width: 118%;
@@ -409,8 +421,20 @@ div#popup-64 {
   box-shadow: -8px 0px 16px rgba(0, 0, 0, 0.15);
 }
 
-
 .pattern {
   background-image: url("./assets/Images/Dashboard/pattern.svg");
   object-fit: cover;
+}
+
+.fifteenpointfivebottom {
+  bottom: 16rem;
+}
+
+.eighteenpointfivebottom {
+  bottom: 19rem;
+}
+
+.focusinput:focus {
+  border: 2px solid #ff731d !important;
+  outline: none;
 }

@@ -243,423 +243,512 @@ export default function UserFormDetail() {
   return (
     <div className="flex justify-center">
       <div className="form1 seventyfivevh">
-        <strong className="flex justify-center items-start text-4xl mb-8">
+        <strong className="mb-8 mt-4 flex items-start justify-center text-4xl">
           اطلاعات کاربری
         </strong>
 
         <form
-          className="bg-white w-3/4 p-4 mx-auto rounded-lg flex flex-row flex-wrap"
+          className="mx-auto mb-4 flex w-10/12 flex-row flex-wrap rounded-lg bg-white p-8"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div>
-            <p className="bg-white  text-center mb-2">
+            <p className="mb-2  bg-white text-center">
               برای ثبت اطلاعات کاربری خود فیلدهای زیر را تکمیل کنید
             </p>
           </div>
 
-          <div className="relative w-full mx-1  mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              نام
-            </label>
-            <input
-              className="w-full h-12 px-1  py-2"
-              placeholder="علی"
-              type="text"
-              defaultValue={userData?.first_name}
-              {...register("first_name")}
-            />
-          </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              نام خانوادگی
-            </label>
-            <input
-              className="w-full h-12 px-1  py-2"
-              {...register("last_name")}
-              defaultValue={userData?.last_name}
-              placeholder="محمدی"
-              type="text"
-            />
-          </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              کد ملی
-            </label>
-            <input
-              className="w-full h-12 px-1  py-2"
-              {...register("national_code")}
-              defaultValue={userData?.national_code}
-              placeholder="0012223334"
-              type="text"
-            />
-          </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              شماره همراه
-            </label>
-            <input
-              className="w-full h-12 px-1  py-2"
-              {...register("phone_number")}
-              defaultValue={userData?.phone_number}
-              placeholder="0012223334"
-              type="text"
-            />
-          </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              ایمیل
-            </label>
-            <input
-              className="w-full h-12 px-1  py-2"
-              {...register("email")}
-              placeholder="fake@gmail.com"
-              type="email"
-              defaultValue={userAdditionalData.email}
-            />
-          </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              نام پدر
-            </label>
-            <input
-              className="w-full h-12 px-1  py-2"
-              {...register("father_name")}
-              placeholder="رضا"
-              type="text"
-              defaultValue={userAdditionalData.father_name}
-            />
-          </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              جنسیت
-            </label>
-            <select
-              dir="ltr"
-              className="w-full h-12 px-4"
-              {...register("sex")}
-              placeholder="مرد"
-            >
-              {[
-                { lb: "مرد", value: true },
-                { lb: "زن", value: false },
-              ].map((val, index) => (
-                <option
-                  key={index}
-                  value={val.value}
-                  selected={userAdditionalData.sex == val.value && "selected"}
-                >
-                  {val.lb}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              نام لاتین
-            </label>
-            <input
-              className="w-full h-12 px-1  py-2"
-              {...register("latin_first_name")}
-              placeholder="ALI"
-              type="text"
-              defaultValue={userAdditionalData.latin_first_name}
-            />
-          </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              نام خانوادگی لاتین
-            </label>
-            <input
-              defaultValue={userAdditionalData.latin_last_name}
-              className="w-full h-12 px-1  py-2"
-              {...register("latin_last_name")}
-              placeholder="AHMADI"
-              type="text"
-            />
-          </div>
-          <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2 ">
-              تاریخ تولد
-            </label>
-            <select
-              dir="ltr"
-              className="w-1/4 h-12 pl-2"
-              onChange={(e) => {
-                setDay(e.target.value);
-              }}
-              placeholder="روز"
-            >
-              {arrayOfDays.map((val, index) => (
-                <option
-                  key={index}
-                  value={val}
-                  selected={day == val && "selected"}
-                >
-                  {index + 1}
-                </option>
-              ))}
-            </select>
-            <select
-              dir="ltr"
-              className="w-2/5 h-12 pl-3"
-              onChange={(e) => {
-                setMonth(e.target.value);
-              }}
-              placeholder="فروردین"
-            >
-              {arrayOfMonths.map((val, index) => (
-                <option
-                  key={index}
-                  value={val.value}
-                  selected={month == val.value && "selected"}
-                >
-                  {val.label}
-                </option>
-              ))}
-            </select>
+          <div className="first relative mx-1 mt-6  w-full rounded-lg  border-2 border-solid border-warmGray-300 p-4">
+            <strong className="fifteenpointfivebottom absolute right-2 bg-primary-50">
+              اطلاعات هویتی
+            </strong>
 
-            <select
-              dir="ltr"
-              className="w-[35%] h-12 px-4"
-              onChange={(e) => {
-                setYear(e.target.value);
-              }}
-              placeholder="سال"
-            >
-              {arrayOfYears(90).map((val, index) => (
-                <option
-                  key={index}
-                  value={val}
-                  selected={year == val && "selected"}
-                >
-                  {val}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              شماره شناسنامه
-            </label>
-            <input
-              defaultValue={userAdditionalData.certificate_number}
-              className="w-full h-12 px-1  py-2"
-              {...register("certificate_number")}
-              placeholder="00122233334"
-              type="text"
-            />
-          </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              کشور محل صدور
-            </label>
-            <input
-              className="w-full h-12 px-1  py-2"
-              {...register("certificate_country")}
-              placeholder="ایران"
-              defaultValue={userAdditionalData.certificate_country}
-              type="text"
-            />
-          </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              استان محل صدور
-            </label>
+            <div className="flex">
+              <div className="inputC relative mx-1 mt-6 ">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
+                  نام
+                </label>
+                <input
+                  className="focusinput h-12 w-full rounded rounded border-2 border-2 border-solid border-solid border-warmGray-300 border-warmGray-300 px-1 py-2"
+                  placeholder="علی"
+                  type="text"
+                  defaultValue={userData?.first_name}
+                  {...register("first_name")}
+                />
+              </div>
 
-            <select
-              dir="ltr"
-              className="w-full h-12 px-4"
-              {...register("certificate_province", {
-                onChange: (e) => {
-                  setSelectedProvince(e.target.value);
-                },
-              })}
-              placeholder="تهران"
-            >
-              {[
-                ...new Set(iranCitiesList.map((element) => element.province)),
-              ].map((val, index) => (
-                <option
-                  key={index}
-                  value={val}
-                  // disabled={val != "تهران"}
-                  // defaultValue={userAdditionalData.certificate_province}
-                  selected={
-                    userAdditionalData.certificate_province == val && "selected"
-                  }
+              <div className="inputC relative mx-1 mt-6 ">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
+                  نام خانوادگی
+                </label>
+                <input
+                  className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-1  py-2"
+                  {...register("last_name")}
+                  defaultValue={userData?.last_name}
+                  placeholder="محمدی"
+                  type="text"
+                />
+              </div>
+              <div className="inputC relative mx-1 mt-6 ">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
+                  کد ملی
+                </label>
+                <input
+                  className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-1  py-2"
+                  {...register("national_code")}
+                  defaultValue={userData?.national_code}
+                  placeholder="0012223334"
+                  type="text"
+                />
+              </div>
+
+              <div className="inputC relative mx-1 mt-6 ">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
+                  شماره همراه
+                </label>
+                <input
+                  className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-1  py-2"
+                  {...register("phone_number")}
+                  defaultValue={userData?.phone_number}
+                  placeholder="0012223334"
+                  type="text"
+                />
+              </div>
+            </div>
+
+            <div className="flex">
+              <div className="inputC relative mx-1 mt-6 ">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
+                  نام لاتین
+                </label>
+                <input
+                  className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-1  py-2"
+                  {...register("latin_first_name")}
+                  placeholder="ALI"
+                  type="text"
+                  defaultValue={userAdditionalData.latin_first_name}
+                />
+              </div>
+              <div className="inputC relative mx-1 mt-6 ">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
+                  نام خانوادگی لاتین
+                </label>
+                <input
+                  defaultValue={userAdditionalData.latin_last_name}
+                  className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-1  py-2"
+                  {...register("latin_last_name")}
+                  placeholder="AHMADI"
+                  type="text"
+                />
+              </div>
+              <div className="inputC relative mx-1 mt-6 ">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
+                  نام پدر
+                </label>
+                <input
+                  className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-1  py-2"
+                  {...register("father_name")}
+                  placeholder="رضا"
+                  type="text"
+                  defaultValue={userAdditionalData.father_name}
+                />
+              </div>
+              <div className="inputC mx relative mt-6 ">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
+                  جنسیت
+                </label>
+                <select
+                  dir="rtl"
+                  className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-4"
+                  {...register("sex")}
+                  placeholder="مرد"
                 >
-                  {val}
-                </option>
-              ))}
-            </select>
+                  {[
+                    { lb: "مرد", value: true },
+                    { lb: "زن", value: false },
+                  ].map((val, index) => (
+                    <option
+                      key={index}
+                      value={val.value}
+                      selected={
+                        userAdditionalData.sex == val.value && "selected"
+                      }
+                    >
+                      {val.lb}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="mb-4 flex">
+              <div className="inputCthree mx- relative mt-6 rounded border-2 border-solid border-warmGray-300">
+                <label className="absolute bottom-9 right-2 bg-primary-50 ">
+                  تاریخ تولد
+                </label>
+                <select
+                  dir="ltr"
+                  className="focusinput h-12 w-1/4 rounded border-2 border-solid border-warmGray-300 pl-2"
+                  onChange={(e) => {
+                    setDay(e.target.value);
+                  }}
+                  placeholder="روز"
+                >
+                  {arrayOfDays.map((val, index) => (
+                    <option
+                      key={index}
+                      value={val}
+                      selected={day == val && "selected"}
+                    >
+                      {index + 1}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  dir="ltr"
+                  className="focusinput h-12 w-2/5 rounded border-2 border-solid border-warmGray-300 pl-3"
+                  onChange={(e) => {
+                    setMonth(e.target.value);
+                  }}
+                  placeholder="فروردین"
+                >
+                  {arrayOfMonths.map((val, index) => (
+                    <option
+                      key={index}
+                      value={val.value}
+                      selected={month == val.value && "selected"}
+                    >
+                      {val.label}
+                    </option>
+                  ))}
+                </select>
+
+                <select
+                  dir="ltr"
+                  className="focusinput h-12 w-[35%] rounded border-2 border-solid border-warmGray-300 px-4"
+                  onChange={(e) => {
+                    setYear(e.target.value);
+                  }}
+                  placeholder="سال"
+                >
+                  {arrayOfYears(90).map((val, index) => (
+                    <option
+                      key={index}
+                      value={val}
+                      selected={year == val && "selected"}
+                    >
+                      {val}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="inputCthree relative mx-1 mt-6 ">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
+                  وضعیت تاهل
+                </label>
+                <select
+                  dir="ltr"
+                  className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-4"
+                  {...register("marriage")}
+                  placeholder="متاهل"
+                >
+                  {[
+                    { lb: "متاهل", value: true },
+                    { lb: "مجرد", value: false },
+                  ].map((val, index) => (
+                    <option
+                      key={index}
+                      value={val.value}
+                      selected={
+                        userAdditionalData.marriage == val.value && "selected"
+                      }
+                    >
+                      {val.lb}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="inputCthree relative mx-1 mt-6 ">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
+                  تحصیلات
+                </label>
+                <input
+                  className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-1  py-2"
+                  {...register("education")}
+                  placeholder="لیسانس"
+                  type="text"
+                  defaultValue={userAdditionalData.education}
+                />
+              </div>
+            </div>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              شهرستان محل صدور
-            </label>
-            <select
-              dir="ltr"
-              className="w-full h-12 px-4"
-              {...register("certificate_county")}
-              placeholder="تهران"
-            >
-              {iranCitiesList
-                .filter(
-                  (element) =>
-                    element.province ==
-                    (selectedProvince ||
-                      userAdditionalData.certificate_province)
-                  // element.province == userAdditionalData.certificate_province
-                )
-                .map((val, index) => (
-                  <option
-                    key={index}
-                    value={val.city}
-                    // disabled={val.city != "تهران"}
-                    // defaultValue={userAdditionalData.certificate_county}
-                    selected={
-                      userAdditionalData.certificate_county == val.city &&
-                      "selected"
-                    }
+
+          <div className="first relative mx-1 mt-6  w-full rounded border-2 border-solid border-warmGray-300 p-4">
+            <strong className="absolute bottom-28 right-2 bg-primary-50">
+              اطلاعات شناسنامه
+            </strong>
+
+            <div className="mb-4 flex">
+              <div className="inputC relative mx-1   mt-6 ">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
+                  شماره شناسنامه
+                </label>
+                <input
+                  defaultValue={userAdditionalData.certificate_number}
+                  className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-1  py-2"
+                  {...register("certificate_number")}
+                  placeholder="00122233334"
+                  type="text"
+                />
+              </div>
+
+              <div className="inputC relative mx-1   mt-6 ">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
+                  کشور محل صدور
+                </label>
+                <input
+                  className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-1  py-2"
+                  {...register("certificate_country")}
+                  placeholder="ایران"
+                  defaultValue={userAdditionalData.certificate_country}
+                  type="text"
+                />
+              </div>
+              <div className="inputC relative mx-1   mt-6 ">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
+                  استان محل صدور
+                </label>
+
+                <select
+                  dir="ltr"
+                  className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-4"
+                  {...register("certificate_province", {
+                    onChange: (e) => {
+                      setSelectedProvince(e.target.value);
+                    },
+                  })}
+                  placeholder="تهران"
+                >
+                  {[
+                    ...new Set(
+                      iranCitiesList.map((element) => element.province)
+                    ),
+                  ].map((val, index) => (
+                    <option
+                      key={index}
+                      value={val}
+                      // disabled={val != "تهران"}
+                      // defaultValue={userAdditionalData.certificate_province}
+                      selected={
+                        userAdditionalData.certificate_province == val &&
+                        "selected"
+                      }
+                    >
+                      {val}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="inputC relative mx-1   mt-6 ">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
+                  شهرستان محل صدور
+                </label>
+                <select
+                  dir="ltr"
+                  className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-4"
+                  {...register("certificate_county")}
+                  placeholder="تهران"
+                >
+                  {iranCitiesList
+                    .filter(
+                      (element) =>
+                        element.province ==
+                        (selectedProvince ||
+                          userAdditionalData.certificate_province)
+                      // element.province == userAdditionalData.certificate_province
+                    )
+                    .map((val, index) => (
+                      <option
+                        key={index}
+                        value={val.city}
+                        // disabled={val.city != "تهران"}
+                        // defaultValue={userAdditionalData.certificate_county}
+                        selected={
+                          userAdditionalData.certificate_county == val.city &&
+                          "selected"
+                        }
+                      >
+                        {val.city}
+                      </option>
+                    ))}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div className="first relative mx-1 mt-6  w-full rounded border-2 border-solid border-warmGray-300 p-4">
+            <strong className="eighteenpointfivebottom absolute right-2 bg-primary-50">
+              اطلاعات تماس
+            </strong>
+
+            <div>
+              <div className="flex">
+                <div className="inputC relative mx-1   mt-6 rounded ">
+                  <label className="absolute bottom-9 right-2 bg-primary-50">
+                    ایمیل
+                  </label>
+                  <input
+                    className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-1  py-2"
+                    {...register("email")}
+                    placeholder="fake@gmail.com"
+                    type="email"
+                    defaultValue={userAdditionalData.email}
+                  />
+                </div>
+
+                <div className="inputC relative mx-1   mt-6 rounded ">
+                  <label className="absolute bottom-9 right-2 bg-primary-50">
+                    نوع شناسنامه
+                  </label>
+                  <select
+                    dir="ltr"
+                    className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-4"
+                    {...register("certificate_type")}
+                    placeholder="اصل"
                   >
-                    {val.city}
-                  </option>
-                ))}
-            </select>
-          </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              نوع شناسنامه
-            </label>
-            <select
-              dir="ltr"
-              className="w-full h-12 px-4"
-              {...register("certificate_type")}
-              placeholder="اصل"
-            >
-              {["اصل", "المثنی", "غیره"].map((val, index) => (
-                <option
-                  key={index}
-                  value={val}
-                  selected={
-                    userAdditionalData.certificate_type == val && "selected"
-                  }
-                >
-                  {val}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              وضعیت تاهل
-            </label>
-            <select
-              dir="ltr"
-              className="w-full h-12 px-4"
-              {...register("marriage")}
-              placeholder="متاهل"
-            >
-              {[
-                { lb: "متاهل", value: true },
-                { lb: "مجرد", value: false },
-              ].map((val, index) => (
-                <option
-                  key={index}
-                  value={val.value}
-                  selected={
-                    userAdditionalData.marriage == val.value && "selected"
-                  }
-                >
-                  {val.lb}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              تحصیلات
-            </label>
-            <input
-              className="w-full h-12 px-1  py-2"
-              {...register("education")}
-              placeholder="لیسانس"
-              type="text"
-              defaultValue={userAdditionalData.education}
-            />
-          </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              استان محل سکونت
-            </label>
-            <select
-              dir="ltr"
-              className="w-full h-12 px-4"
-              {...register("province", {
-                onChange: (e) => {
-                  setSelectedProvince2(e.target.value);
-                  console.log("setSelectedProvince2", e.target.value);
-                },
-              })}
-              placeholder="تهران"
-            >
-              {[
-                ...new Set(iranCitiesList.map((element) => element.province)),
-              ].map((val, index) => (
-                <option
-                  // disabled={val != "تهران"}
-                  key={index}
-                  value={val}
-                  selected={userAdditionalData.province == val && "selected"}
-                >
-                  {val}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              شهرستان محل سکونت
-            </label>
-            <select
-              dir="ltr"
-              className="w-full h-12 px-4"
-              {...register("county", {
-                onChange: (e) => {
-                  setSelectedState2(e.target.value);
-                },
-              })}
-              placeholder="تهران"
-            >
-              {iranCitiesList
-                .filter(
-                  (element) =>
-                    element.province ==
-                    (selectedProvince2 || userAdditionalData.province)
+                    {["اصل", "المثنی", "غیره"].map((val, index) => (
+                      <option
+                        key={index}
+                        value={val}
+                        selected={
+                          userAdditionalData.certificate_type == val &&
+                          "selected"
+                        }
+                      >
+                        {val}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-                  // element.province == userAdditionalData.province
-                )
-                .map((val, index) => (
-                  <option
-                    // disabled={val.city != "تهران"}
-                    key={index}
-                    value={val.city}
-                    selected={
-                      userAdditionalData.county == val.city && "selected"
-                    }
+                <div className="inputC relative mx-1   mt-6 rounded ">
+                  <label className="absolute bottom-9 right-2 bg-primary-50">
+                    استان محل سکونت
+                  </label>
+                  <select
+                    dir="ltr"
+                    className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-4"
+                    {...register("province", {
+                      onChange: (e) => {
+                        setSelectedProvince2(e.target.value);
+                        console.log("setSelectedProvince2", e.target.value);
+                      },
+                    })}
+                    placeholder="تهران"
                   >
-                    {val.city}
-                  </option>
-                ))}
-            </select>
+                    {[
+                      ...new Set(
+                        iranCitiesList.map((element) => element.province)
+                      ),
+                    ].map((val, index) => (
+                      <option
+                        // disabled={val != "تهران"}
+                        key={index}
+                        value={val}
+                        selected={
+                          userAdditionalData.province == val && "selected"
+                        }
+                      >
+                        {val}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="inputC relative mx-1   mt-6 rounded ">
+                  <label className="absolute bottom-9 right-2 bg-primary-50">
+                    شهرستان محل سکونت
+                  </label>
+                  <select
+                    dir="ltr"
+                    className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-4"
+                    {...register("county", {
+                      onChange: (e) => {
+                        setSelectedState2(e.target.value);
+                      },
+                    })}
+                    placeholder="تهران"
+                  >
+                    {iranCitiesList
+                      .filter(
+                        (element) =>
+                          element.province ==
+                          (selectedProvince2 || userAdditionalData.province)
+
+                        // element.province == userAdditionalData.province
+                      )
+                      .map((val, index) => (
+                        <option
+                          // disabled={val.city != "تهران"}
+                          key={index}
+                          value={val.city}
+                          selected={
+                            userAdditionalData.county == val.city && "selected"
+                          }
+                        >
+                          {val.city}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+              </div>
+              <div className="flex">
+                <div className="inputCtwo relative mx-1   mt-6 rounded ">
+                  <label className="absolute bottom-9 right-2 bg-primary-50">
+                    کد پستی
+                  </label>
+                  <input
+                    className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-1  py-2"
+                    {...register("postal_code")}
+                    placeholder="11223344"
+                    type="text"
+                    defaultValue={userAdditionalData.postal_code}
+                  />
+                </div>
+                <div className="inputCtwo relative mx-1   mt-6 rounded ">
+                  <label className="absolute bottom-9 right-2 bg-primary-50">
+                    شماره منزل
+                  </label>
+                  <input
+                    className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-1  py-2"
+                    {...register("personal_phone_number")}
+                    placeholder="02133667799"
+                    type="text"
+                    defaultValue={userAdditionalData.personal_phone_number}
+                  />
+                </div>
+              </div>
+              <div className="inputCfull relative mt-6 mb-4 rounded ">
+                <label className="absolute bottom-20 right-2 bg-primary-50">
+                  نشانی محل اقامت
+                </label>
+                <input
+                  className="focusinput h-24 w-full rounded border-2 border-solid border-warmGray-300 px-1"
+                  {...register("address")}
+                  placeholder="بلوار کشاورز - تقاطع قدس"
+                  type="text"
+                  defaultValue={userAdditionalData.address}
+                />
+              </div>
+            </div>
           </div>
-          {/* <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
+
+          {/* <div className="relative inputC mx-1   mt-6 border-2 rounded border-solid border-main-200">
             <label className="absolute bg-primary-50 bottom-9 right-2">
               شهر محل سکونت
             </label>
             <select
               dir="ltr"
-              className="w-full h-12 px-4"
+              className="w-full h-12 focusinput px-4"
               {...register("city", {
                 value: selectedState2,
               })}
@@ -683,47 +772,10 @@ export default function UserFormDetail() {
                 ))}
             </select>
           </div> */}
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              کد پستی
-            </label>
-            <input
-              className="w-full h-12 px-1  py-2"
-              {...register("postal_code")}
-              placeholder="11223344"
-              type="text"
-              defaultValue={userAdditionalData.postal_code}
-            />
-          </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              شماره منزل
-            </label>
-            <input
-              className="w-full h-12 px-1  py-2"
-              {...register("personal_phone_number")}
-              placeholder="02133667799"
-              type="text"
-              defaultValue={userAdditionalData.personal_phone_number}
-            />
-          </div>
-
-          <div className="relative w-full mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-20 right-2">
-              نشانی محل اقامت
-            </label>
-            <input
-              className="w-full h-24 px-1"
-              {...register("address")}
-              placeholder="بلوار کشاورز - تقاطع قدس"
-              type="text"
-              defaultValue={userAdditionalData.address}
-            />
-          </div>
 
           <button
             type="submit"
-            className="bg-main-500 w-full h-10 mt-6 text-white mb-6 cursor-pointer"
+            className="mt-6 mb-6 h-10 w-full cursor-pointer bg-main-500 text-white"
           >
             ثبت تغییرات
           </button>
