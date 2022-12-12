@@ -53,17 +53,26 @@ export default function PhoneSmsForm() {
             console.log("axios /users/token data.data:", data);
           })
           .catch((e) => {
-            toast.error("مشکلی رخ داده است", {
-              position: "top-center",
-              rtl: true,
-              className: "m_toast",
-            });
+           
             console.log("error in axios /users/otp_register", e);
             setPinCode("");
             setShowLoading(false);
-            if (e.response.status == 401) {
+            if (e.response.status == 400) {
+              toast.error("کد وارد شده نادرست می باشد", {
+                position: "top-center",
+                rtl: true,
+                className: "m_toast",
+              });
               // dispatch(userLoginStepAccess("PhoneSms_Step"));
-              console.log('401 status code')
+              console.log('400 status code')
+            }else if (e.response.status == 403) {
+              // set count down timer for 2 minutes
+              toast.error("کد ارسال شده منقضی شده است", {
+                position: "top-center",
+                rtl: true,
+                className: "m_toast",
+              });
+            
             }else if (e.response.status == 404) {
               dispatch(userLoginStepAccess("PhoneSms_Step"));
             }
