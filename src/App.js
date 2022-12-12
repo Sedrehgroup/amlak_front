@@ -40,36 +40,35 @@ function App() {
     const Api_Url = process.env.REACT_APP_API_URL;
     return () => {
       setInterval(() => {
-        if (!!!!token) {
-          try {
-            axios
-              .post(
-                `${Api_Url}/account/token/refresh/`,
-                {
-                  refresh: window.localStorage.getItem("REF_TOKEN"),
+        console.log("interval");
+        console.log(token);
+        if (!token) return;
+        console.log("try new token");
+        try {
+          axios
+            .post(
+              `${Api_Url}/account/token/refresh/`,
+              {
+                refresh: window.localStorage.getItem("REF_TOKEN"),
+              },
+              {
+                headers: {
+                  Authorization: `Bearer ${token}`,
                 },
-                {
-                  headers: {
-                    Authorization: `Bearer ${token}`,
-                  },
-                }
-              )
-              .then(({ data }) => {
-                console.log(
-                  "axios get account/token/refresh/ data.data:",
-                  data
-                );
-                window.localStorage.setItem("ACC_TOKEN", data.access);
-                setUpdate(Math.random());
-              })
-              .catch((e) => {
-                console.log("error in axios account/token/refresh/", e);
-              });
-          } catch (error) {
-            console.log("error", error);
-          }
+              }
+            )
+            .then(({ data }) => {
+              console.log("axios get account/token/refresh/ data.data:", data);
+              window.localStorage.setItem("ACC_TOKEN", data.access);
+              setUpdate(Math.random());
+            })
+            .catch((e) => {
+              console.log("error in axios account/token/refresh/", e);
+            });
+        } catch (error) {
+          console.log("error", error);
         }
-      }, 120000);
+      }, 5000);
     };
   }, []);
 
@@ -81,7 +80,7 @@ function App() {
           <Redirect to="/dashboard" />
         </Route>
         <Route exact path="/login">
-          <Login isLoged={isUserLogged}/>
+          <Login isLoged={isUserLogged} />
         </Route>
         <Route exact path="/dashboard">
           <Main comp={<Counter />} isLoged={isUserLogged} />
@@ -121,7 +120,7 @@ function App() {
         <Route exact path="/allProperties">
           <Main comp={<AllProperties />} isLoged={isUserLogged} />
         </Route>
-        <Route path="/allProperties">
+        <Route exact path="/allProperties/:id">
           <Main comp={<PropertyDetails />} isLoged={isUserLogged} />
         </Route>
         <Route path="/requestsFromMe">
