@@ -268,7 +268,7 @@ export default function UserFormDetail() {
                   نام
                 </label>
                 <input
-                  className="focusinput h-12 w-full rounded rounded border-2 border-2 border-solid border-solid border-warmGray-300 border-warmGray-300 px-1 py-2"
+                  className="focusinput h-12 w-full rounded  border-2  border-solid  border-warmGray-300 px-1 py-2"
                   placeholder="علی"
                   type="text"
                   defaultValue={userData?.first_name}
