@@ -218,21 +218,21 @@ export default function PropertyDetails({ data }) {
           {data2?.title}
         </strong> */}
       <div className="mx-10 mt-6 flex gap-x-12">
-        <div className="flex w-4/6 flex-col gap-y-16 rounded-lg bg-warmGray-100 p-8">
+        <div className="flex w-2/3 flex-col gap-y-12 rounded-lg bg-warmGray-100 p-8">
           <h2 className="text-2xl font-bold">{data2?.title}</h2>
-          <div className="flex gap-x-10 rounded-lg ">
-            <div className="-m-2 w-2/3 rounded-lg">
+          <div className="h-96 w-full"></div>
+          <div className="flex flex-col items-center gap-y-10 rounded-lg ">
+            <div className="w-[99%] rounded-lg">
               <PropertyDetailsSlider />
             </div>
-            <div className="flex w-1/3 flex-col gap-y-2 pt-0">
+            {/* <div className="flex w-1/3 flex-col gap-y-2 pt-0">
               <p className="">
                 قیمت رهن : <strong>{data2?.mortgage_amount}&nbsp; تومان</strong>
               </p>
               <hr
                 style={{
                   color: "#D6D3D1",
-                  marginBottom: "16px",
-                }}
+                  }}
               />
               <p className="">
                 قیمت رهن : <strong>{data2?.rent_amount}&nbsp; تومان</strong>
@@ -240,8 +240,7 @@ export default function PropertyDetails({ data }) {
               <hr
                 style={{
                   color: "#D6D3D1",
-                  marginBottom: "16px",
-                }}
+                  }}
               />
               <p className="">
                 مؤجر :<span>{data2?.owner?.first_name}</span>{" "}
@@ -250,50 +249,43 @@ export default function PropertyDetails({ data }) {
               <hr
                 style={{
                   color: "#D6D3D1",
-                  marginBottom: "16px",
-                }}
+                  }}
               />
               <p className="">متراژ : {data2?.area} متر</p>
               <hr
                 style={{
                   color: "#D6D3D1",
-                  marginBottom: "16px",
-                }}
+                  }}
               />
               <p className="">مدت قراداد : 2 سال</p>
               <hr
                 style={{
                   color: "#D6D3D1",
-                  marginBottom: "16px",
-                }}
+                  }}
               />
               <p className="">نوع قرارداد : {data2?.use || "قول نامه"}</p>
               <hr
                 style={{
                   color: "#D6D3D1",
-                  marginBottom: "16px",
-                }}
+                  }}
               />
               <p className="">محله : {data2?.neighbourhood}</p>
               <hr
                 style={{
                   color: "#D6D3D1",
-                  marginBottom: "16px",
-                }}
+                  }}
               />
               <p className="">سال ساخت : {data2?.construction_year}</p>
               <hr
                 style={{
                   color: "#D6D3D1",
-                  marginBottom: "16px",
-                }}
+                  }}
               />
               <p className="">تعداد اتاق : {data2?.bedrooms}</p>
               <hr
                 style={{
                   color: "#D6D3D1",
-                  marginBottom: "16px",
-                }}
+                  }}
               />
               <p className="">
                 طبقه : {data2?.unit_floor || "2"} از{" "}
@@ -302,16 +294,15 @@ export default function PropertyDetails({ data }) {
               <hr
                 style={{
                   color: "#D6D3D1",
-                  marginBottom: "16px",
-                }}
+                  }}
               />
               <p className="">
                 توضیحات مالک : {data2?.description || "بدون توضیح"}
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
-        <div className="flex w-2/6 flex-col justify-between rounded-lg  bg-warmGray-100 p-4">
+        <div className=" sticky flex h-[568px] w-1/3 flex-col justify-between rounded-lg  bg-warmGray-100 p-4">
           {/* <div>
               <p>امکانات</p>
               <div className="w-20 h-20 bg-primary-50 p-2 mb-2">
@@ -321,7 +312,7 @@ export default function PropertyDetails({ data }) {
                 </p>
               </div>
             </div> */}
-          <div className="flex flex-col gap-1">
+          {/* <div className="flex flex-col gap-1">
             <div>
               <span className="text-[.7rem] font-bold text-[#FDBA74]">
                 آدرس
@@ -474,6 +465,88 @@ export default function PropertyDetails({ data }) {
                 }
               </p>
             </div>
+          </div> */}
+          <div className="flex w-full flex-col gap-y-4 pt-0">
+            <p className="">
+              قیمت رهن : <strong>{data2?.mortgage_amount}&nbsp; تومان</strong>
+            </p>
+            <hr
+              style={{
+                color: "#D6D3D1",
+              }}
+            />
+            <p>
+              قیمت رهن : <strong>{data2?.rent_amount}&nbsp; تومان</strong>
+            </p>
+            <hr
+              style={{
+                color: "#D6D3D1",
+              }}
+            />
+            <p className="">
+              مؤجر :&nbsp;
+              <span className="font-bold">{data2?.owner?.first_name}</span>{" "}
+              <span className="font-bold">{data2?.owner?.last_name}</span>
+            </p>
+            <hr
+              style={{
+                color: "#D6D3D1",
+              }}
+            />
+            <p className="">
+              متراژ : <strong>{data2?.area} متر</strong>{" "}
+            </p>
+            <hr
+              style={{
+                color: "#D6D3D1",
+              }}
+            />
+            {/* <p className="">مدت قراداد : 2 سال</p>
+            <hr
+              style={{
+                color: "#D6D3D1",
+              }}
+            /> */}
+            {/* <p className="">نوع قرارداد : {data2?.use || "قول نامه"}</p>
+            <hr
+              style={{
+                color: "#D6D3D1",
+              }}
+            /> */}
+            <p className="">
+              محله : <strong>{data2?.neighbourhood}</strong>
+            </p>
+            <hr
+              style={{
+                color: "#D6D3D1",
+              }}
+            />
+            <p className="">
+              سال ساخت : <strong>{data2?.construction_year}</strong>
+            </p>
+            <hr
+              style={{
+                color: "#D6D3D1",
+              }}
+            />
+            <p className="">
+              تعداد اتاق : <strong>{data2?.bedrooms}</strong>
+            </p>
+            <hr
+              style={{
+                color: "#D6D3D1",
+              }}
+            />
+            <p className="">
+              طبقه :{" "}
+              <strong>
+                {data2?.unit_floor || "2"} از {data2?.floors_number || "4"}
+              </strong>
+            </p>
+
+            {/* <p className="">
+              توضیحات مالک : {data2?.description || "بدون توضیح"}
+            </p> */}
           </div>
           <div className="flex flex-col justify-between  ">
             <div className="flex gap-x-2">
