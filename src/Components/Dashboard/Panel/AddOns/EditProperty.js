@@ -172,14 +172,14 @@ export default function EditProperty() {
     }
   };
   return (
-    <div className="flex justify-center ">
-      <div className="form1 seventyfivevh">
+    <div className="flex flex-col items-center justify-center mt-6">
+      <div className="">
         <strong className="flex justify-center items-start text-4xl mb-8">
           ویرایش آگهی اجاره
         </strong>
 
         <form
-          className="bg-white w-3/4 p-4 mx-defaultDataauto rounded-lg flex flex-row flex-wrap"
+          className="bg-white w-3/4 p-4 mx-auto rounded-lg flex flex-row flex-wrap"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div>

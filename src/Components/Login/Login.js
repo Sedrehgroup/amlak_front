@@ -11,7 +11,7 @@ export default function Login({ isLoged }) {
 
   return (
     <>
-      <h1> hahah</h1>
+   
       {isLoged ? (
         <Redirect to="/" />
       ) : (
