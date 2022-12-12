@@ -100,7 +100,7 @@ function App() {
           />
         </Route>
         <Route path="/contracts">
-          <Main path={<Contracts />} />
+          <Main comp={<Contracts />} />
         </Route>
         <Route path="/submitContract">
           <Main comp={<SubmitContract />} />

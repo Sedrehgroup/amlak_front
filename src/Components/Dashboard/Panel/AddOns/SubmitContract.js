@@ -63,14 +63,9 @@ const SubmitContract = () => {
   useEffect(() => {
     console.log("date", date);
   }, [date]);
-  const [day2, setDay2] = useState(date.day);
-  const [month2, setMonth2] = useState(date.monthDigit);
-  const [year2, setYear2] = useState(date.year);
-  const [date2, setDate2] = useState("1401-09-20");
 
-  useEffect(() => {
-    setDate1(`${year2}-${month2}-${day2}`);
-  }, [day2, month2, year2]);
+  const date2 =`${date.year}-${date.monthDigit.length==1?`0${date.monthDigit}`:`${date.monthDigit}`}-${date.day}`;
+
   // =========================
 
   // start_date
@@ -151,7 +146,6 @@ const SubmitContract = () => {
             // setUpdate(Math.random()); //update landloard requests list
             history.push("/contracts");
             dispatch(updateHandler(Math.random()));
-
             setShowLoading(false);
             toast.success("قرارداد ثبت شد", {
               position: "top-center",
@@ -424,61 +418,23 @@ const SubmitContract = () => {
                       <label className="absolute bottom-10 right-2 bg-primary-50 ">
                         تاریخ ثبت قرارداد
                       </label>
-                      <select
-                        dir="ltr"
-                        className="focusinput h-12 w-1/4 pl-2"
-                        onChange={(e) => {
-                          setDay2(e.target.value);
-                        }}
-                        placeholder="روز"
-                      >
-                        {arrayOfDays.map((val, index) => (
-                          <option
-                            key={index}
-                            value={val}
-                            selected={+day2 == +val && "selected"}
-                          >
-                            {index + 1}
-                          </option>
-                        ))}
-                      </select>
-                      <select
-                        dir="ltr"
-                        className="focusinput h-12 w-2/5 pl-3"
-                        onChange={(e) => {
-                          setMonth2(e.target.value);
-                        }}
-                        placeholder="فروردین"
-                      >
-                        {arrayOfMonths.map((val, index) => (
-                          <option
-                            key={index}
-                            value={val.value}
-                            selected={+month2 == +val.value && "selected"}
-                          >
-                            {val.label}
-                          </option>
-                        ))}
-                      </select>
-
-                      <select
-                        dir="ltr"
-                        className="focusinput h-12 w-[35%] px-3"
-                        onChange={(e) => {
-                          setYear2(e.target.value);
-                        }}
-                        placeholder="سال"
-                      >
-                        {arrayOfYears(90).map((val, index) => (
-                          <option
-                            key={index}
-                            value={val}
-                            selected={year2 == val && "selected"}
-                          >
-                            {val}
-                          </option>
-                        ))}
-                      </select>
+                      <span className="h-12 w-1/3 text-center pt-3 inline-block">
+                      {
+                        date.day
+                      }
+                     </span>
+                     <span className="h-12 w-1/3 text-center pt-3 inline-block ">
+                      {
+                        date.month
+                      }
+                     </span>
+                     <span className="h-12 w-1/3 text-center pt-3 inline-block">
+                      {
+                        date.year
+                      }
+                     </span>
+                    
+                   
                     </div>
                     <div className="inputC relative mx-1 mt-6  rounded border-2 border-solid border-warmGray-300 ">
                       <label className="absolute bottom-10 right-2 bg-primary-50 ">

@@ -30,49 +30,10 @@ export default function EditProperty() {
     formState: { errors },
   } = useForm();
   const [token] = useToken();
-  const [defaultData, setDefaultData] = useState({
-    id: 26,
-    owner: {
-      owner_id: 1,
-      first_name: "Pouria",
-      last_name: "Soleymanzadeh",
-    },
-    title: "ویلا 120 متری دوبلکس گیلان لاهیجان",
-    mortgage_amount: 7800000,
-    rent_amount: 120000,
-    type: 0,
-    use: 2,
-    special_situation: null,
-    area: 120,
-    province: "نامعین",
-    county: "گیلان",
-    city: "لاهیجان",
-    neighbourhood: "شهریار",
-    convertible: true,
-    construction_year: 1399,
-    bedrooms: 5,
-    description: null,
-    created_date: "2022-12-06T20:09:16.878376Z",
-    zip: null,
-    Sub_registration_plate: null,
-    Sub_registration_plate_from: null,
-    Sub_registration_plate_to: null,
-    Original_registration_plate: null,
-    Original_registration_plate_from: null,
-    Original_registration_plate_to: null,
-    registration_section: null,
-    registration_area: null,
-    Skeleton_type: null,
-    phone_status: null,
-    phone_lines: null,
-    address: null,
-    building_side: null,
-    unit_side: null,
-    unit_floor: null,
-    floors_number: null,
-    units_per_floor: null,
-  });
+  const [defaultData, setDefaultData] = useState({});
+
   useEffect(() => {
+
     if (!!!!token) {
       try {
         axios
@@ -218,7 +179,7 @@ export default function EditProperty() {
         </strong>
 
         <form
-          className="bg-white w-3/4 p-4 mx-auto rounded-lg flex flex-row flex-wrap"
+          className="bg-white w-3/4 p-4 mx-defaultDataauto rounded-lg flex flex-row flex-wrap"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div>
@@ -233,7 +194,7 @@ export default function EditProperty() {
               عنوان آگهی{" "}
             </label>
             <input
-              defaultValue={defaultData.title}
+              defaultValue={defaultData?.title}
               className="w-full h-12 px-1  py-2"
               placeholder="55 متر مسکونی یک خواب در افسریه"
               type="text"
@@ -248,7 +209,7 @@ export default function EditProperty() {
               مبلغ رهن
             </label>
             <input
-              defaultValue={defaultData.mortgage_amount}
+              defaultValue={defaultData?.mortgage_amount}
               className="w-full h-12 px-1  py-2"
               {...register("mortgage_price", {
                 required: "وارد کردن این فیلد الزامی می باشد",
@@ -264,7 +225,7 @@ export default function EditProperty() {
               مبلغ اجاره{" "}
             </label>
             <input
-              defaultValue={defaultData.rent_amount}
+              defaultValue={defaultData?.rent_amount}
               className="w-full h-12 px-1  py-2"
               {...register("rent_price", {
                 required: "وارد کردن این فیلد الزامی می باشد",
@@ -280,7 +241,7 @@ export default function EditProperty() {
               متراژ{" "}
             </label>
             <input
-              defaultValue={defaultData.area}
+              defaultValue={defaultData?.area}
               className="w-full h-12 px-1  py-2"
               {...register("metric", {
                 required: "وارد کردن این فیلد الزامی می باشد",
@@ -304,13 +265,13 @@ export default function EditProperty() {
               })}
               placeholder="1401"
               required
-              defaultValue={defaultData.construction_year}
+              defaultValue={defaultData?.construction_year}
             >
               {arrayOfYears(50).map((val, index) => (
                 <option
                   key={index}
                   value={val}
-                  selected={defaultData.construction_year == val && "selected"}
+                  selected={defaultData?.construction_year == val && "selected"}
                 >
                   {val}
                 </option>
@@ -330,13 +291,13 @@ export default function EditProperty() {
               })}
               placeholder="مسکونی"
               required
-              defaultValue={defaultData.type}
+              defaultValue={defaultData?.type}
             >
               {["مسکونی", "تجاری", "غیره"].map((val, index) => (
                 <option
                   key={index}
                   value={index}
-                  selected={defaultData.type == index && "selected"}
+                  selected={defaultData?.type == index && "selected"}
                 >
                   {val}
                 </option>
@@ -356,13 +317,13 @@ export default function EditProperty() {
               })}
               placeholder="مسکونی"
               required
-              defaultValue={defaultData.use}
+              defaultValue={defaultData?.use}
             >
               {["مسکونی", "زراعی", "ویلایی", "غیره"].map((val, index) => (
                 <option
                   key={index}
                   value={index}
-                  selected={defaultData.use == index && "selected"}
+                  selected={defaultData?.use == index && "selected"}
                 >
                   {val}
                 </option>
@@ -382,7 +343,7 @@ export default function EditProperty() {
                   setSelectedProvince(e.target.value);
                 },
               })}
-              defaultValue={defaultData.county}
+              defaultValue={defaultData?.county}
               placeholder="تهران"
               required
             >
@@ -392,7 +353,7 @@ export default function EditProperty() {
                 <option
                   key={index}
                   value={val}
-                  selected={defaultData.county == val && "selected"}
+                  selected={defaultData?.county == val && "selected"}
                 >
                   {val}
                 </option>
@@ -412,20 +373,20 @@ export default function EditProperty() {
                   setSelectedState(e.target.value);
                 },
               })}
-              defaultValue={defaultData.city}
+              defaultValue={defaultData?.city}
               placeholder="تهران"
               required
             >
               {iranCitiesList
                 .filter(
                   (element) =>
-                    element.province == (selectedProvince || defaultData.county)
+                    element.province == (selectedProvince || defaultData?.county)
                 )
                 .map((val, index) => (
                   <option
                     key={index}
                     value={val.city}
-                    selected={defaultData.city == val.city && "selected"}
+                    selected={defaultData?.city == val.city && "selected"}
                   >
                     {val.city}
                   </option>
@@ -461,7 +422,7 @@ export default function EditProperty() {
               محله{" "}
             </label>
             <input
-              defaultValue={defaultData.neighbourhood}
+              defaultValue={defaultData?.neighbourhood}
               className="w-full h-12 px-1  py-2"
               {...register("district", {
                 required: "وارد کردن این فیلد الزامی می باشد",
@@ -483,13 +444,13 @@ export default function EditProperty() {
               })}
               placeholder="بله"
               required
-              defaultValue={defaultData.convertible}
+              defaultValue={defaultData?.convertible}
             >
               {[true, false].map((val, index) => (
                 <option
                   key={index}
                   value={val}
-                  selected={defaultData.convertible}
+                  selected={defaultData?.convertible}
                 >
                   {val ? "بله" : "خیر"}
                 </option>
@@ -501,7 +462,7 @@ export default function EditProperty() {
               تعداد اتاق{" "}
             </label>
             <input
-              defaultValue={defaultData.bedrooms}
+              defaultValue={defaultData?.bedrooms}
               className="w-full h-12 px-1  py-2"
               {...register("number_of_room", {
                 required: "وارد کردن این فیلد الزامی می باشد",
@@ -524,7 +485,7 @@ export default function EditProperty() {
                   نشانی ملک{" "}
                 </label>
                 <input
-                  defaultValue={defaultData.address}
+                  defaultValue={defaultData?.address}
                   className="w-full h-24 px-1"
                   {...register("address", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
@@ -543,7 +504,7 @@ export default function EditProperty() {
                   className="w-full h-12 px-4"
                   {...register("special_situation", { valueAsNumber: true })}
                   placeholder="معمولی"
-                  defaultValue={defaultData.special_situation}
+                  defaultValue={defaultData?.special_situation}
                 >
                   {[
                     { lb: "معمولی", value: 1 },
@@ -555,7 +516,7 @@ export default function EditProperty() {
                       key={index}
                       value={val.value}
                       selected={
-                        defaultData.special_situation == val.value && "selected"
+                        defaultData?.special_situation == val.value && "selected"
                       }
                     >
                       {val.lb}
@@ -568,7 +529,7 @@ export default function EditProperty() {
                   کد پستی
                 </label>
                 <input
-                  defaultValue={defaultData.zip}
+                  defaultValue={defaultData?.zip}
                   className="w-full h-12 px-1  py-2"
                   {...register("zip", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
@@ -583,7 +544,7 @@ export default function EditProperty() {
                   پلاک ثبتی فرعی{" "}
                 </label>
                 <input
-                  defaultValue={defaultData.Sub_registration_plate}
+                  defaultValue={defaultData?.Sub_registration_plate}
                   className="w-full h-12 px-1  py-2"
                   {...register("Sub_registration_plate", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
@@ -598,7 +559,7 @@ export default function EditProperty() {
                   پلاک ثبتی فرعی از{" "}
                 </label>
                 <input
-                  defaultValue={defaultData.Sub_registration_plate_from}
+                  defaultValue={defaultData?.Sub_registration_plate_from}
                   className="w-full h-12 px-1  py-2"
                   {...register("Sub_registration_plate_from", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
@@ -613,7 +574,7 @@ export default function EditProperty() {
                   پلاک ثبتی فرعی تا{" "}
                 </label>
                 <input
-                  defaultValue={defaultData.Original_registration_plate_to}
+                  defaultValue={defaultData?.Original_registration_plate_to}
                   className="w-full h-12 px-1  py-2"
                   {...register(" Sub_registration_plate_to", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
@@ -629,7 +590,7 @@ export default function EditProperty() {
                   پلاک ثبتی اصلی{" "}
                 </label>
                 <input
-                  defaultValue={defaultData.Original_registration_plate}
+                  defaultValue={defaultData?.Original_registration_plate}
                   className="w-full h-12 px-1  py-2"
                   {...register("Original_registration_plate", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
@@ -644,7 +605,7 @@ export default function EditProperty() {
                   پلاک ثبتی اصلی از{" "}
                 </label>
                 <input
-                  defaultValue={defaultData.Original_registration_plate_from}
+                  defaultValue={defaultData?.Original_registration_plate_from}
                   className="w-full h-12 px-1  py-2"
                   {...register("Original_registration_plate_from", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
@@ -659,7 +620,7 @@ export default function EditProperty() {
                   پلاک ثبتی اصلی تا{" "}
                 </label>
                 <input
-                  defaultValue={defaultData.Original_registration_plate_to}
+                  defaultValue={defaultData?.Original_registration_plate_to}
                   className="w-full h-12 px-1  py-2"
                   {...register("Original_registration_plate_to", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
@@ -675,7 +636,7 @@ export default function EditProperty() {
                   بخش ثبتی{" "}
                 </label>
                 <input
-                  defaultValue={defaultData.registration_section}
+                  defaultValue={defaultData?.registration_section}
                   className="w-full h-12 px-1  py-2"
                   {...register("registration_section", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
@@ -689,7 +650,7 @@ export default function EditProperty() {
                   حوزه ثبتی{" "}
                 </label>
                 <input
-                  defaultValue={defaultData.registration_area}
+                  defaultValue={defaultData?.registration_area}
                   className="w-full h-12 px-1  py-2"
                   {...register("registration_area", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
@@ -707,7 +668,7 @@ export default function EditProperty() {
                   className="w-full h-12 px-4"
                   {...register("Skeleton_type", { valueAsNumber: true })}
                   placeholder="آجری"
-                  defaultValue={defaultData.Skeleton_type}
+                  defaultValue={defaultData?.Skeleton_type}
                 >
                   {[
                     { lb: "بتنی", value: 0 },
@@ -719,7 +680,7 @@ export default function EditProperty() {
                       key={index}
                       value={val.value}
                       selected={
-                        defaultData.Skeleton_type == val.value && "selected"
+                        defaultData?.Skeleton_type == val.value && "selected"
                       }
                     >
                       {val.lb}
@@ -736,7 +697,7 @@ export default function EditProperty() {
                   className="w-full h-12 px-4"
                   {...register("phone_status", { valueAsNumber: true })}
                   placeholder="آزاد"
-                  defaultValue={defaultData.phone_status}
+                  defaultValue={defaultData?.phone_status}
                 >
                   {[
                     { lb: "بدون خط", value: 0 },
@@ -747,7 +708,7 @@ export default function EditProperty() {
                       key={index}
                       value={val.value}
                       selected={
-                        defaultData.phone_status == val.value && "selected"
+                        defaultData?.phone_status == val.value && "selected"
                       }
                     >
                       {val.lb}
@@ -766,7 +727,7 @@ export default function EditProperty() {
                     valueAsNumber: true,
                   })}
                   placeholder="1"
-                  defaultValue={defaultData.phone_lines}
+                  defaultValue={defaultData?.phone_lines}
                 >
                   {[
                     { lb: "بدون خط", value: 0 },
@@ -779,7 +740,7 @@ export default function EditProperty() {
                       key={index}
                       value={val.value}
                       selected={
-                        defaultData.phone_lines == val.value && "selected"
+                        defaultData?.phone_lines == val.value && "selected"
                       }
                     >
                       {val.lb}
@@ -799,7 +760,7 @@ export default function EditProperty() {
                     valueAsNumber: true,
                   })}
                   placeholder="شمالی"
-                  defaultValue={defaultData.building_side}
+                  defaultValue={defaultData?.building_side}
                 >
                   {[
                     { lb: "جنوبی", value: 0 },
@@ -812,7 +773,7 @@ export default function EditProperty() {
                       key={index}
                       value={val.value}
                       selected={
-                        defaultData.building_side == val.value && "selected"
+                        defaultData?.building_side == val.value && "selected"
                       }
                     >
                       {val.lb}
@@ -831,7 +792,7 @@ export default function EditProperty() {
                     valueAsNumber: true,
                   })}
                   placeholder="شمالی"
-                  defaultValue={defaultData.unit_side}
+                  defaultValue={defaultData?.unit_side}
                 >
                   {[
                     { lb: "جنوبی", value: 0 },
@@ -844,7 +805,7 @@ export default function EditProperty() {
                       key={index}
                       value={val.value}
                       selected={
-                        defaultData.building_side == val.value && "selected"
+                        defaultData?.building_side == val.value && "selected"
                       }
                     >
                       {val.lb}
@@ -863,7 +824,7 @@ export default function EditProperty() {
                     valueAsNumber: true,
                   })}
                   placeholder="1"
-                  defaultValue={defaultData.unit_floor}
+                  defaultValue={defaultData?.unit_floor}
                 >
                   {[
                     { lb: "2", value: 0 },
@@ -876,7 +837,7 @@ export default function EditProperty() {
                       key={index}
                       value={val.value}
                       selected={
-                        defaultData.unit_floor == val.value && "selected"
+                        defaultData?.unit_floor == val.value && "selected"
                       }
                     >
                       {val.lb}
@@ -895,7 +856,7 @@ export default function EditProperty() {
                     valueAsNumber: true,
                   })}
                   placeholder="3"
-                  defaultValue={defaultData.floors_number}
+                  defaultValue={defaultData?.floors_number}
                 >
                   {[
                     { lb: "1", value: 0 },
@@ -922,7 +883,7 @@ export default function EditProperty() {
                       key={index}
                       value={val.value}
                       selected={
-                        defaultData.floors_number == val.value && "selected"
+                        defaultData?.floors_number == val.value && "selected"
                       }
                     >
                       {val.lb}
@@ -941,7 +902,7 @@ export default function EditProperty() {
                     valueAsNumber: true,
                   })}
                   placeholder="1"
-                  defaultValue={defaultData.units_per_floor}
+                  defaultValue={defaultData?.units_per_floor}
                 >
                   {[
                     { lb: "2", value: 0 },
@@ -954,7 +915,7 @@ export default function EditProperty() {
                       key={index}
                       value={val.value}
                       selected={
-                        defaultData.units_per_floor == val.value && "selected"
+                        defaultData?.units_per_floor == val.value && "selected"
                       }
                     >
                       {val.lb}
@@ -973,7 +934,7 @@ export default function EditProperty() {
                   })}
                   placeholder="این خانه سند دارد."
                   type="text"
-                  defaultValue={defaultData.description}
+                  defaultValue={defaultData?.description}
                 />
               </div>
             </div>
