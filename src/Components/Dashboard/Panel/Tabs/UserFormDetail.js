@@ -268,7 +268,7 @@ export default function UserFormDetail() {
                   نام
                 </label>
                 <input
-                  className="focusinput h-12 w-full rounded rounded border-2 border-2 border-solid border-solid border-warmGray-300 border-warmGray-300 px-1 py-2"
+                  className="focusinput h-12 w-full rounded  border-2  border-solid  px-1 py-2"
                   placeholder="علی"
                   type="text"
                   defaultValue={userData?.first_name}
@@ -387,7 +387,7 @@ export default function UserFormDetail() {
                 </label>
                 <select
                   dir="ltr"
-                  className="focusinput h-12 w-1/4 rounded border-2 border-solid border-warmGray-300 pl-2"
+                  className="focusinput h-12 w-1/4 border-2 border-solid border-warmGray-300 pl-2"
                   onChange={(e) => {
                     setDay(e.target.value);
                   }}
@@ -405,7 +405,7 @@ export default function UserFormDetail() {
                 </select>
                 <select
                   dir="ltr"
-                  className="focusinput h-12 w-2/5 rounded border-2 border-solid border-warmGray-300 pl-3"
+                  className="focusinput h-12 w-2/5 border-2 border-solid border-warmGray-300 pl-3"
                   onChange={(e) => {
                     setMonth(e.target.value);
                   }}
@@ -424,7 +424,7 @@ export default function UserFormDetail() {
 
                 <select
                   dir="ltr"
-                  className="focusinput h-12 w-[35%] rounded border-2 border-solid border-warmGray-300 px-4"
+                  className="focusinput h-12 w-[35%] border-2 border-solid border-warmGray-300 px-4"
                   onChange={(e) => {
                     setYear(e.target.value);
                   }}
