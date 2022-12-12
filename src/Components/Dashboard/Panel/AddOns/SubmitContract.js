@@ -216,7 +216,7 @@ const SubmitContract = () => {
               </strong>
 
               <form
-                className="mx-auto flex w-3/4 flex-row flex-wrap rounded-lg bg-white p-4"
+                className="mx-auto flex w-10/12 flex-row flex-wrap rounded-lg bg-white p-4"
                 onSubmit={handleSubmit(onSubmit)}
               >
                 <div>
@@ -225,362 +225,382 @@ const SubmitContract = () => {
                   </p>
                 </div>
 
-                <div className="relative mx-1 mt-6  w-full border-2 border-solid border-main-200">
-                  <label className="absolute bottom-9 right-2 bg-primary-50">
-                    نام صاحب خانه
-                  </label>
-                  <input
-                    className="h-12 w-full px-1  py-2"
-                    placeholder="علی"
-                    type="text"
-                    value={request_property?.owner?.first_name}
-                    {...register("owner_name")}
-                  />
-                </div>
-                <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bottom-9 right-2 bg-primary-50">
-                    نام خانوادگی صاحب خانه
-                  </label>
-                  <input
-                    className="h-12 w-full px-1  py-2"
-                    {...register("owner_lastname")}
-                    value={request_property?.owner?.last_name}
-                    placeholder="محمدی"
-                    type="text"
-                  />
-                </div>
-                <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bottom-9 right-2 bg-primary-50">
-                    نام مستاجر
-                  </label>
-                  <input
-                    className="h-12 w-full px-1  py-2"
-                    placeholder="علی"
-                    type="text"
-                    value={tenant?.first_name}
-                    {...register("tenant_name")}
-                  />
-                </div>
-                <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bottom-9 right-2 bg-primary-50">
-                    نام خانوادگی مستاجر
-                  </label>
-                  <input
-                    className="h-12 w-full px-1  py-2"
-                    {...register("tenant_lastname")}
-                    value={tenant?.last_name}
-                    placeholder="محمدی"
-                    type="text"
-                  />
-                </div>
-                <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bottom-9 right-2 bg-primary-50">
-                    شماره سریال
-                  </label>
-                  <input
-                    className="h-12 w-full px-1  py-2"
-                    {...register("serial_number", {
-                      required: "لطفا این فیلد را تکمیل کنید",
+                <div className="relative mx-1 mt-6 flex w-full rounded-lg border-2 border-solid border-warmGray-300 p-4">
+                  <strong className="absolute bottom-24 right-2 bg-primary-50">
+                    اطلاعات هویتی
+                  </strong>
 
-                      valueAsNumber: true,
-                    })}
-                    placeholder="123456"
-                  />
-                </div>
-                <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bottom-9 right-2 bg-primary-50">
-                    نوع سریال
-                  </label>
-                  <input
-                    className="h-12 w-full px-1  py-2"
-                    {...register("serial_type", {
-                      required: "لطفا این فیلد را تکمیل کنید",
+                  <div className="inputC relative mx-1 mt-6 border-2 border-solid border-warmGray-300 ">
+                    <label className="absolute bottom-9 right-2 bg-primary-50">
+                      نام موجر
+                    </label>
+                    <input
+                      className="focusinput h-12 w-full px-1 py-2"
+                      placeholder="علی"
+                      type="text"
+                      value={request_property?.owner?.first_name}
+                      {...register("owner_name")}
+                    />
+                  </div>
 
-                      valueAsNumber: true,
-                    })}
-                    placeholder="2"
-                  />
+                  <div className="inputC relative mx-1   mt-6 border-2 border-solid border-warmGray-300 ">
+                    <label className="absolute bottom-9 right-2 bg-primary-50">
+                      نام خانوادگی موجر
+                    </label>
+                    <input
+                      className="focusinput h-12 w-full px-1  py-2"
+                      {...register("owner_lastname")}
+                      value={request_property?.owner?.last_name}
+                      placeholder="محمدی"
+                      type="text"
+                    />
+                  </div>
+                  <div className="inputC relative mx-1   mt-6 border-2 border-solid border-warmGray-300 ">
+                    <label className="absolute bottom-9 right-2 bg-primary-50">
+                      نام مستاجر
+                    </label>
+                    <input
+                      className="focusinput h-12 w-full px-1  py-2"
+                      placeholder="علی"
+                      type="text"
+                      value={tenant?.first_name}
+                      {...register("tenant_name")}
+                    />
+                  </div>
+                  <div className="inputC relative mx-1   mt-6 border-2 border-solid border-warmGray-300 ">
+                    <label className="absolute bottom-9 right-2 bg-primary-50">
+                      نام خانوادگی مستاجر
+                    </label>
+                    <input
+                      className="focusinput h-12 w-full px-1  py-2"
+                      {...register("tenant_lastname")}
+                      value={tenant?.last_name}
+                      placeholder="محمدی"
+                      type="text"
+                    />
+                  </div>
                 </div>
-                <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bottom-9 right-2 bg-primary-50">
-                    وضعیت سند
-                  </label>
-                  <input
-                    className="h-12 w-full px-1  py-2"
-                    {...register("document_status", {
-                      required: "لطفا این فیلد را تکمیل کنید",
 
-                      valueAsNumber: true,
-                    })}
-                    placeholder="5"
-                  />
-                </div>
-                <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bottom-9 right-2 bg-primary-50">
-                    سهم مشترک
-                  </label>
-                  <input
-                    className="h-12 w-full px-1  py-2"
-                    {...register("share", {
-                      required: "لطفا این فیلد را تکمیل کنید",
+                <div className="relative mx-1 mt-6 flex w-full flex-col rounded-lg  border-2 border-solid border-warmGray-300 p-4">
+                  <strong className="absolute bottom-44 right-2 bg-primary-50">
+                    مشخصات و اطلاعات ملک{" "}
+                  </strong>
 
-                      valueAsNumber: true,
-                    })}
-                    placeholder="5"
-                  />
-                </div>
-                <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bottom-9 right-2 bg-primary-50 ">
-                    سهم معامله
-                  </label>
-                  <input
-                    className="h-12 w-full px-1  py-2"
-                    {...register("dong", {
-                      required: "لطفا این فیلد را تکمیل کنید",
-                      valueAsNumber: true,
-                    })}
-                    placeholder="2"
-                  />
-                </div>
-                <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bottom-9 right-2 bg-primary-50">
-                    تاریخ عقد قرارداد
-                  </label>
-                  <select
-                    dir="ltr"
-                    className="h-12 w-1/4 pl-2"
-                    onChange={(e) => {
-                      setDay1(e.target.value);
-                    }}
-                    placeholder="روز"
-                  >
-                    {arrayOfDays.map((val, index) => (
-                      <option
-                        key={index}
-                        value={val}
-                        selected={day1 == val && "selected"}
-                      >
-                        {index + 1}
-                      </option>
-                    ))}
-                  </select>
-                  <select
-                    dir="ltr"
-                    className="h-12 w-2/5 pl-3"
-                    onChange={(e) => {
-                      setMonth1(e.target.value);
-                    }}
-                    placeholder="فروردین"
-                  >
-                    {arrayOfMonths.map((val, index) => (
-                      <option
-                        key={index}
-                        value={val.value}
-                        selected={month1 == val.value && "selected"}
-                      >
-                        {val.label}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="flex">
+                    <div className="inputCfive relative mx-1 mt-6 border-2 border-solid border-warmGray-300 ">
+                      <label className="absolute bottom-9 right-2 bg-primary-50">
+                        شماره سریال
+                      </label>
+                      <input
+                        className="focusinput h-12 w-full px-1  py-2"
+                        {...register("serial_number", {
+                          required: "لطفا این فیلد را تکمیل کنید",
 
-                  <select
-                    dir="ltr"
-                    className="h-12 w-[35%] px-4"
-                    onChange={(e) => {
-                      setYear1(e.target.value);
-                    }}
-                    placeholder="سال"
-                  >
-                    {arrayOfYears(90).map((val, index) => (
-                      <option
-                        key={index}
-                        value={val}
-                        selected={year1 == val && "selected"}
-                      >
-                        {val}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bottom-10 right-2 bg-primary-50 ">
-                    تاریخ ثبت قرارداد
-                  </label>
-                  <select
-                    dir="ltr"
-                    className="h-12 w-1/4 pl-2"
-                    onChange={(e) => {
-                      setDay2(e.target.value);
-                    }}
-                    placeholder="روز"
-                  >
-                    {arrayOfDays.map((val, index) => (
-                      <option
-                        key={index}
-                        value={val}
-                        selected={+day2 == +val && "selected"}
-                      >
-                        {index + 1}
-                      </option>
-                    ))}
-                  </select>
-                  <select
-                    dir="ltr"
-                    className="h-12 w-2/5 pl-3"
-                    onChange={(e) => {
-                      setMonth2(e.target.value);
-                    }}
-                    placeholder="فروردین"
-                  >
-                    {arrayOfMonths.map((val, index) => (
-                      <option
-                        key={index}
-                        value={val.value}
-                        selected={+month2 == +val.value && "selected"}
-                      >
-                        {val.label}
-                      </option>
-                    ))}
-                  </select>
+                          valueAsNumber: true,
+                        })}
+                        placeholder="123456"
+                      />
+                    </div>
 
-                  <select
-                    dir="ltr"
-                    className="h-12 w-[35%] px-4"
-                    onChange={(e) => {
-                      setYear2(e.target.value);
-                    }}
-                    placeholder="سال"
-                  >
-                    {arrayOfYears(90).map((val, index) => (
-                      <option
-                        key={index}
-                        value={val}
-                        selected={year2 == val && "selected"}
-                      >
-                        {val}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bottom-10 right-2 bg-primary-50 ">
-                    تاریخ شروع قرارداد
-                  </label>
-                  <select
-                    dir="ltr"
-                    className="h-12 w-1/4 pl-2"
-                    onChange={(e) => {
-                      setDay3(e.target.value);
-                    }}
-                    placeholder="روز"
-                  >
-                    {arrayOfDays.map((val, index) => (
-                      <option
-                        key={index}
-                        value={val}
-                        selected={day3 == val && "selected"}
-                      >
-                        {index + 1}
-                      </option>
-                    ))}
-                  </select>
-                  <select
-                    dir="ltr"
-                    className="h-12 w-2/5 pl-3"
-                    onChange={(e) => {
-                      setMonth3(e.target.value);
-                    }}
-                    placeholder="فروردین"
-                  >
-                    {arrayOfMonths.map((val, index) => (
-                      <option
-                        key={index}
-                        value={val.value}
-                        selected={month3 == val.value && "selected"}
-                      >
-                        {val.label}
-                      </option>
-                    ))}
-                  </select>
+                    <div className="inputCfive relative mx-1   mt-6 border-2 border-solid border-warmGray-300 ">
+                      <label className="absolute bottom-9 right-2 bg-primary-50">
+                        نوع سریال
+                      </label>
+                      <input
+                        className="focusinput h-12 w-full px-1  py-2"
+                        {...register("serial_type", {
+                          required: "لطفا این فیلد را تکمیل کنید",
 
-                  <select
-                    dir="ltr"
-                    className="h-12 w-[35%] px-4"
-                    onChange={(e) => {
-                      setYear3(e.target.value);
-                    }}
-                    placeholder="سال"
-                  >
-                    {arrayOfYears(90).map((val, index) => (
-                      <option
-                        key={index}
-                        value={val}
-                        selected={year3 == val && "selected"}
-                      >
-                        {val}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
-                  <label className="absolute bottom-10 right-2 bg-primary-50 ">
-                    تاریخ پایان قرارداد
-                  </label>
-                  <select
-                    dir="ltr"
-                    className="h-12 w-1/4 pl-2"
-                    onChange={(e) => {
-                      setDay4(e.target.value);
-                    }}
-                    placeholder="روز"
-                  >
-                    {arrayOfDays.map((val, index) => (
-                      <option
-                        key={index}
-                        value={val}
-                        selected={day4 == val && "selected"}
-                      >
-                        {index + 1}
-                      </option>
-                    ))}
-                  </select>
-                  <select
-                    dir="ltr"
-                    className="h-12 w-2/5 pl-3"
-                    onChange={(e) => {
-                      setMonth4(e.target.value);
-                    }}
-                    placeholder="فروردین"
-                  >
-                    {arrayOfMonths.map((val, index) => (
-                      <option
-                        key={index}
-                        value={val.value}
-                        selected={month4 == val.value && "selected"}
-                      >
-                        {val.label}
-                      </option>
-                    ))}
-                  </select>
+                          valueAsNumber: true,
+                        })}
+                        placeholder="2"
+                      />
+                    </div>
+                    <div className="inputCfive relative mx-1   mt-6 border-2 border-solid border-warmGray-300 ">
+                      <label className="absolute bottom-9 right-2 bg-primary-50">
+                        وضعیت سند
+                      </label>
+                      <input
+                        className="focusinput h-12 w-full px-1  py-2"
+                        {...register("document_status", {
+                          required: "لطفا این فیلد را تکمیل کنید",
 
-                  <select
-                    dir="ltr"
-                    className="h-12 w-[35%] px-4"
-                    onChange={(e) => {
-                      setYear4(e.target.value);
-                    }}
-                    placeholder="سال"
-                  >
-                    {arrayOfYears(90).map((val, index) => (
-                      <option
-                        key={index}
-                        value={val}
-                        selected={year4 == val && "selected"}
+                          valueAsNumber: true,
+                        })}
+                        placeholder="5"
+                      />
+                    </div>
+                    <div className="inputCfive relative mx-1   mt-6 border-2 border-solid border-warmGray-300 ">
+                      <label className="absolute bottom-9 right-2 bg-primary-50">
+                        سهم مشترک
+                      </label>
+                      <input
+                        className="focusinput h-12 w-full px-1  py-2"
+                        {...register("share", {
+                          required: "لطفا این فیلد را تکمیل کنید",
+
+                          valueAsNumber: true,
+                        })}
+                        placeholder="5"
+                      />
+                    </div>
+                    <div className="inputCfive relative mx-1  mt-6 border-2 border-solid border-warmGray-300 ">
+                      <label className="absolute bottom-9 right-2 bg-primary-50 ">
+                        سهم معامله
+                      </label>
+                      <input
+                        className="focusinput h-12 w-full px-1  py-2"
+                        {...register("dong", {
+                          required: "لطفا این فیلد را تکمیل کنید",
+                          valueAsNumber: true,
+                        })}
+                        placeholder="2"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex">
+                    <div className="inputC relative mx-1   mt-6 border-2 border-solid border-warmGray-300 ">
+                      <label className="absolute bottom-9 right-2 bg-primary-50">
+                        تاریخ عقد قرارداد
+                      </label>
+                      <select
+                        dir="ltr"
+                        className="focusinput h-12 w-1/4 pl-2"
+                        onChange={(e) => {
+                          setDay1(e.target.value);
+                        }}
+                        placeholder="روز"
                       >
-                        {val}
-                      </option>
-                    ))}
-                  </select>
+                        {arrayOfDays.map((val, index) => (
+                          <option
+                            key={index}
+                            value={val}
+                            selected={day1 == val && "selected"}
+                          >
+                            {index + 1}
+                          </option>
+                        ))}
+                      </select>
+                      <select
+                        dir="ltr"
+                        className="focusinput h-12 w-2/5 pl-3"
+                        onChange={(e) => {
+                          setMonth1(e.target.value);
+                        }}
+                        placeholder="فروردین"
+                      >
+                        {arrayOfMonths.map((val, index) => (
+                          <option
+                            key={index}
+                            value={val.value}
+                            selected={month1 == val.value && "selected"}
+                          >
+                            {val.label}
+                          </option>
+                        ))}
+                      </select>
+
+                      <select
+                        dir="ltr"
+                        className="focusinput h-12 w-[35%] px-4"
+                        onChange={(e) => {
+                          setYear1(e.target.value);
+                        }}
+                        placeholder="سال"
+                      >
+                        {arrayOfYears(90).map((val, index) => (
+                          <option
+                            key={index}
+                            value={val}
+                            selected={year1 == val && "selected"}
+                          >
+                            {val}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="inputC relative mx-1  mt-6 border-2 border-solid border-warmGray-300 ">
+                      <label className="absolute bottom-10 right-2 bg-primary-50 ">
+                        تاریخ ثبت قرارداد
+                      </label>
+                      <select
+                        dir="ltr"
+                        className="focusinput h-12 w-1/4 pl-2"
+                        onChange={(e) => {
+                          setDay2(e.target.value);
+                        }}
+                        placeholder="روز"
+                      >
+                        {arrayOfDays.map((val, index) => (
+                          <option
+                            key={index}
+                            value={val}
+                            selected={+day2 == +val && "selected"}
+                          >
+                            {index + 1}
+                          </option>
+                        ))}
+                      </select>
+                      <select
+                        dir="ltr"
+                        className="focusinput h-12 w-2/5 pl-3"
+                        onChange={(e) => {
+                          setMonth2(e.target.value);
+                        }}
+                        placeholder="فروردین"
+                      >
+                        {arrayOfMonths.map((val, index) => (
+                          <option
+                            key={index}
+                            value={val.value}
+                            selected={+month2 == +val.value && "selected"}
+                          >
+                            {val.label}
+                          </option>
+                        ))}
+                      </select>
+
+                      <select
+                        dir="ltr"
+                        className="focusinput h-12 w-[35%] px-4"
+                        onChange={(e) => {
+                          setYear2(e.target.value);
+                        }}
+                        placeholder="سال"
+                      >
+                        {arrayOfYears(90).map((val, index) => (
+                          <option
+                            key={index}
+                            value={val}
+                            selected={year2 == val && "selected"}
+                          >
+                            {val}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="inputC relative mx-1  mt-6 border-2 border-solid border-warmGray-300 ">
+                      <label className="absolute bottom-10 right-2 bg-primary-50 ">
+                        تاریخ شروع قرارداد
+                      </label>
+                      <select
+                        dir="ltr"
+                        className="focusinput h-12 w-1/4 pl-2"
+                        onChange={(e) => {
+                          setDay3(e.target.value);
+                        }}
+                        placeholder="روز"
+                      >
+                        {arrayOfDays.map((val, index) => (
+                          <option
+                            key={index}
+                            value={val}
+                            selected={day3 == val && "selected"}
+                          >
+                            {index + 1}
+                          </option>
+                        ))}
+                      </select>
+                      <select
+                        dir="ltr"
+                        className="focusinput h-12 w-2/5 pl-3"
+                        onChange={(e) => {
+                          setMonth3(e.target.value);
+                        }}
+                        placeholder="فروردین"
+                      >
+                        {arrayOfMonths.map((val, index) => (
+                          <option
+                            key={index}
+                            value={val.value}
+                            selected={month3 == val.value && "selected"}
+                          >
+                            {val.label}
+                          </option>
+                        ))}
+                      </select>
+
+                      <select
+                        dir="ltr"
+                        className="focusinput h-12 w-[35%] px-4"
+                        onChange={(e) => {
+                          setYear3(e.target.value);
+                        }}
+                        placeholder="سال"
+                      >
+                        {arrayOfYears(90).map((val, index) => (
+                          <option
+                            key={index}
+                            value={val}
+                            selected={year3 == val && "selected"}
+                          >
+                            {val}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="inputC relative mx-1  mt-6 border-2 border-solid border-warmGray-300 ">
+                      <label className="absolute bottom-10 right-2 bg-primary-50 ">
+                        تاریخ پایان قرارداد
+                      </label>
+                      <select
+                        dir="ltr"
+                        className="focusinput h-12 w-1/4 pl-2"
+                        onChange={(e) => {
+                          setDay4(e.target.value);
+                        }}
+                        placeholder="روز"
+                      >
+                        {arrayOfDays.map((val, index) => (
+                          <option
+                            key={index}
+                            value={val}
+                            selected={day4 == val && "selected"}
+                          >
+                            {index + 1}
+                          </option>
+                        ))}
+                      </select>
+                      <select
+                        dir="ltr"
+                        className="focusinput h-12 w-2/5 pl-3"
+                        onChange={(e) => {
+                          setMonth4(e.target.value);
+                        }}
+                        placeholder="فروردین"
+                      >
+                        {arrayOfMonths.map((val, index) => (
+                          <option
+                            key={index}
+                            value={val.value}
+                            selected={month4 == val.value && "selected"}
+                          >
+                            {val.label}
+                          </option>
+                        ))}
+                      </select>
+
+                      <select
+                        dir="ltr"
+                        className="focusinput h-12 w-[35%] px-4"
+                        onChange={(e) => {
+                          setYear4(e.target.value);
+                        }}
+                        placeholder="سال"
+                      >
+                        {arrayOfYears(90).map((val, index) => (
+                          <option
+                            key={index}
+                            value={val}
+                            selected={year4 == val && "selected"}
+                          >
+                            {val}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
                 </div>
 
                 <button
