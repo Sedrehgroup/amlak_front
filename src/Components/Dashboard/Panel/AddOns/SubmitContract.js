@@ -225,17 +225,17 @@ const SubmitContract = () => {
                   </p>
                 </div>
 
-                <div className="relative mx-1 mt-6 flex w-full rounded-lg border-2 border-solid border-warmGray-300 p-4">
-                  <strong className="absolute bottom-24 right-2 bg-primary-50">
+                <div className="relative mx-1 mt-6 flex w-full rounded-lg border-2 border-solid border-warmGray-300 p-8">
+                  <strong className="absolute bottom-32 right-2 bg-primary-50">
                     اطلاعات هویتی
                   </strong>
 
-                  <div className="inputC relative mx-1 mt-6 border-2 border-solid border-warmGray-300 ">
+                  <div className="inputC relative mx-1 mt-6">
                     <label className="absolute bottom-9 right-2 bg-primary-50">
                       نام موجر
                     </label>
                     <input
-                      className="focusinput h-12 w-full px-1 py-2"
+                      className="focusinput h-12 w-full rounded border-2 border-solid  border-warmGray-300  px-1 py-2"
                       placeholder="علی"
                       type="text"
                       value={request_property?.owner?.first_name}
@@ -243,36 +243,36 @@ const SubmitContract = () => {
                     />
                   </div>
 
-                  <div className="inputC relative mx-1   mt-6 border-2 border-solid border-warmGray-300 ">
+                  <div className="inputC relative mx-1 mt-6">
                     <label className="absolute bottom-9 right-2 bg-primary-50">
                       نام خانوادگی موجر
                     </label>
                     <input
-                      className="focusinput h-12 w-full px-1  py-2"
+                      className="focusinput h-12 w-full rounded border-2 border-solid  border-warmGray-300  px-1 py-2"
                       {...register("owner_lastname")}
                       value={request_property?.owner?.last_name}
                       placeholder="محمدی"
                       type="text"
                     />
                   </div>
-                  <div className="inputC relative mx-1   mt-6 border-2 border-solid border-warmGray-300 ">
+                  <div className="inputC relative mx-1 mt-6">
                     <label className="absolute bottom-9 right-2 bg-primary-50">
                       نام مستاجر
                     </label>
                     <input
-                      className="focusinput h-12 w-full px-1  py-2"
+                      className="focusinput h-12 w-full rounded border-2 border-solid  border-warmGray-300  px-1 py-2"
                       placeholder="علی"
                       type="text"
                       value={tenant?.first_name}
                       {...register("tenant_name")}
                     />
                   </div>
-                  <div className="inputC relative mx-1   mt-6 border-2 border-solid border-warmGray-300 ">
+                  <div className="inputC relative mx-1 mt-6">
                     <label className="absolute bottom-9 right-2 bg-primary-50">
                       نام خانوادگی مستاجر
                     </label>
                     <input
-                      className="focusinput h-12 w-full px-1  py-2"
+                      className="focusinput h-12 w-full rounded border-2 border-solid  border-warmGray-300  px-1 py-2"
                       {...register("tenant_lastname")}
                       value={tenant?.last_name}
                       placeholder="محمدی"
@@ -281,18 +281,18 @@ const SubmitContract = () => {
                   </div>
                 </div>
 
-                <div className="relative mx-1 mt-6 flex w-full flex-col rounded-lg  border-2 border-solid border-warmGray-300 p-4">
+                <div className="relative mx-1 mt-6 flex w-full flex-col rounded-lg  border-2 border-solid border-warmGray-300 p-8">
                   <strong className="absolute bottom-44 right-2 bg-primary-50">
                     مشخصات و اطلاعات ملک{" "}
                   </strong>
 
                   <div className="flex">
-                    <div className="inputCfive relative mx-1 mt-6 border-2 border-solid border-warmGray-300 ">
+                    <div className="inputCfive mt relative mx-1">
                       <label className="absolute bottom-9 right-2 bg-primary-50">
                         شماره سریال
                       </label>
                       <input
-                        className="focusinput h-12 w-full px-1  py-2"
+                        className="focusinput h-12 w-full rounded border-2 border-solid  border-warmGray-300  px-1 py-2"
                         {...register("serial_number", {
                           required: "لطفا این فیلد را تکمیل کنید",
 
@@ -302,12 +302,12 @@ const SubmitContract = () => {
                       />
                     </div>
 
-                    <div className="inputCfive relative mx-1   mt-6 border-2 border-solid border-warmGray-300 ">
+                    <div className="inputCfive relative mx-1">
                       <label className="absolute bottom-9 right-2 bg-primary-50">
                         نوع سریال
                       </label>
                       <input
-                        className="focusinput h-12 w-full px-1  py-2"
+                        className="focusinput h-12 w-full rounded border-2 border-solid  border-warmGray-300  px-1 py-2"
                         {...register("serial_type", {
                           required: "لطفا این فیلد را تکمیل کنید",
 
@@ -316,12 +316,12 @@ const SubmitContract = () => {
                         placeholder="2"
                       />
                     </div>
-                    <div className="inputCfive relative mx-1   mt-6 border-2 border-solid border-warmGray-300 ">
+                    <div className="inputCfive relative mx-1">
                       <label className="absolute bottom-9 right-2 bg-primary-50">
                         وضعیت سند
                       </label>
                       <input
-                        className="focusinput h-12 w-full px-1  py-2"
+                        className="focusinput h-12 w-full rounded border-2 border-solid  border-warmGray-300  px-1 py-2"
                         {...register("document_status", {
                           required: "لطفا این فیلد را تکمیل کنید",
 
@@ -330,12 +330,12 @@ const SubmitContract = () => {
                         placeholder="5"
                       />
                     </div>
-                    <div className="inputCfive relative mx-1   mt-6 border-2 border-solid border-warmGray-300 ">
+                    <div className="inputCfive relative mx-1">
                       <label className="absolute bottom-9 right-2 bg-primary-50">
                         سهم مشترک
                       </label>
                       <input
-                        className="focusinput h-12 w-full px-1  py-2"
+                        className="focusinput h-12 w-full rounded border-2 border-solid  border-warmGray-300  px-1 py-2"
                         {...register("share", {
                           required: "لطفا این فیلد را تکمیل کنید",
 
@@ -344,12 +344,12 @@ const SubmitContract = () => {
                         placeholder="5"
                       />
                     </div>
-                    <div className="inputCfive relative mx-1  mt-6 border-2 border-solid border-warmGray-300 ">
+                    <div className="inputCfive m relative  mx-1 ">
                       <label className="absolute bottom-9 right-2 bg-primary-50 ">
                         سهم معامله
                       </label>
                       <input
-                        className="focusinput h-12 w-full px-1  py-2"
+                        className="focusinput h-12 w-full rounded border-2 border-solid  border-warmGray-300  px-1 py-2"
                         {...register("dong", {
                           required: "لطفا این فیلد را تکمیل کنید",
                           valueAsNumber: true,
@@ -360,7 +360,7 @@ const SubmitContract = () => {
                   </div>
 
                   <div className="flex">
-                    <div className="inputC relative mx-1   mt-6 border-2 border-solid border-warmGray-300 ">
+                    <div className="inputC relative mx-1 mt-6 rounded border-2 border-solid border-warmGray-300 ">
                       <label className="absolute bottom-9 right-2 bg-primary-50">
                         تاریخ عقد قرارداد
                       </label>
@@ -403,7 +403,7 @@ const SubmitContract = () => {
 
                       <select
                         dir="ltr"
-                        className="focusinput h-12 w-[35%] px-4"
+                        className="focusinput h-12 w-[35%] px-3"
                         onChange={(e) => {
                           setYear1(e.target.value);
                         }}
@@ -420,7 +420,7 @@ const SubmitContract = () => {
                         ))}
                       </select>
                     </div>
-                    <div className="inputC relative mx-1  mt-6 border-2 border-solid border-warmGray-300 ">
+                    <div className="inputC relative mx-1 mt-6  rounded border-2 border-solid border-warmGray-300 ">
                       <label className="absolute bottom-10 right-2 bg-primary-50 ">
                         تاریخ ثبت قرارداد
                       </label>
@@ -463,7 +463,7 @@ const SubmitContract = () => {
 
                       <select
                         dir="ltr"
-                        className="focusinput h-12 w-[35%] px-4"
+                        className="focusinput h-12 w-[35%] px-3"
                         onChange={(e) => {
                           setYear2(e.target.value);
                         }}
@@ -480,7 +480,7 @@ const SubmitContract = () => {
                         ))}
                       </select>
                     </div>
-                    <div className="inputC relative mx-1  mt-6 border-2 border-solid border-warmGray-300 ">
+                    <div className="inputC relative mx-1 mt-6  rounded border-2 border-solid border-warmGray-300 ">
                       <label className="absolute bottom-10 right-2 bg-primary-50 ">
                         تاریخ شروع قرارداد
                       </label>
@@ -523,7 +523,7 @@ const SubmitContract = () => {
 
                       <select
                         dir="ltr"
-                        className="focusinput h-12 w-[35%] px-4"
+                        className="focusinput h-12 w-[35%] px-3"
                         onChange={(e) => {
                           setYear3(e.target.value);
                         }}
@@ -540,7 +540,7 @@ const SubmitContract = () => {
                         ))}
                       </select>
                     </div>
-                    <div className="inputC relative mx-1  mt-6 border-2 border-solid border-warmGray-300 ">
+                    <div className="inputC relative mx-1 mt-6 rounded border-2 border-solid border-warmGray-300 ">
                       <label className="absolute bottom-10 right-2 bg-primary-50 ">
                         تاریخ پایان قرارداد
                       </label>
@@ -583,7 +583,7 @@ const SubmitContract = () => {
 
                       <select
                         dir="ltr"
-                        className="focusinput h-12 w-[35%] px-4"
+                        className="focusinput h-12 w-[35%] px-3"
                         onChange={(e) => {
                           setYear4(e.target.value);
                         }}
