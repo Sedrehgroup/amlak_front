@@ -10,6 +10,8 @@ import { useEffect } from "react";
 // import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import useToken from "./customHooks/useToken";
 import axios from "axios";
+import { Redirect, Route, Switch } from "react-router-dom";
+import Protected from "./Components/Protect/protected";
 // import ProtectedRoute from "./Components/Routs/ProtectedRoute";
 
 function App() {
@@ -58,7 +60,23 @@ function App() {
 
   return (
     <div className="bg-warmGray-200">
-      {isUserLogged ? <Main /> : <Login />}
+      {/* {isUserLogged ? <Main /> : <Login />} */}
+      <Switch>
+        <Route exact path='/'>
+          <Redirect to="/dashboard" />
+        </Route>
+        <Route exact path="/dashboard">
+          <Protected isLoged={isUserLogged}>
+            <Main />
+          </Protected>
+        </Route>
+        <Route exact path="/login">
+          <Login />
+        </Route>
+        <Route path="*">
+          <div>404 Page Not Found</div>
+        </Route>
+      </Switch>
       {/* <Main /> */}
       {/* <Switch> */}
       {/* <Route exact path="/" component={isUserLogged && Main} /> */}
