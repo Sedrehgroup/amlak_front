@@ -172,7 +172,7 @@ export default function EditProperty() {
     }
   };
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center ">
       <div className="form1 seventyfivevh">
         <strong className="flex justify-center items-start text-4xl mb-8">
           ویرایش آگهی اجاره

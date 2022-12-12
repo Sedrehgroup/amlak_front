@@ -26,6 +26,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import Protected from "./Components/Protect/protected";
 import Counter from "./Components/Dashboard/Panel/Tabs/Counter";
 import NotFound from "./Components/notFound";
+import PropertyDetails from "./Components/Dashboard/Panel/AddOns/PropertyDetails";
 // import ProtectedRoute from "./Components/Routs/ProtectedRoute";
 
 function App() {
@@ -39,36 +40,35 @@ function App() {
     const Api_Url = process.env.REACT_APP_API_URL;
     return () => {
       setInterval(() => {
-        if (!!!!token) {
-          try {
-            axios
-              .post(
-                `${Api_Url}/account/token/refresh/`,
-                {
-                  refresh: window.localStorage.getItem("REF_TOKEN"),
+        console.log("interval");
+        console.log(token);
+        if (!token) return;
+        console.log("try new token");
+        try {
+          axios
+            .post(
+              `${Api_Url}/account/token/refresh/`,
+              {
+                refresh: window.localStorage.getItem("REF_TOKEN"),
+              },
+              {
+                headers: {
+                  Authorization: `Bearer ${token}`,
                 },
-                {
-                  headers: {
-                    Authorization: `Bearer ${token}`,
-                  },
-                }
-              )
-              .then(({ data }) => {
-                console.log(
-                  "axios get account/token/refresh/ data.data:",
-                  data
-                );
-                window.localStorage.setItem("ACC_TOKEN", data.access);
-                setUpdate(Math.random());
-              })
-              .catch((e) => {
-                console.log("error in axios account/token/refresh/", e);
-              });
-          } catch (error) {
-            console.log("error", error);
-          }
+              }
+            )
+            .then(({ data }) => {
+              console.log("axios get account/token/refresh/ data.data:", data);
+              window.localStorage.setItem("ACC_TOKEN", data.access);
+              setUpdate(Math.random());
+            })
+            .catch((e) => {
+              console.log("error in axios account/token/refresh/", e);
+            });
+        } catch (error) {
+          console.log("error", error);
         }
-      }, 120000);
+      }, 5000);
     };
   }, []);
 
@@ -76,19 +76,14 @@ function App() {
     <div className="bg-warmGray-200">
       {/* {isUserLogged ? <Main /> : <Login />} */}
       <Switch>
+        <Route exact path="/auth">
+          <Login isLoged={isUserLogged} />
+        </Route>
         <Route exact path="/">
-          <Redirect to="/dashboard" />
-        </Route>
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        <Route exact path="/dashboard">
-          <Protected isLoged={isUserLogged}>
-            <Main comp={<Counter />} />
-          </Protected>
+          <Main comp={<Counter />} isLoged={isUserLogged} />
         </Route>
         <Route path="/userinfo">
-          <Main comp={<UserFormDetail />} />
+          <Main comp={<UserFormDetail />} isLoged={isUserLogged} />
         </Route>
         <Route path="/chat">
           <Main
@@ -97,38 +92,42 @@ function App() {
                 <ChatPage />
               </center>
             }
+            isLoged={isUserLogged}
           />
         </Route>
         <Route path="/contracts">
-          <Main comp={<Contracts />} />
+          <Main path={<Contracts />} isLoged={isUserLogged} />
         </Route>
         <Route path="/submitContract">
-          <Main comp={<SubmitContract />} />
+          <Main comp={<SubmitContract />} isLoged={isUserLogged} />
         </Route>
         <Route path="/submitProperty">
-          <Main comp={<SubmitProperty />} />
+          <Main comp={<SubmitProperty />} isLoged={isUserLogged} />
         </Route>
         <Route path="/myProperties">
-          <Main comp={<MyProperties />} />
+          <Main comp={<MyProperties />} isLoged={isUserLogged} />
         </Route>
         <Route path="/requestsToMe">
-          <Main comp={<RequestsToMe />} />
+          <Main comp={<RequestsToMe />} isLoged={isUserLogged} />
         </Route>
         <Route path="/AcceptedFromMe">
           {/* <center>اجاره داده شده ها</center> */}
-          <Main comp={<AcceptedFromMe />} />
+          <Main comp={<AcceptedFromMe />} isLoged={isUserLogged} />
         </Route>
-        <Route path="/allProperties">
-          <Main comp={<AllProperties />} />
+        <Route exact path="/allProperties">
+          <Main comp={<AllProperties />} isLoged={isUserLogged} />
+        </Route>
+        <Route exact path="/allProperties/:id">
+          <Main comp={<PropertyDetails />} isLoged={isUserLogged} />
         </Route>
         <Route path="/requestsFromMe">
-          <Main comp={<RequestsFromMe />} />
+          <Main comp={<RequestsFromMe />} isLoged={isUserLogged} />
         </Route>
         <Route path="/AcceptedForMe">
-          <Main comp={<AcceptedForMe />} />
+          <Main comp={<AcceptedForMe />} isLoged={isUserLogged} />
         </Route>
         <Route path="/editProperty">
-          <Main comp={<EditProperty />} />
+          <Main comp={<EditProperty />} isLoged={isUserLogged} />
         </Route>
         <Route path="*">
           <NotFound />
