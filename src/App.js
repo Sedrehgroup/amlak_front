@@ -81,15 +81,13 @@ function App() {
           <Redirect to="/dashboard" />
         </Route>
         <Route exact path="/login">
-          <Login />
+          <Login isLoged={isUserLogged}/>
         </Route>
         <Route exact path="/dashboard">
-          <Protected isLoged={isUserLogged}>
-            <Main comp={<Counter />} />
-          </Protected>
+          <Main comp={<Counter />} isLoged={isUserLogged} />
         </Route>
         <Route path="/userinfo">
-          <Main comp={<UserFormDetail />} />
+          <Main comp={<UserFormDetail />} isLoged={isUserLogged} />
         </Route>
         <Route path="/chat">
           <Main
@@ -98,41 +96,42 @@ function App() {
                 <ChatPage />
               </center>
             }
+            isLoged={isUserLogged}
           />
         </Route>
         <Route path="/contracts">
-          <Main path={<Contracts />} />
+          <Main path={<Contracts />} isLoged={isUserLogged} />
         </Route>
         <Route path="/submitContract">
-          <Main comp={<SubmitContract />} />
+          <Main comp={<SubmitContract />} isLoged={isUserLogged} />
         </Route>
         <Route path="/submitProperty">
-          <Main comp={<SubmitProperty />} />
+          <Main comp={<SubmitProperty />} isLoged={isUserLogged} />
         </Route>
         <Route path="/myProperties">
-          <Main comp={<MyProperties />} />
+          <Main comp={<MyProperties />} isLoged={isUserLogged} />
         </Route>
         <Route path="/requestsToMe">
-          <Main comp={<RequestsToMe />} />
+          <Main comp={<RequestsToMe />} isLoged={isUserLogged} />
         </Route>
         <Route path="/AcceptedFromMe">
           {/* <center>اجاره داده شده ها</center> */}
-          <Main comp={<AcceptedFromMe />} />
+          <Main comp={<AcceptedFromMe />} isLoged={isUserLogged} />
         </Route>
         <Route exact path="/allProperties">
-          <Main comp={<AllProperties />} />
+          <Main comp={<AllProperties />} isLoged={isUserLogged} />
         </Route>
         <Route path="/allProperties">
-          <Main comp={<PropertyDetails />} />
+          <Main comp={<PropertyDetails />} isLoged={isUserLogged} />
         </Route>
         <Route path="/requestsFromMe">
-          <Main comp={<RequestsFromMe />} />
+          <Main comp={<RequestsFromMe />} isLoged={isUserLogged} />
         </Route>
         <Route path="/AcceptedForMe">
-          <Main comp={<AcceptedForMe />} />
+          <Main comp={<AcceptedForMe />} isLoged={isUserLogged} />
         </Route>
         <Route path="/editProperty">
-          <Main comp={<EditProperty />} />
+          <Main comp={<EditProperty />} isLoged={isUserLogged} />
         </Route>
         <Route path="*">
           <NotFound />
