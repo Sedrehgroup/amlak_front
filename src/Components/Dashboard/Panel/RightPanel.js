@@ -25,7 +25,7 @@ export default function RightPanel() {
   return (
     <>
       <div className="bg-warmGray-100 rounded-tl-lg rounded-bl-lg flex flex-col gap-y-3 pt-3 pr-4 mt-2 boxshadow">
-        <Link to="/dashboard">
+        <Link to="/">
           <div
             className={`flex flex-row gap-2 p-1 ${
               (location.pathname == "/" || location.pathname == "/dashboard") &&

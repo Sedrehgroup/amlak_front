@@ -164,6 +164,7 @@ const ToMeRequestCard = ({
               ) : status == 2 ? (
                 <>
                   <TenantContactInfoBtn
+                    data={data}
                     tenant_description={tenant_description}
                   />
                   <Link
@@ -204,7 +205,7 @@ const ToMeRequestCard = ({
 
 export default ToMeRequestCard;
 
-const TenantContactInfoBtn = ({ tenant_description }) => {
+const TenantContactInfoBtn = ({ data,tenant_description }) => {
   return (
     <Popup
       trigger={
@@ -222,10 +223,20 @@ const TenantContactInfoBtn = ({ tenant_description }) => {
           </button>
           <div className="header"> اطلاعات درخواست دهنده</div>
           <div className="content">
-            <p className="text-base">توضیحات مستاجر:</p>
-            <p className="text-xs pt-4 text-warmGray-400">
-              {tenant_description || tenantDefaultDesc}
-            </p>
+          <div >
+              <p className="text-base">مشخصات مستاجر:</p>
+              <p className="text-xs pt-1 text-warmGray-400">
+                <span> {data?.tenant?.first_name}</span>{" "}
+                <span> {data?.tenant?.last_name}</span>
+                <span> {data?.tenant?.phone_number}</span>
+              </p>
+            </div>
+            <div className=" mb-2">
+              <p className="text-base">توضیحات مستاجر:</p>
+              <p className="text-xs pt-1 text-warmGray-400">
+                {tenant_description || tenantDefaultDesc}
+              </p>
+            </div>
           </div>
           <div className="actions flex justify-center gap-3">
             <button
@@ -273,51 +284,51 @@ const SeeRequestBtn = ({
           </button>
           <div className="header"> مشاهده درخواست</div>
           <div className="content">
-            <div>
+            <div  className=" mb-2">
               <p className="text-base">عنوان آگهی:</p>
-              <p className="text-xs pt-4 text-warmGray-400">
+              <p className="text-xs  text-warmGray-400">
                 {data?.request_property?.title}
               </p>
             </div>
-            <div>
+            <div className=" mb-2">
               <p className="text-base">قیمت رهن:</p>
-              <p className="text-xs pt-4 text-warmGray-400">
+              <p className="text-xs text-warmGray-400">
                 {data?.request_property?.mortgage_amount}
               </p>
             </div>
-            <div>
+            <div className=" mb-2">
               <p className="text-base">قیمت اجاره:</p>
-              <p className="text-xs pt-4 text-warmGray-400">
+              <p className="text-xs  text-warmGray-400">
                 {data?.request_property?.rent_amount}
               </p>
             </div>
-            <div>
+            <div className=" mb-2">
               <p className="text-base">متراژ:</p>
-              <p className="text-xs pt-4 text-warmGray-400">
+              <p className="text-xs  text-warmGray-400">
                 {data?.request_property?.area}
               </p>
             </div>
-            <div>
+            <div className=" mb-2">
               <p className="text-base">تعداد اتاق:</p>
-              <p className="text-xs pt-4 text-warmGray-400">
+              <p className="text-xs text-warmGray-400">
                 {data?.request_property?.bedrooms}
               </p>
             </div>
-            <div>
+            <div className=" mb-2">
               <p className="text-base">توضیحات موجر:</p>
-              <p className="text-xs pt-4 text-warmGray-400">
+              <p className="text-xs text-warmGray-400">
                 {landlord_description || landlordDefaultDesc}
               </p>
             </div>
-            <div>
+            <div className=" mb-2">
               <p className="text-base">توضیحات مستاجر:</p>
-              <p className="text-xs pt-4 text-warmGray-400">
+              <p className="text-xs  text-warmGray-400">
                 {tenant_description || tenantDefaultDesc}
               </p>
             </div>
-            <div>
+            <div className=" mb-2">
               <p className="text-base">مشخصات مستاجر:</p>
-              <p className="text-xs pt-4 text-warmGray-400">
+              <p className="text-xs  text-warmGray-400">
                 <span> {data?.tenant?.first_name}</span>{" "}
                 <span> {data?.tenant?.last_name}</span>
                 <span> {data?.tenant?.phone_number}</span>

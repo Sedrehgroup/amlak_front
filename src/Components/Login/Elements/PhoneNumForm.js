@@ -13,6 +13,7 @@ import {
   setUserIsLoggedHandler,
   userLoginStepAccess,
 } from "../../../redux/reducers/login";
+import { toast } from "react-toastify";
 
 export default function PhoneNumForm() {
   const [phoneNum, setPhoneNum] = useState("");
@@ -29,40 +30,37 @@ export default function PhoneNumForm() {
   const onSubmit = ({ phoneNumber }) => {
     setShowLoading(true);
     console.log("phoneNumber", phoneNumber);
-    if (phoneNumber == 9123123123) {
-      // موجر تستی
-      dispatch(setSmsCodeHandler("0000"));
+    if (phoneNumber == "09123123123" || phoneNumber == "09123123124") {
+      // کاربر تستی
+
       dispatch(setPhoneNumberHandler(phoneNumber));
       dispatch(userLoginStepAccess("PhoneNumber_Step"));
       setShowLoading(false);
-    } else if (phoneNumber == 9123123124) {
-      // مستاجر تستی
-      dispatch(setSmsCodeHandler("0001"));
-      dispatch(setPhoneNumberHandler(phoneNumber));
-      dispatch(userLoginStepAccess("PhoneNumber_Step"));
-      setShowLoading(false);
+    
     } else {
       const Api_Url = process.env.REACT_APP_API_URL;
       try {
         axios
           .post(`${Api_Url}/account/otp_register/`, {
-            phone_number: `+98${phoneNumber}`,
+            phone_number: `+98${phoneNumber.slice(1)}`,
           })
           .then((data) => {
             console.log("axios /users/otp_register", data);
-            dispatch(setSmsCodeHandler(data.data));
+            // dispatch(setSmsCodeHandler(data.data));
             dispatch(setPhoneNumberHandler(phoneNumber));
             dispatch(userLoginStepAccess("PhoneNumber_Step"));
             setShowLoading(false);
           })
           .catch((e) => {
+            toast.error("مشکلی رخ داده است", {
+              position: "top-center",
+              rtl: true,
+              className: "m_toast",
+            });
             console.log("error in axios /users/otp_register", e);
+            setShowLoading(false);
             if (e.response.status == 401) {
-              //dispatch(setUserIsLoggedHandler(false));
-              // window.localStorage.setItem("user_logged", "false");
-              // window.localStorage.removeItem("ACC_TOKEN");
-              // window.localStorage.removeItem("REF_TOKEN");
-              setShowLoading(false);
+             
             }
           });
       } catch (error) {}
@@ -117,7 +115,11 @@ export default function PhoneNumForm() {
                     required: "وارد کردن شماره الزامی می باشد",
                     maxLength: 11,
                     minLength: 11,
-                    valueAsNumber: true,
+                    pattern:{
+                      value:/([0][9])\d+/,
+                      message:'شماره وارد شده اشتباه می باشد',
+                    },
+                    
                   })}
                   value={phoneNum}
                   onChange={(e) => setPhoneNum(e.target.value)}

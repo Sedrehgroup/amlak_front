@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import ReactCodeInput from "react-code-input";
 import { useDispatch, useSelector } from "react-redux";
 import loginLogo from "./../../../assets/Images/Dashboard/loginLogo.svg";
@@ -8,11 +8,10 @@ import {
   userLoginStepAccess,
 } from "../../../redux/reducers/login";
 import Spinner from "react-spinkit";
-import { getAccessTokenHandler } from "../../../utils/Api";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function PhoneSmsForm() {
-  const smsCode = useSelector((state) => state.login.smsCode);
   const phoneNumber = useSelector((state) => state.login.phoneNumber);
 
   const [isPinCodeValid, setIsPinCodeValid] = useState(false);
@@ -22,32 +21,75 @@ export default function PhoneSmsForm() {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  useEffect(() => {
-    if (isPinCodeValid) {
-      checkUserIsInDatabase();
-    }
-  }, [isPinCodeValid]);
+  const Api_Url = process.env.REACT_APP_API_URL;
+
+ 
   const checkPinCode = () => {
     setShowLoading(true);
-    const isPinCodeValid = pinCode == smsCode;
-
-    setBtnIsPressed(true);
-    setIsPinCodeValid(isPinCodeValid);
-    if (!isPinCodeValid) {
-      setPinCode("");
-      setShowLoading(false);
+    if(phoneNumber=='09123123123' || phoneNumber=='09123123124'){
+      getAccessTokenHandler(phoneNumber);
+    }else {
+      try {
+        axios
+          .post(`${Api_Url}/account/verify_otp_register/`, {
+            phone_number: `+98${phoneNumber.slice(1)}`,
+            code: `${pinCode}`,
+          })
+          .then(( {data} ) => {
+            setShowLoading(false);
+            setBtnIsPressed(true);
+  
+            setIsPinCodeValid(true);
+  
+  
+            dispatch(userLoginStepAccess("PhoneSms_Step"));
+            dispatch(userLoginStepAccess("Register_Step"));
+            history.push("/");
+            window.localStorage.setItem("ACC_TOKEN", data.access);
+            window.localStorage.setItem("REF_TOKEN", data.refresh);
+            window.localStorage.setItem("user_logged", "true");
+            dispatch(setUserIsLoggedHandler(true));
+  
+            console.log("axios /users/token data.data:", data);
+          })
+          .catch((e) => {
+           
+            console.log("error in axios /users/otp_register", e);
+            setPinCode("");
+            setShowLoading(false);
+            if (e.response.status == 400) {
+              toast.error("کد وارد شده نادرست می باشد", {
+                position: "top-center",
+                rtl: true,
+                className: "m_toast",
+              });
+              // dispatch(userLoginStepAccess("PhoneSms_Step"));
+              console.log('400 status code')
+            }else if (e.response.status == 403) {
+              // set count down timer for 2 minutes
+              toast.error("کد ارسال شده منقضی شده است", {
+                position: "top-center",
+                rtl: true,
+                className: "m_toast",
+              });
+            
+            }else if (e.response.status == 404) {
+              dispatch(userLoginStepAccess("PhoneSms_Step"));
+            }
+          });
+      } catch (error) {
+        console.log("error", error);
+      }
     }
   };
-  const checkUserIsInDatabase = () => {
-    getAccessTokenHandler(phoneNumber);
-  };
+
+
 
   const getAccessTokenHandler = (phoneNumber) => {
-    const Api_Url = process.env.REACT_APP_API_URL;
     try {
       axios
         .post(`${Api_Url}/account/token/`, {
-          phone_number: `+98${phoneNumber}`,
+          phone_number: `+98${phoneNumber.slice(1)}`,
           password: "rent",
         })
         .then(({ data }) => {
@@ -64,6 +106,13 @@ export default function PhoneSmsForm() {
           console.log("axios /users/token data.data:", data);
         })
         .catch((e) => {
+          setShowLoading(false);
+
+          toast.error("در دریافت توکن مشکلی رخ داده است", {
+            position: "top-center",
+            rtl: true,
+            className: "m_toast",
+          });
           console.log("error in axios /users/otp_register", e);
           if (e.response.status == 401) {
             dispatch(userLoginStepAccess("PhoneSms_Step"));

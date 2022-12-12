@@ -10,6 +10,7 @@ import {
   userLoginStepAccess,
 } from "../../../redux/reducers/login";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 // import { userLoginStepAccess } from "../../../redux/reducers/login";
 
 export default function RegisterForm() {
@@ -33,8 +34,7 @@ export default function RegisterForm() {
     try {
       axios
         .post(`${Api_Url}/account/create_user/`, {
-          phone_number: `+98${phoneNumber}`,
-
+          phone_number: `+98${phoneNumber.slice(1)}`,
           national_code: nationalCode,
           first_name: firstName,
           last_name: lastName,
@@ -48,50 +48,22 @@ export default function RegisterForm() {
           window.localStorage.setItem("REF_TOKEN", data.refresh);
           window.localStorage.setItem("user_logged", "true");
           dispatch(setUserIsLoggedHandler(true));
-          createUserAdditionalInfo(data.access);
+          // createUserAdditionalInfo(data.access);
         })
         .catch((e) => {
           console.log("error in axios /users/create_user", e);
           setShowLoading(false);
-
+          toast.error("مشکلی رخ داده است", {
+            position: "top-center",
+            rtl: true,
+            className: "m_toast",
+          });
           if (e.response.status == 401) {
-            // dispatch(setUserIsLoggedHandler(false));
-            // window.localStorage.setItem("user_logged", "false");
           }
         });
     } catch (error) {}
   };
-  const createUserAdditionalInfo = (token) => {
-    if (!!!!token) {
-      try {
-        axios
-          .post(
-            `${Api_Url}/account/create_additional_user/`,
-            {},
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          )
-          .then((data) => {
-            console.log(
-              "axios /account/create_additional_user data.data:",
-              data
-            );
-          })
-          .catch((e) => {
-            console.log("error in axios /account/create_additional_user", e);
-            if (e.response.status == 401) {
-              // //dispatch(setUserIsLoggedHandler(false));
-              // window.localStorage.setItem("user_logged", "false");
-            }
-          });
-      } catch (error) {
-        console.log("error", error);
-      }
-    }
-  };
+
   return (
     <div className="bg-primary-50">
       <div className="twentyvh flex justify-end">

@@ -13,7 +13,7 @@ export default function PropertyCard(props) {
 
   return (
     <>
-      <div className="bg-white rounded-lg h-auto max-w-[350px] border border-warmGray-400">
+      <div className="h-auto max-w-[350px] rounded-lg border border-warmGray-400 bg-white">
         <Link
           to={`/allProperties/${id}`}
           onClick={() => showHandler(props.data)}
@@ -23,7 +23,7 @@ export default function PropertyCard(props) {
             <img
               src={house}
               alt=""
-              className="rounded-t-lg w-fit object-cover"
+              className="w-fit rounded-t-lg object-cover"
               style={
                 {
                   // height: "320px",
@@ -34,7 +34,7 @@ export default function PropertyCard(props) {
             />
 
             <strong
-              className="my-3 text-center px-2 overflow-hidden "
+              className="my-3 overflow-hidden px-2 text-center "
               style={{
                 display: "-webkit-box",
                 WebkitLineClamp: "1",
@@ -44,16 +44,16 @@ export default function PropertyCard(props) {
             >
               {title}
             </strong>
-            <hr className=" border-main-300 mx-3" />
-            <div className="w-full px-4  rounded-lg flex flex-col gap-y-2 my-3 text-center">
-              <p className="">قیمت رهن : {mortgage_amount} تومان </p>
+            <hr className=" mx-3 border-main-300" />
+            <div className="my-3 flex  w-full flex-col gap-y-2 rounded-lg px-4 text-center">
+              <p className="">قیمت رهن : {mortgage_amount.toLocaleString()} تومان </p>
               {/* <hr
                 style={{
                   color: "rgba(255, 171, 119, 1)",
                   marginBottom: "16px",
                 }}
               /> */}
-              <p className="">قیمت اجاره : {rent_amount} تومان </p>
+              <p className="">قیمت اجاره : {rent_amount.toLocaleString()} تومان </p>
               {/* <hr
                 style={{
                   color: "rgba(255, 171, 119, 1)",
@@ -77,24 +77,24 @@ export default function PropertyCard(props) {
           }`}
         >
           {!props.notForMe && (
-            <div className="flex gap-x-2">
+            <div className="flex gap-1">
               <button
                 onClick={() => deleteHandler(props.data)}
-                className="text-sm px-2 py-1 whitespace-nowrap text-darkRed border-2 border-darkRed border-solid rounded-lg "
+                className="whitespace-nowrap rounded-lg border-2 border-solid border-darkRed px-2 py-1 text-sm text-darkRed "
               >
                 حذف آگهی
               </button>
 
               <Link
                 to={`/editProperty/?id=${id}`}
-                className="text-sm px-2 py-1 border-main-600  whitespace-nowrap text-main-600 border-2  border-solid rounded-lg"
+                className="whitespace-nowrap rounded-lg border-2 border-solid  border-main-600 px-2 py-1  text-sm text-main-600"
               >
                 ویرایش آگهی
               </Link>
               <Link
                 to={`/allProperties/${id}`}
                 onClick={() => showHandler(props.data)}
-                className="text-sm px-2 py-1 border-main-600  whitespace-nowrap text-main-600  border-2  border-solid rounded-lg"
+                className="whitespace-nowrap rounded-lg border-2 border-solid  border-main-600 px-2  py-1  text-sm text-main-600"
               >
                 مشاهده آگهی
               </Link>

@@ -6,7 +6,7 @@ import axios from "axios";
 import useToken from "../../customHooks/useToken";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { setUserIsLoggedHandler } from "../../redux/reducers/login";
+import { setUserIsLoggedHandler, userLoginStepDenied } from "../../redux/reducers/login";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { setUserIdHandler } from "../../redux/reducers/user";
 
@@ -25,9 +25,11 @@ export default function NavBar() {
     window.localStorage.removeItem("REF_TOKEN");
     window.localStorage.setItem("user_logged", "false");
     dispatch(setUserIsLoggedHandler(false));
-    history.push("/login");
+    dispatch(userLoginStepDenied("PhoneNumber_Step"));
+    dispatch(userLoginStepDenied("PhoneSms_Step"));
+    dispatch(userLoginStepDenied("Register_Step"));
     // location.reload();
-    history.go(0);
+    // history.go(0);
   };
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
@@ -48,8 +50,8 @@ export default function NavBar() {
           .catch((e) => {
             console.log("error in axios /account/user_information", e);
             if (e.response.status == 401) {
-              dispatch(setUserIsLoggedHandler(false));
-              window.localStorage.setItem("user_logged", "false");
+              // dispatch(setUserIsLoggedHandler(false));
+              // window.localStorage.setItem("user_logged", "false");
             }
           });
       } catch (error) {

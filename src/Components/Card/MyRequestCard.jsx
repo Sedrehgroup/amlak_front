@@ -58,7 +58,7 @@ const MyRequestCard = ({
                   {request_property?.mortgage_amount} تومان
                 </span>
               </p>
-              span
+             
               <p className="font-light">
                 قیمت اجاره:{" "}
                 <span className="font-medium text-lg">
