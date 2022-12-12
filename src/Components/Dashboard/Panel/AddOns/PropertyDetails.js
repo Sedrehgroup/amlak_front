@@ -92,85 +92,85 @@ export default function PropertyDetails({ data }) {
   //     }
   //   }
   // }, [token, params]);
-  useEffect(() => {
-    console.log("data in adDetail ", data);
-    if (!!!!data) {
-      const {
-        owner,
-        id,
-        title,
-        mortgage_amount,
-        rent_amount,
-        type,
-        use,
-        special_situation,
-        area,
-        province,
-        county,
-        city,
-        neighbourhood,
-        convertible,
-        construction_year,
-        bedrooms,
-        description,
-        zip,
-        Sub_registration_plate,
-        Sub_registration_plate_from,
-        Sub_registration_plate_to,
-        Original_registration_plate,
-        Original_registration_plate_from,
-        Original_registration_plate_to,
-        registration_section,
-        registration_area,
-        Skeleton_type,
-        phone_status,
-        phone_lines,
-        address,
-        building_side,
-        unit_side,
-        unit_floor,
-        floors_number,
-        units_per_floor,
-      } = data;
-      setData2({
-        owner,
-        id,
-        title,
-        mortgage_amount,
-        rent_amount,
-        type,
-        use,
-        special_situation,
-        area,
-        province,
-        county,
-        city,
-        neighbourhood,
-        convertible,
-        construction_year,
-        bedrooms,
-        description,
-        zip,
-        Sub_registration_plate,
-        Sub_registration_plate_from,
-        Sub_registration_plate_to,
-        Original_registration_plate,
-        Original_registration_plate_from,
-        Original_registration_plate_to,
-        registration_section,
-        registration_area,
-        Skeleton_type,
-        phone_status,
-        phone_lines,
-        address,
-        building_side,
-        unit_side,
-        unit_floor,
-        floors_number,
-        units_per_floor,
-      });
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   console.log("data in adDetail ", data);
+  //   if (!!!!data) {
+  //     const {
+  //       owner,
+  //       id,
+  //       title,
+  //       mortgage_amount,
+  //       rent_amount,
+  //       type,
+  //       use,
+  //       special_situation,
+  //       area,
+  //       province,
+  //       county,
+  //       city,
+  //       neighbourhood,
+  //       convertible,
+  //       construction_year,
+  //       bedrooms,
+  //       description,
+  //       zip,
+  //       Sub_registration_plate,
+  //       Sub_registration_plate_from,
+  //       Sub_registration_plate_to,
+  //       Original_registration_plate,
+  //       Original_registration_plate_from,
+  //       Original_registration_plate_to,
+  //       registration_section,
+  //       registration_area,
+  //       Skeleton_type,
+  //       phone_status,
+  //       phone_lines,
+  //       address,
+  //       building_side,
+  //       unit_side,
+  //       unit_floor,
+  //       floors_number,
+  //       units_per_floor,
+  //     } = data;
+  //     setData2({
+  //       owner,
+  //       id,
+  //       title,
+  //       mortgage_amount,
+  //       rent_amount,
+  //       type,
+  //       use,
+  //       special_situation,
+  //       area,
+  //       province,
+  //       county,
+  //       city,
+  //       neighbourhood,
+  //       convertible,
+  //       construction_year,
+  //       bedrooms,
+  //       description,
+  //       zip,
+  //       Sub_registration_plate,
+  //       Sub_registration_plate_from,
+  //       Sub_registration_plate_to,
+  //       Original_registration_plate,
+  //       Original_registration_plate_from,
+  //       Original_registration_plate_to,
+  //       registration_section,
+  //       registration_area,
+  //       Skeleton_type,
+  //       phone_status,
+  //       phone_lines,
+  //       address,
+  //       building_side,
+  //       unit_side,
+  //       unit_floor,
+  //       floors_number,
+  //       units_per_floor,
+  //     });
+  //   }
+  // }, [data]);
 
   const onSubmit = () => {
     const Api_Url = process.env.REACT_APP_API_URL;
@@ -189,8 +189,7 @@ export default function PropertyDetails({ data }) {
             },
           }
         )
-        .then(() => {
-          const data = window.location.pathname.split('/').at(-1);
+        .then(({ data }) => {
           console.log("api/request/my_requests data.data:", data);
           toast.success("درخواست شما با موفقیت ثبت شد", {
             position: "top-center",
@@ -211,6 +210,108 @@ export default function PropertyDetails({ data }) {
         });
     } catch (error) {}
   };
+
+  useEffect(() => {
+    if (!token) return;
+    const Api_Url = process.env.REACT_APP_API_URL;
+    const id = window.location.pathname.split("/").at(-1);
+    console.log("iddddd", id);
+    try {
+      axios
+        .get(`${Api_Url}/api/property/properties_list/${id}/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(({ data }) => {
+          console.log("dataaa", data);
+          const {
+            owner,
+            id,
+            title,
+            mortgage_amount,
+            rent_amount,
+            type,
+            use,
+            special_situation,
+            area,
+            province,
+            county,
+            city,
+            neighbourhood,
+            convertible,
+            construction_year,
+            bedrooms,
+            description,
+            zip,
+            Sub_registration_plate,
+            Sub_registration_plate_from,
+            Sub_registration_plate_to,
+            Original_registration_plate,
+            Original_registration_plate_from,
+            Original_registration_plate_to,
+            registration_section,
+            registration_area,
+            Skeleton_type,
+            phone_status,
+            phone_lines,
+            address,
+            building_side,
+            unit_side,
+            unit_floor,
+            floors_number,
+            units_per_floor,
+          } = data;
+          setData2({
+            owner,
+            id,
+            title,
+            mortgage_amount,
+            rent_amount,
+            type,
+            use,
+            special_situation,
+            area,
+            province,
+            county,
+            city,
+            neighbourhood,
+            convertible,
+            construction_year,
+            bedrooms,
+            description,
+            zip,
+            Sub_registration_plate,
+            Sub_registration_plate_from,
+            Sub_registration_plate_to,
+            Original_registration_plate,
+            Original_registration_plate_from,
+            Original_registration_plate_to,
+            registration_section,
+            registration_area,
+            Skeleton_type,
+            phone_status,
+            phone_lines,
+            address,
+            building_side,
+            unit_side,
+            unit_floor,
+            floors_number,
+            units_per_floor,
+          });
+
+          console.log(
+            "axios get /api/property/properties_list data.data:",
+            data
+          );
+        })
+        .catch((e) => {
+          console.log("error in axios /api/property/properties_list", e);
+        });
+    } catch (error) {
+      console.log("error", error);
+    }
+  }, [token]);
 
   return (
     <>

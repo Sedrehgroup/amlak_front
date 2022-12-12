@@ -26,6 +26,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import Protected from "./Components/Protect/protected";
 import Counter from "./Components/Dashboard/Panel/Tabs/Counter";
 import NotFound from "./Components/notFound";
+import PropertyDetails from "./Components/Dashboard/Panel/AddOns/PropertyDetails";
 // import ProtectedRoute from "./Components/Routs/ProtectedRoute";
 
 function App() {
@@ -118,8 +119,11 @@ function App() {
           {/* <center>اجاره داده شده ها</center> */}
           <Main comp={<AcceptedFromMe />} />
         </Route>
-        <Route path="/allProperties">
+        <Route exact path="/allProperties">
           <Main comp={<AllProperties />} />
+        </Route>
+        <Route path="/allProperties">
+          <Main comp={<PropertyDetails />} />
         </Route>
         <Route path="/requestsFromMe">
           <Main comp={<RequestsFromMe />} />
