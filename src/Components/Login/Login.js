@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import Main from "./../Dashboard/Main";
+import Main from "../Main";
 import PhoneNumForm from "./Elements/PhoneNumForm";
 import PhoneSmsForm from "./Elements/PhoneSmsForm";
 import RegisterForm from "./Elements/RegisterForm";
