@@ -10,6 +10,8 @@ import { iranCitiesList } from "../../../../utils/iranCitiesList";
 import { selectedPropertyDataHandler } from "../../../../redux/reducers/userProperty";
 import { useDispatch, useSelector } from "react-redux";
 
+import empty from "../../../../assets/Images/Dashboard/folder-open.svg";
+
 const AllProperties = () => {
   const dispatch = useDispatch();
 
@@ -166,7 +168,7 @@ const AllProperties = () => {
 
             <select
               dir="ltr"
-              className="h-12 w-full px-4 "
+              className="h-12 w-full px-4"
               placeholder="تهران"
               value={province}
               onChange={(e) => setProvince(e.target.value)}
@@ -239,8 +241,9 @@ const AllProperties = () => {
             ) : null}
 
             {MyPropertiesList.length == 0 && (
-              <div className="m-auto bg-warmGray-300 text-center text-xl">
-                آگهی ثبت شده ای وجود ندارد!
+              <div className=" flex h-[568px] w-full flex-col  items-center justify-center gap-y-4 text-xl">
+                <img src={empty} alt="" />
+                <p className=" font-medium "> آگهی ثبت شده ای وجود ندارد!</p>
               </div>
             )}
           </div>

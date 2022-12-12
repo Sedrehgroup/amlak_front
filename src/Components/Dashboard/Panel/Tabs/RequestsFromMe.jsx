@@ -10,6 +10,8 @@ import { Route, Switch, useRouteMatch } from "react-router-dom";
 import RequestDetails from "../AddOns/RequestDetails";
 import { selectedPropertyDataHandler } from "../../../../redux/reducers/userProperty";
 
+import empty from "../../../../assets/Images/Dashboard/folder-open.svg";
+
 // درخواست ها - صفحه مستأجر
 
 const RequestsFromMe = () => {
@@ -77,13 +79,14 @@ const RequestsFromMe = () => {
                 </div>
               ))}
             {tenantData?.length == 0 && (
-              <div className="m-auto text-xl text-center ">
-                شما درخواستی ثبت نکرده اید!
+              <div className=" flex h-[568px] w-full flex-col  items-center justify-center gap-y-4 text-xl">
+                <img src={empty} alt="" />
+                <p className=" font-medium"> شما درخواستی ثبت نکرده اید!</p>
               </div>
             )}
           </div>
         ) : (
-          <div className="flex justify-center items-center eightyvh">
+          <div className="eightyvh flex items-center justify-center">
             <Spinner name="folding-cube" color="#FF731D" fadeIn="none" />
           </div>
         )}

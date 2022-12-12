@@ -10,6 +10,13 @@ import "swiper/css/thumbs";
 
 import styles from "./PropertyDetailsSlider.module.css";
 
+import h1 from "../../../../assets/Images/Dashboard/house/h1.jpg";
+import h2 from "../../../../assets/Images/Dashboard/house/h2.jpg";
+import h3 from "../../../../assets/Images/Dashboard/house/h3.jpg";
+import h4 from "../../../../assets/Images/Dashboard/house/h4.jpg";
+import h5 from "../../../../assets/Images/Dashboard/house/h5.png";
+import h6 from "../../../../assets/Images/Dashboard/house/h6.jpeg";
+
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper";
 
@@ -34,22 +41,22 @@ export default function PropertyDetailsSlider() {
         // className={styles.mySwiper2}
       >
         <SwiperSlide className="rounded-lg">
-          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.jpg" />
+          <img src={h2} />
         </SwiperSlide>
         <SwiperSlide className="rounded-lg">
-          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.1.jpg" />
+          <img src={h1} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.2.jpg" />
+          <img src={h3} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.3.jpg" />
+          <img src={h4} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.4.jpg" />
+          <img src={h5} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.5.jpg" />
+          <img src={h6} />
         </SwiperSlide>
       </Swiper>
       <Swiper
@@ -62,40 +69,22 @@ export default function PropertyDetailsSlider() {
         className="h-24"
       >
         <SwiperSlide>
-          <img
-            className="rounded-lg"
-            src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.jpg"
-          />
+          <img className="rounded-lg" src={h2} />
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            className="rounded-lg"
-            src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.1.jpg"
-          />
+          <img className="rounded-lg" src={h1} />
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            className="rounded-lg"
-            src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.2.jpg"
-          />
+          <img className="rounded-lg" src={h3} />
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            className="rounded-lg"
-            src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.3.jpg"
-          />
+          <img className="rounded-lg" src={h4} />
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            className="rounded-lg"
-            src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.4.jpg"
-          />
+          <img className="rounded-lg" src={h5} />
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            className="rounded-lg"
-            src="https://s101.divarcdn.com/static/pictures/1670589264/gY4H-uGO.5.jpg"
-          />
+          <img className="rounded-lg" src={h6} />
         </SwiperSlide>
       </Swiper>
     </>

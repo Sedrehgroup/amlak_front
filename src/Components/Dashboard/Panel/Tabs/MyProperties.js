@@ -15,6 +15,8 @@ import {
 import { iranCitiesList } from "../../../../utils/iranCitiesList";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 
+import empty from "../../../../assets/Images/Dashboard/folder-open.svg";
+
 const MyProperties = () => {
   const update = useSelector((state) => state.userProperty.update);
 
@@ -162,10 +164,10 @@ const MyProperties = () => {
                       ))}
                     </div>
                     {nextUrl == "disable" && previousUrl == "disable" ? null : (
-                      <div className="my-10 text-main-800 flex justify-center gap-12">
+                      <div className="my-10 flex justify-center gap-12 text-main-800">
                         <button
                           disabled={nextUrl == "disable"}
-                          className="bg-main-200 p-2 disabled:bg-main-50 disabled:cursor-not-allowed  rounded-r-2xl w-20 cursor-pointer"
+                          className="w-20 cursor-pointer rounded-r-2xl bg-main-200  p-2 disabled:cursor-not-allowed disabled:bg-main-50"
                           onClick={nextHandler}
                         >
                           بعدی
@@ -173,7 +175,7 @@ const MyProperties = () => {
 
                         <button
                           disabled={previousUrl == "disable"}
-                          className="bg-main-200 p-2 disabled:bg-main-50  disabled:cursor-not-allowed rounded-l-2xl w-20 cursor-pointer"
+                          className="w-20 cursor-pointer rounded-l-2xl  bg-main-200 p-2 disabled:cursor-not-allowed disabled:bg-main-50"
                           onClick={previousHandler}
                         >
                           قبلی
@@ -184,13 +186,17 @@ const MyProperties = () => {
                 ) : null}
 
                 {MyPropertiesList.length == 0 && (
-                  <div className="m-auto text-center text-xl bg-warmGray-300">
-                    آگهی ثبت شده ای وجود ندارد!
+                  <div className=" flex h-[568px] w-full flex-col  items-center justify-center gap-y-4 text-xl">
+                    <img src={empty} alt="" />
+                    <p className=" font-medium ">
+                      {" "}
+                      آگهی ثبت شده ای وجود ندارد!
+                    </p>
                   </div>
                 )}
               </div>
             ) : (
-              <div className="flex justify-center items-center eightyvh">
+              <div className="eightyvh flex items-center justify-center">
                 <Spinner name="folding-cube" color="#FF731D" fadeIn="none" />
               </div>
             )}
