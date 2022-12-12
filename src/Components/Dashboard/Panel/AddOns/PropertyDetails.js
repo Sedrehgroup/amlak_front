@@ -333,7 +333,7 @@ export default function PropertyDetails({ data }) {
               <div className="flex w-1/3 flex-col gap-y-2 pt-0">
                 <p className="">
                   قیمت رهن :{" "}
-                  <strong>{data2?.mortgage_amount}&nbsp; تومان</strong>
+                  <strong>{data2?.mortgage_amount.toLocaleString()}&nbsp; تومان</strong>
                 </p>
                 <hr
                   style={{
@@ -342,7 +342,7 @@ export default function PropertyDetails({ data }) {
                   }}
                 />
                 <p className="">
-                  قیمت رهن : <strong>{data2?.rent_amount}&nbsp; تومان</strong>
+                  قیمت رهن : <strong>{data2?.rent_amount.toLocaleString()}&nbsp; تومان</strong>
                 </p>
                 <hr
                   style={{
