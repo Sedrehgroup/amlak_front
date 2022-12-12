@@ -4,7 +4,7 @@ import RightPanel from "./Panel/RightPanel";
 
 export default function BackgroundAndPanel() {
   return (
-    <div className=" bg-warmGray-200 w-full flex">
+    <div className=" flex w-full bg-warmGray-200">
       <div className="w-[200px] pt-4">
         <RightPanel />
       </div>

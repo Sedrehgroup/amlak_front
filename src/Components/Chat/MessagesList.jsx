@@ -4,25 +4,26 @@ import send from "../../assets/Images/Dashboard/send.svg";
 import Message from "./Message";
 
 const MessagesList = (props) => {
-  const [isActiveChat, setIsActiveChat] = useState(true);
-
-  // function OpeningChatPage() {
-  //   setIsActiveChat(false);
-  // }
-
-  const [ml, setml] = useState([
-    <Message
-      MessageText="سلام. من این درخواست ها را از شما دارم"
-      date={currentTime()}
-    />,
-    <Message MessageText="درخواست شماره 1" date={currentTime()} />,
-    <Message MessageText="درخواست شماره 2" date={currentTime()} />,
-    <Message MessageText="درخواست شماره 3" date={currentTime()} />,
-    <Message
-      MessageText="سلام. من با درخواست های شما موافقت می کنم. ولی یک نکته مهمی که باید عرض کنم این است که من این خانه را فقط به یک خانواده 4 نفری اجاره میدهم و نه بیشتر"
-      date={currentTime()}
-      Messenger="Audience"
-    />,
+  const [isActiveChat, setIsActiveChat] = useState(false);
+  const [mockMessage, setMockMessage] = useState([
+    {
+      message_text: "سلام. من این درخواست ها را از شما دارم",
+      date: currentTime(),
+    },
+    {
+      message_text: "درخواست شماره 1",
+      date: currentTime(),
+    },
+    {
+      message_text: "درخواست شماره 2",
+      date: currentTime(),
+    },
+    {
+      message_text:
+        "سلام. من با درخواست های شما موافقت می کنم. ولی یک نکته مهمی که باید عرض کنم این است که من این خانه را فقط به یک خانواده 4 نفری اجاره میدهم و نه بیشتر",
+      date: currentTime(),
+      messenger: "Audience",
+    },
   ]);
 
   const [message, setMessage] = useState("");
@@ -45,38 +46,45 @@ const MessagesList = (props) => {
   }
 
   return isActiveChat ? (
-    <div className="flex h-full justify-center items-center">
+    <div className="flex h-full items-center justify-center">
       <div className="flex flex-col">
         <img src={messages3} alt="messages" />
         <p>برای صحبت کردن، یکی از گفتگو ها را انتخاب کنید</p>{" "}
       </div>
     </div>
   ) : (
-    <div className="w-full h-full relative flex flex-col justify-between">
-      <div className=" w-full flex justify-between  py-4 px-3 border-b-[2px] border-warmGray-400 ">
-        <div className="flex flex-col gap-y-1 items-start">
-          <p className=" font-semibold text-sm">{props.AdName}</p>
-          <p className=" font-medium text-xs">{props.UserName}</p>
+    <div className="relative flex h-full w-full flex-col justify-between">
+      <div className=" flex w-full justify-between  border-b-[2px] border-warmGray-400 py-4 px-3 ">
+        <div className="flex flex-col items-start gap-y-1">
+          <p className=" text-sm font-semibold">{props.AdName}</p>
+          <p className=" text-xs font-medium">{props.UserName}</p>
         </div>
-        <button className="  text-main-600 rounded-lg font-bold px-3 text-sm">
+        <button className="  rounded-lg px-3 text-sm font-bold text-main-600">
           مشاهده آگهی
         </button>{" "}
       </div>
-      <div className="overflow-auto flex flex-col-reverse justify-between h-full ">
-        <div className="flex flex-col gap-y-3 mb-4 mx-6 pt-4 justify-end">
-          {ml}
+      <div className="flex h-full flex-col-reverse justify-between overflow-auto ">
+        <div className="mx-6 mb-4 flex flex-col justify-end gap-y-3 pt-4">
+          {mockMessage.map((messageItem, index) => (
+            <Message
+              MessageText={messageItem.message_text}
+              date={currentTime()}
+              Messenger={!!messageItem?.messenger ? "Audience" : null}
+            />
+          ))}
         </div>
       </div>
-      <div className=" rounded-lg p-2 bg-warmGray-200 flex gap-x-3 mb-3 mx-6">
+      <div className=" mx-6 mb-3 flex gap-x-3 rounded-lg bg-warmGray-200 p-2">
         <button
           onClick={() => {
             if (message === "") {
               setMessage("");
             } else {
-              const newml = ml.concat(
-                <Message MessageText={message} date={currentTime()} />
-              );
-              setml(newml);
+              const newMockMessage = mockMessage.concat({
+                message_text: message,
+                date: currentTime(),
+              });
+              setMockMessage(newMockMessage);
               setMessage("");
             }
           }}
@@ -85,7 +93,7 @@ const MessagesList = (props) => {
         </button>
         <textarea
           rows="1"
-          className="focus:outline-none overflow-y-scroll w-full p-1 bg-warmGray-200 resize-none"
+          className="w-full resize-none overflow-y-scroll bg-warmGray-200 p-1 focus:outline-none"
           placeholder="پیام خود را بنویسید ..."
           type="text"
           id="message"
