@@ -720,33 +720,17 @@ export default function EditProperty() {
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   تعداد خط{" "}
                 </label>
-                <select
-                  dir="ltr"
-                  className="w-full h-12 px-4"
-                  {...register("phone_lines", {
-                    valueAsNumber: true,
-                  })}
-                  placeholder="1"
-                  defaultValue={defaultData?.phone_lines}
-                >
-                  {[
-                    { lb: "بدون خط", value: 0 },
-                    { lb: "1", value: 1 },
-                    { lb: "2", value: 2 },
-                    { lb: "3", value: 3 },
-                    { lb: "بیشتر", value: 4 },
-                  ].map((val, index) => (
-                    <option
-                      key={index}
-                      value={val.value}
-                      selected={
-                        defaultData?.phone_lines == val.value && "selected"
-                      }
-                    >
-                      {val.lb}
-                    </option>
-                  ))}
-                </select>
+                <input
+                 dir="ltr"
+                 className="w-full h-12 px-4"
+                 {...register("phone_lines", {
+                   valueAsNumber: true,
+                 })}
+                 placeholder="1"
+                 defaultValue={defaultData?.phone_lines}
+                  type="text"
+                />
+          
               </div>
 
               <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
@@ -849,7 +833,7 @@ export default function EditProperty() {
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   تعداد طبقات ساختمان{" "}
                 </label>
-                <select
+                <input
                   dir="ltr"
                   className="w-full h-12 px-4"
                   {...register("floors_number", {
@@ -857,71 +841,25 @@ export default function EditProperty() {
                   })}
                   placeholder="3"
                   defaultValue={defaultData?.floors_number}
-                >
-                  {[
-                    { lb: "1", value: 0 },
-                    { lb: "2", value: 1 },
-                    { lb: "3", value: 2 },
-                    { lb: "4", value: 3 },
-                    { lb: "5", value: 4 },
-                    { lb: "6", value: 5 },
-                    { lb: "7", value: 6 },
-                    { lb: "8", value: 7 },
-                    { lb: "9", value: 8 },
-                    { lb: "10", value: 9 },
-                    { lb: "11", value: 10 },
-                    { lb: "12", value: 11 },
-                    { lb: "13", value: 12 },
-                    { lb: "14", value: 13 },
-                    { lb: "15", value: 14 },
-                    { lb: "16", value: 15 },
-                    { lb: "17", value: 16 },
-                    { lb: "18", value: 17 },
-                    { lb: "بیشتر", value: 18 },
-                  ].map((val, index) => (
-                    <option
-                      key={index}
-                      value={val.value}
-                      selected={
-                        defaultData?.floors_number == val.value && "selected"
-                      }
-                    >
-                      {val.lb}
-                    </option>
-                  ))}
-                </select>
+                  type="text"
+                />
+             
               </div>
               <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-9 right-2">
                   تعداد واحد در طبقه{" "}
                 </label>
-                <select
-                  dir="ltr"
-                  className="w-full h-12 px-4"
-                  {...register("units_per_floor", {
-                    valueAsNumber: true,
-                  })}
-                  placeholder="1"
-                  defaultValue={defaultData?.units_per_floor}
-                >
-                  {[
-                    { lb: "2", value: 0 },
-                    { lb: "1", value: 1 },
-                    { lb: "3", value: 2 },
-                    { lb: "4", value: 3 },
-                    { lb: "غیره", value: 4 },
-                  ].map((val, index) => (
-                    <option
-                      key={index}
-                      value={val.value}
-                      selected={
-                        defaultData?.units_per_floor == val.value && "selected"
-                      }
-                    >
-                      {val.lb}
-                    </option>
-                  ))}
-                </select>
+                <input
+           dir="ltr"
+           className="w-full h-12 px-4"
+           {...register("units_per_floor", {
+             valueAsNumber: true,
+           })}
+           placeholder="1"
+           defaultValue={defaultData?.units_per_floor}
+                  type="text"
+                />
+               
               </div>
               <div className="relative w-full mt-6 border-2 border-solid border-main-200">
                 <label className="absolute bg-primary-50 bottom-20 right-2">
