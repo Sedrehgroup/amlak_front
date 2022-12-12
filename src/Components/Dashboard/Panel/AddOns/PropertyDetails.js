@@ -189,7 +189,8 @@ export default function PropertyDetails({ data }) {
             },
           }
         )
-        .then(({ data }) => {
+        .then(() => {
+          const data = window.location.pathname.split('/').at(-1);
           console.log("api/request/my_requests data.data:", data);
           toast.success("درخواست شما با موفقیت ثبت شد", {
             position: "top-center",
