@@ -76,13 +76,10 @@ function App() {
     <div className="bg-warmGray-200">
       {/* {isUserLogged ? <Main /> : <Login />} */}
       <Switch>
-        <Route exact path="/">
-          <Redirect to="/dashboard" />
-        </Route>
-        <Route exact path="/login">
+        <Route exact path="/auth">
           <Login isLoged={isUserLogged} />
         </Route>
-        <Route exact path="/dashboard">
+        <Route exact path="/">
           <Main comp={<Counter />} isLoged={isUserLogged} />
         </Route>
         <Route path="/userinfo">

@@ -11,13 +11,12 @@ export default function Login({ isLoged }) {
 
   return (
     <>
+      <h1> hahah</h1>
       {isLoged ? (
-        <Redirect to="/dashboard" />
+        <Redirect to="/" />
       ) : (
         <div>
-          {loginSteps["Register_Step"] ? (
-            <Main /> //if user is in database he goes to Main
-          ) : loginSteps["PhoneSms_Step"] ? (
+          {loginSteps["PhoneSms_Step"] ? (
             <RegisterForm /> //if user is not in database it should register
           ) : loginSteps["PhoneNumber_Step"] ? (
             <PhoneSmsForm /> //recieve sms code from user and check if it is true
@@ -26,6 +25,7 @@ export default function Login({ isLoged }) {
           )}
         </div>
       )}
+      <h2>hihihi</h2>
     </>
   );
 }
