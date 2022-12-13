@@ -1,9 +1,12 @@
 import React from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import NavBar from "./Dashboard/NavBar";
 import RightPanel from "./Dashboard/Panel/RightPanel";
 import Protected from "./Protect/protected";
 
 export default function Main({ comp, isLoged }) {
+
   return (
     <div>
       <Protected isLoged={isLoged}>

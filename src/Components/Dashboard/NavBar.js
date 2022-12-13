@@ -5,21 +5,20 @@ import logo from "../../assets/Images/Dashboard/logo.svg";
 import axios from "axios";
 import useToken from "../../customHooks/useToken";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUserIsLoggedHandler, userLoginStepDenied } from "../../redux/reducers/login";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { setUserIdHandler } from "../../redux/reducers/user";
 
 export default function NavBar() {
-  const [isAllAdds, setisAllAdds] = useState(false);
+ 
   const [userData, setUserData] = useState({});
   const dispatch = useDispatch();
   const [token] = useToken();
-  const history = useHistory();
-  const location = useLocation();
-  const isAllAddsHandler = function () {
-    setisAllAdds(!isAllAdds);
-  };
+  const update = useSelector((state) => state.user.update);
+  useEffect(()=>{
+    console.warn("update>>>>>>>>>>>>>>>>>>",update)
+  },[update])
   const logOutHandler = () => {
     window.localStorage.removeItem("ACC_TOKEN");
     window.localStorage.removeItem("REF_TOKEN");
@@ -33,7 +32,7 @@ export default function NavBar() {
   };
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
-
+  
     if (!!!!token) {
       try {
         axios
@@ -58,7 +57,7 @@ export default function NavBar() {
         console.log("error", error);
       }
     }
-  }, [token]);
+  }, [token,update]);
 
   return (
     <div className="relative w-full bg-warmGray-50 flex items-center justify-between px-6 py-4 ">

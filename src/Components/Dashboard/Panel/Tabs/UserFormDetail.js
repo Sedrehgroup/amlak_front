@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import useToken from "../../../../customHooks/useToken";
 import { setUserIsLoggedHandler } from "../../../../redux/reducers/login";
+import { updateHandler } from "../../../../redux/reducers/user";
 import { iranCitiesList } from "../../../../utils/iranCitiesList";
 import {
   arrayOfDays,
@@ -156,7 +157,7 @@ export default function UserFormDetail() {
     const Api_Url = process.env.REACT_APP_API_URL;
     try {
       axios
-        .patch(
+        .put(
           `${Api_Url}/account/additional_user_information/`,
           {
             email: email || userAdditionalData.email,
@@ -195,6 +196,7 @@ export default function UserFormDetail() {
         )
         .then(({ data }) => {
           console.log("axios /account/create_additional_user data.data:", data);
+          dispatch(updateHandler(Math.random()))
           toast.success("اطلاعات با موفقیت ثبت شد", {
             position: "top-center",
             rtl: true,

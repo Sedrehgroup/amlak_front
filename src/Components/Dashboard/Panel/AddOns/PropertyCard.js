@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 
 import frame from "./../../../../assets/Images/Dashboard/Frame.png";
-import house from "./../../../../assets/Images/Dashboard/house.jpg";
+import house from "../../../../assets/Images/Dashboard/house/h1.jpg";
 
 export default function PropertyCard(props) {
   const { title, mortgage_amount, rent_amount, area, id, city } = props.data;
