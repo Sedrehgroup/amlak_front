@@ -7,12 +7,14 @@ import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import useToken from "../../../../customHooks/useToken";
 import { updateHandler } from "../../../../redux/reducers/user";
+import { updateListHandler } from "../../../../redux/reducers/userProperty";
 import { calcTimeOfContract } from "../../../../utils/calcTimeOfContract";
 
 export default function SignContract({ data }) {
   function printDiv() {
+    history.push('/contracts')
     let elem = document.getElementById("contractPrint");
-    elem.style.backgroundColor="#cfcfcf"
+    elem.style.backgroundColor="#efefef"
     let divContents = elem.innerHTML;
     // divContents.style.direction = "rtl";
     // elem.style.direction='rtl'
@@ -140,6 +142,7 @@ export default function SignContract({ data }) {
             // setPropertyData(data);
             history.push("/contracts");
             dispatch(updateHandler(Math.random()));
+         
             toast.success("با موفقیت قرارداد توسط شما امضا شد", {
               position: "top-center",
               rtl: true,

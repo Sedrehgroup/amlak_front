@@ -96,11 +96,13 @@ const ContractCard = ({
                 شروع قرارداد:{" "}
                 <span className="mx-1 text-lg font-medium">
                   {data?.start_date?.slice(8, 10)}
-                  {
+                 <span className="px-2">
+                 {
                     arrayOfMonths.find(
                       (val) => val.value == data?.start_date?.slice(5, 7)
                     ).label
                   }
+                 </span>
                   {data?.start_date?.slice(0, 4)}
                 </span>
               </p>
@@ -108,11 +110,13 @@ const ContractCard = ({
                 پایان قرارداد:{" "}
                 <span className="mx-1 text-lg font-medium">
                   {data?.end_date?.slice(8, 10)}
-                  {
+                <span className="px-2">
+                {
                     arrayOfMonths.find(
                       (val) => val.value == data?.end_date?.slice(5, 7)
                     ).label
                   }
+                </span>
                   {data?.end_date?.slice(0, 4)}
                 </span>
               </p>

@@ -8,7 +8,9 @@ import RegisterForm from "./Elements/RegisterForm";
 
 export default function Login({ isLoged }) {
   const loginSteps = useSelector((state) => state.login.loginSteps);
-
+  useEffect(() => {
+    document.title='سامانه اجاره بها - ورود'
+  }, []);
   return (
     <>
    

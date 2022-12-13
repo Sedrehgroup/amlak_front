@@ -34,7 +34,7 @@ const ToMeRequestCard = ({
     landlord_description,
   } = data;
   let { path, url } = useRouteMatch();
-
+ 
   const dispatch = useDispatch();
   const passReqDataForSubmitContractHandler = () => {
     dispatch(reqDataHandler(data));
@@ -151,7 +151,7 @@ const ToMeRequestCard = ({
                 مشاهده آگهی
               </Link>
               {status == 0 ? (
-                <RequestInfoBtn />
+                <RequestInfoBtn tenant_description={tenant_description} request_property={request_property} />
               ) : status == 1 ? (
                 <>
                   <SeeRequestBtn
@@ -370,6 +370,9 @@ const SeeRequestBtn = ({
 };
 
 const RequestInfoBtn = ({ tenant_description, request_property }) => {
+  const gradient = {
+    background: "linear-gradient(90.83deg, #FF731D 0.01%, #FFAB77 100.01%)",
+  };
   return (
     <Popup
       trigger={

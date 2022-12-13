@@ -7,6 +7,7 @@ import {
   signContractHandler,
 } from "./../../redux/reducers/userProperty";
 import { Link, useRouteMatch } from "react-router-dom";
+import Popup from "reactjs-popup";
 // کارت درخواست من به عنوان مستاجر
 
 const MyRequestCard = ({
@@ -95,7 +96,7 @@ const MyRequestCard = ({
                     : status == 2
                     ? "تایید درخواست شما توسط مؤجر"
                     : status == 3
-                    ? "منتظر امضای قرارداد توسط شما"
+                    ? "منتظر امضای قرارداد"
                     : status == 6
                     ? "تکمیل قرارداد اجاره"
                     : null}
@@ -138,19 +139,22 @@ const MyRequestCard = ({
                 مشاهده آگهی
               </Link>
               {status == 0 ? null : status == 1 ? null : status == 2 ? (
-                <button
-                  style={gradient}
-                  className="border-2 text-white rounded-lg font-bold px-6 py-2"
-                >
-                  جزئیات درخواست
-                </button>
+                <RequestInfoBtn 
+                style={gradient}
+                
+                tenant_description={tenant_description} request_property={request_property} />
+              
               ) : status == 3 || status == 5 ? (
-                <button
-                  style={gradient}
-                  className="border-2 text-white rounded-lg font-bold px-6 py-2"
-                >
-                  امضای قرارداد
-                </button>
+                <Link
+                to={`/contracts`}
+                style={gradient}
+                
+                className="border-2 text-white rounded-lg font-bold px-6 py-2"
+              >
+               
+                صفحه قرارداد ها
+              </Link>
+               
               ) : status == 4 || status == 6 ? (
                 <button
                   style={gradient}
@@ -169,3 +173,63 @@ const MyRequestCard = ({
 };
 
 export default MyRequestCard;
+
+const RequestInfoBtn = ({style, tenant_description, request_property }) => {
+const tenantDefaultDesc = "متن پیشفرض توضیحات مستاجر";
+
+  return (
+    <Popup
+      trigger={
+        <button
+          style={style}
+          className="border-2 text-white rounded-lg font-bold px-6 py-2"
+        >
+          جزئیات درخواست
+        </button>
+      }
+      modal
+      nested
+    >
+      {(close) => (
+        <div className="modal">
+          <button className="close" onClick={close}>
+            &times;
+          </button>
+          <div className="header">جزئیات درخواست</div>
+          <div className="content">
+            <div className="flex flex-row justify-start gap-6">
+              <div>
+                <span className="text-base">آگهی :</span>
+                <span>{request_property?.title}</span>
+              </div>
+              <div>
+                <span className="text-base">مبلغ رهن :</span>
+                <span>{request_property?.mortgage_amount}تومان</span>
+              </div>
+              <div>
+                <span className="text-base">مبلغ اجاره :</span>
+                <span>{request_property?.rent_amount}تومان</span>
+              </div>
+            </div>
+            <div>
+              <p className="text-base">توضیحات مستاجر:</p>
+              <p className="text-xs pt-1 text-warmGray-400">
+                {tenant_description || tenantDefaultDesc}
+              </p>
+            </div>
+          </div>
+          <div className="actions flex justify-center gap-3">
+            <button
+              className="button bg-warmGray-100 text-warmGray-500 py-1 rounded-lg text-base px-4"
+              onClick={() => {
+                close();
+              }}
+            >
+              بستن{" "}
+            </button>
+          </div>
+        </div>
+      )}
+    </Popup>
+  );
+};
