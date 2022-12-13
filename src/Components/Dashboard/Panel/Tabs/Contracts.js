@@ -28,6 +28,9 @@ const Contracts = () => {
 
   const Api_Url = process.env.REACT_APP_API_URL;
   useEffect(() => {
+    document.title='سامانه اجاره بها - قراردادها'
+  }, []);
+  useEffect(() => {
     console.log("token",token)
     if (!!!!token) {
       try {

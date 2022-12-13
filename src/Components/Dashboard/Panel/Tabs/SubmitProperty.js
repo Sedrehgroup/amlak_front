@@ -26,7 +26,9 @@ export default function SubmitProperty() {
     formState: { errors },
   } = useForm();
   const [token] = useToken();
-
+  useEffect(() => {
+    document.title='سامانه اجاره بها - ثبت آگهی'
+  }, []);
   const onSubmit = (data) => {
     console.log("form data", data);
     console.log("watch('title')", watch("title"));

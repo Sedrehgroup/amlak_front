@@ -32,6 +32,9 @@ export default function PropertyDetails({ data }) {
 
   const history = useHistory();
   const [token] = useToken();
+  useEffect(() => {
+    document.title='سامانه اجاره بها - مشخصات آگهی'
+  }, []);
   // useEffect(() => {
   //   const Api_Url = process.env.REACT_APP_API_URL;
   //   if (!!!!params) {

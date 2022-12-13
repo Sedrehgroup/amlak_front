@@ -44,8 +44,8 @@ const SubmitContract = () => {
   const Api_Url = process.env.REACT_APP_API_URL;
   const [date] = useTimeDateFa();
   useEffect(() => {
-    console.log("requestId", requestId);
-  }, [requestId]);
+    document.title='سامانه اجاره بها - ثبت آگهی'
+  }, []);
   // contract_registration_date
   // تاریخ عقد قراداد
   const [day1, setDay1] = useState("15");

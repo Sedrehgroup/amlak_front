@@ -5,10 +5,9 @@ import useToken from "./../../../../customHooks/useToken";
 
 import PropertyDetails from "./../AddOns/PropertyDetails";
 import PropertyCard from "./../AddOns/PropertyCard";
-import { Route, Switch, useRouteMatch } from "react-router-dom";
 import { iranCitiesList } from "../../../../utils/iranCitiesList";
 import { selectedPropertyDataHandler } from "../../../../redux/reducers/userProperty";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import empty from "../../../../assets/Images/Dashboard/folder-open.svg";
 
@@ -17,7 +16,6 @@ const AllProperties = () => {
 
   const [token] = useToken();
   const [MyPropertiesList, setMyProperties] = useState([]);
-  const [adData, setAdData] = useState([]);
   const [province, setProvince] = useState("");
   const [city, setCity] = useState("");
 
@@ -25,10 +23,9 @@ const AllProperties = () => {
   const [nextUrl, setNextUrl] = useState("disable");
 
   const [showLoading, setShowLoading] = useState(false);
-  let { path, url } = useRouteMatch();
-  const selectedProperty = useSelector(
-    (state) => state.userProperty.selectedProperty
-  );
+  useEffect(() => {
+    document.title='سامانه اجاره بها - آگهی های اجاره'
+  }, []);
 
   useEffect(() => {
     if (province == "") setCity("");

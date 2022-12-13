@@ -28,6 +28,10 @@ const RequestsToMe = () => {
   const [adData, setAdData] = useState({});
 
   const Api_Url = process.env.REACT_APP_API_URL;
+  
+  useEffect(() => {
+    document.title='سامانه اجاره بها - درخواست های موجر'
+  }, []);
   useEffect(() => {
     if (!!!!token) {
       try {

@@ -24,6 +24,10 @@ const RequestsFromMe = () => {
   const [token] = useToken();
   const dispatch = useDispatch();
   const { path, url } = useRouteMatch();
+
+  useEffect(() => {
+    document.title='سامانه اجاره بها - درخواست های مستاجر'
+  }, []);
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
 

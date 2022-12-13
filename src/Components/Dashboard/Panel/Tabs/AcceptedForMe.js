@@ -30,6 +30,9 @@ const AcceptedForMe = () => {
 
   const Api_Url = process.env.REACT_APP_API_URL;
   useEffect(() => {
+    document.title='سامانه اجاره بها - اجاره شده ها'
+  }, []);
+  useEffect(() => {
     if (!!!!token) {
       try {
         setShowLoading(true);

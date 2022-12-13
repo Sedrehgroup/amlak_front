@@ -59,6 +59,9 @@ export default function UserFormDetail() {
   const dispatch = useDispatch();
   const [token] = useToken();
   useEffect(() => {
+    document.title='سامانه اجاره بها - اطلاعات کاربری'
+  }, []);
+  useEffect(() => {
     setBirthDate(`${year}-${month}-${day}`);
   }, [day, month, year]);
   useEffect(() => {

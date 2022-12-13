@@ -31,7 +31,9 @@ export default function EditProperty() {
   } = useForm();
   const [token] = useToken();
   const [defaultData, setDefaultData] = useState({});
-
+  useEffect(() => {
+    document.title='سامانه اجاره بها - ویرایش آگهی'
+  }, []);
   useEffect(() => {
 
     if (!!!!token) {

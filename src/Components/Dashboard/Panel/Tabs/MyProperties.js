@@ -30,7 +30,9 @@ const MyProperties = () => {
 
   const dispatch = useDispatch();
   const [token] = useToken();
-
+  useEffect(() => {
+    document.title='سامانه اجاره بها - آگهی های من'
+  }, []);
   const nextHandler = () => {
     const Api_Url = process.env.REACT_APP_API_URL;
     try {
