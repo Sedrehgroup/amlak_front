@@ -40,7 +40,7 @@ function App() {
     const Api_Url = process.env.REACT_APP_API_URL;
     return () => {
       setInterval(() => {
-        console.log("interval");
+      
         console.log(token);
         if (!token) return;
         console.log("try new token");
@@ -96,7 +96,7 @@ function App() {
           />
         </Route>
         <Route path="/contracts">
-          <Main path={<Contracts />} isLoged={isUserLogged} />
+          <Main comp={<Contracts />} isLoged={isUserLogged} />
         </Route>
         <Route path="/submitContract">
           <Main comp={<SubmitContract />} isLoged={isUserLogged} />

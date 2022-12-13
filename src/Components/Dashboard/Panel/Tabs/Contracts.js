@@ -18,7 +18,7 @@ import SignContract from "../AddOns/SignContract";
 
 const Contracts = () => {
   const [contractsList, setContractsList] = useState();
-  const [update, setUpdate] = useState(0);
+ 
   const [showLoading, setShowLoading] = useState(false);
   const { path, url } = useRouteMatch();
   const _update = useSelector((state) => state.user.update);
@@ -28,6 +28,7 @@ const Contracts = () => {
 
   const Api_Url = process.env.REACT_APP_API_URL;
   useEffect(() => {
+    console.log("token",token)
     if (!!!!token) {
       try {
         setShowLoading(true);
@@ -55,7 +56,7 @@ const Contracts = () => {
         console.log("error", error);
       }
     }
-  }, [token, update, _update]);
+  }, [token,_update]);
   //   const changeStatusHandler = (id, status) => {
   //     // id = request id
   //     if (!!!!token) {

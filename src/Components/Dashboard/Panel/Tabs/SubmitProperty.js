@@ -637,7 +637,7 @@ export default function SubmitProperty() {
                    {...register("phone_lines", {
                     valueAsNumber: true,
                   })}
-                  placeholder="این خانه سند دارد."
+                  placeholder="2"
                   type="text"
                 />
               
@@ -710,7 +710,7 @@ export default function SubmitProperty() {
                    {...register("unit_floor", {
                     valueAsNumber: true,
                   })}
-                  placeholder="این خانه سند دارد."
+                  placeholder="3"
                   type="text"
                 />
             
@@ -724,7 +724,7 @@ export default function SubmitProperty() {
                    {...register("floors_number", {
                     valueAsNumber: true,
                   })}
-                  placeholder="این خانه سند دارد."
+                  placeholder="10"
                   type="text"
                 />
               
@@ -739,7 +739,7 @@ export default function SubmitProperty() {
                   {...register("units_per_floor", {
                     valueAsNumber: true,
                   })}
-                  placeholder="این خانه سند دارد."
+                  placeholder="2"
                   type="text"
                 />
               </div>
