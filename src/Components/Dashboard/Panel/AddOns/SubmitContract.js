@@ -314,15 +314,40 @@ const SubmitContract = () => {
                       <label className="absolute bottom-9 right-2 bg-primary-50">
                         وضعیت سند
                       </label>
-                      <input
-                        className="focusinput h-12 w-full rounded border-2 border-solid  border-warmGray-300  px-1 py-2"
-                        {...register("document_status", {
-                          required: "لطفا این فیلد را تکمیل کنید",
+                      <select
+                  dir="ltr"
+                  className="focusinput h-12 w-full rounded border-2 border-solid  border-warmGray-300  px-1 py-2"
 
-                          valueAsNumber: true,
-                        })}
-                        placeholder="5"
-                      />
+                  {...register("document_status", {
+                    valueAsNumber: true,
+                  })}
+                  placeholder="5"
+                >
+                  {[
+                    { lb: "دارای سند شخصی", value: 0 },
+                    { lb: "اوقافی", value: 1 },
+                    { lb: "بنیادی", value: 2 },
+                    { lb: "تعاونی", value: 3 },
+                    { lb: "(ره)ستاد اجرایی فرمان امام", value: 4 },
+                    { lb: "بدون سند", value: 5 },
+                    { lb: "آستان قدس", value: 6 },
+                    { lb: "موقوفه عام", value: 7 },
+                    { lb: "موقوفه خاص", value: 8 },
+                    { lb: "شهرداری", value: 9 },
+                    { lb: "دولتی", value: 10 },
+                    { lb: "شرکت سهامی خاص", value: 11 },
+                    { lb: "شرکت سهامی عام", value: 11 },
+                  ].map((val, index) => (
+                    <option
+                      key={index}
+                      value={val.value}
+                      selected={ val.value == 0 && "selected"}
+                    >
+                      {val.lb}
+                    </option>
+                  ))}
+                </select>
+                     
                     </div>
                     <div className="inputCfive relative mx-1">
                       <label className="absolute bottom-9 right-2 bg-primary-50">
