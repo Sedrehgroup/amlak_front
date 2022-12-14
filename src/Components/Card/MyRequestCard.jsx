@@ -36,11 +36,11 @@ const MyRequestCard = ({
   };
 
   return (
-    <div className="p-10 border border-warmGray-400 bg-warmGray-100 my-8 mx-12 rounded-lg">
+    <div className="my-8 mx-12 rounded-lg border border-warmGray-400 bg-warmGray-100 p-10">
       <div className="flex flex-col gap-y-10">
-        <div className="flex justify-between pb-4 border-b-2 border-b-warmGray-800">
-          <p className="font-semibold text-xl">{request_property?.title}</p>
-          <button className=" bg-sub-500 text-warmGray-50 rounded-lg px-4 py-2">
+        <div className="flex justify-between border-b-2 border-b-warmGray-800 pb-4">
+          <p className="text-xl font-semibold">{request_property?.title}</p>
+          <button className=" rounded-lg bg-sub-500 px-4 py-2 text-warmGray-50">
             {TitleOfChatButton}
           </button>
         </div>
@@ -51,41 +51,41 @@ const MyRequestCard = ({
             alt="img"
             style={{ width: "400px", height: "240px" }}
           />
-          <div className="flex flex-col gap-y-6 justify-between w-full">
+          <div className="flex w-full flex-col justify-between gap-y-6">
             <div className="flex justify-between">
               <p className="font-light">
                 قیمت رهن:
-                <span className="font-medium text-lg">
+                <span className="text-lg font-medium">
                   {request_property?.mortgage_amount} تومان
                 </span>
               </p>
-             
+
               <p className="font-light">
-                قیمت اجاره:{" "}
-                <span className="font-medium text-lg">
+                قیمت اجاره ماهانه:{" "}
+                <span className="text-lg font-medium">
                   {request_property?.rent_amount} تومان
                 </span>
               </p>
               <p className="font-light">
                 متراژ:{" "}
-                <span className="font-medium text-lg">
+                <span className="text-lg font-medium">
                   {request_property?.area}متر
                 </span>
                 {/* <span className="font-medium text-lg">{`${props.meterage}`}</span> */}
               </p>
             </div>
             <hr className=" text-warmGray-400" />
-            <p className="font-light flex flex-row items-center gap-4">
+            <p className="flex flex-row items-center gap-4 font-light">
               وضعیت :&nbsp;&nbsp;
               {status != 4 || status != 5 ? (
                 <span
                   className={`font-bold ${
                     status == 0
-                      ? "text-[#EF4444] bg-[#FEE2E2]"
+                      ? "bg-[#FEE2E2] text-[#EF4444]"
                       : status == 1 || status == 3
-                      ? "text-[#F97316] bg-[#FFEDD5]"
+                      ? "bg-[#FFEDD5] text-[#F97316]"
                       : status == 2 || status == 6
-                      ? "text-[#22C55E] bg-[#DCFCE7]"
+                      ? "bg-[#DCFCE7] text-[#22C55E]"
                       : null
                   }  rounded p-2`}
                 >
@@ -104,12 +104,12 @@ const MyRequestCard = ({
               ) : status == 4 ? (
                 <>
                   <span
-                    className={`font-bold text-[#22C55E] bg-[#DCFCE7] rounded p-2`}
+                    className={`rounded bg-[#DCFCE7] p-2 font-bold text-[#22C55E]`}
                   >
                     امضای قرارداد توسط شما
                   </span>
                   <span
-                    className={`font-bold text-[#F97316] bg-[#FFEDD5] rounded p-2`}
+                    className={`rounded bg-[#FFEDD5] p-2 font-bold text-[#F97316]`}
                   >
                     منتظر امضای قرارداد توسط موجر
                   </span>
@@ -117,12 +117,12 @@ const MyRequestCard = ({
               ) : status == 5 ? (
                 <>
                   <span
-                    className={`font-bold text-[#22C55E] bg-[#DCFCE7] rounded p-2`}
+                    className={`rounded bg-[#DCFCE7] p-2 font-bold text-[#22C55E]`}
                   >
                     امضای قرارداد توسط موجر
                   </span>
                   <span
-                    className={`font-bold text-[#F97316] bg-[#FFEDD5] rounded p-2`}
+                    className={`rounded bg-[#FFEDD5] p-2 font-bold text-[#F97316]`}
                   >
                     منتظر امضای قرارداد توسط شما
                   </span>
@@ -134,31 +134,28 @@ const MyRequestCard = ({
               <Link
                 to={`/allProperties/${request_property?.id}`}
                 onClick={passPropertyData}
-                className="border-2 border-main-600 text-main-600 rounded-lg font-bold px-6 py-2"
+                className="rounded-lg border-2 border-main-600 px-6 py-2 font-bold text-main-600"
               >
                 مشاهده آگهی
               </Link>
               {status == 0 ? null : status == 1 ? null : status == 2 ? (
-                <RequestInfoBtn 
-                style={gradient}
-                
-                tenant_description={tenant_description} request_property={request_property} />
-              
+                <RequestInfoBtn
+                  style={gradient}
+                  tenant_description={tenant_description}
+                  request_property={request_property}
+                />
               ) : status == 3 || status == 5 ? (
                 <Link
-                to={`/contracts`}
-                style={gradient}
-                
-                className="border-2 text-white rounded-lg font-bold px-6 py-2"
-              >
-               
-                صفحه قرارداد ها
-              </Link>
-               
+                  to={`/contracts`}
+                  style={gradient}
+                  className="rounded-lg border-2 px-6 py-2 font-bold text-white"
+                >
+                  صفحه قرارداد ها
+                </Link>
               ) : status == 4 || status == 6 ? (
                 <button
                   style={gradient}
-                  className="border-2 text-white rounded-lg font-bold px-6 py-2"
+                  className="rounded-lg border-2 px-6 py-2 font-bold text-white"
                 >
                   نمایش اجاره نامه
                 </button>
@@ -174,15 +171,15 @@ const MyRequestCard = ({
 
 export default MyRequestCard;
 
-const RequestInfoBtn = ({style, tenant_description, request_property }) => {
-const tenantDefaultDesc = "متن پیشفرض توضیحات مستاجر";
+const RequestInfoBtn = ({ style, tenant_description, request_property }) => {
+  const tenantDefaultDesc = "متن پیشفرض توضیحات مستاجر";
 
   return (
     <Popup
       trigger={
         <button
           style={style}
-          className="border-2 text-white rounded-lg font-bold px-6 py-2"
+          className="rounded-lg border-2 px-6 py-2 font-bold text-white"
         >
           جزئیات درخواست
         </button>
@@ -207,20 +204,20 @@ const tenantDefaultDesc = "متن پیشفرض توضیحات مستاجر";
                 <span>{request_property?.mortgage_amount}تومان</span>
               </div>
               <div>
-                <span className="text-base">مبلغ اجاره :</span>
+                <span className="text-base">مبلغ اجاره ماهانه :</span>
                 <span>{request_property?.rent_amount}تومان</span>
               </div>
             </div>
             <div>
               <p className="text-base">توضیحات مستاجر:</p>
-              <p className="text-xs pt-1 text-warmGray-400">
+              <p className="pt-1 text-xs text-warmGray-400">
                 {tenant_description || tenantDefaultDesc}
               </p>
             </div>
           </div>
           <div className="actions flex justify-center gap-3">
             <button
-              className="button bg-warmGray-100 text-warmGray-500 py-1 rounded-lg text-base px-4"
+              className="button rounded-lg bg-warmGray-100 py-1 px-4 text-base text-warmGray-500"
               onClick={() => {
                 close();
               }}

@@ -101,16 +101,16 @@ export default function RequestDetails({ data }) {
   return (
     <>
       <div className="mt-4 mb-4">
-        <strong className="flex justify-center text-4xl mb-8">
+        <strong className="mb-8 flex justify-center text-4xl">
           {data2?.title}
         </strong>
         <div className="flex">
-          <div className="bg-white w-3/5 ml-10 mr-10  flex justify-center flex-col rounded-lg">
+          <div className="ml-10 mr-10 flex w-3/5  flex-col justify-center rounded-lg bg-white">
             <div className="flex bg-white">
               <div className="w-2/3 rounded-lg p-6">
                 <PropertyDetailsSlider />
               </div>
-              <div className="w-1/3 m-6 rounded-lg">
+              <div className="m-6 w-1/3 rounded-lg">
                 <p className="mb-4">
                   قیمت رهن : {data2?.mortgage_amount} تومان{" "}
                 </p>
@@ -120,7 +120,9 @@ export default function RequestDetails({ data }) {
                     marginBottom: "16px",
                   }}
                 />
-                <p className="mb-4">قیمت اجاره : {data2?.rent_amount} تومان </p>
+                <p className="mb-4">
+                  قیمت اجاره ماهانه : {data2?.rent_amount} تومان{" "}
+                </p>
                 <hr
                   style={{
                     color: "#D6D3D1",
@@ -186,7 +188,7 @@ export default function RequestDetails({ data }) {
               </div>
             </div>
           </div>
-          <div className="bg-white w-2/5 ml-10 mr-10 rounded-lg p-4">
+          <div className="ml-10 mr-10 w-2/5 rounded-lg bg-white p-4">
             <h2>توضیحات</h2>
             <div>
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
@@ -207,9 +209,9 @@ export default function RequestDetails({ data }) {
             </div>
             <div>
               <p>امکانات</p>
-              <div className="w-20 h-20 bg-primary-50 p-2 mb-2">
+              <div className="mb-2 h-20 w-20 bg-primary-50 p-2">
                 <img src={Driving} alt="" className="mx-auto" />
-                <p className="text-primary-950 text-center rounded-lg ">
+                <p className="rounded-lg text-center text-primary-950 ">
                   پارکینگ
                 </p>
               </div>
@@ -221,7 +223,7 @@ export default function RequestDetails({ data }) {
             />
             <p className="mb-1 mt-1">{data2?.address}</p>
 
-            <div className="flex flex-col justify-between h-[40%] ">
+            <div className="flex h-[40%] flex-col justify-between ">
               <div className="p-4">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d30795.380700658057!2d51.372130333374294!3d35.77622000762392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1669539829911!5m2!1sen!2s"
@@ -232,7 +234,7 @@ export default function RequestDetails({ data }) {
                 ></iframe>
               </div>
               <div className="flex justify-center gap-8">
-                <button className="text-sm text-sub-500 border-2 border-solid border-sub-500 rounded px-6 py-1 ">
+                <button className="rounded border-2 border-solid border-sub-500 px-6 py-1 text-sm text-sub-500 ">
                   گفتگو
                 </button>
               </div>

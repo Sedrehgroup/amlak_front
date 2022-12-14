@@ -21,7 +21,7 @@ const CounterComponent = (props) => {
                 </p>
                 <hr className="text-warmGray-300" />
                 <p className="text-base">
-                  قیمت اجاره : <span>{props.RentalPrice}</span>
+                  قیمت اجاره ماهانه : <span>{props.RentalPrice}</span>
                 </p>
               </div>
               <div className="flex flex-col gap-y-4">

@@ -28,7 +28,7 @@ export default function SubmitProperty() {
   } = useForm();
   const [token] = useToken();
   useEffect(() => {
-    document.title='سامانه اجاره بها - ثبت آگهی'
+    document.title = "سامانه اجاره بها - ثبت آگهی";
   }, []);
   const onSubmit = (data) => {
     console.log("form data", data);
@@ -141,27 +141,27 @@ export default function SubmitProperty() {
   return (
     <div className="flex justify-center">
       <div className="form1 seventyfivevh">
-        <strong className="flex justify-center items-start text-4xl mt-8 mb-8">
+        <strong className="mt-8 mb-8 flex items-start justify-center text-4xl">
           ثبت آگهی اجاره
         </strong>
 
         <form
-          className="bg-white w-3/4 p-4 mx-auto rounded-lg flex flex-row flex-wrap"
+          className="mx-auto flex w-3/4 flex-row flex-wrap rounded-lg bg-white p-4"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div>
-            <p className="bg-white text-center mb-2">
+            <p className="mb-2 bg-white text-center">
               برای ثبت آگهی در سامانه اجاره بها تمامی فیلد های زیر را با دقت
               تکمیل کنید.{" "}
             </p>
           </div>
 
-          <div className="relative w-full mx-1  mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="relative mx-1 mt-6  w-full border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               عنوان آگهی{" "}
             </label>
             <input
-              className="w-full h-12 px-1  py-2"
+              className="h-12 w-full px-1  py-2"
               placeholder="55 متر مسکونی یک خواب در افسریه"
               type="text"
               required
@@ -170,12 +170,12 @@ export default function SubmitProperty() {
               })}
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               مبلغ رهن
             </label>
             <input
-              className="w-full h-12 px-1  py-2"
+              className="h-12 w-full px-1  py-2"
               {...register("mortgage_price", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 valueAsNumber: true,
@@ -185,12 +185,12 @@ export default function SubmitProperty() {
               required
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              مبلغ اجاره{" "}
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
+              مبلغ اجاره ماهانه{" "}
             </label>
             <input
-              className="w-full h-12 px-1  py-2"
+              className="h-12 w-full px-1  py-2"
               {...register("rent_price", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 valueAsNumber: true,
@@ -200,12 +200,12 @@ export default function SubmitProperty() {
               required
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               متراژ{" "}
             </label>
             <input
-              className="w-full h-12 px-1  py-2"
+              className="h-12 w-full px-1  py-2"
               {...register("metric", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 valueAsNumber: true,
@@ -215,13 +215,13 @@ export default function SubmitProperty() {
               required
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               سال ساخت{" "}
             </label>
             <select
               dir="ltr"
-              className="w-full h-12 px-4"
+              className="h-12 w-full px-4"
               {...register("year_of_construction", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 valueAsNumber: true,
@@ -237,13 +237,13 @@ export default function SubmitProperty() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               نوع ملک{" "}
             </label>
             <select
               dir="ltr"
-              className="w-full h-12 px-4"
+              className="h-12 w-full px-4"
               {...register("type_of_property", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 valueAsNumber: true,
@@ -275,13 +275,13 @@ export default function SubmitProperty() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               کاربری ملک{" "}
             </label>
             <select
               dir="ltr"
-              className="w-full h-12 px-4"
+              className="h-12 w-full px-4"
               {...register("use_of_property", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 valueAsNumber: true,
@@ -290,35 +290,39 @@ export default function SubmitProperty() {
               required
               defaultValue={0}
             >
-              {["مسکونی", "اداری", "تجاری", "آموزشی"
-            ,  "صنعتی"  
-            ,  "باغ و باغچه"  
-            ,  "زمین زراعی"  
-            ,  "ورزشی"  
-            ,  "بهداشتی"  
-            ,  "مذهبی"  
-            ,  "مسکونی تجاری"  
-            ,  "خدماتی"  
-            ,  "دامداری"  
-            ,  "دامپروری"  
-            ,  "مرغداری"  
-            ,  "گلخانه"  
-            ,  "پرورش ماهی"  
-            ,  "سایر"  
-            ].map((val, index) => (
+              {[
+                "مسکونی",
+                "اداری",
+                "تجاری",
+                "آموزشی",
+                "صنعتی",
+                "باغ و باغچه",
+                "زمین زراعی",
+                "ورزشی",
+                "بهداشتی",
+                "مذهبی",
+                "مسکونی تجاری",
+                "خدماتی",
+                "دامداری",
+                "دامپروری",
+                "مرغداری",
+                "گلخانه",
+                "پرورش ماهی",
+                "سایر",
+              ].map((val, index) => (
                 <option key={index} value={index}>
                   {val}
                 </option>
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               استان{" "}
             </label>
             <select
               dir="ltr"
-              className="w-full h-12 px-4"
+              className="h-12 w-full px-4"
               {...register("province", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 onChange: (e) => {
@@ -338,13 +342,13 @@ export default function SubmitProperty() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               شهرستان{" "}
             </label>
             <select
               dir="ltr"
-              className="w-full h-12 px-4"
+              className="h-12 w-full px-4"
               {...register("state", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 onChange: (e) => {
@@ -388,12 +392,12 @@ export default function SubmitProperty() {
                 ))}
             </select>
           </div> */}
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               محله{" "}
             </label>
             <input
-              className="w-full h-12 px-1  py-2"
+              className="h-12 w-full px-1  py-2"
               {...register("district", {
                 required: "وارد کردن این فیلد الزامی می باشد",
               })}
@@ -402,13 +406,13 @@ export default function SubmitProperty() {
               required
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               قابل تبدیل{" "}
             </label>
             <select
               dir="ltr"
-              className="w-full h-12 px-4"
+              className="h-12 w-full px-4"
               {...register("convertible", {
                 required: "وارد کردن این فیلد الزامی می باشد",
               })}
@@ -423,12 +427,12 @@ export default function SubmitProperty() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               تعداد اتاق{" "}
             </label>
             <input
-              className="w-full h-12 px-1  py-2"
+              className="h-12 w-full px-1  py-2"
               {...register("number_of_room", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 valueAsNumber: true,
@@ -438,19 +442,19 @@ export default function SubmitProperty() {
               required
             />
           </div>
-          <div className="relative inputC mx-1  mt-6 "></div>
+          <div className="inputC relative mx-1  mt-6 "></div>
 
-          <details className="p-4 rounded-lg m-auto">
-            <summary className="font-semibold text-center mt-4 cursor-pointer select-none">
+          <details className="m-auto rounded-lg p-4">
+            <summary className="mt-4 cursor-pointer select-none text-center font-semibold">
               اطلاعات تکمیلی(اختیاری){" "}
             </summary>
-            <div className="flex flex-row justify-between flex-wrap">
-              <div className="relative w-full mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-20 right-2">
+            <div className="flex flex-row flex-wrap justify-between">
+              <div className="relative mt-6 w-full border-2 border-solid border-main-200">
+                <label className="absolute bottom-20 right-2 bg-primary-50">
                   نشانی ملک{" "}
                 </label>
                 <input
-                  className="w-full h-24 px-1"
+                  className="h-24 w-full px-1"
                   {...register("address", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                   })}
@@ -459,13 +463,13 @@ export default function SubmitProperty() {
                 />
               </div>
 
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   وضعیت خاص{" "}
                 </label>
                 <select
                   dir="ltr"
-                  className="w-full h-12 px-4"
+                  className="h-12 w-full px-4"
                   {...register("special_situation", { valueAsNumber: true })}
                   placeholder="معمولی"
                 >
@@ -485,12 +489,12 @@ export default function SubmitProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   کد پستی
                 </label>
                 <input
-                  className="w-full h-12 px-1  py-2"
+                  className="h-12 w-full px-1  py-2"
                   {...register("zip", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                     valueAsNumber: true,
@@ -499,12 +503,12 @@ export default function SubmitProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   پلاک ثبتی فرعی{" "}
                 </label>
                 <input
-                  className="w-full h-12 px-1  py-2"
+                  className="h-12 w-full px-1  py-2"
                   {...register("Sub_registration_plate", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                     valueAsNumber: true,
@@ -513,12 +517,12 @@ export default function SubmitProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   پلاک ثبتی فرعی از{" "}
                 </label>
                 <input
-                  className="w-full h-12 px-1  py-2"
+                  className="h-12 w-full px-1  py-2"
                   {...register("Sub_registration_plate_from", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                     valueAsNumber: true,
@@ -527,12 +531,12 @@ export default function SubmitProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   پلاک ثبتی فرعی تا{" "}
                 </label>
                 <input
-                  className="w-full h-12 px-1  py-2"
+                  className="h-12 w-full px-1  py-2"
                   {...register(" Sub_registration_plate_to", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                     valueAsNumber: true,
@@ -542,12 +546,12 @@ export default function SubmitProperty() {
                 />
               </div>
 
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   پلاک ثبتی اصلی{" "}
                 </label>
                 <input
-                  className="w-full h-12 px-1  py-2"
+                  className="h-12 w-full px-1  py-2"
                   {...register("Original_registration_plate", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                     valueAsNumber: true,
@@ -556,12 +560,12 @@ export default function SubmitProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   پلاک ثبتی اصلی از{" "}
                 </label>
                 <input
-                  className="w-full h-12 px-1  py-2"
+                  className="h-12 w-full px-1  py-2"
                   {...register("Original_registration_plate_from", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                     valueAsNumber: true,
@@ -570,12 +574,12 @@ export default function SubmitProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   پلاک ثبتی اصلی تا{" "}
                 </label>
                 <input
-                  className="w-full h-12 px-1  py-2"
+                  className="h-12 w-full px-1  py-2"
                   {...register("Original_registration_plate_to", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                     valueAsNumber: true,
@@ -585,12 +589,12 @@ export default function SubmitProperty() {
                 />
               </div>
 
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   بخش ثبتی{" "}
                 </label>
                 <input
-                  className="w-full h-12 px-1  py-2"
+                  className="h-12 w-full px-1  py-2"
                   {...register("registration_section", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                   })}
@@ -598,12 +602,12 @@ export default function SubmitProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   حوزه ثبتی{" "}
                 </label>
                 <input
-                  className="w-full h-12 px-1  py-2"
+                  className="h-12 w-full px-1  py-2"
                   {...register("registration_area", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                   })}
@@ -611,13 +615,13 @@ export default function SubmitProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   نوع اسکلت{" "}
                 </label>
                 <select
                   dir="ltr"
-                  className="w-full h-12 px-4"
+                  className="h-12 w-full px-4"
                   {...register("Skeleton_type", { valueAsNumber: true })}
                   placeholder="آجری"
                 >
@@ -637,13 +641,13 @@ export default function SubmitProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   وضعیت تلفن{" "}
                 </label>
                 <select
                   dir="ltr"
-                  className="w-full h-12 px-4"
+                  className="h-12 w-full px-4"
                   {...register("phone_status", { valueAsNumber: true })}
                   placeholder="آزاد"
                 >
@@ -662,28 +666,27 @@ export default function SubmitProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   تعداد خط{" "}
                 </label>
                 <input
-                   className="w-full h-12 px-4"
-                   {...register("phone_lines", {
+                  className="h-12 w-full px-4"
+                  {...register("phone_lines", {
                     valueAsNumber: true,
                   })}
                   placeholder="2"
                   type="text"
                 />
-              
               </div>
 
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   سمت ساختمان{" "}
                 </label>
                 <select
                   dir="ltr"
-                  className="w-full h-12 px-4"
+                  className="h-12 w-full px-4"
                   {...register("building_side", {
                     valueAsNumber: true,
                   })}
@@ -706,13 +709,13 @@ export default function SubmitProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   سمت واحد{" "}
                 </label>
                 <select
                   dir="ltr"
-                  className="w-full h-12 px-4"
+                  className="h-12 w-full px-4"
                   {...register("unit_side", {
                     valueAsNumber: true,
                   })}
@@ -735,41 +738,39 @@ export default function SubmitProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   طبقه واحد{" "}
                 </label>
                 <input
-                   className="w-full h-12 px-4"
-                   {...register("unit_floor", {
+                  className="h-12 w-full px-4"
+                  {...register("unit_floor", {
                     valueAsNumber: true,
                   })}
                   placeholder="3"
                   type="text"
                 />
-            
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   تعداد طبقات ساختمان{" "}
                 </label>
                 <input
-                   className="w-full h-12 px-4"
-                   {...register("floors_number", {
+                  className="h-12 w-full px-4"
+                  {...register("floors_number", {
                     valueAsNumber: true,
                   })}
                   placeholder="10"
                   type="text"
                 />
-              
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   تعداد واحد در طبقه{" "}
                 </label>
-               
+
                 <input
-                   className="w-full h-12 px-4"
+                  className="h-12 w-full px-4"
                   {...register("units_per_floor", {
                     valueAsNumber: true,
                   })}
@@ -777,12 +778,12 @@ export default function SubmitProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative w-full mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-20 right-2">
+              <div className="relative mt-6 w-full border-2 border-solid border-main-200">
+                <label className="absolute bottom-20 right-2 bg-primary-50">
                   توضیحات آگهی{" "}
                 </label>
                 <input
-                  className="w-full h-24 px-1"
+                  className="h-24 w-full px-1"
                   {...register("descriptions", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                   })}
@@ -795,7 +796,7 @@ export default function SubmitProperty() {
           <input
             type="submit"
             value="ثبت آگهی"
-            className="bg-main-500 w-full h-10 mt-6 text-white mb-6 cursor-pointer"
+            className="mt-6 mb-6 h-10 w-full cursor-pointer bg-main-500 text-white"
           />
         </form>
       </div>

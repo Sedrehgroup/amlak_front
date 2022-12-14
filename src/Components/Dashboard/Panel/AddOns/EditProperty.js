@@ -32,10 +32,9 @@ export default function EditProperty() {
   const [token] = useToken();
   const [defaultData, setDefaultData] = useState({});
   useEffect(() => {
-    document.title='سامانه اجاره بها - ویرایش آگهی'
+    document.title = "سامانه اجاره بها - ویرایش آگهی";
   }, []);
   useEffect(() => {
-
     if (!!!!token) {
       try {
         axios
@@ -174,30 +173,30 @@ export default function EditProperty() {
     }
   };
   return (
-    <div className="flex flex-col items-center justify-center mt-6">
+    <div className="mt-6 flex flex-col items-center justify-center">
       <div className="">
-        <strong className="flex justify-center items-start text-4xl mb-8">
+        <strong className="mb-8 flex items-start justify-center text-4xl">
           ویرایش آگهی اجاره
         </strong>
 
         <form
-          className="bg-white w-3/4 p-4 mx-auto rounded-lg flex flex-row flex-wrap"
+          className="mx-auto flex w-3/4 flex-row flex-wrap rounded-lg bg-white p-4"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div>
-            <p className="bg-white text-center mb-2">
+            <p className="mb-2 bg-white text-center">
               برای ویرایش آگهی در سامانه اجاره بها تمامی فیلد های زیر را با دقت
               تکمیل کنید.{" "}
             </p>
           </div>
 
-          <div className="relative w-full mx-1  mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="relative mx-1 mt-6  w-full border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               عنوان آگهی{" "}
             </label>
             <input
               defaultValue={defaultData?.title}
-              className="w-full h-12 px-1  py-2"
+              className="h-12 w-full px-1  py-2"
               placeholder="55 متر مسکونی یک خواب در افسریه"
               type="text"
               required
@@ -206,13 +205,13 @@ export default function EditProperty() {
               })}
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               مبلغ رهن
             </label>
             <input
               defaultValue={defaultData?.mortgage_amount}
-              className="w-full h-12 px-1  py-2"
+              className="h-12 w-full px-1  py-2"
               {...register("mortgage_price", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 valueAsNumber: true,
@@ -222,13 +221,13 @@ export default function EditProperty() {
               required
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
-              مبلغ اجاره{" "}
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
+              مبلغ اجاره ماهانه{" "}
             </label>
             <input
               defaultValue={defaultData?.rent_amount}
-              className="w-full h-12 px-1  py-2"
+              className="h-12 w-full px-1  py-2"
               {...register("rent_price", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 valueAsNumber: true,
@@ -238,13 +237,13 @@ export default function EditProperty() {
               required
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               متراژ{" "}
             </label>
             <input
               defaultValue={defaultData?.area}
-              className="w-full h-12 px-1  py-2"
+              className="h-12 w-full px-1  py-2"
               {...register("metric", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 valueAsNumber: true,
@@ -254,13 +253,13 @@ export default function EditProperty() {
               required
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               سال ساخت{" "}
             </label>
             <select
               dir="ltr"
-              className="w-full h-12 px-4"
+              className="h-12 w-full px-4"
               {...register("year_of_construction", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 valueAsNumber: true,
@@ -280,13 +279,13 @@ export default function EditProperty() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               نوع ملک{" "}
             </label>
             <select
               dir="ltr"
-              className="w-full h-12 px-4"
+              className="h-12 w-full px-4"
               {...register("type_of_property", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 valueAsNumber: true,
@@ -306,13 +305,13 @@ export default function EditProperty() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               کاربری ملک{" "}
             </label>
             <select
               dir="ltr"
-              className="w-full h-12 px-4"
+              className="h-12 w-full px-4"
               {...register("use_of_property", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 valueAsNumber: true,
@@ -332,13 +331,13 @@ export default function EditProperty() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               استان{" "}
             </label>
             <select
               dir="ltr"
-              className="w-full h-12 px-4"
+              className="h-12 w-full px-4"
               {...register("province", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 onChange: (e) => {
@@ -362,13 +361,13 @@ export default function EditProperty() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               شهرستان{" "}
             </label>
             <select
               dir="ltr"
-              className="w-full h-12 px-4"
+              className="h-12 w-full px-4"
               {...register("state", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 onChange: (e) => {
@@ -382,7 +381,8 @@ export default function EditProperty() {
               {iranCitiesList
                 .filter(
                   (element) =>
-                    element.province == (selectedProvince || defaultData?.county)
+                    element.province ==
+                    (selectedProvince || defaultData?.county)
                 )
                 .map((val, index) => (
                   <option
@@ -419,13 +419,13 @@ export default function EditProperty() {
                 ))}
             </select>
           </div> */}
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               محله{" "}
             </label>
             <input
               defaultValue={defaultData?.neighbourhood}
-              className="w-full h-12 px-1  py-2"
+              className="h-12 w-full px-1  py-2"
               {...register("district", {
                 required: "وارد کردن این فیلد الزامی می باشد",
               })}
@@ -434,13 +434,13 @@ export default function EditProperty() {
               required
             />
           </div>
-          <div className="relative inputC mx-1   mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1   mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               قابل تبدیل{" "}
             </label>
             <select
               dir="ltr"
-              className="w-full h-12 px-4"
+              className="h-12 w-full px-4"
               {...register("convertible", {
                 required: "وارد کردن این فیلد الزامی می باشد",
               })}
@@ -459,13 +459,13 @@ export default function EditProperty() {
               ))}
             </select>
           </div>
-          <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-            <label className="absolute bg-primary-50 bottom-9 right-2">
+          <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+            <label className="absolute bottom-9 right-2 bg-primary-50">
               تعداد اتاق{" "}
             </label>
             <input
               defaultValue={defaultData?.bedrooms}
-              className="w-full h-12 px-1  py-2"
+              className="h-12 w-full px-1  py-2"
               {...register("number_of_room", {
                 required: "وارد کردن این فیلد الزامی می باشد",
                 valueAsNumber: true,
@@ -475,20 +475,20 @@ export default function EditProperty() {
               required
             />
           </div>
-          <div className="relative inputC mx-1  mt-6 "></div>
+          <div className="inputC relative mx-1  mt-6 "></div>
 
-          <details className="p-4 rounded-lg m-auto">
-            <summary className="font-semibold text-center mt-4 cursor-pointer select-none">
+          <details className="m-auto rounded-lg p-4">
+            <summary className="mt-4 cursor-pointer select-none text-center font-semibold">
               اطلاعات تکمیلی(اختیاری){" "}
             </summary>
-            <div className="flex flex-row justify-between flex-wrap">
-              <div className="relative w-full mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-20 right-2">
+            <div className="flex flex-row flex-wrap justify-between">
+              <div className="relative mt-6 w-full border-2 border-solid border-main-200">
+                <label className="absolute bottom-20 right-2 bg-primary-50">
                   نشانی ملک{" "}
                 </label>
                 <input
                   defaultValue={defaultData?.address}
-                  className="w-full h-24 px-1"
+                  className="h-24 w-full px-1"
                   {...register("address", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                   })}
@@ -497,13 +497,13 @@ export default function EditProperty() {
                 />
               </div>
 
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   وضعیت خاص{" "}
                 </label>
                 <select
                   dir="ltr"
-                  className="w-full h-12 px-4"
+                  className="h-12 w-full px-4"
                   {...register("special_situation", { valueAsNumber: true })}
                   placeholder="معمولی"
                   defaultValue={defaultData?.special_situation}
@@ -518,7 +518,8 @@ export default function EditProperty() {
                       key={index}
                       value={val.value}
                       selected={
-                        defaultData?.special_situation == val.value && "selected"
+                        defaultData?.special_situation == val.value &&
+                        "selected"
                       }
                     >
                       {val.lb}
@@ -526,13 +527,13 @@ export default function EditProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   کد پستی
                 </label>
                 <input
                   defaultValue={defaultData?.zip}
-                  className="w-full h-12 px-1  py-2"
+                  className="h-12 w-full px-1  py-2"
                   {...register("zip", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                     valueAsNumber: true,
@@ -541,13 +542,13 @@ export default function EditProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   پلاک ثبتی فرعی{" "}
                 </label>
                 <input
                   defaultValue={defaultData?.Sub_registration_plate}
-                  className="w-full h-12 px-1  py-2"
+                  className="h-12 w-full px-1  py-2"
                   {...register("Sub_registration_plate", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                     valueAsNumber: true,
@@ -556,13 +557,13 @@ export default function EditProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   پلاک ثبتی فرعی از{" "}
                 </label>
                 <input
                   defaultValue={defaultData?.Sub_registration_plate_from}
-                  className="w-full h-12 px-1  py-2"
+                  className="h-12 w-full px-1  py-2"
                   {...register("Sub_registration_plate_from", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                     valueAsNumber: true,
@@ -571,13 +572,13 @@ export default function EditProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   پلاک ثبتی فرعی تا{" "}
                 </label>
                 <input
                   defaultValue={defaultData?.Original_registration_plate_to}
-                  className="w-full h-12 px-1  py-2"
+                  className="h-12 w-full px-1  py-2"
                   {...register(" Sub_registration_plate_to", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                     valueAsNumber: true,
@@ -587,13 +588,13 @@ export default function EditProperty() {
                 />
               </div>
 
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   پلاک ثبتی اصلی{" "}
                 </label>
                 <input
                   defaultValue={defaultData?.Original_registration_plate}
-                  className="w-full h-12 px-1  py-2"
+                  className="h-12 w-full px-1  py-2"
                   {...register("Original_registration_plate", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                     valueAsNumber: true,
@@ -602,13 +603,13 @@ export default function EditProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   پلاک ثبتی اصلی از{" "}
                 </label>
                 <input
                   defaultValue={defaultData?.Original_registration_plate_from}
-                  className="w-full h-12 px-1  py-2"
+                  className="h-12 w-full px-1  py-2"
                   {...register("Original_registration_plate_from", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                     valueAsNumber: true,
@@ -617,13 +618,13 @@ export default function EditProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   پلاک ثبتی اصلی تا{" "}
                 </label>
                 <input
                   defaultValue={defaultData?.Original_registration_plate_to}
-                  className="w-full h-12 px-1  py-2"
+                  className="h-12 w-full px-1  py-2"
                   {...register("Original_registration_plate_to", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                     valueAsNumber: true,
@@ -633,13 +634,13 @@ export default function EditProperty() {
                 />
               </div>
 
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   بخش ثبتی{" "}
                 </label>
                 <input
                   defaultValue={defaultData?.registration_section}
-                  className="w-full h-12 px-1  py-2"
+                  className="h-12 w-full px-1  py-2"
                   {...register("registration_section", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                   })}
@@ -647,13 +648,13 @@ export default function EditProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   حوزه ثبتی{" "}
                 </label>
                 <input
                   defaultValue={defaultData?.registration_area}
-                  className="w-full h-12 px-1  py-2"
+                  className="h-12 w-full px-1  py-2"
                   {...register("registration_area", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                   })}
@@ -661,13 +662,13 @@ export default function EditProperty() {
                   type="text"
                 />
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   نوع اسکلت{" "}
                 </label>
                 <select
                   dir="ltr"
-                  className="w-full h-12 px-4"
+                  className="h-12 w-full px-4"
                   {...register("Skeleton_type", { valueAsNumber: true })}
                   placeholder="آجری"
                   defaultValue={defaultData?.Skeleton_type}
@@ -690,13 +691,13 @@ export default function EditProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   وضعیت تلفن{" "}
                 </label>
                 <select
                   dir="ltr"
-                  className="w-full h-12 px-4"
+                  className="h-12 w-full px-4"
                   {...register("phone_status", { valueAsNumber: true })}
                   placeholder="آزاد"
                   defaultValue={defaultData?.phone_status}
@@ -718,30 +719,29 @@ export default function EditProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   تعداد خط{" "}
                 </label>
                 <input
-                 dir="ltr"
-                 className="w-full h-12 px-4"
-                 {...register("phone_lines", {
-                   valueAsNumber: true,
-                 })}
-                 placeholder="1"
-                 defaultValue={defaultData?.phone_lines}
+                  dir="ltr"
+                  className="h-12 w-full px-4"
+                  {...register("phone_lines", {
+                    valueAsNumber: true,
+                  })}
+                  placeholder="1"
+                  defaultValue={defaultData?.phone_lines}
                   type="text"
                 />
-          
               </div>
 
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   سمت ساختمان{" "}
                 </label>
                 <select
                   dir="ltr"
-                  className="w-full h-12 px-4"
+                  className="h-12 w-full px-4"
                   {...register("building_side", {
                     valueAsNumber: true,
                   })}
@@ -767,13 +767,13 @@ export default function EditProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   سمت واحد{" "}
                 </label>
                 <select
                   dir="ltr"
-                  className="w-full h-12 px-4"
+                  className="h-12 w-full px-4"
                   {...register("unit_side", {
                     valueAsNumber: true,
                   })}
@@ -799,13 +799,13 @@ export default function EditProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   طبقه واحد{" "}
                 </label>
                 <select
                   dir="ltr"
-                  className="w-full h-12 px-4"
+                  className="h-12 w-full px-4"
                   {...register("unit_floor", {
                     valueAsNumber: true,
                   })}
@@ -831,13 +831,13 @@ export default function EditProperty() {
                   ))}
                 </select>
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   تعداد طبقات ساختمان{" "}
                 </label>
                 <input
                   dir="ltr"
-                  className="w-full h-12 px-4"
+                  className="h-12 w-full px-4"
                   {...register("floors_number", {
                     valueAsNumber: true,
                   })}
@@ -845,30 +845,28 @@ export default function EditProperty() {
                   defaultValue={defaultData?.floors_number}
                   type="text"
                 />
-             
               </div>
-              <div className="relative inputC mx-1  mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-9 right-2">
+              <div className="inputC relative mx-1  mt-6 border-2 border-solid border-main-200">
+                <label className="absolute bottom-9 right-2 bg-primary-50">
                   تعداد واحد در طبقه{" "}
                 </label>
                 <input
-           dir="ltr"
-           className="w-full h-12 px-4"
-           {...register("units_per_floor", {
-             valueAsNumber: true,
-           })}
-           placeholder="1"
-           defaultValue={defaultData?.units_per_floor}
+                  dir="ltr"
+                  className="h-12 w-full px-4"
+                  {...register("units_per_floor", {
+                    valueAsNumber: true,
+                  })}
+                  placeholder="1"
+                  defaultValue={defaultData?.units_per_floor}
                   type="text"
                 />
-               
               </div>
-              <div className="relative w-full mt-6 border-2 border-solid border-main-200">
-                <label className="absolute bg-primary-50 bottom-20 right-2">
+              <div className="relative mt-6 w-full border-2 border-solid border-main-200">
+                <label className="absolute bottom-20 right-2 bg-primary-50">
                   توضیحات آگهی{" "}
                 </label>
                 <input
-                  className="w-full h-24 px-1"
+                  className="h-24 w-full px-1"
                   {...register("descriptions", {
                     // required: "وارد کردن این فیلد الزامی می باشد",
                   })}
@@ -882,7 +880,7 @@ export default function EditProperty() {
           <input
             type="submit"
             value="ویرایش آگهی"
-            className="bg-main-500 w-full h-10 mt-6 text-white mb-6 cursor-pointer"
+            className="mt-6 mb-6 h-10 w-full cursor-pointer bg-main-500 text-white"
           />
         </form>
       </div>
