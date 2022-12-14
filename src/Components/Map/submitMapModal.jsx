@@ -61,7 +61,7 @@ const SumbitMapModal = ({ markerCords, setMarker }) => {
   return (
     <Popup
       trigger={
-        <button className="rounded-lg border-2 border-main-600 px-6 py-2 font-bold text-main-600">
+        <button type="button" className="rounded-lg border-2 border-main-600 px-6 py-2 font-bold text-main-600">
           {markerCords ? "تغییر آدرس روی نقشه" : "ثبت آدرس روی نقشه"}
         </button>
       }
