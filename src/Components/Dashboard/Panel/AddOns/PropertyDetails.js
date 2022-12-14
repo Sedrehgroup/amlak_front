@@ -20,7 +20,13 @@ import Security from "./../../../../assets/Images/Dashboard/security-safe.svg";
 
 import useToken from "../../../../customHooks/useToken";
 import { toast } from "react-toastify";
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
+import {
+  LEAFLET_CENTER,
+  LEAFLET_SCROLLZOOM,
+  LEAFLET_TILELAYER_URL,
+  LEAFLET_ZOOM,
+} from "../../../../utils/config";
 
 export default function PropertyDetails({ data }) {
   const [data2, setData2] = useState(null);
@@ -31,8 +37,6 @@ export default function PropertyDetails({ data }) {
     background: "linear-gradient(90.83deg, #FF731D 0.01%, #FFAB77 100.01%)",
   };
 
-  const tileUrl = process.env.REACT_APP_LEAFLET_TILE_URL;
-  
   const history = useHistory();
   const [token] = useToken();
   useEffect(() => {
@@ -622,13 +626,13 @@ export default function PropertyDetails({ data }) {
                 </p>
                 <MapContainer
                   className="aspect-video h-[300px] w-full rounded-lg "
-                  id="gmap_canvas"
-                  center={[51.505, -0.09]}
-                  zoom={12}
+                  center={LEAFLET_CENTER}
+                  scrollWheelZoom={LEAFLET_SCROLLZOOM}
+                  zoom={LEAFLET_ZOOM}
                 >
-                  <TileLayer
-                    url={tileUrl}
-                  />
+                  <TileLayer url={LEAFLET_TILELAYER_URL} />
+
+                  <Marker position={LEAFLET_CENTER}></Marker>
                 </MapContainer>
               </div>
               {/* <div className="flex w-1/3 flex-col gap-y-2 pt-0">
