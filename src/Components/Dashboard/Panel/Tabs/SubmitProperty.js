@@ -45,10 +45,13 @@ export default function SubmitProperty() {
     document.title = "سامانه اجاره بها - ثبت آگهی";
   }, []);
   const onSubmit = (data) => {
+    if (selectedTab === 0) {
+      setTab(2);
+      return;
+    }
     console.log("hi");
-    setFormData(data);
+    setFormData({ formData, ...data, pictures });
     setIsSumbited1(true);
-    console.log("form data", data);
     // console.log("watch('title')", watch("title"));
     // createProperty(data);
   };
@@ -170,9 +173,9 @@ export default function SubmitProperty() {
             </strong>
 
             <nav>
-              <div onClick={() => setTab(0)}>اطلاعات اصلی</div>
-              <div onClick={() => setTab(1)}>امکانات</div>
-              <div onClick={() => setTab(2)}>اطلاعات تکمیلی</div>
+              <div>اطلاعات اصلی</div>
+              <div>امکانات</div>
+              <div>اطلاعات تکمیلی</div>
             </nav>
 
             <div>
@@ -477,7 +480,7 @@ export default function SubmitProperty() {
                 </div>
                 <input
                   type="submit"
-                  value="ثبت آگهی"
+                  value="مرحله بعدی"
                   className="mt-6 mb-6 h-10 w-full cursor-pointer bg-main-500 text-white"
                 />
               </form>
@@ -1144,10 +1147,24 @@ export default function SubmitProperty() {
                   </div>
                 </div>
                 <div>
-                  {pictures.map((p) => (
-                    <img src={URL.createObjectURL(p)}></img>
-                  ))}
+                  {pictures.map((p) => {
+                    console.log(URL.createObjectURL(p));
+                    return (
+                      <img draggable={true} src={URL.createObjectURL(p)}></img>
+                    );
+                  })}
                 </div>
+                <input
+                  type="button"
+                  value="مرحله قبلی"
+                  onClick={()=>setTab(0)}
+                  className="mt-6 mb-6 h-10 w-full cursor-pointer bg-main-500 text-white"
+                />
+                <input
+                  type="submit"
+                  value="تایید اولیه و پیش نمایش آگهی"
+                  className="mt-6 mb-6 h-10 w-full cursor-pointer bg-main-500 text-white"
+                />
               </form>
             )}
           </div>

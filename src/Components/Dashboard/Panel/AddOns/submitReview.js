@@ -35,6 +35,7 @@ export default function SubmitReview({ data, submit }) {
 
   useEffect(() => {
     document.title = "سامانه اجاره بها - مشخصات آگهی";
+    console.log(data);
   }, []);
 
   return (
@@ -44,7 +45,7 @@ export default function SubmitReview({ data, submit }) {
           <h2 className="text-2xl font-bold">{data?.title}</h2>
           <div className="flex flex-col items-center gap-y-16 rounded-lg ">
             <div className="w-[99%] rounded-lg">
-              <PropertyDetailsSlider />
+              <PropertyDetailsSlider images={data.pictures}/>
             </div>
             <div className="flex w-full flex-col gap-y-8">
               <p className=" border-b-4 border-warmGray-700 pb-2 text-lg font-semibold">
@@ -447,7 +448,7 @@ export default function SubmitReview({ data, submit }) {
             />
             <p>
               قیمت رهن :{" "}
-              <strong>{data?.rent_amount?.toLocaleString()}&nbsp; تومان</strong>
+              <strong>{data?.rent_price?.toLocaleString()}&nbsp; تومان</strong>
             </p>
             <hr
               style={{
