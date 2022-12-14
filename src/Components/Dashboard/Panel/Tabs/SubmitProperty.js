@@ -15,12 +15,18 @@ import { setUserIsLoggedHandler } from "../../../../redux/reducers/login";
 import { useHistory } from "react-router-dom";
 import SumbitMapModal from "../../../Map/submitMapModal";
 import { LEAFLET_CENTER } from "../../../../utils/config";
+import Options from "../AddOns/Options";
 
 export default function SubmitProperty() {
   const [selectedProvince, setSelectedProvince] = useState("تهران");
   const [selectedState, setSelectedState] = useState("تهران");
   const [selectedTab, setTab] = useState(0);
   const [markerCords, setMarker] = useState(null);
+  const [optionsObject, setOptions] = useState({
+    baalkon: { value: "بالکن", checked: false },
+    vaan: { value: "وان حمام", checked: true },
+    tahvieh: { value: "سیستم تهویه", checked: false },
+  });
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -745,6 +751,10 @@ export default function SubmitProperty() {
                   ))}
                 </select>
               </div>
+              <Options optionsObject={optionsObject} setOptions={setOptions} />
+              <>
+                <h2>hey</h2>
+              </>
             </>
           )}
           {selectedTab === 2 && (
