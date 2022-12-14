@@ -1,24 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import Spinner from "react-spinkit";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 
 import useToken from "../../../../customHooks/useToken";
 import imgFrame from "./../../../../assets/Images/Dashboard/Frame.png";
-import { setUserIsLoggedHandler } from "../../../../redux/reducers/login";
-import ToMeRequestCard from "../../../Card/ToMeRequestCard";
-import RequestDetails from "../AddOns/RequestDetails";
-import { updateListHandler } from "../../../../redux/reducers/userProperty";
-import { toast } from "react-toastify";
+
 import ContractCard from "../AddOns/ContractCard";
 import SignContract from "../AddOns/SignContract";
 
 // صفحه قراردادها
 
 const Contracts = () => {
-  const [contractsList, setContractsList] = useState();
- 
+  const [contractsList, setContractsList] = useState([]);
+
   const [showLoading, setShowLoading] = useState(false);
   const { path, url } = useRouteMatch();
   const _update = useSelector((state) => state.user.update);
@@ -28,10 +24,10 @@ const Contracts = () => {
 
   const Api_Url = process.env.REACT_APP_API_URL;
   useEffect(() => {
-    document.title='سامانه اجاره بها - قراردادها'
+    document.title = "سامانه اجاره بها - قراردادها";
   }, []);
   useEffect(() => {
-    console.log("token",token)
+    console.log("token", token);
     if (!!!!token) {
       try {
         setShowLoading(true);
@@ -59,7 +55,7 @@ const Contracts = () => {
         console.log("error", error);
       }
     }
-  }, [token,_update]);
+  }, [token, _update]);
   //   const changeStatusHandler = (id, status) => {
   //     // id = request id
   //     if (!!!!token) {
@@ -224,13 +220,13 @@ const Contracts = () => {
                 </div>
               ))}
             {contractsList?.lenght == 0 && (
-              <div className="m-auto text-xl text-center">
+              <div className="m-auto text-center text-xl">
                 شما درخواستی ندارید!
               </div>
             )}
           </div>
         ) : (
-          <div className="flex justify-center items-center eightyvh">
+          <div className="eightyvh flex items-center justify-center">
             <Spinner name="folding-cube" color="#FF731D" fadeIn="none" />
           </div>
         )}
