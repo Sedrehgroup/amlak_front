@@ -13,6 +13,7 @@ import { arrayOfYears } from "../../../../utils/yearsList";
 import { toast } from "react-toastify";
 import { setUserIsLoggedHandler } from "../../../../redux/reducers/login";
 import { useHistory } from "react-router-dom";
+import SumbitMapModal from "../../../Map/submitMapModal";
 
 export default function SubmitProperty() {
   const [selectedProvince, setSelectedProvince] = useState("تهران");
@@ -798,6 +799,7 @@ export default function SubmitProperty() {
           />
         </form>
       </div>
+      <SumbitMapModal />
     </div>
   );
 }

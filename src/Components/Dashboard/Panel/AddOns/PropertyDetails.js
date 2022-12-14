@@ -20,6 +20,13 @@ import Security from "./../../../../assets/Images/Dashboard/security-safe.svg";
 
 import useToken from "../../../../customHooks/useToken";
 import { toast } from "react-toastify";
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
+import {
+  LEAFLET_CENTER,
+  LEAFLET_SCROLLZOOM,
+  LEAFLET_TILELAYER_URL,
+  LEAFLET_ZOOM,
+} from "../../../../utils/config";
 
 export default function PropertyDetails({ data }) {
   const [data2, setData2] = useState(null);
@@ -33,7 +40,7 @@ export default function PropertyDetails({ data }) {
   const history = useHistory();
   const [token] = useToken();
   useEffect(() => {
-    document.title='سامانه اجاره بها - مشخصات آگهی'
+    document.title = "سامانه اجاره بها - مشخصات آگهی";
   }, []);
   // useEffect(() => {
   //   const Api_Url = process.env.REACT_APP_API_URL;
@@ -617,11 +624,16 @@ export default function PropertyDetails({ data }) {
                   تهران، بلوار کشاورز، خیابان قدس مرکز رشد شهید فخری زاده، پلاک
                   37{" "}
                 </p>
-                <iframe
+                <MapContainer
                   className="aspect-video h-[300px] w-full rounded-lg "
-                  id="gmap_canvas"
-                  src="https://maps.google.com/maps?q=%D8%AA%D8%B9%D8%A7%D9%84%DB%8C%20%DA%A9%D9%88%D8%AB%D8%B1&t=&z=17&ie=UTF8&iwloc=&output=embed"
-                />
+                  center={LEAFLET_CENTER}
+                  scrollWheelZoom={LEAFLET_SCROLLZOOM}
+                  zoom={LEAFLET_ZOOM}
+                >
+                  <TileLayer url={LEAFLET_TILELAYER_URL} />
+
+                  <Marker position={LEAFLET_CENTER}></Marker>
+                </MapContainer>
               </div>
               {/* <div className="flex w-1/3 flex-col gap-y-2 pt-0">
                 <p className="">
