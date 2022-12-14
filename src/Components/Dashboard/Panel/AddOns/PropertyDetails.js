@@ -620,11 +620,6 @@ export default function PropertyDetails({ data }) {
                   تهران، بلوار کشاورز، خیابان قدس مرکز رشد شهید فخری زاده، پلاک
                   37{" "}
                 </p>
-                <iframe
-                  className="aspect-video h-[300px] w-full rounded-lg "
-                  id="gmap_canvas"
-                  src="https://maps.google.com/maps?q=%D8%AA%D8%B9%D8%A7%D9%84%DB%8C%20%DA%A9%D9%88%D8%AB%D8%B1&t=&z=17&ie=UTF8&iwloc=&output=embed"
-                />
                 <MapContainer
                   className="aspect-video h-[300px] w-full rounded-lg "
                   id="gmap_canvas"
