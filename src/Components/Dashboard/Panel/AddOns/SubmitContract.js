@@ -44,7 +44,7 @@ const SubmitContract = () => {
   const Api_Url = process.env.REACT_APP_API_URL;
   const [date] = useTimeDateFa();
   useEffect(() => {
-    document.title='سامانه اجاره بها - ثبت آگهی'
+    document.title = "سامانه اجاره بها - ثبت آگهی";
   }, []);
   // contract_registration_date
   // تاریخ عقد قراداد
@@ -64,7 +64,9 @@ const SubmitContract = () => {
     console.log("date", date);
   }, [date]);
 
-  const date2 =`${date.year}-${date.monthDigit.length==1?`0${date.monthDigit}`:`${date.monthDigit}`}-${date.day}`;
+  const date2 = `${date.year}-${
+    date.monthDigit.length == 1 ? `0${date.monthDigit}` : `${date.monthDigit}`
+  }-${date.day}`;
 
   // =========================
 
@@ -315,39 +317,37 @@ const SubmitContract = () => {
                         وضعیت سند
                       </label>
                       <select
-                  dir="ltr"
-                  className="focusinput h-12 w-full rounded border-2 border-solid  border-warmGray-300  px-1 py-2"
-
-                  {...register("document_status", {
-                    valueAsNumber: true,
-                  })}
-                  placeholder="5"
-                >
-                  {[
-                    { lb: "دارای سند شخصی", value: 0 },
-                    { lb: "اوقافی", value: 1 },
-                    { lb: "بنیادی", value: 2 },
-                    { lb: "تعاونی", value: 3 },
-                    { lb: "(ره)ستاد اجرایی فرمان امام", value: 4 },
-                    { lb: "بدون سند", value: 5 },
-                    { lb: "آستان قدس", value: 6 },
-                    { lb: "موقوفه عام", value: 7 },
-                    { lb: "موقوفه خاص", value: 8 },
-                    { lb: "شهرداری", value: 9 },
-                    { lb: "دولتی", value: 10 },
-                    { lb: "شرکت سهامی خاص", value: 11 },
-                    { lb: "شرکت سهامی عام", value: 11 },
-                  ].map((val, index) => (
-                    <option
-                      key={index}
-                      value={val.value}
-                      selected={ val.value == 0 && "selected"}
-                    >
-                      {val.lb}
-                    </option>
-                  ))}
-                </select>
-                     
+                        dir="ltr"
+                        className="focusinput h-12 w-full rounded border-2 border-solid  border-warmGray-300  px-1 py-2"
+                        {...register("document_status", {
+                          valueAsNumber: true,
+                        })}
+                        placeholder="5"
+                      >
+                        {[
+                          { lb: "دارای سند شخصی", value: 0 },
+                          { lb: "اوقافی", value: 1 },
+                          { lb: "بنیادی", value: 2 },
+                          { lb: "تعاونی", value: 3 },
+                          { lb: "(ره)ستاد اجرایی فرمان امام", value: 4 },
+                          { lb: "بدون سند", value: 5 },
+                          { lb: "آستان قدس", value: 6 },
+                          { lb: "موقوفه عام", value: 7 },
+                          { lb: "موقوفه خاص", value: 8 },
+                          { lb: "شهرداری", value: 9 },
+                          { lb: "دولتی", value: 10 },
+                          { lb: "شرکت سهامی خاص", value: 11 },
+                          { lb: "شرکت سهامی عام", value: 11 },
+                        ].map((val, index) => (
+                          <option
+                            key={index}
+                            value={val.value}
+                            selected={val.value == 0 && "selected"}
+                          >
+                            {val.lb}
+                          </option>
+                        ))}
+                      </select>
                     </div>
                     <div className="inputCfive relative mx-1">
                       <label className="absolute bottom-9 right-2 bg-primary-50">
@@ -439,7 +439,7 @@ const SubmitContract = () => {
                         ))}
                       </select>
                     </div>
-                    <div className="inputC relative mx-1 mt-6  rounded border-2 border-solid border-warmGray-300 ">
+                    {/* <div className="inputC relative mx-1 mt-6  rounded border-2 border-solid border-warmGray-300 ">
                       <label className="absolute bottom-10 right-2 bg-primary-50 ">
                         تاریخ ثبت قرارداد
                       </label>
@@ -460,7 +460,7 @@ const SubmitContract = () => {
                      </span>
                     
                    
-                    </div>
+                    </div> */}
                     <div className="inputC relative mx-1 mt-6  rounded border-2 border-solid border-warmGray-300 ">
                       <label className="absolute bottom-10 right-2 bg-primary-50 ">
                         تاریخ شروع قرارداد
