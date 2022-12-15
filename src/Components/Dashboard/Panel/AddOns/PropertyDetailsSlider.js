@@ -20,7 +20,7 @@ import h6 from "../../../../assets/Images/Dashboard/house/h6.jpeg";
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper";
 
-export default function PropertyDetailsSlider() {
+export default function PropertyDetailsSlider({ images }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   // ={{swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null}}
 
@@ -40,10 +40,13 @@ export default function PropertyDetailsSlider() {
         modules={[FreeMode, Navigation, Thumbs]}
         // className={styles.mySwiper2}
       >
-        <SwiperSlide className="rounded-lg">
-          <img src={h2} />
-        </SwiperSlide>
-        <SwiperSlide className="rounded-lg">
+        {images.map((img) => {
+          return <SwiperSlide className="rounded-lg">
+            <img src={URL.createObjectURL(img)} />
+          </SwiperSlide>;
+        })}
+
+        {/* <SwiperSlide className="rounded-lg">
           <img src={h1} />
         </SwiperSlide>
         <SwiperSlide>
@@ -57,7 +60,7 @@ export default function PropertyDetailsSlider() {
         </SwiperSlide>
         <SwiperSlide>
           <img src={h6} />
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
       <Swiper
         onSwiper={setThumbsSwiper}
@@ -68,10 +71,16 @@ export default function PropertyDetailsSlider() {
         modules={[FreeMode, Navigation, Thumbs]}
         className="h-24"
       >
-        <SwiperSlide>
+        {images.map((img) => {
+          console.log("nowimg", img);
+          return <SwiperSlide className="rounded-lg">
+            <img src={URL.createObjectURL(img)} />
+          </SwiperSlide>;
+        })}
+        {/* <SwiperSlide>
           <img className="rounded-lg" src={h2} />
-        </SwiperSlide>
-        <SwiperSlide>
+        </SwiperSlide> */}
+        {/* <SwiperSlide>
           <img className="rounded-lg" src={h1} />
         </SwiperSlide>
         <SwiperSlide>
@@ -85,7 +94,7 @@ export default function PropertyDetailsSlider() {
         </SwiperSlide>
         <SwiperSlide>
           <img className="rounded-lg" src={h6} />
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </>
   );
