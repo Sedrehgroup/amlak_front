@@ -54,8 +54,12 @@ export default function NavBar() {
            
           });
       } catch (error) {
+
         console.log("error", error);
       }
+    }
+    else {
+      dispatch(setUserIsLoggedHandler(false))
     }
   }, [token,update]);
 
