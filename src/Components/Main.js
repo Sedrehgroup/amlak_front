@@ -5,6 +5,7 @@ import NavBar from "./Dashboard/NavBar";
 import RightPanel from "./Dashboard/Panel/RightPanel";
 import Protected from "./Protect/protected";
 import useLocalStorage from "use-local-storage";
+import setDataByTokens from "../utils/getDataByToken"
 import axios from "axios";
 
 export default function Main({ comp }) {
@@ -12,45 +13,51 @@ export default function Main({ comp }) {
   const [refToken, setRefToken] = useLocalStorage("refresh_token", null);
   const [userData, setUserData] = useState(null);
 
-  async function setAccTokenByRefToken() {
-    try {
-      const Api_Url = process.env.REACT_APP_API_URL;
-      const { data } = await axios.post(`${Api_Url}/account/token/refresh/`, {
-        refresh: refToken,
-      });
-      console.log("newAccToken", data.access);
-      if (!data) throw new Error();
-      setAccToken(data.access);
-    } catch (err) {
-      console.log("refresh token is invalid!");
-      setAccToken(null);
-      setRefToken(null);
-    }
-  }
+  // async function setDataByRefToken(url, func) {
+  //   try {
+  //     const Api_Url = process.env.REACT_APP_API_URL;
+  //     const { data } = await axios.post(`${Api_Url}/account/token/refresh/`, {
+  //       refresh: refToken,
+  //     });
+  //     console.log("newAccToken", data.access);
+  //     if (!data) throw new Error();
+  //     setAccToken(data.access);
+  //     const { data2 } = await axios.get(url, {
+  //       headers: {
+  //         Authorization: `Bearer ${accToken}`,
+  //       },
+  //     });
+  //     func(data2);
+  //   } catch (err) {
+  //     console.log("refresh token is invalid!");
+  //     setAccToken(null);
+  //     setRefToken(null);
+  //   }
+  // }
 
-  async function setUserByAccToken() {
-    try {
-      const Api_Url = process.env.REACT_APP_API_URL;
-      const { data } = await axios.get(`${Api_Url}/account/user_information/`, {
-        headers: {
-          Authorization: `Bearer ${accToken}`,
-        },
-      });
-      setUserData(data);
-      console.log("user data", data);
-    } catch (err) {
-      console.warn(err);
-      console.log("access token is invalid!");
-      setAccTokenByRefToken();
-    }
-  }
+  // async function setDataByTokens(url, func, accToken, refToken) {
+  //   try {
+  //     const Api_Url = process.env.REACT_APP_API_URL;
+  //     const { data } = await axios.get(url, {
+  //       headers: {
+  //         Authorization: `Bearer ${accToken}`,
+  //       },
+  //     });
+  //     func(data);
+  //     console.log("user data", data);
+  //   } catch (err) {
+  //     console.warn(err);
+  //     console.log("access token is invalid!");
+  //     setDataByRefToken(url, func);
+  //   }
+  // }
 
   useEffect(() => {
     return () => {
       console.log("accToken", accToken);
-      setUserByAccToken();
+      setDataByTokens(`${Api_Url}/account/user_information/`, setUserData);
     };
-  }, [accToken]);
+  }, []);
 
   return (
     <div>

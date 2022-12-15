@@ -8,21 +8,21 @@ import PropertyCard from "./../AddOns/PropertyCard";
 import { iranCitiesList } from "../../../../utils/iranCitiesList";
 import { selectedPropertyDataHandler } from "../../../../redux/reducers/userProperty";
 import { useDispatch } from "react-redux";
-
+import useLocalStorage from "use-local-storage";
 import empty from "../../../../assets/Images/Dashboard/folder-open.svg";
 
 const AllProperties = () => {
   const dispatch = useDispatch();
 
   const [token] = useToken();
-  const [MyPropertiesList, setMyProperties] = useState([]);
+  const [MyPropertiesList, setMyProperties] = useState(null);
   const [province, setProvince] = useState("");
   const [city, setCity] = useState("");
 
   const [previousUrl, setPreviousUrl] = useState("disable");
   const [nextUrl, setNextUrl] = useState("disable");
 
-  const [showLoading, setShowLoading] = useState(false);
+  const [showLoading, setShowLoading] = useState(true);
   useEffect(() => {
     document.title = "سامانه اجاره بها - آگهی های اجاره";
   }, []);
@@ -30,6 +30,30 @@ const AllProperties = () => {
   useEffect(() => {
     if (province == "") setCity("");
   }, [province]);
+
+  const [accToken, setAccToken] = useLocalStorage("access_token", null);
+  const [refToken, setRefToken] = useLocalStorage("refresh_token", null);
+
+  async function setPropertiesByAccToken() {
+    try {
+      const Api_Url = process.env.REACT_APP_API_URL;
+      const { data } = await axios.get(
+        `${Api_Url}/api/property/properties_list/?city=${city}&county=${province}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setMyProperties(data?.results);
+      console.log("my properties", data);
+    } catch (err) {
+      console.warn(err);
+      console.log("access token is invalid!");
+      // setAccTokenByRefToken();
+    }
+  }
+
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
     if (token.length > 0) {
@@ -126,7 +150,7 @@ const AllProperties = () => {
       setShowLoading(true);
       try {
         axios
-          .get(`${Api_Url}/api/property/properties_list/`, {
+          .get(`${Api_Url}/api/property/properties_list/${nextUrl}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -204,7 +228,7 @@ const AllProperties = () => {
           </div>
         </div>
         {/* <div className="mx-8 bg-warmGray-100 h-[1px]"></div> */}
-        {!showLoading ? (
+        {MyPropertiesList ? (
           <div>
             {MyPropertiesList.length > 0 ? (
               <>
