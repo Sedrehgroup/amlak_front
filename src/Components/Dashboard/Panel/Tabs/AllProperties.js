@@ -24,7 +24,7 @@ const AllProperties = () => {
 
   const [showLoading, setShowLoading] = useState(false);
   useEffect(() => {
-    document.title='سامانه اجاره بها - آگهی های اجاره'
+    document.title = "سامانه اجاره بها - آگهی های اجاره";
   }, []);
 
   useEffect(() => {

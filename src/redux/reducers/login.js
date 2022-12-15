@@ -10,7 +10,7 @@ const slice = createSlice({
     },
     smsCode: 0,
     phoneNumber: '0',
-    isUserLogged: window.localStorage.getItem("user_logged") === "true",
+    // isUserLogged: window.localStorage.getItem("user_logged") === "true",
   },
   reducers: {
     userLoginStepAccess: (state, action) => {

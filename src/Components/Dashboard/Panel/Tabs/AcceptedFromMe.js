@@ -30,7 +30,7 @@ const AcceptedFromMe = () => {
 
   const Api_Url = process.env.REACT_APP_API_URL;
   useEffect(() => {
-    document.title='سامانه اجاره بها - اجاره داده شده ها'
+    document.title = "سامانه اجاره بها - اجاره داده شده ها";
   }, []);
   useEffect(() => {
     if (!!!!token) {

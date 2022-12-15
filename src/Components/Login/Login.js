@@ -5,11 +5,16 @@ import Main from "../Main";
 import PhoneNumForm from "./Elements/PhoneNumForm";
 import PhoneSmsForm from "./Elements/PhoneSmsForm";
 import RegisterForm from "./Elements/RegisterForm";
+import useLocalStorage from "use-local-storage"
 
-export default function Login({ isLoged }) {
+export default function Login() {
+  const [accToken, setAccToken] = useLocalStorage("access_token", null);
+  const isLoged = accToken;
+  
   const loginSteps = useSelector((state) => state.login.loginSteps);
   useEffect(() => {
     document.title='سامانه اجاره بها - ورود'
+    console.log("isLogged", isLoged);
   }, []);
   return (
     <>
