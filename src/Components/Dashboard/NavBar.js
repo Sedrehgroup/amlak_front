@@ -13,7 +13,7 @@ import {
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { setUserIdHandler } from "../../redux/reducers/user";
 
-export default function NavBar({ userData }) {
+export default function NavBar({ data: userData }) {
   // const [userData, setUserData] = useState({});
   // const dispatch = useDispatch();
   // const [token] = useToken();

@@ -10,12 +10,12 @@ import axios from "axios";
 export default function Main({ comp }) {
   const [accToken, setAccToken] = useLocalStorage("access_token", null);
   const [refToken, setRefToken] = useLocalStorage("refresh_token", null);
-  const [isLoading, setLoading] = useState(true);
+  const [userData, setUserData] = useState(null);
 
-  async function getNewAccToken() {
+  async function setAccTokenByRefToken() {
     try {
       const Api_Url = process.env.REACT_APP_API_URL;
-      const {data} = await axios.post(`${Api_Url}/account/token/refresh/`, {
+      const { data } = await axios.post(`${Api_Url}/account/token/refresh/`, {
         refresh: refToken,
       });
       console.log("newAccToken", data.access);
@@ -28,35 +28,36 @@ export default function Main({ comp }) {
     }
   }
 
-  async function getUserByAccToken() {
+  async function setUserByAccToken() {
     try {
       const Api_Url = process.env.REACT_APP_API_URL;
-      const response = await axios.get(`${Api_Url}/account/user_information/`, {
+      const { data } = await axios.get(`${Api_Url}/account/user_information/`, {
         headers: {
           Authorization: `Bearer ${accToken}`,
         },
       });
-      console.log("response", response);
+      setUserData(data);
+      console.log("user data", data);
     } catch (err) {
       console.warn(err);
       console.log("access token is invalid!");
-      getNewAccToken();
+      setAccTokenByRefToken();
     }
   }
 
   useEffect(() => {
     return () => {
       console.log("accToken", accToken);
-      getUserByAccToken();
+      setUserByAccToken();
     };
-  }, []);
+  }, [accToken]);
 
   return (
     <div>
       <Protected isLoged={accToken}>
-        {!isLoading ? (
+        {userData ? (
           <>
-            <NavBar />
+            <NavBar data={userData} />
             <div className=" flex w-full bg-warmGray-200">
               <div className="w-[200px] pt-4">
                 <RightPanel />
