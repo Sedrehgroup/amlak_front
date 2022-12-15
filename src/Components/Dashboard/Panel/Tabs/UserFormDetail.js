@@ -26,28 +26,6 @@ export default function UserFormDetail() {
     national_code: "",
     phone_number: "",
   });
-  const [userAdditionalData, setUserAdditionalData] = useState({
-    email: "",
-    father_name: "",
-    // birth_day: "1370-01-01",
-    certificate_number: "",
-    sex: true,
-    latin_first_name: "",
-    latin_last_name: "",
-    certificate_country: "",
-    certificate_province: "",
-    certificate_county: "",
-    certificate_type: "",
-    marriage: true,
-    education: "",
-    province: "",
-    county: "",
-    city: "",
-    address: "",
-    postal_code: "",
-    personal_phone_number: "",
-  });
-  const phoneNumber = useSelector((state) => state.login.phoneNumber);
 
   const [selectedProvince, setSelectedProvince] = useState("");
   const [selectedProvince2, setSelectedProvince2] = useState("");
@@ -66,16 +44,16 @@ export default function UserFormDetail() {
     setBirthDate(`${year}-${month}-${day}`);
   }, [day, month, year]);
   useEffect(() => {
-    if (!!!!userAdditionalData.birth_day) {
-      setYear(userAdditionalData.birth_day.slice(0, 4));
-      setMonth(userAdditionalData.birth_day.slice(5, 7));
-      setDay(userAdditionalData.birth_day.slice(8, 10));
+    if (!!!!userData.birth_day) {
+      setYear(userData.birth_day.slice(0, 4));
+      setMonth(userData.birth_day.slice(5, 7));
+      setDay(userData.birth_day.slice(8, 10));
     }
     console.log(
-      "userAdditionalData>>>>>>>>>>>>>>>>>>>>>>>>>",
-      userAdditionalData
+      "userData>>>>>>>>>>>>>>>>>>>>>>>>>",
+      userData
     );
-  }, [userAdditionalData]);
+  }, [userData]);
 
   useEffect(() => {
     const Api_Url = process.env.REACT_APP_API_URL;
@@ -91,6 +69,8 @@ export default function UserFormDetail() {
           .then(({ data }) => {
             console.log("axios /account/user_information data.data:", data);
             setUserData(data);
+          
+
           })
           .catch((e) => {
             console.log("error in axios /account/user_information", e);
@@ -100,27 +80,6 @@ export default function UserFormDetail() {
             }
           });
 
-        axios
-          .get(`${Api_Url}/account/additional_user_information/`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          })
-          .then(({ data }) => {
-            console.log(
-              "axios /account/additional_user_information data.data:",
-              data
-            );
-            setUserAdditionalData(data);
-          })
-          .catch((e) => {
-            console.log(
-              "error in axios /account/additional_user_information",
-              e
-            );
-            if (e.response.status == 401) {
-            }
-          });
       } catch (error) {
         console.log("error", error);
       }
@@ -158,35 +117,40 @@ export default function UserFormDetail() {
     try {
       axios
         .put(
-          `${Api_Url}/account/additional_user_information/`,
+          `${Api_Url}/account/user_information/`,
           {
-            email: email || userAdditionalData.email,
-            father_name: father_name || userAdditionalData.father_name,
+            password:'rent',
+            first_name: first_name || userData?.first_name,
+            last_name: last_name || userData?.last_name,
+            national_code: national_code || userData?.national_code,
+            phone_number: phone_number || userData?.phone_number,
+            email: email || userData.email,
+            father_name: father_name || userData.father_name,
             certificate_number:
-              certificate_number || userAdditionalData.certificate_number,
+              certificate_number || userData.certificate_number,
             birth_day: birthDate || `${year}-${month}-${day}`,
-            sex: sex || userAdditionalData.sex,
+            sex: sex || userData.sex,
             latin_first_name:
-              latin_first_name || userAdditionalData.latin_first_name,
+              latin_first_name || userData.latin_first_name,
             latin_last_name:
-              latin_last_name || userAdditionalData.latin_last_name,
+              latin_last_name || userData.latin_last_name,
             certificate_country:
-              certificate_country || userAdditionalData.certificate_country,
+              certificate_country || userData.certificate_country,
             certificate_province:
-              selectedProvince || userAdditionalData.certificate_province,
+              selectedProvince || userData.certificate_province,
             certificate_county:
-              certificate_county || userAdditionalData.certificate_county,
+              certificate_county || userData.certificate_county,
             certificate_type:
-              certificate_type || userAdditionalData.certificate_type,
-            marriage: marriage || userAdditionalData.marriage,
-            education: education || userAdditionalData.education,
-            province: selectedProvince2 || userAdditionalData.province,
-            county: county || userAdditionalData.county,
-            city: city || userAdditionalData.city,
-            address: address || userAdditionalData.address,
-            postal_code: postal_code || userAdditionalData.postal_code,
+              certificate_type || userData.certificate_type,
+            marriage: marriage || userData.marriage,
+            education: education || userData.education,
+            province: selectedProvince2 || userData.province,
+            county: county || userData.county,
+            city: city || userData.city,
+            address: address || userData.address,
+            postal_code: postal_code || userData.postal_code,
             personal_phone_number:
-              personal_phone_number || userAdditionalData.personal_phone_number,
+              personal_phone_number || userData.personal_phone_number,
           },
           {
             headers: {
@@ -195,7 +159,7 @@ export default function UserFormDetail() {
           }
         )
         .then(({ data }) => {
-          console.log("axios /account/create_additional_user data.data:", data);
+          console.log("axios /account/user_information data.data:", data);
           dispatch(updateHandler(Math.random()))
           toast.success("اطلاعات با موفقیت ثبت شد", {
             position: "top-center",
@@ -211,36 +175,7 @@ export default function UserFormDetail() {
           }
         });
 
-      axios
-        .patch(
-          `${Api_Url}/account/user_information/`,
-          {
-            first_name: first_name || userData?.first_name,
-            last_name: last_name || userData?.last_name,
-            national_code: national_code || userData?.national_code,
-            phone_number: phone_number || userData?.phone_number,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
-        .then(({ data }) => {
-          console.log("axios /account/create_additional_user data.data:", data);
-          toast.success("اطلاعات با موفقیت ثبت شد", {
-            position: "top-center",
-            rtl: true,
-            className: "m_toast",
-          });
-        })
-        .catch((e) => {
-          console.log("error in axios /account/create_additional_user/", e);
-          if (e.response.status == 401) {
-            // //dispatch(setUserIsLoggedHandler(false));
-            // window.localStorage.setItem("user_logged", "false");
-          }
-        });
+    
     } catch (error) {
       console.log("error", error);
     }
@@ -330,7 +265,7 @@ export default function UserFormDetail() {
                   {...register("latin_first_name")}
                   placeholder="ALI"
                   type="text"
-                  defaultValue={userAdditionalData.latin_first_name}
+                  defaultValue={userData.latin_first_name}
                 />
               </div>
               <div className="inputC relative mx-1 mt-6 ">
@@ -338,7 +273,7 @@ export default function UserFormDetail() {
                   نام خانوادگی لاتین
                 </label>
                 <input
-                  defaultValue={userAdditionalData.latin_last_name}
+                  defaultValue={userData.latin_last_name}
                   className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-1  py-2"
                   {...register("latin_last_name")}
                   placeholder="AHMADI"
@@ -354,7 +289,7 @@ export default function UserFormDetail() {
                   {...register("father_name")}
                   placeholder="رضا"
                   type="text"
-                  defaultValue={userAdditionalData.father_name}
+                  defaultValue={userData.father_name}
                 />
               </div>
               <div className="inputC mx relative mt-6 ">
@@ -375,7 +310,7 @@ export default function UserFormDetail() {
                       key={index}
                       value={val.value}
                       selected={
-                        userAdditionalData.sex == val.value && "selected"
+                        userData.sex == val.value && "selected"
                       }
                     >
                       {val.lb}
@@ -465,7 +400,7 @@ export default function UserFormDetail() {
                       key={index}
                       value={val.value}
                       selected={
-                        userAdditionalData.marriage == val.value && "selected"
+                        userData.marriage == val.value && "selected"
                       }
                     >
                       {val.lb}
@@ -482,7 +417,7 @@ export default function UserFormDetail() {
                   {...register("education")}
                   placeholder="لیسانس"
                   type="text"
-                  defaultValue={userAdditionalData.education}
+                  defaultValue={userData.education}
                 />
               </div>
             </div>
@@ -499,7 +434,7 @@ export default function UserFormDetail() {
                   شماره شناسنامه
                 </label>
                 <input
-                  defaultValue={userAdditionalData.certificate_number}
+                  defaultValue={userData.certificate_number}
                   className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-1  py-2"
                   {...register("certificate_number")}
                   placeholder="00122233334"
@@ -515,7 +450,7 @@ export default function UserFormDetail() {
                   className="focusinput h-12 w-full rounded border-2 border-solid border-warmGray-300 px-1  py-2"
                   {...register("certificate_country")}
                   placeholder="ایران"
-                  defaultValue={userAdditionalData.certificate_country}
+                  defaultValue={userData.certificate_country}
                   type="text"
                 />
               </div>
@@ -543,9 +478,9 @@ export default function UserFormDetail() {
                       key={index}
                       value={val}
                       // disabled={val != "تهران"}
-                      // defaultValue={userAdditionalData.certificate_province}
+                      // defaultValue={userData.certificate_province}
                       selected={
-                        userAdditionalData.certificate_province == val &&
+                        userData.certificate_province == val &&
                         "selected"
                       }
                     >
@@ -569,17 +504,17 @@ export default function UserFormDetail() {
                       (element) =>
                         element.province ==
                         (selectedProvince ||
-                          userAdditionalData.certificate_province)
-                      // element.province == userAdditionalData.certificate_province
+                          userData.certificate_province)
+                      // element.province == userData.certificate_province
                     )
                     .map((val, index) => (
                       <option
                         key={index}
                         value={val.city}
                         // disabled={val.city != "تهران"}
-                        // defaultValue={userAdditionalData.certificate_county}
+                        // defaultValue={userData.certificate_county}
                         selected={
-                          userAdditionalData.certificate_county == val.city &&
+                          userData.certificate_county == val.city &&
                           "selected"
                         }
                       >
@@ -607,7 +542,7 @@ export default function UserFormDetail() {
                     {...register("email")}
                     placeholder="fake@gmail.com"
                     type="email"
-                    defaultValue={userAdditionalData.email}
+                    defaultValue={userData.email}
                   />
                 </div>
 
@@ -626,7 +561,7 @@ export default function UserFormDetail() {
                         key={index}
                         value={val}
                         selected={
-                          userAdditionalData.certificate_type == val &&
+                          userData.certificate_type == val &&
                           "selected"
                         }
                       >
@@ -661,7 +596,7 @@ export default function UserFormDetail() {
                         key={index}
                         value={val}
                         selected={
-                          userAdditionalData.province == val && "selected"
+                          userData.province == val && "selected"
                         }
                       >
                         {val}
@@ -687,9 +622,9 @@ export default function UserFormDetail() {
                       .filter(
                         (element) =>
                           element.province ==
-                          (selectedProvince2 || userAdditionalData.province)
+                          (selectedProvince2 || userData.province)
 
-                        // element.province == userAdditionalData.province
+                        // element.province == userData.province
                       )
                       .map((val, index) => (
                         <option
@@ -697,7 +632,7 @@ export default function UserFormDetail() {
                           key={index}
                           value={val.city}
                           selected={
-                            userAdditionalData.county == val.city && "selected"
+                            userData.county == val.city && "selected"
                           }
                         >
                           {val.city}
@@ -716,7 +651,7 @@ export default function UserFormDetail() {
                     {...register("postal_code")}
                     placeholder="11223344"
                     type="text"
-                    defaultValue={userAdditionalData.postal_code}
+                    defaultValue={userData.postal_code}
                   />
                 </div>
                 <div className="inputCtwo relative mx-1   mt-6 rounded ">
@@ -728,7 +663,7 @@ export default function UserFormDetail() {
                     {...register("personal_phone_number")}
                     placeholder="02133667799"
                     type="text"
-                    defaultValue={userAdditionalData.personal_phone_number}
+                    defaultValue={userData.personal_phone_number}
                   />
                 </div>
               </div>
@@ -741,7 +676,7 @@ export default function UserFormDetail() {
                   {...register("address")}
                   placeholder="بلوار کشاورز - تقاطع قدس"
                   type="text"
-                  defaultValue={userAdditionalData.address}
+                  defaultValue={userData.address}
                 />
               </div>
             </div>
@@ -763,7 +698,7 @@ export default function UserFormDetail() {
               {iranCitiesList
                 .filter(
                   (element) =>
-                    element.province == userAdditionalData.province ||
+                    element.province == userData.province ||
                     element.province == selectedProvince2
                 )
                 .map((val, index) => (

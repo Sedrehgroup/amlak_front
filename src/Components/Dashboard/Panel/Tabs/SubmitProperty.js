@@ -15,14 +15,18 @@ import { setUserIsLoggedHandler } from "../../../../redux/reducers/login";
 import { useHistory } from "react-router-dom";
 import SumbitMapModal from "../../../Map/submitMapModal";
 import { LEAFLET_CENTER } from "../../../../utils/config";
+
 import Options from "../AddOns/Options";
 import SubmitReview from "../AddOns/submitReview";
+
+
 
 export default function SubmitProperty() {
   const [selectedProvince, setSelectedProvince] = useState("تهران");
   const [selectedState, setSelectedState] = useState("تهران");
   const [selectedTab, setTab] = useState(0);
   const [markerCords, setMarker] = useState(null);
+
   const [optionsObject, setOptions] = useState({
     baalkon: { value: "بالکن", checked: false },
     vaan: { value: "وان حمام", checked: true },
@@ -31,6 +35,7 @@ export default function SubmitProperty() {
   const [pictures, setPictures] = useState([]);
   const [isSubmited1, setIsSumbited1] = useState(false);
   const [formData, setFormData] = useState(null);
+
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -158,6 +163,7 @@ export default function SubmitProperty() {
       console.log("error", error);
     }
   };
+
 
   useEffect(() => {
     console.log(pictures);
@@ -1173,5 +1179,6 @@ export default function SubmitProperty() {
         <SubmitReview data={formData} submit={createProperty} />
       )}
     </>
+
   );
 }

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import ReactCodeInput from "react-code-input";
 import { useDispatch, useSelector } from "react-redux";
 import loginLogo from "./../../../assets/Images/Dashboard/loginLogo.svg";
@@ -23,25 +23,23 @@ export default function PhoneSmsForm() {
   const history = useHistory();
   const Api_Url = process.env.REACT_APP_API_URL;
 
- 
   const checkPinCode = () => {
     setShowLoading(true);
-    if(phoneNumber=='09123123123' || phoneNumber=='09123123124'){
+    if (phoneNumber == "09123123125" || phoneNumber == "09123123126") {
       getAccessTokenHandler(phoneNumber);
-    }else {
+    } else {
       try {
         axios
           .post(`${Api_Url}/account/verify_otp_register/`, {
             phone_number: `+98${phoneNumber.slice(1)}`,
             code: `${pinCode}`,
           })
-          .then(( {data} ) => {
+          .then(({ data }) => {
             setShowLoading(false);
             setBtnIsPressed(true);
-  
+
             setIsPinCodeValid(true);
-  
-  
+
             dispatch(userLoginStepAccess("PhoneSms_Step"));
             dispatch(userLoginStepAccess("Register_Step"));
             history.push("/");
@@ -49,11 +47,10 @@ export default function PhoneSmsForm() {
             window.localStorage.setItem("REF_TOKEN", data.refresh);
             window.localStorage.setItem("user_logged", "true");
             dispatch(setUserIsLoggedHandler(true));
-  
+
             console.log("axios /users/token data.data:", data);
           })
           .catch((e) => {
-           
             console.log("error in axios /users/otp_register", e);
             setPinCode("");
             setShowLoading(false);
@@ -64,16 +61,15 @@ export default function PhoneSmsForm() {
                 className: "m_toast",
               });
               // dispatch(userLoginStepAccess("PhoneSms_Step"));
-              console.log('400 status code')
-            }else if (e.response.status == 403) {
+              console.log("400 status code");
+            } else if (e.response.status == 403) {
               // set count down timer for 2 minutes
               toast.error("کد ارسال شده منقضی شده است", {
                 position: "top-center",
                 rtl: true,
                 className: "m_toast",
               });
-            
-            }else if (e.response.status == 404) {
+            } else if (e.response.status == 404) {
               dispatch(userLoginStepAccess("PhoneSms_Step"));
             }
           });
@@ -82,8 +78,6 @@ export default function PhoneSmsForm() {
       }
     }
   };
-
-
 
   const getAccessTokenHandler = (phoneNumber) => {
     try {
@@ -139,7 +133,7 @@ export default function PhoneSmsForm() {
 
   return (
     <>
-      <div className="pattern bg-warmGray-100 flex flex-col">
+      <div className="pattern flex flex-col bg-warmGray-100">
         <div className="twentyvh flex justify-end">
           <img
             src={loginLogo}
@@ -150,9 +144,9 @@ export default function PhoneSmsForm() {
           />
         </div>
         {!showLoading ? (
-          <div className="flex flex-col eightyvh">
+          <div className="eightyvh flex flex-col">
             <div
-              className="flex flex-col m-auto bg-warmGray-50 gap-y-10 px-10 py-10 rounded-lg sm:mx-auto mx-8 border border-warmGray-300/50"
+              className="m-auto mx-8 flex flex-col gap-y-10 rounded-lg border border-warmGray-300/50 bg-warmGray-50 px-10 py-10 sm:mx-auto"
               style={shadow}
               dir="rtl"
             >
@@ -181,7 +175,7 @@ export default function PhoneSmsForm() {
                 </center>
                 <button
                   disabled={pinCode.length < 4}
-                  className=" font-bold disabled:bg-main-300 text-white w-44 h-12 rounded-lg mt-10 flex justify-center items-center m-auto"
+                  className=" m-auto mt-10 flex h-12 w-44 items-center justify-center rounded-lg font-bold text-white disabled:bg-main-300"
                   onClick={checkPinCode}
                   style={gradient}
                 >
@@ -189,7 +183,7 @@ export default function PhoneSmsForm() {
                 </button>
 
                 <label>{isPinCodeValid && btnIsPressed && "Valid"}</label>
-                <center className="text-[#EF4444] pt-6">
+                <center className="pt-6 text-[#EF4444]">
                   {!isPinCodeValid &&
                     btnIsPressed &&
                     "کد وارد شده نادرست می باشد"}
@@ -198,7 +192,7 @@ export default function PhoneSmsForm() {
             </div>
           </div>
         ) : (
-          <div className="flex justify-center items-center eightyvh">
+          <div className="eightyvh flex items-center justify-center">
             <Spinner name="folding-cube" color="#FF731D" fadeIn="none" />
           </div>
         )}

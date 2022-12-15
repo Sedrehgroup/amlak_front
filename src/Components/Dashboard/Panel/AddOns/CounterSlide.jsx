@@ -47,7 +47,7 @@ export default function CounterSlide() {
                         marginRight: "auto",
                       }}
                     />
-                    <p>قیمت اجاره : 4,500,000 تومان </p>
+                    <p>قیمت اجاره ماهانه : 4,500,000 تومان </p>
                   </div>
                   <div className="w-1/2">
                     <p>سال ساخت : 1399</p>
@@ -120,7 +120,7 @@ export default function CounterSlide() {
         />
       </SwiperSlide>
       <SwiperSlide>
-      <CounterComponent
+        <CounterComponent
           Title="مسکونی دوبلکس 248 متر در پیروزی"
           btnText="امضای قرارداد"
           MortgagePrice="620,000,000 تومان"
@@ -130,7 +130,7 @@ export default function CounterSlide() {
         />
       </SwiperSlide>
       <SwiperSlide>
-      <CounterComponent
+        <CounterComponent
           Title="مسکونی دوبلکس 248 متر در پیروزی"
           btnText="امضای قرارداد"
           MortgagePrice="620,000,000 تومان"

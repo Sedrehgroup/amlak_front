@@ -30,13 +30,12 @@ export default function PhoneNumForm() {
   const onSubmit = ({ phoneNumber }) => {
     setShowLoading(true);
     console.log("phoneNumber", phoneNumber);
-    if (phoneNumber == "09123123123" || phoneNumber == "09123123124") {
+    if (phoneNumber == "09123123125" || phoneNumber == "09123123126") {
       // کاربر تستی
 
       dispatch(setPhoneNumberHandler(phoneNumber));
       dispatch(userLoginStepAccess("PhoneNumber_Step"));
       setShowLoading(false);
-    
     } else {
       const Api_Url = process.env.REACT_APP_API_URL;
       try {
@@ -60,7 +59,6 @@ export default function PhoneNumForm() {
             console.log("error in axios /users/otp_register", e);
             setShowLoading(false);
             if (e.response.status == 401) {
-             
             }
           });
       } catch (error) {}
@@ -115,11 +113,10 @@ export default function PhoneNumForm() {
                     required: "وارد کردن شماره الزامی می باشد",
                     maxLength: 11,
                     minLength: 11,
-                    pattern:{
-                      value:/([0][9])\d+/,
-                      message:'شماره وارد شده اشتباه می باشد',
+                    pattern: {
+                      value: /([0][9])\d+/,
+                      message: "شماره وارد شده اشتباه می باشد",
                     },
-                    
                   })}
                   value={phoneNum}
                   onChange={(e) => setPhoneNum(e.target.value)}

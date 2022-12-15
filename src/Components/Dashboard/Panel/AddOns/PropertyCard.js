@@ -46,14 +46,18 @@ export default function PropertyCard(props) {
             </strong>
             <hr className=" mx-3 border-main-300" />
             <div className="my-3 flex  w-full flex-col gap-y-2 rounded-lg px-4 text-center">
-              <p className="">قیمت رهن : {mortgage_amount.toLocaleString()} تومان </p>
+              <p className="">
+                قیمت رهن : {mortgage_amount.toLocaleString()} تومان{" "}
+              </p>
               {/* <hr
                 style={{
                   color: "rgba(255, 171, 119, 1)",
                   marginBottom: "16px",
                 }}
               /> */}
-              <p className="">قیمت اجاره : {rent_amount.toLocaleString()} تومان </p>
+              <p className="">
+                قیمت اجاره ماهانه : {rent_amount.toLocaleString()} تومان{" "}
+              </p>
               {/* <hr
                 style={{
                   color: "rgba(255, 171, 119, 1)",
