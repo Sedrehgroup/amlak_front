@@ -7,10 +7,13 @@ import Protected from "./Protect/protected";
 import useLocalStorage from "use-local-storage";
 import getDataByTokens from "../utils/getDataByToken";
 import axios from "axios";
+import { useContext } from "react";
+import { TokenContext } from "../contexts/tokensContext";
 
 export default function Main({ comp }) {
-  const [accToken, setAccToken] = useLocalStorage("access_token", null);
-  const [refToken, setRefToken] = useLocalStorage("refresh_token", null);
+  // const [accToken, setAccToken] = useLocalStorage("access_token", null);
+  // const [refToken, setRefToken] = useLocalStorage("refresh_token", null);
+  const {accToken, setAccToken, refToken, setRefToken} = useContext(TokenContext)
   const [userData, setUserData] = useState(null);
 
   // async function setDataByRefToken(url, func) {

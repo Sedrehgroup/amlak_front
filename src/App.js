@@ -29,6 +29,7 @@ import NotFound from "./Components/notFound";
 import PropertyDetails from "./Components/Dashboard/Panel/AddOns/PropertyDetails";
 // import ProtectedRoute from "./Components/Routs/ProtectedRoute";
 import useLocalStorage from "use-local-storage";
+import TokenProvider from "./contexts/tokensContext";
 
 function App() {
   const isUserLogged = useSelector((state) => state.login.isUserLogged);
@@ -76,78 +77,80 @@ function App() {
   // }, []);
 
   return (
-    <div className="bg-warmGray-200">
-      {/* {isUserLogged ? <Main /> : <Login />} */}
-      <Switch>
-        <Route exact path="/auth">
-          <Login />
-        </Route>
-        <Route exact path="/">
-          <Main comp={<Counter />} />
-        </Route>
-        <Route path="/userinfo">
-          <Main comp={<UserFormDetail />} />
-        </Route>
-        <Route path="/chat">
-          <Main
-            comp={
-              <center>
-                <ChatPage />
-              </center>
-            }
-          />
-        </Route>
-        <Route path="/contracts">
-          <Main comp={<Contracts />} />
-        </Route>
-        <Route path="/submitContract">
-          <Main comp={<SubmitContract />} />
-        </Route>
-        <Route path="/submitProperty">
-          <Main comp={<SubmitProperty />} />
-        </Route>
-        <Route path="/myProperties">
-          <Main comp={<MyProperties />} />
-        </Route>
-        <Route path="/requestsToMe">
-          <Main comp={<RequestsToMe />} />
-        </Route>
-        <Route path="/AcceptedFromMe">
-          {/* <center>اجاره داده شده ها</center> */}
-          <Main comp={<AcceptedFromMe />} />
-        </Route>
-        <Route exact path="/allProperties">
-          <Main comp={<AllProperties />} />
-        </Route>
-        <Route exact path="/allProperties/:id">
-          <Main comp={<PropertyDetails />} />
-        </Route>
-        <Route path="/requestsFromMe">
-          <Main comp={<RequestsFromMe />} />
-        </Route>
-        <Route path="/AcceptedForMe">
-          <Main comp={<AcceptedForMe />} />
-        </Route>
-        <Route path="/editProperty">
-          <Main comp={<EditProperty />} />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
-      </Switch>
-      {/* <Main /> */}
-      {/* <Switch> */}
-      {/* <Route exact path="/" component={isUserLogged && Main} /> */}
-      {/* <Route exact path="/" component={Login} /> */}
-      {/* <Route component={!isUserLogged ? Login : Main} /> */}
-      {/* </Switch> */}
-      {/* <Switch>
-        <Route exact path="/" component={Login} />
-        <ProtectedRoute exact path="/app" component={Main} />
-        <Route path="*" component={() => "404 Page Not Found"} />
-      </Switch> */}
-      <ToastContainer />
-    </div>
+    <TokenProvider>
+      <div className="bg-warmGray-200">
+        {/* {isUserLogged ? <Main /> : <Login />} */}
+        <Switch>
+          <Route exact path="/auth">
+            <Login />
+          </Route>
+          <Route exact path="/">
+            <Main comp={<Counter />} />
+          </Route>
+          <Route path="/userinfo">
+            <Main comp={<UserFormDetail />} />
+          </Route>
+          <Route path="/chat">
+            <Main
+              comp={
+                <center>
+                  <ChatPage />
+                </center>
+              }
+            />
+          </Route>
+          <Route path="/contracts">
+            <Main comp={<Contracts />} />
+          </Route>
+          <Route path="/submitContract">
+            <Main comp={<SubmitContract />} />
+          </Route>
+          <Route path="/submitProperty">
+            <Main comp={<SubmitProperty />} />
+          </Route>
+          <Route path="/myProperties">
+            <Main comp={<MyProperties />} />
+          </Route>
+          <Route path="/requestsToMe">
+            <Main comp={<RequestsToMe />} />
+          </Route>
+          <Route path="/AcceptedFromMe">
+            {/* <center>اجاره داده شده ها</center> */}
+            <Main comp={<AcceptedFromMe />} />
+          </Route>
+          <Route exact path="/allProperties">
+            <Main comp={<AllProperties />} />
+          </Route>
+          <Route exact path="/allProperties/:id">
+            <Main comp={<PropertyDetails />} />
+          </Route>
+          <Route path="/requestsFromMe">
+            <Main comp={<RequestsFromMe />} />
+          </Route>
+          <Route path="/AcceptedForMe">
+            <Main comp={<AcceptedForMe />} />
+          </Route>
+          <Route path="/editProperty">
+            <Main comp={<EditProperty />} />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+        {/* <Main /> */}
+        {/* <Switch> */}
+        {/* <Route exact path="/" component={isUserLogged && Main} /> */}
+        {/* <Route exact path="/" component={Login} /> */}
+        {/* <Route component={!isUserLogged ? Login : Main} /> */}
+        {/* </Switch> */}
+        {/* <Switch>
+          <Route exact path="/" component={Login} />
+          <ProtectedRoute exact path="/app" component={Main} />
+          <Route path="*" component={() => "404 Page Not Found"} />
+        </Switch> */}
+        <ToastContainer />
+      </div>
+    </TokenProvider>
   );
 }
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Spinner from "react-spinkit";
 import useToken from "./../../../../customHooks/useToken";
 
@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import useLocalStorage from "use-local-storage";
 import empty from "../../../../assets/Images/Dashboard/folder-open.svg";
 import getDataByTokens from "../../../../utils/getDataByToken";
+import { TokenContext } from "../../../../contexts/tokensContext";
 
 const AllProperties = () => {
   const dispatch = useDispatch();
@@ -53,9 +54,10 @@ const AllProperties = () => {
     })();
   }, [province]);
 
-  const [accToken, setAccToken] = useLocalStorage("access_token", null);
-  const [refToken, setRefToken] = useLocalStorage("refresh_token", null);
-
+  // const [accToken, setAccToken] = useLocalStorage("access_token", null);
+  // const [refToken, setRefToken] = useLocalStorage("refresh_token", null);
+  const {accToken, setAccToken, refToken, setRefToken} = useContext(TokenContext)
+  
   useEffect(() => {
     // const Api_Url = process.env.REACT_APP_API_URL;
     // if (token.length > 0) {
