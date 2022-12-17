@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ReactCodeInput from "react-code-input";
 import { useDispatch, useSelector } from "react-redux";
 import loginLogo from "./../../../assets/Images/Dashboard/loginLogo.svg";
@@ -11,6 +11,7 @@ import Spinner from "react-spinkit";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import useToken from "../../../customHooks/useToken";
+import { TokenContext } from "../../../contexts/tokensContext";
 
 export default function PhoneSmsForm() {
   const phoneNumber = useSelector((state) => state.login.phoneNumber);
@@ -25,6 +26,7 @@ export default function PhoneSmsForm() {
   const Api_Url = process.env.REACT_APP_API_URL;
 
   const [token, setUpdate] = useToken();
+  const {accToken, setAccToken, refToken, setRefToken} = useContext(TokenContext)
 
   const checkPinCode = () => {
     setShowLoading(true);
@@ -101,9 +103,11 @@ export default function PhoneSmsForm() {
 
           dispatch(userLoginStepAccess("PhoneSms_Step"));
           dispatch(userLoginStepAccess("Register_Step"));
-          history.push("/");
-          window.localStorage.setItem("ACC_TOKEN", data.access);
-          window.localStorage.setItem("REF_TOKEN", data.refresh);
+          // window.localStorage.setItem("access_token", data.access);
+          // window.localStorage.setItem("refresh_token", data.refresh);
+          setAccToken(data.access)
+          setRefToken(data.refresh)
+          // history.push("/");
           // window.localStorage.setItem("user_logged", "true");
           // dispatch(setUserIsLoggedHandler(true));
 
@@ -111,7 +115,7 @@ export default function PhoneSmsForm() {
         })
         .then(() => {
           setUpdate(Math.random());
-          console.log("setUpdate", window.localStorage.getItem("ACC_TOKEN"));
+          console.log("setUpdate", window.localStorage.getItem("access_token"));
           dispatch(setUserIsLoggedHandler(true));
         })
         .catch((e) => {

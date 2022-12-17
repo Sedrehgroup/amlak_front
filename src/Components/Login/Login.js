@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Main from "../Main";
@@ -6,9 +6,11 @@ import PhoneNumForm from "./Elements/PhoneNumForm";
 import PhoneSmsForm from "./Elements/PhoneSmsForm";
 import RegisterForm from "./Elements/RegisterForm";
 import useLocalStorage from "use-local-storage"
+import { TokenContext } from "../../contexts/tokensContext";
 
 export default function Login() {
-  const [accToken, setAccToken] = useLocalStorage("access_token", null);
+  // const [accToken, setAccToken] = useLocalStorage("access_token", null);
+  const {accToken} = useContext(TokenContext)
   const isLoged = accToken;
   
   const loginSteps = useSelector((state) => state.login.loginSteps);
