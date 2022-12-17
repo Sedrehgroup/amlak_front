@@ -1,44 +1,46 @@
-import useLocalStorage from "use-local-storage";
+// import useLocalStorage from "use-local-storage";
+// const [accToken, setAccToken] = useLocalStorage("access_token", null);
+// const [refToken, setRefToken] = useLocalStorage("refresh_token", null);
+import axios from "axios";
 
-
-const [accToken, setAccToken] = useLocalStorage("access_token", null);
-const [refToken, setRefToken] = useLocalStorage("refresh_token", null);
-
-async function setDataByRefToken(url, func) {
+async function getDataByRefToken(url, at, sat, rt, srt) {
   try {
     const Api_Url = process.env.REACT_APP_API_URL;
     const { data } = await axios.post(`${Api_Url}/account/token/refresh/`, {
-      refresh: refToken,
+      refresh: rt,
     });
     console.log("newAccToken", data.access);
-    if (!data) throw new Error();
-    setAccToken(data.access);
-    const { data2 } = await axios.get(url, {
+    if (!data?.access) throw new Error();
+    sat(data.access);
+    const { data:data2 } = await axios.get(Api_Url + url, {
       headers: {
-        Authorization: `Bearer ${accToken}`,
+        Authorization: `Bearer ${data.access}`,
       },
     });
-    func(data2);
+    // console.log("data2", data2);
+    return(data2);
   } catch (err) {
+    console.warn(err);
     console.log("refresh token is invalid!");
-    setAccToken(null);
-    setRefToken(null);
+    sat(null);
+    srt(null);
   }
 }
 
-export async function setDataByTokens(url, func) {
+export default async function getDataByTokens(url, at, sat, rt, srt) {
   try {
     const Api_Url = process.env.REACT_APP_API_URL;
-    const { data } = await axios.get(url, {
+    console.log("accTokne-inAxios", at);
+    const { data } = await axios.get(Api_Url + url, {
       headers: {
-        Authorization: `Bearer ${accToken}`,
+        Authorization: `Bearer ${at}`,
       },
     });
-    func(data);
+    return data;
     console.log("user data", data);
   } catch (err) {
     console.warn(err);
     console.log("access token is invalid!");
-    setDataByRefToken(url, func);
+    return getDataByRefToken(url, at, sat, rt, srt);
   }
 }

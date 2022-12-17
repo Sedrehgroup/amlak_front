@@ -5,7 +5,7 @@ import NavBar from "./Dashboard/NavBar";
 import RightPanel from "./Dashboard/Panel/RightPanel";
 import Protected from "./Protect/protected";
 import useLocalStorage from "use-local-storage";
-import setDataByTokens from "../utils/getDataByToken"
+import getDataByTokens from "../utils/getDataByToken";
 import axios from "axios";
 
 export default function Main({ comp }) {
@@ -54,8 +54,20 @@ export default function Main({ comp }) {
 
   useEffect(() => {
     return () => {
-      console.log("accToken", accToken);
-      setDataByTokens(`${Api_Url}/account/user_information/`, setUserData);
+      console.log("accToken in main", accToken);
+      if (!accToken) return;
+      (async function () {
+        console.log("async in main is ok");
+        const data = await getDataByTokens(
+          `/account/user_information/`,
+          accToken,
+          setAccToken,
+          refToken,
+          setRefToken
+        );
+        console.log("user data in main", data);
+        setUserData(data);
+      })();
     };
   }, []);
 
