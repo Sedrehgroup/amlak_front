@@ -10,6 +10,7 @@ import { selectedPropertyDataHandler } from "../../../../redux/reducers/userProp
 import { useDispatch } from "react-redux";
 import useLocalStorage from "use-local-storage";
 import empty from "../../../../assets/Images/Dashboard/folder-open.svg";
+import getDataByTokens from "../../../../utils/getDataByToken";
 
 const AllProperties = () => {
   const dispatch = useDispatch();
@@ -28,151 +29,219 @@ const AllProperties = () => {
   }, []);
 
   useEffect(() => {
-    if (province == "") setCity("");
+    setCity("");
+    if (province == "") {
+      // city changes and city use effect runs
+      // if we dont return we requst 2 times
+      // so next line shouldn't be removed
+      if (city) return; 
+    }
+    if (!accToken) return;
+    setShowLoading(true);
+    (async function () {
+      const data = await getDataByTokens(
+        `/api/property/properties_list/?city=${city}&county=${province}`,
+        accToken,
+        setAccToken,
+        refToken,
+        setRefToken
+      );
+      console.log("allProperties data.results", data?.results);
+      setMyProperties(data.results);
+      setShowLoading(false);
+      setNextUrl(data?.next?.slice(39) || "disable");
+    })();
   }, [province]);
 
   const [accToken, setAccToken] = useLocalStorage("access_token", null);
   const [refToken, setRefToken] = useLocalStorage("refresh_token", null);
 
-  async function setPropertiesByAccToken() {
-    try {
-      const Api_Url = process.env.REACT_APP_API_URL;
-      const { data } = await axios.get(
-        `${Api_Url}/api/property/properties_list/?city=${city}&county=${province}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      setMyProperties(data?.results);
-      console.log("my properties", data);
-    } catch (err) {
-      console.warn(err);
-      console.log("access token is invalid!");
-      // setAccTokenByRefToken();
-    }
-  }
-
   useEffect(() => {
-    const Api_Url = process.env.REACT_APP_API_URL;
-    if (token.length > 0) {
-      setShowLoading(true);
-      try {
-        axios
-          .get(
-            `${Api_Url}/api/property/properties_list/?city=${city}&county=${province}`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          )
-          .then(({ data }) => {
-            setMyProperties(data?.results);
-            setShowLoading(false);
-            setNextUrl(data?.next?.slice(39) || "disable");
-            console.log(
-              "axios get /api/property/properties_list data.data:",
-              data
-            );
-          })
-          .catch((e) => {
-            console.log("error in axios /api/property/properties_list", e);
-            setShowLoading(false);
-          });
-      } catch (error) {
-        console.log("error", error);
-      }
-    }
+    // const Api_Url = process.env.REACT_APP_API_URL;
+    // if (token.length > 0) {
+    //   setShowLoading(true);
+    //   try {
+    //     axios
+    //       .get(
+    //         `${Api_Url}/api/property/properties_list/?city=${city}&county=${province}`,
+    //         {
+    //           headers: {
+    //             Authorization: `Bearer ${token}`,
+    //           },
+    //         }
+    //       )
+    //       .then(({ data }) => {
+    //         setMyProperties(data?.results);
+    //         setShowLoading(false);
+    //         setNextUrl(data?.next?.slice(39) || "disable");
+    //         console.log(
+    //           "axios get /api/property/properties_list data.data:",
+    //           data
+    //         );
+    //       })
+    //       .catch((e) => {
+    //         console.log("error in axios /api/property/properties_list", e);
+    //         setShowLoading(false);
+    //       });
+    //   } catch (error) {
+    //     console.log("error", error);
+    //   }
+    // }
+    // console.log("accToken in allProperties", accToken);
+    // if (province == "") setCity("");
+    if (!accToken) return;
+    setShowLoading(true);
+    (async function () {
+      const data = await getDataByTokens(
+        `/api/property/properties_list/?city=${city}&county=${province}`,
+        accToken,
+        setAccToken,
+        refToken,
+        setRefToken
+      );
+      console.log("allProperties data.results", data?.results);
+      setMyProperties(data.results);
+      setShowLoading(false);
+      setNextUrl(data?.next?.slice(39) || "disable");
+    })();
   }, [city]);
 
   const nextHandler = () => {
-    const Api_Url = process.env.REACT_APP_API_URL;
-    try {
-      axios
-        .get(`${Api_Url}/api/property/properties_list${nextUrl}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then(({ data }) => {
-          setMyProperties(data.results);
-          setShowLoading(false);
-          setPreviousUrl(data?.previous?.slice(39) || "disable");
-          setNextUrl(data?.next?.slice(39) || "disable");
-          document.querySelector("#m_main_content").scrollTop = 0;
-
-          console.log(
-            "axios get /api/property/properties_list data.data:",
-            data
-          );
-        })
-        .catch((e) => {
-          console.log("error in axios /api/property/properties_list", e);
-          setShowLoading(false);
-        });
-    } catch (error) {
-      console.log("error", error);
-    }
+    // const Api_Url = process.env.REACT_APP_API_URL;
+    // try {
+    //   axios
+    //     .get(`${Api_Url}/api/property/properties_list${nextUrl}`, {
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     })
+    //     .then(({ data }) => {
+    //       setMyProperties(data.results);
+    //       setShowLoading(false);
+    //       setPreviousUrl(data?.previous?.slice(39) || "disable");
+    //       setNextUrl(data?.next?.slice(39) || "disable");
+    //       document.querySelector("#m_main_content").scrollTop = 0;
+    //       console.log(
+    //         "axios get /api/property/properties_list data.data:",
+    //         data
+    //       );
+    //     })
+    //     .catch((e) => {
+    //       console.log("error in axios /api/property/properties_list", e);
+    //       setShowLoading(false);
+    //     });
+    // } catch (error) {
+    //   console.log("error", error);
+    // }
+    setShowLoading(true);
+    (async function () {
+      const data = await getDataByTokens(
+        `/api/property/properties_list${nextUrl}`,
+        accToken,
+        setAccToken,
+        refToken,
+        setRefToken
+      );
+      console.log("allProperties data.results", data?.results);
+      setMyProperties(data.results);
+      setShowLoading(false);
+      setNextUrl(data?.next?.slice(39) || "disable");
+      setPreviousUrl(data?.previous?.slice(39) || "disable");
+      document.querySelector("#m_main_content").scrollTop = 0;
+    })();
   };
   const previousHandler = () => {
-    const Api_Url = process.env.REACT_APP_API_URL;
-    try {
-      axios
-        .get(`${Api_Url}/api/property/properties_list${previousUrl}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then(({ data }) => {
-          setMyProperties(data.results);
-          setShowLoading(false);
-          setPreviousUrl(data?.previous?.slice(39) || "disable");
-          setNextUrl(data?.next?.slice(39) || "disable");
-          document.querySelector("#m_main_content").scrollTop = 0;
-          console.log(
-            "axios get /api/property/properties_list data.data:",
-            data
-          );
-        })
-        .catch((e) => {
-          console.log("error in axios /api/property/properties_list", e);
-          setShowLoading(false);
-        });
-    } catch (error) {
-      console.log("error", error);
-    }
+    // const Api_Url = process.env.REACT_APP_API_URL;
+    // try {
+    //   axios
+    //     .get(`${Api_Url}/api/property/properties_list${previousUrl}`, {
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     })
+    //     .then(({ data }) => {
+    //       setMyProperties(data.results);
+    //       setShowLoading(false);
+    //       setPreviousUrl(data?.previous?.slice(39) || "disable");
+    //       setNextUrl(data?.next?.slice(39) || "disable");
+    //       document.querySelector("#m_main_content").scrollTop = 0;
+    //       console.log(
+    //         "axios get /api/property/properties_list data.data:",
+    //         data
+    //       );
+    //     })
+    //     .catch((e) => {
+    //       console.log("error in axios /api/property/properties_list", e);
+    //       setShowLoading(false);
+    //     });
+    // } catch (error) {
+    //   console.log("error", error);
+    // }
+    setShowLoading(true);
+    (async function () {
+      const data = await getDataByTokens(
+        `/api/property/properties_list${previousUrl}`,
+        accToken,
+        setAccToken,
+        refToken,
+        setRefToken
+      );
+      console.log("allProperties data.results", data?.results);
+      setMyProperties(data.results);
+      setShowLoading(false);
+      setNextUrl(data?.next?.slice(39) || "disable");
+      setPreviousUrl(data?.previous?.slice(39) || "disable");
+      document.querySelector("#m_main_content").scrollTop = 0;
+    })();
   };
-  useEffect(() => {
-    const Api_Url = process.env.REACT_APP_API_URL;
-    if (token.length > 0) {
-      setShowLoading(true);
-      try {
-        axios
-          .get(`${Api_Url}/api/property/properties_list/${nextUrl}`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          })
-          .then(({ data }) => {
-            setMyProperties(data?.results);
-            setShowLoading(false);
-            setNextUrl(data?.next?.slice(39) || "disable");
-            console.log(
-              "axios get /api/property/properties_list data.data:",
-              data
-            );
-          })
-          .catch((e) => {
-            console.log("error in axios /api/property/properties_list", e);
-            setShowLoading(false);
-          });
-      } catch (error) {
-        console.log("error", error);
-      }
-    }
-  }, [token]);
+  // useEffect(() => {
+  //   // const Api_Url = process.env.REACT_APP_API_URL;
+  //   // if (token.length > 0) {
+  //   //   setShowLoading(true);
+  //   //   try {
+  //   //     axios
+  //   //       .get(`${Api_Url}/api/property/properties_list/${nextUrl}`, {
+  //   //         headers: {
+  //   //           Authorization: `Bearer ${token}`,
+  //   //         },
+  //   //       })
+  //   //       .then(({ data }) => {
+  //   //         setMyProperties(data?.results);
+  //   //         setShowLoading(false);
+  //   //         setNextUrl(data?.next?.slice(39) || "disable");
+  //   //         console.log(
+  //   //           "axios get /api/property/properties_list data.data:",
+  //   //           data
+  //   //         );
+  //   //       })
+  //   //       .catch((e) => {
+  //   //         console.log("error in axios /api/property/properties_list", e);
+  //   //         setShowLoading(false);
+  //   //       });
+  //   //   } catch (error) {
+  //   //     console.log("error", error);
+  //   //   }
+  //   // }
+  //   return () => {
+  //     console.log("accToken in allProperties", accToken);
+  //     if (!accToken) return;
+  //     setShowLoading(true);
+  //     (async function () {
+  //       const data = await getDataByTokens(
+  //         `/api/property/properties_list/`,
+  //         accToken,
+  //         setAccToken,
+  //         refToken,
+  //         setRefToken
+  //       );
+  //       console.log("allProperties data.results", data?.results);
+  //       setMyProperties(data.results);
+  //       setShowLoading(false);
+  //       setNextUrl(data?.next?.slice(39) || "disable");
+  //     })();
+  //   };
+  // }, []);
+
   const handler = (data) => {
     // setAdData(data);
     dispatch(selectedPropertyDataHandler(data));
