@@ -1172,7 +1172,7 @@ export default function SubmitProperty() {
           </div>
         </div>
       ) : (
-        <SubmitReview data={formData} submit={createProperty} />
+        <SubmitReview data={formData} submit={createProperty} setIsSumbited1={setIsSumbited1} />
       )}
     </>
   );

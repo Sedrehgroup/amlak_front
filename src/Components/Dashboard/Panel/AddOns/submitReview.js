@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
 import PropertyDetailsSlider from "./PropertyDetailsSlider";
 import Spinner from "react-spinkit";
@@ -28,10 +28,12 @@ import {
   LEAFLET_ZOOM,
 } from "../../../../utils/config";
 
-export default function SubmitReview({ data, submit }) {
+export default function SubmitReview({ data, submit, setIsSumbited1 }) {
   const gradient = {
     background: "linear-gradient(90.83deg, #FF731D 0.01%, #FFAB77 100.01%)",
   };
+
+  const history = useHistory()
 
   useEffect(() => {
     document.title = "سامانه اجاره بها - مشخصات آگهی";
@@ -685,6 +687,20 @@ export default function SubmitReview({ data, submit }) {
                   style={gradient}
                 >
                   ثبت نهایی آگهی
+                </button>
+                <button
+                  onClick={() => {setIsSumbited1(false); console.log("setIsSumbited1(false);");}}
+                  className=" h-full w-full rounded-lg py-2 font-bold  text-white"
+                  style={gradient}
+                >
+                  ویرایش آگهی
+                </button>
+                <button
+                  onClick={() => {history.push('/')}}
+                  className=" h-full w-full rounded-lg py-2 font-bold  text-white"
+                  style={gradient}
+                >
+                  لغو آگهی
                 </button>
               </div>
             </div>
