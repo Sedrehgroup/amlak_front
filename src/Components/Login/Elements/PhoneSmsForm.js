@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ReactCodeInput from "react-code-input";
 import { useDispatch, useSelector } from "react-redux";
 import loginLogo from "./../../../assets/Images/Dashboard/loginLogo.svg";
@@ -10,6 +10,8 @@ import {
 import Spinner from "react-spinkit";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
+import useToken from "../../../customHooks/useToken";
+import { TokenContext } from "../../../contexts/tokensContext";
 
 export default function PhoneSmsForm() {
   const phoneNumber = useSelector((state) => state.login.phoneNumber);
@@ -22,6 +24,9 @@ export default function PhoneSmsForm() {
   const dispatch = useDispatch();
   const history = useHistory();
   const Api_Url = process.env.REACT_APP_API_URL;
+
+  const [token, setUpdate] = useToken();
+  const {accToken, setAccToken, refToken, setRefToken} = useContext(TokenContext)
 
   const checkPinCode = () => {
     setShowLoading(true);
@@ -43,12 +48,19 @@ export default function PhoneSmsForm() {
             dispatch(userLoginStepAccess("PhoneSms_Step"));
             dispatch(userLoginStepAccess("Register_Step"));
             history.push("/");
-            window.localStorage.setItem("ACC_TOKEN", data.access);
+            // window.localStorage.setItem("ACC_TOKEN", data.access);
             window.localStorage.setItem("REF_TOKEN", data.refresh);
-            window.localStorage.setItem("user_logged", "true");
-            dispatch(setUserIsLoggedHandler(true));
-
+            // window.localStorage.setItem("user_logged", "true");
+            // dispatch(setUserIsLoggedHandler(true));
             console.log("axios /users/token data.data:", data);
+            return data;
+          })
+          .then((data) => {
+            console.log("then1");
+            window.localStorage.setItem("ACC_TOKEN", data.access);
+          })
+          .then(() => {
+            console.log("then2");
           })
           .catch((e) => {
             console.log("error in axios /users/otp_register", e);
@@ -91,13 +103,20 @@ export default function PhoneSmsForm() {
 
           dispatch(userLoginStepAccess("PhoneSms_Step"));
           dispatch(userLoginStepAccess("Register_Step"));
-          history.push("/");
-          window.localStorage.setItem("ACC_TOKEN", data.access);
-          window.localStorage.setItem("REF_TOKEN", data.refresh);
-          window.localStorage.setItem("user_logged", "true");
-          dispatch(setUserIsLoggedHandler(true));
+          // window.localStorage.setItem("access_token", data.access);
+          // window.localStorage.setItem("refresh_token", data.refresh);
+          setAccToken(data.access)
+          setRefToken(data.refresh)
+          // history.push("/");
+          // window.localStorage.setItem("user_logged", "true");
+          // dispatch(setUserIsLoggedHandler(true));
 
           console.log("axios /users/token data.data:", data);
+        })
+        .then(() => {
+          setUpdate(Math.random());
+          console.log("setUpdate", window.localStorage.getItem("access_token"));
+          dispatch(setUserIsLoggedHandler(true));
         })
         .catch((e) => {
           setShowLoading(false);

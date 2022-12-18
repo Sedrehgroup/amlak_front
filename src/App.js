@@ -28,124 +28,129 @@ import Counter from "./Components/Dashboard/Panel/Tabs/Counter";
 import NotFound from "./Components/notFound";
 import PropertyDetails from "./Components/Dashboard/Panel/AddOns/PropertyDetails";
 // import ProtectedRoute from "./Components/Routs/ProtectedRoute";
+import useLocalStorage from "use-local-storage";
+import TokenProvider from "./contexts/tokensContext";
 
 function App() {
   const isUserLogged = useSelector((state) => state.login.isUserLogged);
-  const [token, setUpdate] = useToken();
-  useEffect(() => {
-    console.log("isUserLogged redux", isUserLogged);
-    // if(!isUserLogged)
-  }, [isUserLogged]);
-  useEffect(() => {
-    const Api_Url = process.env.REACT_APP_API_URL;
-    return () => {
-      setInterval(() => {
-      
-        console.log(token);
-        if (!token) return;
-        console.log("try new token");
-        try {
-          axios
-            .post(
-              `${Api_Url}/account/token/refresh/`,
-              {
-                refresh: window.localStorage.getItem("REF_TOKEN"),
-              },
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-              }
-            )
-            .then(({ data }) => {
-              console.log("axios get account/token/refresh/ data.data:", data);
-              window.localStorage.setItem("ACC_TOKEN", data.access);
-              setUpdate(Math.random());
-            })
-            .catch((e) => {
-              console.log("error in axios account/token/refresh/", e);
-            });
-        } catch (error) {
-          console.log("error", error);
-        }
-      }, 5000);
-    };
-  }, []);
+  // const [token, setUpdate] = useToken();
+  // const [accToken, setAccToken] = useLocalStorage("access_token", null);
+  // const [refToken, setRefToken] = useLocalStorage("refresh_token", null);
+
+  // useEffect(() => {
+  //   console.log("isUserLogged redux", isUserLogged);
+  //   // if(!isUserLogged)
+  // }, [isUserLogged]);
+  // useEffect(() => {
+  //   const Api_Url = process.env.REACT_APP_API_URL;
+  //   return () => {
+  //     setInterval(() => {
+  //       console.log(token);
+  //       if (!token) return;
+  //       console.log("try new token");
+  //       try {
+  //         axios
+  //           .post(
+  //             `${Api_Url}/account/token/refresh/`,
+  //             {
+  //               refresh: window.localStorage.getItem("REF_TOKEN"),
+  //             },
+  //             {
+  //               headers: {
+  //                 Authorization: `Bearer ${token}`,
+  //               },
+  //             }
+  //           )
+  //           .then(({ data }) => {
+  //             console.log("axios get account/token/refresh/ data.data:", data);
+  //             window.localStorage.setItem("ACC_TOKEN", data.access);
+  //             setUpdate(Math.random());
+  //           })
+  //           .catch((e) => {
+  //             console.log("error in axios account/token/refresh/", e);
+  //           });
+  //       } catch (error) {
+  //         console.log("error", error);
+  //       }
+  //     }, 5000);
+  //   };
+  // }, []);
 
   return (
-    <div className="bg-warmGray-200">
-      {/* {isUserLogged ? <Main /> : <Login />} */}
-      <Switch>
-        <Route exact path="/auth">
-          <Login isLoged={isUserLogged} />
-        </Route>
-        <Route exact path="/">
-          <Main comp={<Counter />} isLoged={isUserLogged} />
-        </Route>
-        <Route path="/userinfo">
-          <Main comp={<UserFormDetail />} isLoged={isUserLogged} />
-        </Route>
-        <Route path="/chat">
-          <Main
-            comp={
-              <center>
-                <ChatPage />
-              </center>
-            }
-            isLoged={isUserLogged}
-          />
-        </Route>
-        <Route path="/contracts">
-          <Main comp={<Contracts />} isLoged={isUserLogged} />
-        </Route>
-        <Route path="/submitContract">
-          <Main comp={<SubmitContract />} isLoged={isUserLogged} />
-        </Route>
-        <Route path="/submitProperty">
-          <Main comp={<SubmitProperty />} isLoged={isUserLogged} />
-        </Route>
-        <Route path="/myProperties">
-          <Main comp={<MyProperties />} isLoged={isUserLogged} />
-        </Route>
-        <Route path="/requestsToMe">
-          <Main comp={<RequestsToMe />} isLoged={isUserLogged} />
-        </Route>
-        <Route path="/AcceptedFromMe">
-          {/* <center>اجاره داده شده ها</center> */}
-          <Main comp={<AcceptedFromMe />} isLoged={isUserLogged} />
-        </Route>
-        <Route exact path="/allProperties">
-          <Main comp={<AllProperties />} isLoged={isUserLogged} />
-        </Route>
-        <Route exact path="/allProperties/:id">
-          <Main comp={<PropertyDetails />} isLoged={isUserLogged} />
-        </Route>
-        <Route path="/requestsFromMe">
-          <Main comp={<RequestsFromMe />} isLoged={isUserLogged} />
-        </Route>
-        <Route path="/AcceptedForMe">
-          <Main comp={<AcceptedForMe />} isLoged={isUserLogged} />
-        </Route>
-        <Route path="/editProperty">
-          <Main comp={<EditProperty />} isLoged={isUserLogged} />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
-      </Switch>
-      {/* <Main /> */}
-      {/* <Switch> */}
-      {/* <Route exact path="/" component={isUserLogged && Main} /> */}
-      {/* <Route exact path="/" component={Login} /> */}
-      {/* <Route component={!isUserLogged ? Login : Main} /> */}
-      {/* </Switch> */}
-      {/* <Switch>
-        <Route exact path="/" component={Login} />
-        <ProtectedRoute exact path="/app" component={Main} />
-        <Route path="*" component={() => "404 Page Not Found"} />
-      </Switch> */}
-      <ToastContainer />
-    </div>
+    <TokenProvider>
+      <div className="bg-warmGray-200">
+        {/* {isUserLogged ? <Main /> : <Login />} */}
+        <Switch>
+          <Route exact path="/auth">
+            <Login />
+          </Route>
+          <Route exact path="/">
+            <Main comp={<Counter />} />
+          </Route>
+          <Route path="/userinfo">
+            <Main comp={<UserFormDetail />} />
+          </Route>
+          <Route path="/chat">
+            <Main
+              comp={
+                <center>
+                  <ChatPage />
+                </center>
+              }
+            />
+          </Route>
+          <Route path="/contracts">
+            <Main comp={<Contracts />} />
+          </Route>
+          <Route path="/submitContract">
+            <Main comp={<SubmitContract />} />
+          </Route>
+          <Route path="/submitProperty">
+            <Main comp={<SubmitProperty />} />
+          </Route>
+          <Route path="/myProperties">
+            <Main comp={<MyProperties />} />
+          </Route>
+          <Route path="/requestsToMe">
+            <Main comp={<RequestsToMe />} />
+          </Route>
+          <Route path="/AcceptedFromMe">
+            {/* <center>اجاره داده شده ها</center> */}
+            <Main comp={<AcceptedFromMe />} />
+          </Route>
+          <Route exact path="/allProperties">
+            <Main comp={<AllProperties />} />
+          </Route>
+          <Route exact path="/allProperties/:id">
+            <Main comp={<PropertyDetails />} />
+          </Route>
+          <Route path="/requestsFromMe">
+            <Main comp={<RequestsFromMe />} />
+          </Route>
+          <Route path="/AcceptedForMe">
+            <Main comp={<AcceptedForMe />} />
+          </Route>
+          <Route path="/editProperty">
+            <Main comp={<EditProperty />} />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+        {/* <Main /> */}
+        {/* <Switch> */}
+        {/* <Route exact path="/" component={isUserLogged && Main} /> */}
+        {/* <Route exact path="/" component={Login} /> */}
+        {/* <Route component={!isUserLogged ? Login : Main} /> */}
+        {/* </Switch> */}
+        {/* <Switch>
+          <Route exact path="/" component={Login} />
+          <ProtectedRoute exact path="/app" component={Main} />
+          <Route path="*" component={() => "404 Page Not Found"} />
+        </Switch> */}
+        <ToastContainer />
+      </div>
+    </TokenProvider>
   );
 }
 

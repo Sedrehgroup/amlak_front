@@ -28,9 +28,9 @@ const RequestsToMe = () => {
   const [adData, setAdData] = useState({});
 
   const Api_Url = process.env.REACT_APP_API_URL;
-  
+
   useEffect(() => {
-    document.title='سامانه اجاره بها - درخواست های موجر'
+    document.title = "سامانه اجاره بها - درخواست های موجر";
   }, []);
   useEffect(() => {
     if (!!!!token) {
@@ -218,13 +218,13 @@ const RequestsToMe = () => {
                 </div>
               ))}
             {lessorData?.lenght == 0 && (
-              <div className="m-auto text-xl text-center">
+              <div className="m-auto text-center text-xl">
                 شما درخواستی ندارید!
               </div>
             )}
           </div>
         ) : (
-          <div className="flex justify-center items-center eightyvh">
+          <div className="eightyvh flex items-center justify-center">
             <Spinner name="folding-cube" color="#FF731D" fadeIn="none" />
           </div>
         )}

@@ -12,18 +12,18 @@ import { calcTimeOfContract } from "../../../../utils/calcTimeOfContract";
 
 export default function SignContract({ data }) {
   function printDiv() {
-    history.push('/contracts')
+    history.push("/contracts");
     let elem = document.getElementById("contractPrint");
-    elem.style.backgroundColor="#efefef"
+    elem.style.backgroundColor = "#efefef";
     let divContents = elem.innerHTML;
     // divContents.style.direction = "rtl";
     // elem.style.direction='rtl'
     let a = window.open("", "", "height=800, width=1000");
-    
+
     // a.document.write("<html>");
     // a.document.write("<body > <h1>Div contents are <br>");
     // a.document.write(divContents);
-    a.document.body.appendChild(elem)
+    a.document.body.appendChild(elem);
     // a.document.write("</body></html>");
     a.document.close();
     a.print();
@@ -142,7 +142,7 @@ export default function SignContract({ data }) {
             // setPropertyData(data);
             history.push("/contracts");
             dispatch(updateHandler(Math.random()));
-         
+
             toast.success("با موفقیت قرارداد توسط شما امضا شد", {
               position: "top-center",
               rtl: true,
@@ -422,10 +422,10 @@ export default function SignContract({ data }) {
                 </div>
               </div>
               <span>
-                  <strong>
+                <strong>
                   ماده ۵ - تقسیم مورد اجاره با عنایت به قرارداد اجاره مورخ
-                  </strong>
-                </span>
+                </strong>
+              </span>
               <div>
                 {data?.contract_date?.slice(0, 4)}/
                 {data?.contract_date?.slice(5, 7)}/
@@ -434,31 +434,27 @@ export default function SignContract({ data }) {
                 تحت تصرف وی می باشد.
               </div>
               <span>
-                  <strong>
-                  ماده ۶ - شرایط قرارداد
-                  </strong>
-                </span>
+                <strong>ماده ۶ - شرایط قرارداد</strong>
+              </span>
               <div>
-                 1- مستأجر حق استفاده از مورد اجاره را
-                برخلاف منظور قرارداد که استفاده جهت محل سکنی می باشد ندارد، به
-                اضافه آنکه مکلف است از مورد اجاره استفاده متعارف نماید. 2- موجر
-                مورد اجاره را جهت سکونت سه نفر به مستأجر اجاره داده است. 3-
-                مستاجر تحت هیچ شرایطی حق واگذاری مورد اجاره را به غیر تحت هیچ
-                عنوانی اعم از امانت، اذن در انتفاع، اجاره مجدد ندارد. 4- مستاجر
-                ملکف است به محض خاتمه مدت قرارداد اجاره و رأس موعد مقرر، مورد
-                اجاره را تخلیه و تحویل موجر نماید، در غیر اینصورت مستأجر مکلف
-                است روزانه مبلغ صد هزار تومان معادل یک میلیون ریال به عنوان
-                خسارت وجه التزام به موجر بپردازد و موجر علاوه بر استحقاق دریافت
-                وجه التزام حق درخواست تخلیه مورد اجاره را نیز دارد.
+                1- مستأجر حق استفاده از مورد اجاره را برخلاف منظور قرارداد که
+                استفاده جهت محل سکنی می باشد ندارد، به اضافه آنکه مکلف است از
+                مورد اجاره استفاده متعارف نماید. 2- موجر مورد اجاره را جهت سکونت
+                سه نفر به مستأجر اجاره داده است. 3- مستاجر تحت هیچ شرایطی حق
+                واگذاری مورد اجاره را به غیر تحت هیچ عنوانی اعم از امانت، اذن در
+                انتفاع، اجاره مجدد ندارد. 4- مستاجر ملکف است به محض خاتمه مدت
+                قرارداد اجاره و رأس موعد مقرر، مورد اجاره را تخلیه و تحویل موجر
+                نماید، در غیر اینصورت مستأجر مکلف است روزانه مبلغ صد هزار تومان
+                معادل یک میلیون ریال به عنوان خسارت وجه التزام به موجر بپردازد و
+                موجر علاوه بر استحقاق دریافت وجه التزام حق درخواست تخلیه مورد
+                اجاره را نیز دارد.
               </div>
               <span>
-                  <strong>
-                  ماده ۷ - قانون حاکم بر قرارداد
-                  </strong>
-                </span>
+                <strong>ماده ۷ - قانون حاکم بر قرارداد</strong>
+              </span>
               <div>
-                 این قرارداد در سایر موارد تابع
-                قانون مدنی و قانون روابط مالک و مستأجر مصوب 1376 خواهد بود.
+                این قرارداد در سایر موارد تابع قانون مدنی و قانون روابط مالک و
+                مستأجر مصوب 1376 خواهد بود.
               </div>
               <div>
                 قرارداد مزبور در ۷ ماده در مورخ{" "}

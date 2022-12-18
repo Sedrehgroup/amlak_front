@@ -30,7 +30,7 @@ const AcceptedForMe = () => {
 
   const Api_Url = process.env.REACT_APP_API_URL;
   useEffect(() => {
-    document.title='سامانه اجاره بها - اجاره شده ها'
+    document.title = "سامانه اجاره بها - اجاره شده ها";
   }, []);
   useEffect(() => {
     if (!!!!token) {
@@ -88,13 +88,13 @@ const AcceptedForMe = () => {
                 </div>
               ))}
             {contractsList?.lenght == 0 && (
-              <div className="m-auto text-xl text-center">
+              <div className="m-auto text-center text-xl">
                 شما قراردادی ندارید!
               </div>
             )}
           </div>
         ) : (
-          <div className="flex justify-center items-center eightyvh">
+          <div className="eightyvh flex items-center justify-center">
             <Spinner name="folding-cube" color="#FF731D" fadeIn="none" />
           </div>
         )}

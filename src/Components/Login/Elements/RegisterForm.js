@@ -46,8 +46,8 @@ export default function RegisterForm() {
           history.push("/");
           window.localStorage.setItem("ACC_TOKEN", data.access);
           window.localStorage.setItem("REF_TOKEN", data.refresh);
-          window.localStorage.setItem("user_logged", "true");
-          dispatch(setUserIsLoggedHandler(true));
+          // window.localStorage.setItem("user_logged", "true");
+          // dispatch(setUserIsLoggedHandler(true));
           // createUserAdditionalInfo(data.access);
         })
         .catch((e) => {

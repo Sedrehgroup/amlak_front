@@ -19,8 +19,6 @@ import { LEAFLET_CENTER } from "../../../../utils/config";
 import Options from "../AddOns/Options";
 import SubmitReview from "../AddOns/submitReview";
 
-
-
 export default function SubmitProperty() {
   const [selectedProvince, setSelectedProvince] = useState("تهران");
   const [selectedState, setSelectedState] = useState("تهران");
@@ -35,7 +33,6 @@ export default function SubmitProperty() {
   const [pictures, setPictures] = useState([]);
   const [isSubmited1, setIsSumbited1] = useState(false);
   const [formData, setFormData] = useState(null);
-
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -163,7 +160,6 @@ export default function SubmitProperty() {
       console.log("error", error);
     }
   };
-
 
   useEffect(() => {
     console.log(pictures);
@@ -1163,7 +1159,7 @@ export default function SubmitProperty() {
                 <input
                   type="button"
                   value="مرحله قبلی"
-                  onClick={()=>setTab(0)}
+                  onClick={() => setTab(0)}
                   className="mt-6 mb-6 h-10 w-full cursor-pointer bg-main-500 text-white"
                 />
                 <input
@@ -1176,9 +1172,8 @@ export default function SubmitProperty() {
           </div>
         </div>
       ) : (
-        <SubmitReview data={formData} submit={createProperty} />
+        <SubmitReview data={formData} submit={createProperty} setIsSumbited1={setIsSumbited1} />
       )}
     </>
-
   );
 }

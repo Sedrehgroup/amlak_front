@@ -38,7 +38,7 @@ export default function UserFormDetail() {
   const dispatch = useDispatch();
   const [token] = useToken();
   useEffect(() => {
-    document.title='سامانه اجاره بها - اطلاعات کاربری'
+    document.title = "سامانه اجاره بها - اطلاعات کاربری";
   }, []);
   useEffect(() => {
     setBirthDate(`${year}-${month}-${day}`);
@@ -49,10 +49,7 @@ export default function UserFormDetail() {
       setMonth(userData.birth_day.slice(5, 7));
       setDay(userData.birth_day.slice(8, 10));
     }
-    console.log(
-      "userData>>>>>>>>>>>>>>>>>>>>>>>>>",
-      userData
-    );
+    console.log("userData>>>>>>>>>>>>>>>>>>>>>>>>>", userData);
   }, [userData]);
 
   useEffect(() => {
@@ -69,8 +66,6 @@ export default function UserFormDetail() {
           .then(({ data }) => {
             console.log("axios /account/user_information data.data:", data);
             setUserData(data);
-          
-
           })
           .catch((e) => {
             console.log("error in axios /account/user_information", e);
@@ -79,7 +74,6 @@ export default function UserFormDetail() {
               // window.localStorage.setItem("user_logged", "false");
             }
           });
-
       } catch (error) {
         console.log("error", error);
       }
@@ -119,7 +113,7 @@ export default function UserFormDetail() {
         .put(
           `${Api_Url}/account/user_information/`,
           {
-            password:'rent',
+            password: "rent",
             first_name: first_name || userData?.first_name,
             last_name: last_name || userData?.last_name,
             national_code: national_code || userData?.national_code,
@@ -130,18 +124,15 @@ export default function UserFormDetail() {
               certificate_number || userData.certificate_number,
             birth_day: birthDate || `${year}-${month}-${day}`,
             sex: sex || userData.sex,
-            latin_first_name:
-              latin_first_name || userData.latin_first_name,
-            latin_last_name:
-              latin_last_name || userData.latin_last_name,
+            latin_first_name: latin_first_name || userData.latin_first_name,
+            latin_last_name: latin_last_name || userData.latin_last_name,
             certificate_country:
               certificate_country || userData.certificate_country,
             certificate_province:
               selectedProvince || userData.certificate_province,
             certificate_county:
               certificate_county || userData.certificate_county,
-            certificate_type:
-              certificate_type || userData.certificate_type,
+            certificate_type: certificate_type || userData.certificate_type,
             marriage: marriage || userData.marriage,
             education: education || userData.education,
             province: selectedProvince2 || userData.province,
@@ -160,7 +151,7 @@ export default function UserFormDetail() {
         )
         .then(({ data }) => {
           console.log("axios /account/user_information data.data:", data);
-          dispatch(updateHandler(Math.random()))
+          dispatch(updateHandler(Math.random()));
           toast.success("اطلاعات با موفقیت ثبت شد", {
             position: "top-center",
             rtl: true,
@@ -174,8 +165,6 @@ export default function UserFormDetail() {
             // window.localStorage.setItem("user_logged", "false");
           }
         });
-
-    
     } catch (error) {
       console.log("error", error);
     }
@@ -309,9 +298,7 @@ export default function UserFormDetail() {
                     <option
                       key={index}
                       value={val.value}
-                      selected={
-                        userData.sex == val.value && "selected"
-                      }
+                      selected={userData.sex == val.value && "selected"}
                     >
                       {val.lb}
                     </option>
@@ -399,9 +386,7 @@ export default function UserFormDetail() {
                     <option
                       key={index}
                       value={val.value}
-                      selected={
-                        userData.marriage == val.value && "selected"
-                      }
+                      selected={userData.marriage == val.value && "selected"}
                     >
                       {val.lb}
                     </option>
@@ -480,8 +465,7 @@ export default function UserFormDetail() {
                       // disabled={val != "تهران"}
                       // defaultValue={userData.certificate_province}
                       selected={
-                        userData.certificate_province == val &&
-                        "selected"
+                        userData.certificate_province == val && "selected"
                       }
                     >
                       {val}
@@ -503,8 +487,7 @@ export default function UserFormDetail() {
                     .filter(
                       (element) =>
                         element.province ==
-                        (selectedProvince ||
-                          userData.certificate_province)
+                        (selectedProvince || userData.certificate_province)
                       // element.province == userData.certificate_province
                     )
                     .map((val, index) => (
@@ -514,8 +497,7 @@ export default function UserFormDetail() {
                         // disabled={val.city != "تهران"}
                         // defaultValue={userData.certificate_county}
                         selected={
-                          userData.certificate_county == val.city &&
-                          "selected"
+                          userData.certificate_county == val.city && "selected"
                         }
                       >
                         {val.city}
@@ -561,8 +543,7 @@ export default function UserFormDetail() {
                         key={index}
                         value={val}
                         selected={
-                          userData.certificate_type == val &&
-                          "selected"
+                          userData.certificate_type == val && "selected"
                         }
                       >
                         {val}
@@ -595,9 +576,7 @@ export default function UserFormDetail() {
                         // disabled={val != "تهران"}
                         key={index}
                         value={val}
-                        selected={
-                          userData.province == val && "selected"
-                        }
+                        selected={userData.province == val && "selected"}
                       >
                         {val}
                       </option>
@@ -631,9 +610,7 @@ export default function UserFormDetail() {
                           // disabled={val.city != "تهران"}
                           key={index}
                           value={val.city}
-                          selected={
-                            userData.county == val.city && "selected"
-                          }
+                          selected={userData.county == val.city && "selected"}
                         >
                           {val.city}
                         </option>
